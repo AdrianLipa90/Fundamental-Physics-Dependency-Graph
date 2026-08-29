@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/AdrianLipa90/Fundamental-Physics-Dependency-Graph/schemas/dependency_export.schema.json",
+  "title": "Fundamental Physics Dependency Export",
+  "type": "object",
+  "required": ["schema", "repository_id", "repository", "source_commit", "claims"],
+  "properties": {
+    "schema": {"const": "FPDG_DEPENDENCY_EXPORT_V0_1"},
+    "repository_id": {"enum": ["TIR", "IDT", "RFC", "SOH"]},
+    "repository": {"type": "string", "minLength": 1},
+    "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "generated_at": {"type": "string"},
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim_id", "status", "source_path", "evidence_class"],
+        "properties": {
+          "claim_id": {"type": "string", "minLength": 3},
+          "status": {"type": "string", "minLength": 1},
+          "source_path": {"type": "string", "minLength": 1},
+          "evidence_class": {"type": "string", "minLength": 1},
+          "exact_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+          "validation": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "local_edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "authority"],
+        "properties": {
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "authority": {"enum": ["CANONICAL", "CANONICAL_FRONTIER", "CANDIDATE_ONLY"]},
+          "promotion_required": {"type": "boolean"},
+          "promotion_gate": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
