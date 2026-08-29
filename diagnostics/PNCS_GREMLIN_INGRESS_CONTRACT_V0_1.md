@@ -10,8 +10,10 @@ The exact implemented tooling path is:
 FPDG_INCONSISTENCY_EVIDENCE_V0_1
   -> FPDG_INCONSISTENCY_DIAGNOSIS_V0_1
   -> FPDG_PAIN_SEAM_REPORT_V0_1
+  -> FPDG_PAIN_MICRO_COORDINATES_V0_1
   -> FPDG_PAIN_SIGNATURE_V0_1
   -> FPDG_PAIN_SIGNATURE_MATCHES_V0_1
+  -> FPDG_DIAGNOSTIC_PROBE_PLAN_V0_1
   -> FPDG_GREMLIN_PAIN_PACKET_V0_1
 
   -> PNCS_FPDG_GREMLIN_PAIN_INGRESS_V0_1
@@ -26,11 +28,13 @@ FPDG_INCONSISTENCY_EVIDENCE_V0_1
 
 The PNCS ingress implementation is proposed in `AdrianLipa90/PhaseNav-Natural-Coding-System` PR #54.
 
+Current verification state: the PNCS PR is mergeable, but the hosted Actions runs observed for its head have terminated before any job step was executed (`steps=[]`). FPDG therefore records the code-level tooling contract but does not treat those hosted runs as validator evidence.
+
 ## Semantic boundary
 
 FPDG claim IDs are exact graph coordinates and provenance anchors. They are not PNCS grammar atoms and are not KAKU semantic identities.
 
-Before a pain witness can enter relation mining, the PNCS ingress requires an explicit reviewed mapping:
+Before a witness can enter relation mining, the PNCS ingress requires an explicit reviewed mapping:
 
 ```text
 FPDG claim_id -> PNCS grammar atom
@@ -42,7 +46,7 @@ When an FPDG zone exposes zero or multiple possible source domains, the PNCS ing
 
 ## Alignment boundary
 
-A matching pain signature is a retrieval hint. It is not an `ISOMORPHIC_TO` edge.
+A matching structural incident signature is a retrieval hint. It is not an `ISOMORPHIC_TO` edge.
 
 GREMLIN must still provide an explicit positional correspondence between two selected witness chains from distinct domains. Only after that correspondence is recorded may the existing relation-mining adapter construct a `RelationalIsomorphism` candidate.
 
@@ -67,7 +71,7 @@ candidate_edges_enter_canon = false
 
 The PNCS candidate compiler preserves the same non-promotion boundary. This tooling interface therefore cannot reclassify a scientific claim, add a canonical dependency edge, or write canon by itself.
 
-## Integration-only pain
+## Integration-only inconsistency
 
 An incident localized only to an integration coordinate such as:
 
