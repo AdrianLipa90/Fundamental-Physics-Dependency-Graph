@@ -26,7 +26,11 @@ from build_pain_signature import SignatureError, build_signature  # noqa: E402
 from diagnose_inconsistency import DiagnosisError, diagnose, load_claims, load_graph, render_markdown  # noqa: E402
 from enrich_gremlin_pain_packet_with_micro import MicroPacketError, enrich  # noqa: E402
 from ingest_validation_failure import ReceiptError, load_json, receipt_to_evidence  # noqa: E402
-from localize_interface_evidence import InterfaceEvidenceError, enrich_interface_diagnosis  # noqa: E402
+from localize_interface_evidence import (  # noqa: E402
+    InterfaceEvidenceError,
+    claim_projection_evidence,
+    enrich_interface_diagnosis,
+)
 from localize_interface_seams import (  # noqa: E402
     GRAPH_PATH as SEAM_GRAPH_PATH,
     INTERFACES_PATH as SEAM_INTERFACES_PATH,
@@ -53,7 +57,10 @@ def main() -> int:
         evidence = receipt_to_evidence(load_json(args.receipt))
         claims = load_claims(ROOT / "claims.jsonl")
         graph = load_graph()
-        diagnosis = enrich_interface_diagnosis(diagnose(graph, claims, evidence), evidence)
+        claim_evidence = claim_projection_evidence(evidence)
+        diagnosis = enrich_interface_diagnosis(
+            diagnose(graph, claims, claim_evidence), evidence
+        )
         seams = localize_seams(
             diagnosis,
             load_seam_yaml(SEAM_GRAPH_PATH),
