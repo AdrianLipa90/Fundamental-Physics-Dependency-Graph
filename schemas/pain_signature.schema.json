@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/fpdg/pain_signature.schema.json",
+  "title": "FPDG pain signature v0.1",
+  "type": "object",
+  "required": [
+    "schema",
+    "signature_hash",
+    "hash_basis",
+    "candidate_edges_included",
+    "structural_signature",
+    "feature_tokens",
+    "exact_coordinates",
+    "gremlin_use",
+    "promotion_state"
+  ],
+  "properties": {
+    "schema": {"const": "FPDG_PAIN_SIGNATURE_V0_1"},
+    "signature_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "hash_basis": {"const": "repository_agnostic_structural_signature"},
+    "candidate_edges_included": {"const": false},
+    "structural_signature": {
+      "type": "object",
+      "required": ["localization_mode", "candidate_edges_included", "zones", "integration_kinds"],
+      "properties": {
+        "candidate_edges_included": {"const": false},
+        "zones": {"type": "array"},
+        "integration_kinds": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "feature_tokens": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "exact_coordinates": {
+      "type": "object",
+      "required": ["frontier_claims", "seam_ids", "integration_locations"],
+      "properties": {
+        "frontier_claims": {"type": "array", "items": {"type": "string"}},
+        "seam_ids": {"type": "array", "items": {"type": "string"}},
+        "integration_locations": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "gremlin_use": {"const": "INCIDENT_SHAPE_RETRIEVAL_ONLY"},
+    "promotion_state": {"const": "CANDIDATE_ONLY"}
+  },
+  "additionalProperties": true
+}
