@@ -10,7 +10,20 @@ producers:
     binding_manifest: validation/FPDG_FAILURE_BINDINGS_V0_1.json
     workflow: .github/workflows/reference-suite.yml
     artifact: fpdg-validation-failure-receipt
-    mapped_claim_range: RF-E8_THROUGH_RF-E20
+    mapped_claims:
+      - RFC.ADM.E8
+      - RFC.ADM.E9
+      - RFC.ADM.E10
+      - RFC.ADM.E11
+      - RFC.ADM.E12
+      - RFC.ADM.E13
+      - RFC.E14.DIRECTIONAL_RELATIVE_ENTROPY
+      - RFC.E15.INFORMATION_LEGENDRE_HAMILTONIAN
+      - RFC.E16.SHIFT_NOETHER_FIREWALL
+      - RFC.E17.CLOCK_INFORMATION_SCALAR_ACTION
+      - RFC.E18.PHYSICAL_VELOCITY_FIREWALL
+      - RFC.E19.NOETHER_MATERIAL_CONGRUENCE
+      - RFC.E20.TETRA_CLOCK_MASS_SCALE
     latest_hosted_validation:
       workflow_run_number: 328
       status: SUCCESS
@@ -51,9 +64,11 @@ producers:
   TIR:
     repository: AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations
     status: PENDING_HETEROGENEOUS_WORKFLOW_PRODUCER
+    mapped_claims: []
   SOH:
     repository: AdrianLipa90/secret-of-a-half
     status: PENDING_HETEROGENEOUS_WORKFLOW_PRODUCER
+    mapped_claims: []
 authority:
   binding_owner: source_repository
   localization_owner: Fundamental-Physics-Dependency-Graph
