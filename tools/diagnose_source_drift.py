@@ -39,8 +39,9 @@ class DriftDiagnosisError(RuntimeError):
 def load_report(path: Path = DRIFT_PATH) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as fh:
         report = json.load(fh)
-    if not isinstance(report, dict) or report.get("schema") != "FPDG_SOURCE_DRIFT_REPORT_V0_1":
-        raise DriftDiagnosisError("expected FPDG_SOURCE_DRIFT_REPORT_V0_1")
+    schemas = {"FPDG_SOURCE_DRIFT_REPORT_V0_1", "FPDG_SOURCE_DRIFT_REPORT_V0_2"}
+    if not isinstance(report, dict) or report.get("schema") not in schemas:
+        raise DriftDiagnosisError("expected FPDG_SOURCE_DRIFT_REPORT_V0_1/V0_2")
     return report
 
 
@@ -81,13 +82,21 @@ def claim_lookup(claims: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     }
 
 
+def locked_head(source: dict[str, Any]) -> str:
+    value = source.get("locked_repository_head", source.get("locked_source_commit"))
+    if not isinstance(value, str):
+        raise DriftDiagnosisError("drift source has no locked repository head")
+    return value
+
+
 def path_fallback_observations(
     source: dict[str, Any], claims: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
     by_claim = claim_lookup(claims)
     repo_id = source["repository_id"]
     repo = source["repository"]
-    compare_ref = f"github-compare:{repo}@{source['locked_source_commit']}...{source['current_main']}"
+    expected_head = locked_head(source)
+    compare_ref = f"github-compare:{repo}@{expected_head}...{source['current_main']}"
     observations = []
     if source.get("fallback_all_owned"):
         return [
@@ -95,7 +104,7 @@ def path_fallback_observations(
                 "observation_id": f"DRIFT.{repo_id}.REPOSITORY",
                 "kind": "SOURCE_HEAD_DRIFT",
                 "repository": repo_id,
-                "expected": source["locked_source_commit"],
+                "expected": expected_head,
                 "observed": source["current_main"],
                 "evidence_refs": [compare_ref],
                 "mapping_note": "semantic export diff unavailable; repository fallback required",
@@ -108,7 +117,7 @@ def path_fallback_observations(
             "kind": "SOURCE_PATH_DRIFT",
             "repository": repo_id,
             "claim_id": claim_id,
-            "expected": source["locked_source_commit"],
+            "expected": expected_head,
             "observed": source["current_main"],
             "evidence_refs": [compare_ref],
         }
@@ -154,7 +163,7 @@ def semantic_drift_evidence(
                         "kind": "REPOSITORY_HEAD_ADVANCED_WITH_IDENTICAL_DEPENDENCY_SURFACE",
                         "repository": repo_id,
                         "repository_full_name": repository,
-                        "locked_repository_head": source["locked_source_commit"],
+                        "locked_repository_head": locked_head(source),
                         "current_repository_head": source["current_main"],
                         "represented_source_commit": new_export.get("source_commit"),
                         "locked_export_commit": entry["export_commit"],
