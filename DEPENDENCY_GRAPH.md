@@ -28,7 +28,7 @@ TIR.PRIMITIVE.ZERO
 
 The half/ln2 branch also feeds `TIR.KAPPA.NORMALIZATION`. `TIR.FOUNDATION.C2` feeds the sibling temporal interface `TIR.TIME_JOIN`.
 
-## 2. IDT temporal spine
+## 2. IDT temporal and relativistic spines
 
 ```text
 TIR.TIME_JOIN
@@ -44,19 +44,25 @@ TIR.TIME_JOIN
  -> IDT.EINSTEIN.CLOSURE
 ```
 
-The parallel relativistic prerequisite begins at the same temporal primitive:
+The parallel relativistic prerequisite begins at the same temporal primitive and crosses RFC at the hardened source bridge:
 
 ```text
 IDT.TEMPORAL.PRIMITIVE
  -> IDT.NOETHER.GAUGE_COVARIANT_SOURCE
  -> RFC.SOURCE.CONSERVED_CARRIER
- -> ...
- -> RFC.ADM.E13
  -> IDT.RELATIVISTIC.FIELD_BRIDGE
  -> IDT.EINSTEIN.CLOSURE
 ```
 
-`IDT.TEMPORAL.WAVE -> IDT.CLOCK.GAMMA_T`, and the promoted material clock calibration feeds the RFC ADM assembly.
+The cross-repository evidence is the hardened chain
+
+```text
+IDT-01AC -> IDT-01AG -> RF-M1 -> RF-E0 -> EINSTEIN_CLOSURE
+```
+
+recorded by `RFC/validation/RFM1_RFE0_RELATIVISTIC_BRIDGE_HARDENING_V0_1.json`: RFC reference suite `448/448 PASS`, focused `RF-M1 9/9`, `RF-E0 7/7`, with IDT peer suite `437/437 PASS`.
+
+`IDT.TEMPORAL.WAVE -> IDT.CLOCK.GAMMA_T`, and the promoted material clock calibration separately feeds the later RFC ADM assembly.
 
 ## 3. RFC field/action/ADM spine
 
@@ -93,7 +99,7 @@ IDT.CLOCK.GAMMA_T -> RFC.ADM.E8
 TIR.SPACE.LOCAL_R3 -> RFC.ADM.E8
 ```
 
-The second edge records the upstream spatial carrier while preserving the source-side `Gamma_x / cell-width` calibration frontier.
+The second edge records the upstream spatial carrier while preserving the source-side `Gamma_x / cell-width` calibration frontier. The ADM spine remains distinct from the earlier RF-M1/RF-E0 relativistic bridge rather than being used as a substitute for it.
 
 ## 4. RFC coupling spine
 
