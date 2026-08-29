@@ -24,6 +24,21 @@ interfaces:
       bridge: RFC_RF_M1_RF_E0
       revalidation_propagates: true
 
+  - interface_id: IFACE.RFC_TO_IDT.RELATIVISTIC_BRIDGE
+    upstream_repository: RFC
+    downstream_repository: IDT
+    upstream_claim: RFC.SOURCE.CONSERVED_CARRIER
+    downstream_claim: IDT.RELATIVISTIC.FIELD_BRIDGE
+    contract:
+      status: PASS
+      source: RFC/validation/RFM1_RFE0_RELATIVISTIC_BRIDGE_HARDENING_V0_1.json
+      bridge_chain: IDT-01AC -> IDT-01AG -> RF-M1 -> RF-E0 -> EINSTEIN_CLOSURE
+      rfc_attested_commit: 6be45ab1abe56da1ad98255bc7f1ccc1a271cd1d
+      rfc_reference_suite: 448_OF_448_PASS
+      idt_peer_reference_suite: 437_OF_437_PASS
+      downstream_join: IDT.EINSTEIN.CLOSURE
+      revalidation_propagates: true
+
   - interface_id: IFACE.IDT_TO_RFC.CLOCK
     upstream_repository: IDT
     downstream_repository: RFC
@@ -46,18 +61,6 @@ interfaces:
       status: PARTIALLY_CALIBRATED
       source: RFC/formalism/DEPENDENCY_GRAPH.md
       remaining_gate: physical spatial Gamma_x / cell-width binding
-      revalidation_propagates: true
-
-  - interface_id: IFACE.RFC_TO_IDT.RELATIVISTIC_BRIDGE
-    upstream_repository: RFC
-    downstream_repository: IDT
-    upstream_claim: RFC.ADM.E13
-    downstream_claim: IDT.RELATIVISTIC.FIELD_BRIDGE
-    contract:
-      status: ACTION_LEVEL_ADM_SPINE_CLOSED_THROUGH_RF_E13
-      source_rfc: RFC/formalism/DEPENDENCY_GRAPH.md
-      source_idt: IDT/CURRENT_STATUS.md
-      downstream_join: IDT.EINSTEIN.CLOSURE
       revalidation_propagates: true
 
   - interface_id: IFACE.SOH_TO_IDT.XFI03
