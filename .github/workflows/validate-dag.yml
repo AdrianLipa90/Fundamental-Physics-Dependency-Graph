@@ -39,7 +39,9 @@ jobs:
         run: python -m json.tool schemas/pain_signature_matches.schema.json > /dev/null
       - name: Validate GREMLIN pain packet schema JSON
         run: python -m json.tool schemas/gremlin_pain_packet.schema.json > /dev/null
-      - name: Test dependency, drift, seam, micro-coordinate, bottleneck, probe, signature, and localization invariants
+      - name: Test dependency, drift, seam, micro-coordinate, bottleneck, probe, signature, coverage, and localization invariants
         run: python -m unittest discover -s tests -v
+      - name: Audit direct source nerve-ending coverage
+        run: python tools/audit_validation_coverage.py
       - name: Validate four-source dependency export roundtrip
         run: python tools/export_roundtrip.py
