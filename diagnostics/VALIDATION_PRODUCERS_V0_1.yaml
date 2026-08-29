@@ -1,0 +1,61 @@
+schema: FPDG_VALIDATION_PRODUCER_REGISTRY_V0_1
+status: PARTIAL_SOURCE_INSTRUMENTATION
+receipt_schema: FPDG_VALIDATION_FAILURE_RECEIPT_V0_1
+producers:
+  RFC:
+    repository: AdrianLipa90/Relational-Field-Closure
+    branch: feat/fpdg-validation-nerve-endings-v0.1
+    pull_request: 70
+    producer: tools/run_reference_suite_with_fpdg_receipt.py
+    binding_manifest: validation/FPDG_FAILURE_BINDINGS_V0_1.json
+    workflow: .github/workflows/reference-suite.yml
+    artifact: fpdg-validation-failure-receipt
+    mapped_claim_range: RF-E8_THROUGH_RF-E20
+    latest_hosted_validation:
+      workflow_run_number: 328
+      status: SUCCESS
+      tests_passed: 1051
+    precision_contract:
+      test_coordinate: EXACT_WHEN_PYTEST_SUPPLIES
+      scientific_claim_binding: EXPLICIT_SOURCE_OWNED
+      derivation_coordinate: RECEIPT_SUPPLIED_ONLY
+  IDT:
+    repository: AdrianLipa90/Informational-Dynamics-of-Time
+    branch: feat/fpdg-validation-nerve-endings-v0.1
+    pull_request: 70
+    producer: tools/run_reference_suite_with_fpdg_receipt.py
+    binding_manifest: validation/FPDG_FAILURE_BINDINGS_V0_1.json
+    workflow: .github/workflows/reference-suite.yml
+    artifact: fpdg-validation-failure-receipt
+    mapped_claims:
+      - IDT.TEMPORAL.PRIMITIVE
+      - IDT.TEMPORAL.WAVE
+      - IDT.NOW
+      - IDT.BIFURCATION
+      - IDT.TEMPORAL.TRANSPORT
+      - IDT.MEMORY
+      - IDT.ORCHORBITAL
+      - IDT.RETRODICTION
+      - IDT.RETROCAUSAL_TESTS
+      - IDT.NOETHER.GAUGE_COVARIANT_SOURCE
+      - IDT.CLOCK.RELATIVE_ENTROPY_05D
+    latest_hosted_validation:
+      workflow_run_number: 904
+      status: SUCCESS
+      tests_passed: 866
+    precision_contract:
+      test_coordinate: EXACT_WHEN_PYTEST_SUPPLIES
+      scientific_claim_binding: EXPLICIT_SOURCE_OWNED
+      unmapped_test_policy: EXACT_TEST_COORDINATE_ONLY
+      derivation_coordinate: RECEIPT_SUPPLIED_ONLY
+  TIR:
+    repository: AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations
+    status: PENDING_HETEROGENEOUS_WORKFLOW_PRODUCER
+  SOH:
+    repository: AdrianLipa90/secret-of-a-half
+    status: PENDING_HETEROGENEOUS_WORKFLOW_PRODUCER
+authority:
+  binding_owner: source_repository
+  localization_owner: Fundamental-Physics-Dependency-Graph
+  gremlin_role: CANDIDATE_PATTERN_MINING_ONLY
+  scientific_claim_promotion_from_failure_receipt: false
