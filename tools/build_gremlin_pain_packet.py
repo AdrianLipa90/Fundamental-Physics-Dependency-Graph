@@ -24,11 +24,16 @@ class PacketError(RuntimeError):
     pass
 
 
-def load_diagnosis(path: Path) -> dict[str, Any]:
+def load_json(path: Path) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as fh:
         value = json.load(fh)
     if not isinstance(value, dict):
-        raise PacketError("diagnosis must be a JSON object")
+        raise PacketError(f"{path}: expected JSON object")
+    return value
+
+
+def load_diagnosis(path: Path) -> dict[str, Any]:
+    value = load_json(path)
     if value.get("schema") != "FPDG_INCONSISTENCY_DIAGNOSIS_V0_1":
         raise PacketError(f"unsupported diagnosis schema {value.get('schema')!r}")
     return value
@@ -47,16 +52,32 @@ def required_gates() -> dict[str, bool]:
     }
 
 
-def build_packet(diagnosis: dict[str, Any]) -> dict[str, Any]:
+def seam_index(seam_report: dict[str, Any] | None) -> dict[str, dict[str, Any]]:
+    if seam_report is None:
+        return {}
+    if seam_report.get("schema") != "FPDG_PAIN_SEAM_REPORT_V0_1":
+        raise PacketError(f"unsupported seam report schema {seam_report.get('schema')!r}")
+    return {
+        row["frontier_claim"]: row
+        for row in seam_report.get("zones", [])
+        if isinstance(row, dict) and isinstance(row.get("frontier_claim"), str)
+    }
+
+
+def build_packet(
+    diagnosis: dict[str, Any], seam_report: dict[str, Any] | None = None
+) -> dict[str, Any]:
     zones = []
     integration_zones = []
     observations_by_id = {
         row["observation_id"]: row for row in diagnosis.get("observations", [])
     }
+    seams_by_frontier = seam_index(seam_report)
 
     for index, zone in enumerate(diagnosis.get("pain_zones", []), 1):
         frontier = zone["frontier_claim"]
         witness_paths = zone.get("witness_paths", [])
+        exact_seam_zone = seams_by_frontier.get(frontier, {})
         domains = sorted(
             {
                 row.get("repository")
@@ -106,14 +127,24 @@ def build_packet(diagnosis: dict[str, Any]) -> dict[str, Any]:
                 "raw_chains": raw_chains,
                 "incoming_boundary_edges": zone.get("incoming_boundary_edges", []),
                 "outgoing_boundary_edges": zone.get("outgoing_boundary_edges", []),
+                "exact_seams": exact_seam_zone.get("seams", []),
+                "probe_targets": exact_seam_zone.get("probe_targets", []),
+                "claim_source": exact_seam_zone.get("claim_source", zone.get("source")),
                 "evidence_refs": sorted(set(evidence_refs)),
                 "required_gates": required_gates(),
                 "compiler_state": "BLOCKED_PENDING_GREMLIN_ALIGNMENT_AND_KAKU_RESOLUTION",
             }
         )
 
+    seam_integration = [] if seam_report is None else seam_report.get("integration_targets", [])
+    seam_points_by_location = {
+        row.get("location"): row
+        for row in seam_integration
+        if isinstance(row, dict) and isinstance(row.get("location"), str)
+    }
     for index, point in enumerate(diagnosis.get("integration_pain_points", []), 1):
         location = point["location"]
+        seam_point = seam_points_by_location.get(location, {})
         integration_zones.append(
             {
                 "finding_request_id": f"FPDG.GREMLIN.INTEGRATION.{safe_id(location)}",
@@ -126,6 +157,7 @@ def build_packet(diagnosis: dict[str, Any]) -> dict[str, Any]:
                 "repository": point.get("repository"),
                 "kind": point.get("kind"),
                 "details": point,
+                "exact_probe_target": seam_point or None,
                 "raw_chains": [
                     {
                         "chain_id": f"FPDG.INTEGRATION.PAIN.{index:03d}",
@@ -142,6 +174,7 @@ def build_packet(diagnosis: dict[str, Any]) -> dict[str, Any]:
     return {
         "schema": "FPDG_GREMLIN_PAIN_PACKET_V0_1",
         "source_diagnosis_schema": diagnosis.get("schema"),
+        "source_seam_schema": seam_report.get("schema") if seam_report else None,
         "epistemic": "CHYBA",
         "promotion_state": "CANDIDATE_ONLY",
         "runtime_execution_authority": False,
@@ -170,12 +203,14 @@ def build_packet(diagnosis: dict[str, Any]) -> dict[str, Any]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("diagnosis", type=Path, help="FPDG_INCONSISTENCY_DIAGNOSIS_V0_1 JSON")
+    parser.add_argument("--seams", type=Path, help="optional FPDG_PAIN_SEAM_REPORT_V0_1 JSON")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
 
     try:
         diagnosis = load_diagnosis(args.diagnosis)
-        packet = build_packet(diagnosis)
+        seam_report = load_json(args.seams) if args.seams else None
+        packet = build_packet(diagnosis, seam_report)
         BUILD_DIR.mkdir(exist_ok=True)
         output = BUILD_DIR / "GREMLIN_PAIN_PACKET.json"
         output.write_text(json.dumps(packet, indent=2) + "\n", encoding="utf-8")
