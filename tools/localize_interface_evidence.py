@@ -3,8 +3,8 @@
 
 An interface failure is not silently projected onto either endpoint claim. The source
 receipt may name a registered `interface_id`; this layer verifies that identifier against
-the FPDG interface registry and adds an exact integration pain point while leaving claim
-frontier localization independent.
+the FPDG interface registry, preserves the observation for micro-localization, and adds
+an exact integration pain point while leaving claim frontier localization independent.
 """
 
 from __future__ import annotations
@@ -61,6 +61,55 @@ def explicit_interface_id(observation: dict[str, Any]) -> str | None:
     return value
 
 
+def interface_only_observation(observation: dict[str, Any]) -> bool:
+    """True when interface_id is the sole scientific graph anchor in this observation."""
+    interface_id = explicit_interface_id(observation)
+    if interface_id is None:
+        return False
+    return not isinstance(observation.get("claim_id"), str) and not isinstance(
+        observation.get("edge"), dict
+    )
+
+
+def claim_projection_evidence(evidence: dict[str, Any]) -> dict[str, Any]:
+    """Remove interface-only observations before claim-frontier localization.
+
+    Their test/source paths must not trigger repository-wide fallback and manufacture a
+    claim frontier. They are reattached by `enrich_interface_diagnosis` as exact
+    interface observations.
+    """
+    if evidence.get("schema") != "FPDG_INCONSISTENCY_EVIDENCE_V0_1":
+        raise InterfaceEvidenceError("unsupported evidence schema")
+    rows = evidence.get("observations")
+    if not isinstance(rows, list):
+        raise InterfaceEvidenceError("evidence observations must be a list")
+    result = copy.deepcopy(evidence)
+    result["observations"] = [
+        copy.deepcopy(row)
+        for row in rows
+        if isinstance(row, dict) and not interface_only_observation(row)
+    ]
+    return result
+
+
+def _diagnostic_observation(observation: dict[str, Any], interface_id: str) -> dict[str, Any]:
+    return {
+        "observation_id": observation["observation_id"],
+        "kind": observation.get("kind", "CROSS_REPO_CONTRACT_FAILURE"),
+        "repository": observation.get("repository"),
+        "claim_id": observation.get("claim_id"),
+        "edge": observation.get("edge"),
+        "source_path": observation.get("source_path"),
+        "expected": observation.get("expected"),
+        "observed": observation.get("observed"),
+        "evidence_refs": observation.get("evidence_refs", []),
+        "anchors": [],
+        "anchor_method": "EXACT_INTERFACE_CONTRACT",
+        "precision": "EXACT_INTERFACE",
+        "external_subject": interface_id,
+    }
+
+
 def enrich_interface_diagnosis(
     diagnosis: dict[str, Any],
     evidence: dict[str, Any],
@@ -73,6 +122,12 @@ def enrich_interface_diagnosis(
     interfaces = interface_index(interfaces_payload or load_interfaces())
     result = copy.deepcopy(diagnosis)
     points = list(result.get("integration_pain_points", []))
+    diagnostic_rows = list(result.get("observations", []))
+    diagnostic_ids = {
+        row.get("observation_id")
+        for row in diagnostic_rows
+        if isinstance(row, dict) and isinstance(row.get("observation_id"), str)
+    }
     interface_obs_ids: list[str] = []
 
     for observation in evidence.get("observations", []):
@@ -115,8 +170,12 @@ def enrich_interface_diagnosis(
         }
         if point not in points:
             points.append(point)
+        if obs_id not in diagnostic_ids:
+            diagnostic_rows.append(_diagnostic_observation(observation, interface_id))
+            diagnostic_ids.add(obs_id)
         interface_obs_ids.append(obs_id)
 
+    result["observations"] = diagnostic_rows
     result["integration_pain_points"] = points
     result["interface_anchored_observation_ids"] = sorted(set(interface_obs_ids))
     if interface_obs_ids:
