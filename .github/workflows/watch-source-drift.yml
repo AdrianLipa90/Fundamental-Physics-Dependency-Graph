@@ -1,0 +1,58 @@
+name: Watch Fundamental Source Drift
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'source_exports.lock.json'
+      - 'claims.jsonl'
+      - 'dependency_graph.yaml'
+      - 'tools/watch_source_drift.py'
+      - 'tests/test_source_drift.py'
+      - '.github/workflows/watch-source-drift.yml'
+  push:
+    branches:
+      - main
+      - 'feat/**'
+    paths:
+      - 'source_exports.lock.json'
+      - 'claims.jsonl'
+      - 'dependency_graph.yaml'
+      - 'tools/watch_source_drift.py'
+      - 'tests/test_source_drift.py'
+      - '.github/workflows/watch-source-drift.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source-drift-watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install --disable-pip-version-check pyyaml
+      - name: Compute source drift and promoted blast radius
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/watch_source_drift.py --fail-on-drift --json
+      - name: Publish drift report to job summary
+        if: always()
+        run: |
+          if [ -f build/SOURCE_DRIFT_REPORT.md ]; then
+            cat build/SOURCE_DRIFT_REPORT.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload drift receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fpdg-source-drift-report
+          path: |
+            build/SOURCE_DRIFT_REPORT.json
+            build/SOURCE_DRIFT_REPORT.md
+          if-no-files-found: warn
