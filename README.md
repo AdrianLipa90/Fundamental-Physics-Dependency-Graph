@@ -9,27 +9,59 @@ This repository tracks dependency holonomy across four source repositories:
 - `RFC` — `AdrianLipa90/Relational-Field-Closure`
 - `SOH` — `AdrianLipa90/secret-of-a-half`
 
-Each source repository remains authoritative for its own equations, proofs, validators, observables and claim status. This repository is authoritative for the cross-repository dependency graph, interface contracts and downstream revalidation propagation.
+Each source repository remains authoritative for its own equations, proofs, validators, observables and claim status. This repository is authoritative for cross-repository dependency edges, interface contracts, promotion state and downstream revalidation propagation.
 
-## Current top-level DAG
+## Current baseline
+
+`v0.2` expands the bootstrap graph to a claim-level baseline:
 
 ```text
-TIR foundational / spatial spine
-        |
-        | spatial carrier
-        v
-IDT temporal / clock spine -----> RFC ADM / field spine -----> physical scale + coupling frontier
-        |                              |
-        |                              +----> GR closure path
-        |
-        +---- Gamma_t -----------------+
-
-TIR W_ij / gauge spine ----------> Standard-Model reconciliation / RG frontier
-
-SOH half / analytic branch --candidate crosslinks--> TIR / IDT interfaces
+74 claims / 74 dependency edges
+9 cross-repository edges
+4 CANDIDATE_ONLY edges
 ```
 
-The current RFC action-level ADM spine is represented through `RF-E8 -> RF-E9 -> RF-E10 -> RF-E11 -> RF-E12 -> RF-E13`, with the physical carrier/scale/coupling layer downstream.
+The promoted graph is acyclic and validated fail-closed by `tools/validate_dag.py`.
+
+## Top-level dependency structure
+
+```text
+TIR primitive spine
+0 -> P -> FIRST DISTINCTION -> {N,S} -> 1/2 -> ln2 -> C^2
+                                   |
+                                   +-> kappa
+                                   |
+                                   +-> local spatial geometry -> R^3
+                                                        |       |
+                                                        |       +-> Pythagorean branch
+                                                        +-> tetrahedron -> W_ij
+                                                                          |-> gluing/torsion frontier
+                                                                          +-> Standard Model
+
+TIR.TIME_JOIN
+  -> IDT Temporal Primitive
+      -> Temporal Wave -> NOW -> Bifurcation -> Transport
+      -> Memory -> ORCHORBITAL -> Retrodiction -> Retrocausal Tests
+      -> Einstein Closure
+
+IDT Temporal Primitive
+  -> gauge-covariant Noether source
+  -> RFC conserved source / matter / Lorentzian / information-curvature spine
+  -> RFC L5/L5A
+  -> [IDT Gamma_t + TIR spatial carrier]
+  -> RFC E8 -> E9 -> E10 -> E11 -> E12 -> E13
+       |                                  |
+       |                                  +-> physical scale/coupling frontier
+       +------------------------------------> IDT relativistic bridge -> Einstein Closure
+
+RFC parallel coupling spine
+YM/BCJ -> 4pt DC -> 5pt KLT -> RFG29 -> ... -> RFG34
+       -> RFG35 frontier -> physical G -> physical scale/coupling frontier
+
+SOH candidate surfaces
+XFI.03 / XFI.28.02 / XFI.28.03 --CANDIDATE_ONLY--> IDT half/NOW interfaces
+TIR negative-inverse bridge --CANDIDATE_ONLY--> SOH Li/Weil native closure
+```
 
 ## Canonical files
 
@@ -40,19 +72,14 @@ The current RFC action-level ADM spine is represented through `RF-E8 -> RF-E9 ->
 - `gates/PROMOTION_POLICY.md` — promotion, GREMLIN and invalidation rules
 - `tools/validate_dag.py` — fail-closed structural validator
 - `.github/workflows/validate-dag.yml` — CI gate
+- `receipts/` — immutable integration and validation receipts
 
 ## Dependency invariant
 
-For every promoted dependency edge
+For every promoted dependency edge `A -> B`, a material change to `A` places `B` and all reachable promoted descendants into `REVALIDATION_REQUIRED` until the appropriate source-side gates pass again.
 
-```text
-A -> B
-```
+`CANDIDATE_ONLY` edges do not propagate canonical invalidation. GREMLIN remains a candidate-generation and audit layer; candidate compilation does not itself promote a claim.
 
-a material change to `A` places `B` and all reachable promoted descendants into `REVALIDATION_REQUIRED` until the appropriate source-side gates pass again.
+## Validation
 
-GREMLIN candidate edges remain `CANDIDATE_ONLY / CHYBA` until their explicit promotion gates are satisfied.
-
-## Bootstrap state
-
-Version `v0.1` establishes the four-repository registry, the first canonical cross-repository DAG, exact RFC ADM validation provenance through RF-E13, the promoted IDT temporal-clock interface, candidate isolation for SOH/GREMLIN crosslinks, and CI structural validation.
+The validator checks repository membership, node/claim parity, edge authority typing, candidate promotion gates, cross-repository edge typing, duplicate/self edges, evidence fields and acyclicity of the promoted graph.
