@@ -9,14 +9,17 @@ on:
       - 'source_exports.lock.json'
       - 'claims.jsonl'
       - 'dependency_graph.yaml'
+      - 'interfaces/cross_repo_interfaces.yaml'
       - 'tools/watch_source_drift.py'
       - 'tools/diagnose_source_drift.py'
       - 'tools/diff_dependency_export.py'
       - 'tools/diagnose_inconsistency.py'
+      - 'tools/localize_interface_seams.py'
       - 'tools/build_gremlin_pain_packet.py'
       - 'tests/test_source_drift.py'
       - 'tests/test_diagnose_inconsistency.py'
       - 'tests/test_dependency_export_diff.py'
+      - 'tests/test_localize_interface_seams.py'
       - '.github/workflows/watch-source-drift.yml'
   push:
     branches:
@@ -26,14 +29,17 @@ on:
       - 'source_exports.lock.json'
       - 'claims.jsonl'
       - 'dependency_graph.yaml'
+      - 'interfaces/cross_repo_interfaces.yaml'
       - 'tools/watch_source_drift.py'
       - 'tools/diagnose_source_drift.py'
       - 'tools/diff_dependency_export.py'
       - 'tools/diagnose_inconsistency.py'
+      - 'tools/localize_interface_seams.py'
       - 'tools/build_gremlin_pain_packet.py'
       - 'tests/test_source_drift.py'
       - 'tests/test_diagnose_inconsistency.py'
       - 'tests/test_dependency_export_diff.py'
+      - 'tests/test_localize_interface_seams.py'
       - '.github/workflows/watch-source-drift.yml'
 
 permissions:
@@ -53,7 +59,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python tools/watch_source_drift.py --fail-on-drift --json
-      - name: Localize exact pain frontier and prepare GREMLIN packet
+      - name: Localize exact pain frontier, seams, and prepare GREMLIN packet
         if: always()
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -68,6 +74,10 @@ jobs:
             printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
             cat build/INCONSISTENCY_DIAGNOSIS.md >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f build/PAIN_SEAM_REPORT.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat build/PAIN_SEAM_REPORT.md >> "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Upload drift and pain-localization receipts
         if: always()
         uses: actions/upload-artifact@v4
@@ -80,5 +90,7 @@ jobs:
             build/INCONSISTENCY_EVIDENCE.json
             build/INCONSISTENCY_DIAGNOSIS.json
             build/INCONSISTENCY_DIAGNOSIS.md
+            build/PAIN_SEAM_REPORT.json
+            build/PAIN_SEAM_REPORT.md
             build/GREMLIN_PAIN_PACKET.json
           if-no-files-found: warn
