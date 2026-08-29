@@ -48,7 +48,7 @@ class InterfaceEvidenceTests(unittest.TestCase):
         self.assertEqual(point["downstream_claim"], "RFC.SOURCE.CONSERVED_CARRIER")
         self.assertFalse(point["causal_endpoint_projection_performed"])
 
-    def test_micro_localizer_keeps_interface_contract_and_test_coordinate(self):
+    def test_micro_localizer_keeps_interface_target_and_test_coordinate_separate(self):
         evidence = self.evidence()
         diagnosis = enrich_interface_diagnosis(
             diagnose(load_graph(), load_claims(), claim_projection_evidence(evidence)),
@@ -56,12 +56,34 @@ class InterfaceEvidenceTests(unittest.TestCase):
         )
         micro = localize_micro(diagnosis, evidence)
         self.assertEqual(micro["status"], "LOCALIZED")
+
+        # Observation precision answers where the failure was observed.
         coordinate = micro["coordinates"][0]
-        self.assertEqual(coordinate["precision"], "INTERFACE_CONTRACT")
+        self.assertEqual(coordinate["precision"], "VALIDATOR_OR_TEST")
         self.assertEqual(
             coordinate["source_locator"]["interface_id"],
             "IFACE.IDT_TO_RFC.NOETHER_SOURCE",
         )
+        self.assertEqual(
+            coordinate["source_locator"]["test_id"],
+            "test_01aa_conserved_current",
+        )
+
+        # Integration localization answers which semantic seam is under test.
+        integration = micro["integration_coordinates"][0]
+        self.assertEqual(
+            integration["location"],
+            "FPDG.INTERFACE.IFACE.IDT_TO_RFC.NOETHER_SOURCE",
+        )
+        self.assertEqual(
+            integration["interface_id"],
+            "IFACE.IDT_TO_RFC.NOETHER_SOURCE",
+        )
+        self.assertEqual(
+            integration["source_locator"]["test_id"],
+            "test_01aa_conserved_current",
+        )
+        self.assertFalse(integration["causal_endpoint_projection_performed"])
         self.assertFalse(micro["causal_inference_performed"])
 
     def test_unknown_interface_fails_closed(self):
