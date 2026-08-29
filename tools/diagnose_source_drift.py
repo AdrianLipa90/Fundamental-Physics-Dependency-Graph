@@ -30,6 +30,13 @@ sys.path.insert(0, str(ROOT / "tools"))
 from build_gremlin_pain_packet import build_packet  # noqa: E402
 from diagnose_inconsistency import diagnose, load_claims, load_graph, render_markdown  # noqa: E402
 from diff_dependency_export import diff_exports, observations_from_diff, validate_export  # noqa: E402
+from localize_interface_seams import (  # noqa: E402
+    GRAPH_PATH as SEAM_GRAPH_PATH,
+    INTERFACES_PATH as SEAM_INTERFACES_PATH,
+    load_yaml as load_seam_yaml,
+    localize as localize_seams,
+    render_markdown as render_seam_markdown,
+)
 
 
 class DriftDiagnosisError(RuntimeError):
@@ -48,7 +55,7 @@ def load_report(path: Path = DRIFT_PATH) -> dict[str, Any]:
 def github_headers() -> dict[str, str]:
     headers = {
         "Accept": "application/vnd.github+json",
-        "User-Agent": "FPDG-pain-localizer/0.2",
+        "User-Agent": "FPDG-pain-localizer/0.3",
         "X-GitHub-Api-Version": "2022-11-28",
     }
     token = os.environ.get("GITHUB_TOKEN")
@@ -258,7 +265,12 @@ def main() -> int:
         else:
             raise DriftDiagnosisError("drift exists but no diagnostic evidence could be produced")
 
-        packet = build_packet(diagnosis)
+        seam_report = localize_seams(
+            diagnosis,
+            load_seam_yaml(SEAM_GRAPH_PATH),
+            load_seam_yaml(SEAM_INTERFACES_PATH),
+        )
+        packet = build_packet(diagnosis, seam_report)
         BUILD_DIR.mkdir(exist_ok=True)
         if evidence:
             (BUILD_DIR / "INCONSISTENCY_EVIDENCE.json").write_text(
@@ -273,17 +285,32 @@ def main() -> int:
         (BUILD_DIR / "INCONSISTENCY_DIAGNOSIS.md").write_text(
             render_full_markdown(diagnosis), encoding="utf-8"
         )
+        (BUILD_DIR / "PAIN_SEAM_REPORT.json").write_text(
+            json.dumps(seam_report, indent=2) + "\n", encoding="utf-8"
+        )
+        (BUILD_DIR / "PAIN_SEAM_REPORT.md").write_text(
+            render_seam_markdown(seam_report), encoding="utf-8"
+        )
         (BUILD_DIR / "GREMLIN_PAIN_PACKET.json").write_text(
             json.dumps(packet, indent=2) + "\n", encoding="utf-8"
         )
 
         if args.json:
-            print(json.dumps(diagnosis, indent=2))
+            print(
+                json.dumps(
+                    {
+                        "diagnosis": diagnosis,
+                        "seams": seam_report,
+                    },
+                    indent=2,
+                )
+            )
         else:
             print(
                 f"{diagnosis['status']}: mode={diagnosis['localization_mode']} "
                 f"claim_frontier={diagnosis['minimal_failing_frontier']} "
-                f"integration_points={len(integration_points)}"
+                f"integration_points={len(integration_points)} "
+                f"seam_zones={len(seam_report['zones'])}"
             )
         return 0 if diagnosis["status"] == "LOCALIZED" else 2
     except (
