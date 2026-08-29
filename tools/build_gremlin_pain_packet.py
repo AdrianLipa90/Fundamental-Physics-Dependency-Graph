@@ -38,8 +38,18 @@ def safe_id(value: str) -> str:
     return re.sub(r"[^A-Za-z0-9_.-]+", "_", value)
 
 
+def required_gates() -> dict[str, bool]:
+    return {
+        "explicit_cross_domain_alignment": True,
+        "canonical_kaku_resolution": True,
+        "single_exact_36d_basis": True,
+        "unknown_relation_binding_fail_closed": True,
+    }
+
+
 def build_packet(diagnosis: dict[str, Any]) -> dict[str, Any]:
     zones = []
+    integration_zones = []
     observations_by_id = {
         row["observation_id"]: row for row in diagnosis.get("observations", [])
     }
@@ -97,12 +107,34 @@ def build_packet(diagnosis: dict[str, Any]) -> dict[str, Any]:
                 "incoming_boundary_edges": zone.get("incoming_boundary_edges", []),
                 "outgoing_boundary_edges": zone.get("outgoing_boundary_edges", []),
                 "evidence_refs": sorted(set(evidence_refs)),
-                "required_gates": {
-                    "explicit_cross_domain_alignment": True,
-                    "canonical_kaku_resolution": True,
-                    "single_exact_36d_basis": True,
-                    "unknown_relation_binding_fail_closed": True,
-                },
+                "required_gates": required_gates(),
+                "compiler_state": "BLOCKED_PENDING_GREMLIN_ALIGNMENT_AND_KAKU_RESOLUTION",
+            }
+        )
+
+    for index, point in enumerate(diagnosis.get("integration_pain_points", []), 1):
+        location = point["location"]
+        integration_zones.append(
+            {
+                "finding_request_id": f"FPDG.GREMLIN.INTEGRATION.{safe_id(location)}",
+                "invariant_id": "EXACT_INTEGRATION_CONSISTENCY_LOCATION",
+                "invariant_description": (
+                    "Search prior incidents for the same integration-layer mismatch shape "
+                    "without projecting it onto scientific claims unless evidence establishes that link."
+                ),
+                "frontier_location": location,
+                "repository": point.get("repository"),
+                "kind": point.get("kind"),
+                "details": point,
+                "raw_chains": [
+                    {
+                        "chain_id": f"FPDG.INTEGRATION.PAIN.{index:03d}",
+                        "source": "FPDG_INTEGRATION_DIAGNOSTIC_WITNESS",
+                        "status": "OBSERVED_DIAGNOSTIC_WITNESS",
+                        "locations": point.get("witness_locations", [location]),
+                    }
+                ],
+                "required_gates": required_gates(),
                 "compiler_state": "BLOCKED_PENDING_GREMLIN_ALIGNMENT_AND_KAKU_RESOLUTION",
             }
         )
@@ -131,6 +163,7 @@ def build_packet(diagnosis: dict[str, Any]) -> dict[str, Any]:
         "diagnosis_status": diagnosis.get("status"),
         "localization_mode": diagnosis.get("localization_mode"),
         "zones": zones,
+        "integration_zones": integration_zones,
     }
 
 
@@ -150,7 +183,8 @@ def main() -> int:
             print(json.dumps(packet, indent=2))
         else:
             print(
-                f"PASS: GREMLIN candidate packet zones={len(packet['zones'])}; "
+                f"PASS: GREMLIN candidate packet claim_zones={len(packet['zones'])} "
+                f"integration_zones={len(packet['integration_zones'])}; "
                 "KAKU/36D compilation remains gated"
             )
         return 0
