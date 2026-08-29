@@ -1,0 +1,19 @@
+schema: FPDG_SOURCE_HEADS_V0_1
+captured_at: '2026-08-29T18:34:00+01:00'
+sources:
+  TIR:
+    repository: AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations
+    commit: ccc89fc06bdf42c1937c0a2303d3e477db487e0f
+    note: main; tetrahedral congruence-class closure merged
+  IDT:
+    repository: AdrianLipa90/Informational-Dynamics-of-Time
+    commit: ed902458b6e0ad338ca4ba637d8d8228bc7c549b
+    note: main; IDT 01AJ-01AM QHTRI-neutrino gravity source chain merged
+  RFC:
+    repository: AdrianLipa90/Relational-Field-Closure
+    commit: 8073b0f6648b5d9c81f7561f5c1a56c266ea6890
+    note: main; RF-F10-RF-F12 dynamical phase transport merged
+  SOH:
+    repository: AdrianLipa90/secret-of-a-half
+    commit: 19b9820165cb46f441d006e0ff6e94f8c08f37b8
+    note: main; GREMLIN dependency promotion manifest v0.1
