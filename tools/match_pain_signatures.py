@@ -95,9 +95,8 @@ def collect_incidents(directory: Path, current_path: Path) -> list[tuple[Path, d
             continue
         try:
             rows.append((path, load_signature(path)))
-        except (OSError, json.JSONDecodeError, MatchError):
-            # Invalid historical files are not silently accepted as incidents.
-            continue
+        except (OSError, json.JSONDecodeError, MatchError) as exc:
+            raise MatchError(f"invalid incident signature {path}: {exc}") from exc
     return rows
 
 
