@@ -21,7 +21,11 @@ jobs:
         run: python tools/validate_dag.py
       - name: Validate dependency export schema JSON
         run: python -m json.tool schemas/dependency_export.schema.json > /dev/null
-      - name: Test downstream revalidation propagation
+      - name: Validate inconsistency evidence schema JSON
+        run: python -m json.tool schemas/inconsistency_evidence.schema.json > /dev/null
+      - name: Validate GREMLIN pain packet schema JSON
+        run: python -m json.tool schemas/gremlin_pain_packet.schema.json > /dev/null
+      - name: Test dependency, drift, and pain-localization invariants
         run: python -m unittest discover -s tests -v
       - name: Validate four-source dependency export roundtrip
         run: python tools/export_roundtrip.py
