@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Finalize drift diagnosis with exact sub-claim coordinates and probe ordering.
+"""Finalize drift diagnosis with exact coordinates, bottlenecks, and probe ordering.
 
 The source-drift diagnostic produces claim/interface/signature layers. This finalizer
-adds the finest coordinate actually present in the evidence, builds a deterministic
-inspection order, and attaches both to the GREMLIN diagnostic packet. It never invents
-a finer location than the original evidence supports and never converts recurrence
-hints into causal authority.
+adds the finest coordinate actually present in the evidence, analyzes mandatory
+promoted-DAG witness-path bottlenecks, builds a deterministic inspection order, and
+attaches these surfaces to the GREMLIN diagnostic packet. None of these layers assigns
+physical causal authority.
 """
 
 from __future__ import annotations
@@ -23,6 +23,12 @@ MATCHES_PATH = BUILD_DIR / "PAIN_SIGNATURE_MATCHES.json"
 PACKET_PATH = BUILD_DIR / "GREMLIN_PAIN_PACKET.json"
 
 sys.path.insert(0, str(ROOT / "tools"))
+from analyze_diagnostic_bottlenecks import (  # noqa: E402
+    BottleneckError,
+    analyze as analyze_bottlenecks,
+    load_graph as load_bottleneck_graph,
+    render_markdown as render_bottlenecks,
+)
 from build_diagnostic_probe_plan import ProbePlanError, build_plan, render_markdown as render_probe_plan  # noqa: E402
 from enrich_gremlin_pain_packet_with_micro import MicroPacketError, enrich  # noqa: E402
 from localize_micro_coordinates import MicroLocalizationError, localize, render_markdown  # noqa: E402
@@ -52,10 +58,12 @@ def main() -> int:
         diagnosis = load_json(DIAGNOSIS_PATH)
         evidence = load_json(EVIDENCE_PATH) if EVIDENCE_PATH.exists() else None
         micro = localize(diagnosis, evidence)
+        bottlenecks = analyze_bottlenecks(diagnosis, load_bottleneck_graph())
         matches = load_json(MATCHES_PATH) if MATCHES_PATH.exists() else None
         plan = build_plan(load_json(SEAM_PATH), micro, matches)
 
         packet = enrich(load_json(PACKET_PATH), micro)
+        packet["diagnostic_bottlenecks"] = bottlenecks
         packet["diagnostic_probe_plan"] = plan
 
         BUILD_DIR.mkdir(exist_ok=True)
@@ -64,6 +72,12 @@ def main() -> int:
         )
         (BUILD_DIR / "PAIN_MICRO_COORDINATES.md").write_text(
             render_markdown(micro), encoding="utf-8"
+        )
+        (BUILD_DIR / "DIAGNOSTIC_BOTTLENECKS.json").write_text(
+            json.dumps(bottlenecks, indent=2) + "\n", encoding="utf-8"
+        )
+        (BUILD_DIR / "DIAGNOSTIC_BOTTLENECKS.md").write_text(
+            render_bottlenecks(bottlenecks), encoding="utf-8"
         )
         (BUILD_DIR / "DIAGNOSTIC_PROBE_PLAN.json").write_text(
             json.dumps(plan, indent=2) + "\n", encoding="utf-8"
@@ -78,11 +92,13 @@ def main() -> int:
             for zone in plan.get("zones", [])
             if isinstance(zone.get("first_probe"), dict)
         ]
+        mandatory_edge_count = sum(
+            len(zone.get("mandatory_edges", [])) for zone in bottlenecks.get("zones", [])
+        )
         print(
             "PASS: finalized inconsistency localization "
             f"finest={micro['finest_precision']} "
-            f"coordinates={len(micro['coordinates'])} "
-            f"integration={len(micro['integration_coordinates'])} "
+            f"mandatory_edges={mandatory_edge_count} "
             f"first_probes={first_probes}"
         )
         return 0
@@ -92,6 +108,7 @@ def main() -> int:
         FinalizeError,
         MicroLocalizationError,
         MicroPacketError,
+        BottleneckError,
         ProbePlanError,
         KeyError,
         TypeError,
