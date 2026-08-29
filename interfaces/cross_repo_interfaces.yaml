@@ -1,0 +1,44 @@
+schema: FPDG_CROSS_REPO_INTERFACES_V0_1
+interfaces:
+  - interface_id: IFACE.IDT_TO_RFC.CLOCK
+    upstream_repository: IDT
+    downstream_repository: RFC
+    upstream_claim: IDT.CLOCK.GAMMA_T
+    downstream_claim: RFC.ADM.E8
+    contract:
+      quantity: Gamma_t
+      relation: Gamma_t = T_r * a_r
+      status: CROSS_REPO_PASS
+      source: RFC/formalism/DEPENDENCY_GRAPH.md
+      validation: IDT_REFERENCE_SUITE_868_SUCCESS
+
+  - interface_id: IFACE.TIR_TO_RFC.SPATIAL_CARRIER
+    upstream_repository: TIR
+    downstream_repository: RFC
+    upstream_claim: TIR.SPACE.LOCAL_R3
+    downstream_claim: RFC.ADM.E8
+    contract:
+      status: PARTIALLY_CALIBRATED
+      source: RFC/formalism/DEPENDENCY_GRAPH.md
+      remaining_gate: physical spatial Gamma_x / cell-width binding
+
+  - interface_id: IFACE.TIR_TO_RFC.SHIFT
+    upstream_repository: TIR
+    downstream_repository: RFC
+    upstream_claim: TIR.GLOBAL_GLUING
+    downstream_claim: RFC.ADM.E8
+    contract:
+      status: ACTIVE_FRONTIER
+      source: RFC/formalism/DEPENDENCY_GRAPH.md
+      remaining_gate: TIR affine-frame generator -> general ADM shift b^i source map
+
+  - interface_id: IFACE.SOH_TO_TIR.HALF
+    upstream_repository: SOH
+    downstream_repository: TIR
+    upstream_claim: SOH.HALF.CROSSLINKS
+    downstream_claim: TIR.FOUNDATION.C2
+    contract:
+      status: CANDIDATE_ONLY
+      canon_authority: false
+      promotion_required: true
+      source: SOH/research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json
