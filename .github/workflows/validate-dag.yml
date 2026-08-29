@@ -27,13 +27,15 @@ jobs:
         run: python -m json.tool schemas/pain_seam_report.schema.json > /dev/null
       - name: Validate pain micro-coordinate schema JSON
         run: python -m json.tool schemas/pain_micro_coordinates.schema.json > /dev/null
+      - name: Validate diagnostic probe plan schema JSON
+        run: python -m json.tool schemas/diagnostic_probe_plan.schema.json > /dev/null
       - name: Validate pain signature schema JSON
         run: python -m json.tool schemas/pain_signature.schema.json > /dev/null
       - name: Validate pain signature matches schema JSON
         run: python -m json.tool schemas/pain_signature_matches.schema.json > /dev/null
       - name: Validate GREMLIN pain packet schema JSON
         run: python -m json.tool schemas/gremlin_pain_packet.schema.json > /dev/null
-      - name: Test dependency, drift, seam, micro-coordinate, signature, and pain-localization invariants
+      - name: Test dependency, drift, seam, micro-coordinate, probe, signature, and pain-localization invariants
         run: python -m unittest discover -s tests -v
       - name: Validate four-source dependency export roundtrip
         run: python tools/export_roundtrip.py
