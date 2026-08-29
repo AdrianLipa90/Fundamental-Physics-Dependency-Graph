@@ -1,0 +1,30 @@
+{
+  "schema": "FPDG_UPSTREAM_FRESHNESS_GATE_RECEIPT_V0_1",
+  "status": "PASS",
+  "validated_head": "764b0b2dd6c5112bcb939837f1687bbe57da4645",
+  "runs": {
+    "canonical_dag": {
+      "run_id": 33266400457,
+      "job": "validate",
+      "conclusion": "success"
+    },
+    "locked_source_exports": {
+      "run_id": 33266400459,
+      "job": "source-export-reconciliation",
+      "conclusion": "success",
+      "checks": [
+        "upstream source freshness",
+        "exact locked export fetch",
+        "source-local surface reconciliation"
+      ]
+    }
+  },
+  "fresh_source_heads": {
+    "TIR": "ccc89fc06bdf42c1937c0a2303d3e477db487e0f",
+    "IDT": "ed902458b6e0ad338ca4ba637d8d8228bc7c549b",
+    "RFC": "8073b0f6648b5d9c81f7561f5c1a56c266ea6890",
+    "SOH": "19b9820165cb46f441d006e0ff6e94f8c08f37b8"
+  },
+  "rule": "If any source main advances beyond its locked source_commit, locked-source CI fails closed until export, lock, DAG impact and downstream validation are reconciled.",
+  "source_main_mutated": false
+}
