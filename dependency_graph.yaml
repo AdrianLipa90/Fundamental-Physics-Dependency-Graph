@@ -1,0 +1,125 @@
+schema: FPDG_CANONICAL_DEPENDENCY_GRAPH_V0_1
+status: ACTIVE_BASELINE
+graph_semantics:
+  direction: upstream_to_downstream
+  node_key: claim_id
+  edge_rule: downstream_requires_upstream
+  source_claim_authority: source_repository
+  cross_repo_dependency_authority: this_repository
+
+nodes:
+  - claim_id: TIR.FOUNDATION.C2
+    repository: TIR
+    status: CLOSED
+    source: TIR/CURRENT_STATUS.md
+  - claim_id: TIR.SPACE.LOCAL_R3
+    repository: TIR
+    status: CLOSED
+    source: TIR/CURRENT_STATUS.md
+  - claim_id: TIR.SPACE.TETRAHEDRON
+    repository: TIR
+    status: CLOSED
+    source: TIR/CURRENT_STATUS.md
+  - claim_id: TIR.HOLONOMY.WIJ
+    repository: TIR
+    status: SOURCE_BOUND_CROSSWALK
+    source: TIR/CURRENT_STATUS.md
+  - claim_id: TIR.GLOBAL_GLUING
+    repository: TIR
+    status: GREMLIN_CANDIDATE_SEARCH
+    source: TIR/CURRENT_STATUS.md
+  - claim_id: TIR.STANDARD_MODEL
+    repository: TIR
+    status: ACTIVE_RECONCILIATION
+    source: TIR/CURRENT_STATUS.md
+  - claim_id: IDT.CLOCK.GAMMA_T
+    repository: IDT
+    status: CROSS_REPO_PASS
+    source_evidence: RFC/formalism/DEPENDENCY_GRAPH.md
+  - claim_id: RFC.ADM.E8
+    repository: RFC
+    status: PASS
+    source: formalism/DEPENDENCY_GRAPH.md
+  - claim_id: RFC.ADM.E9
+    repository: RFC
+    status: PASS
+    source: formalism/DEPENDENCY_GRAPH.md
+  - claim_id: RFC.ADM.E10
+    repository: RFC
+    status: PASS
+    source: formalism/DEPENDENCY_GRAPH.md
+  - claim_id: RFC.ADM.E11
+    repository: RFC
+    status: PASS
+    source: formalism/DEPENDENCY_GRAPH.md
+  - claim_id: RFC.ADM.E12
+    repository: RFC
+    status: PASS
+    source: formalism/DEPENDENCY_GRAPH.md
+  - claim_id: RFC.ADM.E13
+    repository: RFC
+    status: PASS_MAIN
+    source: formalism/DEPENDENCY_GRAPH.md
+  - claim_id: RFC.PHYSICAL_SCALE_COUPLING
+    repository: RFC
+    status: ACTIVE_FRONTIER
+    source: formalism/DEPENDENCY_GRAPH.md
+  - claim_id: SOH.HALF.CROSSLINKS
+    repository: SOH
+    status: CANDIDATE_ONLY
+    source: research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json
+  - claim_id: SOH.LI_WEIL.NATIVE_CLOSURE
+    repository: SOH
+    status: OPEN_FRONTIER
+    source_evidence: TIR/integration/TOE_FOUR_REPO_MAIN_INTEGRATION_RECEIPT_2026-08-29.json
+
+edges:
+  - from: TIR.FOUNDATION.C2
+    to: TIR.SPACE.LOCAL_R3
+    authority: CANONICAL
+  - from: TIR.SPACE.LOCAL_R3
+    to: TIR.SPACE.TETRAHEDRON
+    authority: CANONICAL
+  - from: TIR.SPACE.TETRAHEDRON
+    to: TIR.HOLONOMY.WIJ
+    authority: CANONICAL
+  - from: TIR.HOLONOMY.WIJ
+    to: TIR.GLOBAL_GLUING
+    authority: CANONICAL_FRONTIER
+  - from: IDT.CLOCK.GAMMA_T
+    to: RFC.ADM.E8
+    authority: CANONICAL_CROSS_REPO
+  - from: TIR.SPACE.LOCAL_R3
+    to: RFC.ADM.E8
+    authority: CANONICAL_CROSS_REPO
+    note: RFC declares TIR/IDT as upstream carrier sources; physical spatial Gamma_x remains a calibration gate.
+  - from: RFC.ADM.E8
+    to: RFC.ADM.E9
+    authority: CANONICAL
+  - from: RFC.ADM.E9
+    to: RFC.ADM.E10
+    authority: CANONICAL
+  - from: RFC.ADM.E10
+    to: RFC.ADM.E11
+    authority: CANONICAL
+  - from: RFC.ADM.E11
+    to: RFC.ADM.E12
+    authority: CANONICAL
+  - from: RFC.ADM.E12
+    to: RFC.ADM.E13
+    authority: CANONICAL
+  - from: RFC.ADM.E13
+    to: RFC.PHYSICAL_SCALE_COUPLING
+    authority: CANONICAL_FRONTIER
+  - from: TIR.HOLONOMY.WIJ
+    to: TIR.STANDARD_MODEL
+    authority: CANONICAL
+  - from: SOH.HALF.CROSSLINKS
+    to: TIR.FOUNDATION.C2
+    authority: CANDIDATE_ONLY
+    promotion_required: true
+
+invalidation_policy:
+  rule: any_changed_upstream_claim_marks_all_reachable_downstream_claims_REVALIDATION_REQUIRED
+  candidate_edges_propagate_invalidation: false
+  promoted_edges_propagate_invalidation: true
