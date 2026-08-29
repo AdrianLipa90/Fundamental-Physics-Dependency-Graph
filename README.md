@@ -9,11 +9,11 @@ This repository tracks dependency holonomy across four source repositories:
 - `RFC` — `AdrianLipa90/Relational-Field-Closure`
 - `SOH` — `AdrianLipa90/secret-of-a-half`
 
-Each source repository remains authoritative for its own equations, proofs, validators, observables and claim status. This repository is authoritative for cross-repository dependency edges, interface contracts, promotion state and downstream revalidation propagation.
+Each source repository remains authoritative for its own equations, proofs, validators, observables, claim status and local dependency edges. This repository is authoritative for cross-repository dependency edges, interface contracts, promotion state and downstream revalidation propagation.
 
 ## Current baseline
 
-`v0.2` expands the bootstrap graph to a claim-level baseline:
+`v0.2` expands the bootstrap graph to a claim-level executable dependency kernel:
 
 ```text
 74 claims / 74 dependency edges
@@ -72,12 +72,18 @@ The relativistic IDT↔RFC bridge is anchored to the hardened `IDT-01AC -> IDT-0
 - `dependency_graph.yaml` — machine-readable canonical DAG
 - `claims.jsonl` — claim registry with source/evidence provenance
 - `interfaces/cross_repo_interfaces.yaml` — typed cross-repository contracts
+- `source_exports.lock.json` — exact immutable source-export snapshot lock
 - `gates/PROMOTION_POLICY.md` — promotion, GREMLIN and invalidation rules
 - `tools/validate_dag.py` — fail-closed structural validator
 - `tools/impact.py` — downstream revalidation impact calculator
+- `tools/bootstrap_export.py` — migration/bootstrap source export generator
+- `tools/import_exports.py` — source-local surface reconciler
+- `tools/fetch_locked_exports.py` — exact commit-addressed export fetcher
+- `tools/check_upstream_heads.py` — upstream source freshness gate
 - `schemas/dependency_export.schema.json` — source-repository export contract
 - `tests/test_impact.py` — executable propagation invariants
-- `.github/workflows/validate-dag.yml` — CI gate
+- `.github/workflows/validate-dag.yml` — canonical DAG CI gate
+- `.github/workflows/validate-source-exports.yml` — federated source freshness/reconciliation gate
 - `receipts/` — immutable integration and validation receipts
 
 ## Operational impact analysis
@@ -97,9 +103,30 @@ python tools/impact.py SOH.SU2.DOUBLE_COVER --include-candidates
 
 This makes `REVALIDATION_REQUIRED` propagation executable instead of merely documentary.
 
-## Source export contract
+## Federated source exports
 
-`schemas/dependency_export.schema.json` defines the planned local `DEPENDENCY_EXPORT.json` interface for TIR, IDT, RFC and SOH. A source export identifies its repository, exact source commit, claim statuses, evidence classes and local dependency edges. The meta-repository can then ingest those exports while preserving source-repository claim authority.
+`schemas/dependency_export.schema.json` defines `DEPENDENCY_EXPORT.json` for TIR, IDT, RFC and SOH. Each export identifies its repository, exact source commit, claim statuses, evidence classes and local dependency edges.
+
+The first source-owned exports are staged on dedicated PRs:
+
+```text
+TIR  PR #107
+IDT  PR #69
+RFC  PR #64
+SOH  PR #69
+```
+
+`source_exports.lock.json` pins the exact export commit and the exact source commit represented by that export. FPDG CI then performs three independent gates:
+
+```text
+source main head == locked source_commit
+          ↓
+fetch exact DEPENDENCY_EXPORT.json at export_commit
+          ↓
+reconcile source claims + local edges against canonical FPDG local surface
+```
+
+A source-main advance therefore fails the freshness gate until its export, FPDG lock and affected downstream dependency surface are reconciled. This is the fail-closed cross-repository holonomy rule.
 
 ## Dependency invariant
 
@@ -109,4 +136,6 @@ For every promoted dependency edge `A -> B`, a material change to `A` places `B`
 
 ## Validation
 
-The validator checks repository membership, node/claim parity, edge authority typing, candidate promotion gates, cross-repository edge typing, duplicate/self edges, evidence fields and acyclicity of the promoted graph. CI additionally validates the export schema JSON and runs the impact-propagation tests.
+The canonical validator checks repository membership, node/claim parity, edge authority typing, candidate promotion gates, cross-repository edge typing, duplicate/self edges, evidence fields and acyclicity of the promoted graph.
+
+The federated gate additionally checks current upstream main heads, fetches immutable source exports, verifies repository/source identity and reconciles all four source-local surfaces exactly against the FPDG graph.
