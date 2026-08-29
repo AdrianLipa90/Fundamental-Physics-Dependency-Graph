@@ -1,0 +1,42 @@
+{
+  "schema": "FPDG_OPERATIONAL_KERNEL_RECEIPT_V0_2",
+  "date": "2026-08-29",
+  "status": "PASS_HOSTED_CI",
+  "branch": "feat/canonical-fundamental-dag-v0.1",
+  "validated_head": "cb44cb931a30c989a0751389192636a86692f18c",
+  "graph": {
+    "claims": 74,
+    "edges": 74,
+    "cross_repo_edges": 9,
+    "candidate_edges": 4,
+    "promoted_graph_acyclic": true
+  },
+  "hosted_ci": {
+    "workflow": "Validate Fundamental Dependency DAG",
+    "run_id": 33264762719,
+    "run_number": 41,
+    "conclusion": "success",
+    "checks": [
+      "canonical DAG structural validation",
+      "dependency export schema JSON validation",
+      "downstream revalidation propagation tests"
+    ]
+  },
+  "relativistic_bridge_correction": {
+    "status": "SOURCE_ALIGNED",
+    "source": "AdrianLipa90/Relational-Field-Closure/validation/RFM1_RFE0_RELATIVISTIC_BRIDGE_HARDENING_V0_1.json",
+    "rfc_attested_commit": "6be45ab1abe56da1ad98255bc7f1ccc1a271cd1d",
+    "rfc_reference_suite": "448_OF_448_PASS",
+    "idt_peer_reference_suite": "437_OF_437_PASS",
+    "bridge_chain": "IDT-01AC -> IDT-01AG -> RF-M1 -> RF-E0 -> EINSTEIN_CLOSURE",
+    "superseded_mapping": "RFC.ADM.E13 -> IDT.RELATIVISTIC.FIELD_BRIDGE",
+    "current_mapping": "RFC.SOURCE.CONSERVED_CARRIER -> IDT.RELATIVISTIC.FIELD_BRIDGE"
+  },
+  "operational_components": [
+    "tools/validate_dag.py",
+    "tools/impact.py",
+    "tests/test_impact.py",
+    "schemas/dependency_export.schema.json"
+  ],
+  "promotion": "READY_FOR_REVIEW_NOT_MERGED"
+}
