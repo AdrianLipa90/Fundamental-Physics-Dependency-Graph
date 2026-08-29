@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/fpdg/diagnostic_bottlenecks.schema.json",
+  "title": "FPDG diagnostic bottlenecks v0.1",
+  "type": "object",
+  "required": [
+    "schema",
+    "status",
+    "candidate_edges_included",
+    "causal_inference_performed",
+    "zones"
+  ],
+  "properties": {
+    "schema": {"const": "FPDG_DIAGNOSTIC_BOTTLENECKS_V0_1"},
+    "status": {"enum": ["ANALYZED", "NO_ZONES"]},
+    "candidate_edges_included": {"const": false},
+    "causal_inference_performed": {"const": false},
+    "zones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "frontier_claim",
+          "symptom_targets",
+          "mandatory_nodes",
+          "mandatory_edges",
+          "target_analyses"
+        ],
+        "properties": {
+          "frontier_claim": {"type": "string", "minLength": 1},
+          "symptom_targets": {"type": "array", "items": {"type": "string"}},
+          "mandatory_nodes": {"type": "array", "items": {"type": "string"}},
+          "mandatory_edges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["from", "to", "authority"],
+              "properties": {
+                "from": {"type": "string"},
+                "to": {"type": "string"},
+                "authority": {"type": "string"}
+              },
+              "additionalProperties": true
+            }
+          },
+          "target_analyses": {"type": "array"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
