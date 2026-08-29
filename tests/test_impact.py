@@ -29,10 +29,14 @@ class ImpactTests(unittest.TestCase):
             "RFC.ADM.E12",
             "RFC.ADM.E13",
             "RFC.PHYSICAL_SCALE_COUPLING",
-            "IDT.RELATIVISTIC.FIELD_BRIDGE",
-            "IDT.EINSTEIN.CLOSURE",
         ):
             self.assertIn(claim, impacted)
+        self.assertNotIn("IDT.RELATIVISTIC.FIELD_BRIDGE", impacted)
+
+    def test_hardened_rfm1_rfe0_bridge_reaches_einstein_closure(self):
+        impacted = self.ids("RFC.SOURCE.CONSERVED_CARRIER")
+        self.assertIn("IDT.RELATIVISTIC.FIELD_BRIDGE", impacted)
+        self.assertIn("IDT.EINSTEIN.CLOSURE", impacted)
 
     def test_candidate_edges_are_isolated_by_default(self):
         self.assertEqual(self.ids("SOH.SU2.DOUBLE_COVER"), set())
@@ -46,6 +50,7 @@ class ImpactTests(unittest.TestCase):
         self.assertIn("IDT.TEMPORAL.PRIMITIVE", impacted)
         self.assertIn("IDT.RETRODICTION", impacted)
         self.assertIn("RFC.ADM.E13", impacted)
+        self.assertIn("IDT.RELATIVISTIC.FIELD_BRIDGE", impacted)
         self.assertIn("IDT.EINSTEIN.CLOSURE", impacted)
 
     def test_unknown_claim_fails(self):
