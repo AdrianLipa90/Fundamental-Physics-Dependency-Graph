@@ -1,0 +1,34 @@
+schema: FPDG_REPOSITORY_REGISTRY_V0_1
+status: ACTIVE_REGISTRY
+repositories:
+  TIR:
+    repository: AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations
+    role: foundational_relational_and_spatial_root
+    canonical_status_path: TIR/CURRENT_STATUS.md
+    exports_expected:
+      - TIR/foundations
+      - TIR/interfaces
+      - TIR/integration
+  IDT:
+    repository: AdrianLipa90/Informational-Dynamics-of-Time
+    role: temporal_dynamics_and_clock_branch
+    exports_expected:
+      - formalism
+  RFC:
+    repository: AdrianLipa90/Relational-Field-Closure
+    role: spacetime_field_and_gravity_closure
+    canonical_status_path: formalism/DEPENDENCY_GRAPH.md
+    exports_expected:
+      - formalism
+  SOH:
+    repository: AdrianLipa90/secret-of-a-half
+    role: half_symmetry_and_analytic_crosslink_branch
+    exports_expected:
+      - research
+policy:
+  source_repositories_remain_authoritative_for_their_claims: true
+  this_repository_is_cross_repo_dependency_authority: true
+  gremlin_runtime_execution_authority: false
+  gremlin_canon_write_authority: false
+  gremlin_default_promotion_state: CANDIDATE_ONLY
+  gremlin_default_epistemic_state: CHYBA
