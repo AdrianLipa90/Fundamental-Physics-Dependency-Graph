@@ -1,5 +1,29 @@
-schema: FPDG_CROSS_REPO_INTERFACES_V0_1
+schema: FPDG_CROSS_REPO_INTERFACES_V0_2
 interfaces:
+  - interface_id: IFACE.TIR_TO_IDT.TIME_JOIN
+    upstream_repository: TIR
+    downstream_repository: IDT
+    upstream_claim: TIR.TIME_JOIN
+    downstream_claim: IDT.TEMPORAL.PRIMITIVE
+    contract:
+      status: CANONICAL_CROSS_REPO
+      source_upstream: TIR/CURRENT_STATUS.md
+      source_downstream: IDT/CURRENT_STATUS.md
+      relation: TIR -> Temporal Primitive
+      revalidation_propagates: true
+
+  - interface_id: IFACE.IDT_TO_RFC.NOETHER_SOURCE
+    upstream_repository: IDT
+    downstream_repository: RFC
+    upstream_claim: IDT.NOETHER.GAUGE_COVARIANT_SOURCE
+    downstream_claim: RFC.SOURCE.CONSERVED_CARRIER
+    contract:
+      status: CANONICAL_CROSS_REPO
+      source: IDT/CURRENT_STATUS.md
+      executable_interface: IDT_01AC_01AG
+      bridge: RFC_RF_M1_RF_E0
+      revalidation_propagates: true
+
   - interface_id: IFACE.IDT_TO_RFC.CLOCK
     upstream_repository: IDT
     downstream_repository: RFC
@@ -11,6 +35,7 @@ interfaces:
       status: CROSS_REPO_PASS
       source: RFC/formalism/DEPENDENCY_GRAPH.md
       validation: IDT_REFERENCE_SUITE_868_SUCCESS
+      revalidation_propagates: true
 
   - interface_id: IFACE.TIR_TO_RFC.SPATIAL_CARRIER
     upstream_repository: TIR
@@ -21,24 +46,52 @@ interfaces:
       status: PARTIALLY_CALIBRATED
       source: RFC/formalism/DEPENDENCY_GRAPH.md
       remaining_gate: physical spatial Gamma_x / cell-width binding
+      revalidation_propagates: true
 
-  - interface_id: IFACE.TIR_TO_RFC.SHIFT
-    upstream_repository: TIR
-    downstream_repository: RFC
-    upstream_claim: TIR.GLOBAL_GLUING
-    downstream_claim: RFC.ADM.E8
+  - interface_id: IFACE.RFC_TO_IDT.RELATIVISTIC_BRIDGE
+    upstream_repository: RFC
+    downstream_repository: IDT
+    upstream_claim: RFC.ADM.E13
+    downstream_claim: IDT.RELATIVISTIC.FIELD_BRIDGE
     contract:
-      status: ACTIVE_FRONTIER
-      source: RFC/formalism/DEPENDENCY_GRAPH.md
-      remaining_gate: TIR affine-frame generator -> general ADM shift b^i source map
+      status: ACTION_LEVEL_ADM_SPINE_CLOSED_THROUGH_RF_E13
+      source_rfc: RFC/formalism/DEPENDENCY_GRAPH.md
+      source_idt: IDT/CURRENT_STATUS.md
+      downstream_join: IDT.EINSTEIN.CLOSURE
+      revalidation_propagates: true
 
-  - interface_id: IFACE.SOH_TO_TIR.HALF
+  - interface_id: IFACE.SOH_TO_IDT.XFI03
     upstream_repository: SOH
-    downstream_repository: TIR
-    upstream_claim: SOH.HALF.CROSSLINKS
-    downstream_claim: TIR.FOUNDATION.C2
+    downstream_repository: IDT
+    upstream_claim: SOH.SU2.DOUBLE_COVER
+    downstream_claim: IDT.HALF_SEAM.DOUBLE_COVER_SIGNATURE
     contract:
       status: CANDIDATE_ONLY
-      canon_authority: false
+      candidate_id: XFI.03
       promotion_required: true
-      source: SOH/research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json
+      promotion_gate: THEOREM_VALIDATOR_RECEIPT_REQUIRED
+      canon_authority: false
+
+  - interface_id: IFACE.SOH_TO_IDT.XFI2802
+    upstream_repository: SOH
+    downstream_repository: IDT
+    upstream_claim: SOH.HALF.ZERO_ORDER_DOUBLING
+    downstream_claim: IDT.HALF_SEAM.RELATIONAL_ZERO
+    contract:
+      status: CANDIDATE_ONLY
+      candidate_id: XFI.28.02
+      promotion_required: true
+      promotion_gate: THEOREM_VALIDATOR_RECEIPT_REQUIRED
+      canon_authority: false
+
+  - interface_id: IFACE.SOH_TO_IDT.XFI2803
+    upstream_repository: SOH
+    downstream_repository: IDT
+    upstream_claim: SOH.BLOCH.CENTERED_RAPIDITY
+    downstream_claim: IDT.NOW.HYPERBOLIC_CHART
+    contract:
+      status: CANDIDATE_ONLY
+      candidate_id: XFI.28.03
+      promotion_required: true
+      promotion_gate: DOMAIN_INVERSE_SINGULAR_BOUNDARY_AUDIT_REQUIRED
+      canon_authority: false
