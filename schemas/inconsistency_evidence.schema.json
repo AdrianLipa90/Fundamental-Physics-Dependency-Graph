@@ -34,6 +34,22 @@
           "repository": {"type": "string"},
           "claim_id": {"type": "string"},
           "source_path": {"type": "string"},
+          "source_locator": {
+            "type": "object",
+            "properties": {
+              "path": {"type": "string", "minLength": 1},
+              "symbol": {"type": "string", "minLength": 1},
+              "equation_id": {"type": "string", "minLength": 1},
+              "line_start": {"type": "integer", "minimum": 1},
+              "line_end": {"type": "integer", "minimum": 1},
+              "validator_id": {"type": "string", "minLength": 1},
+              "test_id": {"type": "string", "minLength": 1},
+              "receipt_ref": {"type": "string", "minLength": 1},
+              "interface_id": {"type": "string", "minLength": 1}
+            },
+            "additionalProperties": false,
+            "minProperties": 1
+          },
           "edge": {
             "type": "object",
             "required": ["from", "to"],
