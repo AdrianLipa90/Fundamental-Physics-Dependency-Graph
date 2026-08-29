@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 from tools.build_pain_signature import build_signature
-from tools.match_pain_signatures import match_signature
+from tools.match_pain_signatures import MatchError, load_signature, match_signature
 
 
 class PainSignatureTests(unittest.TestCase):
@@ -76,6 +76,24 @@ class PainSignatureTests(unittest.TestCase):
         historical = build_signature(other_diagnosis, other_seams)
         report = match_signature(current, [(Path("other.json"), historical)], 0.9)
         self.assertEqual(report["match_count"], 0)
+
+    def test_stored_hash_tamper_fails_closed(self):
+        signature = build_signature(self.diagnosis(), self.seams())
+        signature["structural_signature"]["localization_mode"] = "TAMPERED"
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "incident.json"
+            path.write_text(json.dumps(signature), encoding="utf-8")
+            with self.assertRaises(MatchError):
+                load_signature(path)
+
+    def test_stored_feature_token_tamper_fails_closed(self):
+        signature = build_signature(self.diagnosis(), self.seams())
+        signature["feature_tokens"] = signature["feature_tokens"] + ["forged=true"]
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "incident.json"
+            path.write_text(json.dumps(signature), encoding="utf-8")
+            with self.assertRaises(MatchError):
+                load_signature(path)
 
 
 if __name__ == "__main__":
