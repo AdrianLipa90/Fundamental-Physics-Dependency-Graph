@@ -10,7 +10,11 @@ on:
       - 'claims.jsonl'
       - 'dependency_graph.yaml'
       - 'tools/watch_source_drift.py'
+      - 'tools/diagnose_source_drift.py'
+      - 'tools/diagnose_inconsistency.py'
+      - 'tools/build_gremlin_pain_packet.py'
       - 'tests/test_source_drift.py'
+      - 'tests/test_diagnose_inconsistency.py'
       - '.github/workflows/watch-source-drift.yml'
   push:
     branches:
@@ -21,7 +25,11 @@ on:
       - 'claims.jsonl'
       - 'dependency_graph.yaml'
       - 'tools/watch_source_drift.py'
+      - 'tools/diagnose_source_drift.py'
+      - 'tools/diagnose_inconsistency.py'
+      - 'tools/build_gremlin_pain_packet.py'
       - 'tests/test_source_drift.py'
+      - 'tests/test_diagnose_inconsistency.py'
       - '.github/workflows/watch-source-drift.yml'
 
 permissions:
@@ -41,13 +49,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python tools/watch_source_drift.py --fail-on-drift --json
-      - name: Publish drift report to job summary
+      - name: Localize exact pain frontier and prepare GREMLIN packet
+        if: always()
+        run: python tools/diagnose_source_drift.py --json
+      - name: Publish drift and diagnosis to job summary
         if: always()
         run: |
           if [ -f build/SOURCE_DRIFT_REPORT.md ]; then
             cat build/SOURCE_DRIFT_REPORT.md >> "$GITHUB_STEP_SUMMARY"
           fi
-      - name: Upload drift receipt
+          if [ -f build/INCONSISTENCY_DIAGNOSIS.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat build/INCONSISTENCY_DIAGNOSIS.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload drift and pain-localization receipts
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -55,4 +70,8 @@ jobs:
           path: |
             build/SOURCE_DRIFT_REPORT.json
             build/SOURCE_DRIFT_REPORT.md
+            build/INCONSISTENCY_EVIDENCE.json
+            build/INCONSISTENCY_DIAGNOSIS.json
+            build/INCONSISTENCY_DIAGNOSIS.md
+            build/GREMLIN_PAIN_PACKET.json
           if-no-files-found: warn
