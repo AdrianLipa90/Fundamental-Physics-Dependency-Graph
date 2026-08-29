@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
-"""Match a current FPDG pain signature against prior incident signatures.
+"""Match a current FPDG structural incident signature against reviewed history.
 
 Matching is deterministic retrieval support for GREMLIN. Exact signature equality is a
 strong structural recurrence. Non-exact similarity is Jaccard overlap over explicit
 feature tokens and remains a candidate retrieval hint, never a claim of isomorphism.
+
+Historical receipts fail closed when their stored hash or feature-token set disagrees
+with the stored structural signature.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -18,9 +22,17 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INCIDENT_DIR = ROOT / "diagnostics" / "incidents"
 BUILD_DIR = ROOT / "build"
 
+sys.path.insert(0, str(ROOT / "tools"))
+from build_pain_signature import feature_tokens  # noqa: E402
+
 
 class MatchError(RuntimeError):
     pass
+
+
+def canonical_structure_hash(structure: dict[str, Any]) -> str:
+    canonical = json.dumps(structure, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def load_signature(path: Path) -> dict[str, Any]:
@@ -28,11 +40,29 @@ def load_signature(path: Path) -> dict[str, Any]:
         value = json.load(fh)
     if not isinstance(value, dict) or value.get("schema") != "FPDG_PAIN_SIGNATURE_V0_1":
         raise MatchError(f"{path}: expected FPDG_PAIN_SIGNATURE_V0_1")
-    if not isinstance(value.get("signature_hash"), str):
-        raise MatchError(f"{path}: missing signature_hash")
+    if value.get("candidate_edges_included") is not False:
+        raise MatchError(f"{path}: incident signature must exclude candidate edges")
+    if value.get("promotion_state") != "CANDIDATE_ONLY":
+        raise MatchError(f"{path}: incident signature must remain CANDIDATE_ONLY")
+
+    stored_hash = value.get("signature_hash")
+    if not isinstance(stored_hash, str) or len(stored_hash) != 64:
+        raise MatchError(f"{path}: missing/invalid signature_hash")
+    structure = value.get("structural_signature")
+    if not isinstance(structure, dict):
+        raise MatchError(f"{path}: structural_signature must be an object")
+    actual_hash = canonical_structure_hash(structure)
+    if actual_hash != stored_hash:
+        raise MatchError(
+            f"{path}: signature hash mismatch stored={stored_hash} recomputed={actual_hash}"
+        )
+
     tokens = value.get("feature_tokens")
     if not isinstance(tokens, list) or not all(isinstance(token, str) for token in tokens):
         raise MatchError(f"{path}: feature_tokens must be string array")
+    expected_tokens = feature_tokens(structure)
+    if tokens != expected_tokens:
+        raise MatchError(f"{path}: feature_tokens disagree with structural_signature")
     return value
 
 
@@ -65,6 +95,7 @@ def match_signature(
                     "current_feature_count": len(current_tokens),
                     "historical_feature_count": len(other_tokens),
                     "exact_coordinates": other.get("exact_coordinates", {}),
+                    "incident_review": other.get("incident_review"),
                 }
             )
     rows.sort(
@@ -130,7 +161,7 @@ def main() -> int:
                 f"threshold={report['threshold']}"
             )
         return 0
-    except (OSError, json.JSONDecodeError, MatchError, KeyError) as exc:
+    except (OSError, json.JSONDecodeError, MatchError, KeyError, TypeError, ValueError) as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
         return 1
 
