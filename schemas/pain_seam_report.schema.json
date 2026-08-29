@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/fpdg/pain_seam_report.schema.json",
+  "title": "FPDG pain seam report v0.1",
+  "type": "object",
+  "required": [
+    "schema",
+    "status",
+    "candidate_edges_included",
+    "zones",
+    "integration_targets",
+    "unregistered_cross_repo_seams"
+  ],
+  "properties": {
+    "schema": {"const": "FPDG_PAIN_SEAM_REPORT_V0_1"},
+    "status": {
+      "enum": [
+        "LOCALIZED",
+        "LOCALIZED_WITH_UNREGISTERED_CROSS_REPO_SEAMS",
+        "NO_LOCALIZED_TARGETS"
+      ]
+    },
+    "candidate_edges_included": {"const": false},
+    "source_diagnosis_schema": {"const": "FPDG_INCONSISTENCY_DIAGNOSIS_V0_1"},
+    "zones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "frontier_claim",
+          "seams",
+          "seam_count",
+          "probe_targets"
+        ],
+        "properties": {
+          "frontier_claim": {"type": "string", "minLength": 1},
+          "claim_source": {"type": ["string", "null"]},
+          "seam_count": {"type": "integer", "minimum": 0},
+          "cross_repo_seam_count": {"type": "integer", "minimum": 0},
+          "unregistered_cross_repo_seam_count": {"type": "integer", "minimum": 0},
+          "seams": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "seam_id",
+                "role",
+                "from",
+                "to",
+                "authority",
+                "scope",
+                "registration_status"
+              ],
+              "properties": {
+                "seam_id": {"type": "string", "minLength": 1},
+                "role": {
+                  "enum": [
+                    "ENTRY_TO_FRONTIER",
+                    "EXIT_FROM_FRONTIER",
+                    "ZONE_ENTRY_BOUNDARY",
+                    "ZONE_EXIT_BOUNDARY"
+                  ]
+                },
+                "from": {"type": "string", "minLength": 1},
+                "to": {"type": "string", "minLength": 1},
+                "authority": {
+                  "enum": ["CANONICAL", "CANONICAL_CROSS_REPO", "CANONICAL_FRONTIER"]
+                },
+                "scope": {"enum": ["LOCAL_REPOSITORY", "CROSS_REPOSITORY"]},
+                "registration_status": {
+                  "enum": [
+                    "LOCAL_DEPENDENCY_EDGE",
+                    "REGISTERED_CROSS_REPO_INTERFACE",
+                    "MISSING_CROSS_REPO_INTERFACE_CONTRACT"
+                  ]
+                },
+                "interface_id": {"type": "string"},
+                "contract": {"type": "object"}
+              },
+              "additionalProperties": true
+            }
+          },
+          "probe_targets": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "object"}
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "integration_targets": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "unregistered_cross_repo_seams": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "gremlin_role": {
+      "const": "CONSUME_EXACT_SEAMS_AS_CANDIDATE_PATTERN_CONTEXT_ONLY"
+    }
+  },
+  "additionalProperties": true
+}
