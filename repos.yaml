@@ -1,4 +1,4 @@
-schema: FPDG_REPOSITORY_REGISTRY_V0_1
+schema: FPDG_REPOSITORY_REGISTRY_V0_2
 status: ACTIVE_REGISTRY
 repositories:
   TIR:
@@ -11,23 +11,30 @@ repositories:
       - TIR/integration
   IDT:
     repository: AdrianLipa90/Informational-Dynamics-of-Time
-    role: temporal_dynamics_and_clock_branch
+    role: temporal_dynamics_clock_memory_and_retrodiction_branch
+    canonical_status_path: CURRENT_STATUS.md
     exports_expected:
+      - CURRENT_STATUS.md
+      - CLAIM_REGISTRY.md
       - formalism
+      - crossrefs
   RFC:
     repository: AdrianLipa90/Relational-Field-Closure
-    role: spacetime_field_and_gravity_closure
+    role: spacetime_field_action_adm_and_coupling_closure
     canonical_status_path: formalism/DEPENDENCY_GRAPH.md
     exports_expected:
       - formalism
   SOH:
     repository: AdrianLipa90/secret-of-a-half
     role: half_symmetry_and_analytic_crosslink_branch
+    canonical_status_path: research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json
     exports_expected:
       - research
 policy:
   source_repositories_remain_authoritative_for_their_claims: true
   this_repository_is_cross_repo_dependency_authority: true
+  promoted_graph_must_be_acyclic: true
+  candidate_edges_propagate_invalidation: false
   gremlin_runtime_execution_authority: false
   gremlin_canon_write_authority: false
   gremlin_default_promotion_state: CANDIDATE_ONLY
