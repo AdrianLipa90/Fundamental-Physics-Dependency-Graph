@@ -23,3 +23,5 @@ jobs:
         run: python -m json.tool schemas/dependency_export.schema.json > /dev/null
       - name: Test downstream revalidation propagation
         run: python -m unittest discover -s tests -v
+      - name: Validate four-source dependency export roundtrip
+        run: python tools/export_roundtrip.py
