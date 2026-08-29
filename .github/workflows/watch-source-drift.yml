@@ -11,6 +11,7 @@ on:
       - 'dependency_graph.yaml'
       - 'interfaces/cross_repo_interfaces.yaml'
       - 'diagnostics/incidents/**'
+      - 'schemas/diagnostic_bottlenecks.schema.json'
       - 'schemas/diagnostic_probe_plan.schema.json'
       - 'tools/watch_source_drift.py'
       - 'tools/diagnose_source_drift.py'
@@ -18,6 +19,7 @@ on:
       - 'tools/diagnose_inconsistency.py'
       - 'tools/localize_interface_seams.py'
       - 'tools/localize_micro_coordinates.py'
+      - 'tools/analyze_diagnostic_bottlenecks.py'
       - 'tools/enrich_gremlin_pain_packet_with_micro.py'
       - 'tools/build_diagnostic_probe_plan.py'
       - 'tools/finalize_inconsistency_localization.py'
@@ -29,6 +31,7 @@ on:
       - 'tests/test_dependency_export_diff.py'
       - 'tests/test_localize_interface_seams.py'
       - 'tests/test_micro_localization.py'
+      - 'tests/test_diagnostic_bottlenecks.py'
       - 'tests/test_enrich_gremlin_micro.py'
       - 'tests/test_diagnostic_probe_plan.py'
       - 'tests/test_pain_signatures.py'
@@ -43,6 +46,7 @@ on:
       - 'dependency_graph.yaml'
       - 'interfaces/cross_repo_interfaces.yaml'
       - 'diagnostics/incidents/**'
+      - 'schemas/diagnostic_bottlenecks.schema.json'
       - 'schemas/diagnostic_probe_plan.schema.json'
       - 'tools/watch_source_drift.py'
       - 'tools/diagnose_source_drift.py'
@@ -50,6 +54,7 @@ on:
       - 'tools/diagnose_inconsistency.py'
       - 'tools/localize_interface_seams.py'
       - 'tools/localize_micro_coordinates.py'
+      - 'tools/analyze_diagnostic_bottlenecks.py'
       - 'tools/enrich_gremlin_pain_packet_with_micro.py'
       - 'tools/build_diagnostic_probe_plan.py'
       - 'tools/finalize_inconsistency_localization.py'
@@ -61,6 +66,7 @@ on:
       - 'tests/test_dependency_export_diff.py'
       - 'tests/test_localize_interface_seams.py'
       - 'tests/test_micro_localization.py'
+      - 'tests/test_diagnostic_bottlenecks.py'
       - 'tests/test_enrich_gremlin_micro.py'
       - 'tests/test_diagnostic_probe_plan.py'
       - 'tests/test_pain_signatures.py'
@@ -88,7 +94,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python tools/diagnose_source_drift.py --json
-      - name: Finalize exact sub-claim coordinates and probe order
+      - name: Finalize exact sub-claim coordinates, bottlenecks, and probe order
         if: always()
         run: python tools/finalize_inconsistency_localization.py
       - name: Publish drift and diagnosis to job summary
@@ -108,6 +114,10 @@ jobs:
           if [ -f build/PAIN_MICRO_COORDINATES.md ]; then
             printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
             cat build/PAIN_MICRO_COORDINATES.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f build/DIAGNOSTIC_BOTTLENECKS.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat build/DIAGNOSTIC_BOTTLENECKS.md >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f build/DIAGNOSTIC_PROBE_PLAN.md ]; then
             printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
@@ -129,6 +139,8 @@ jobs:
             build/PAIN_SEAM_REPORT.md
             build/PAIN_MICRO_COORDINATES.json
             build/PAIN_MICRO_COORDINATES.md
+            build/DIAGNOSTIC_BOTTLENECKS.json
+            build/DIAGNOSTIC_BOTTLENECKS.md
             build/DIAGNOSTIC_PROBE_PLAN.json
             build/DIAGNOSTIC_PROBE_PLAN.md
             build/PAIN_SIGNATURE.json
