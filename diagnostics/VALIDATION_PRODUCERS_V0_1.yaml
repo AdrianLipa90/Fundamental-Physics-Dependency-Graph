@@ -51,6 +51,7 @@ producers:
       - IDT.RETRODICTION
       - IDT.RETROCAUSAL_TESTS
       - IDT.NOETHER.GAUGE_COVARIANT_SOURCE
+      - IDT.CLOCK.GAMMA_T
       - IDT.CLOCK.RELATIVE_ENTROPY_05D
     latest_hosted_validation:
       workflow_run_number: 904
