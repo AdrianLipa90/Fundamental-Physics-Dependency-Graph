@@ -402,7 +402,14 @@ edges:
 - from: IDT.NOETHER.GAUGE_COVARIANT_SOURCE
   to: RFC.SOURCE.CONSERVED_CARRIER
   authority: CANONICAL_CROSS_REPO
-  note: IDT executable source interface 01AC/01AG; RFC bridge RF-M1/RF-E0.
+  note: IDT executable source interface 01AC/01AG enters RFC source/bridge surface; RF-M1/RF-E0 is separately hardened.
+- from: RFC.SOURCE.CONSERVED_CARRIER
+  to: IDT.RELATIVISTIC.FIELD_BRIDGE
+  authority: CANONICAL_CROSS_REPO
+  note: RF-M1/RF-E0 hardening receipt records bridge chain IDT-01AC -> IDT-01AG -> RF-M1 -> RF-E0 -> EINSTEIN_CLOSURE.
+- from: IDT.RELATIVISTIC.FIELD_BRIDGE
+  to: IDT.EINSTEIN.CLOSURE
+  authority: CANONICAL
 - from: IDT.TEMPORAL.WAVE
   to: IDT.CLOCK.GAMMA_T
   authority: CANONICAL
@@ -454,13 +461,6 @@ edges:
 - from: RFC.L5A.PREMETRIC_CALIBRATION
   to: RFC.ADM.E8
   authority: CANONICAL
-- from: IDT.CLOCK.GAMMA_T
-  to: RFC.ADM.E8
-  authority: CANONICAL_CROSS_REPO
-- from: TIR.SPACE.LOCAL_R3
-  to: RFC.ADM.E8
-  authority: CANONICAL_CROSS_REPO
-  note: Spatial carrier admitted upstream; physical Gamma_x/cell-width remains a calibration gate.
 - from: RFC.ADM.E8
   to: RFC.ADM.E9
   authority: CANONICAL
@@ -476,13 +476,13 @@ edges:
 - from: RFC.ADM.E12
   to: RFC.ADM.E13
   authority: CANONICAL
-- from: RFC.ADM.E13
-  to: IDT.RELATIVISTIC.FIELD_BRIDGE
+- from: IDT.CLOCK.GAMMA_T
+  to: RFC.ADM.E8
   authority: CANONICAL_CROSS_REPO
-  note: RFC action-level ADM spine supplies the relativistic bridge prerequisite for IDT Einstein closure.
-- from: IDT.RELATIVISTIC.FIELD_BRIDGE
-  to: IDT.EINSTEIN.CLOSURE
-  authority: CANONICAL
+- from: TIR.SPACE.LOCAL_R3
+  to: RFC.ADM.E8
+  authority: CANONICAL_CROSS_REPO
+  note: Spatial carrier admitted upstream; physical Gamma_x/cell-width remains a calibration gate.
 - from: RFC.ADM.E13
   to: RFC.PHYSICAL_SCALE_COUPLING
   authority: CANONICAL_FRONTIER
