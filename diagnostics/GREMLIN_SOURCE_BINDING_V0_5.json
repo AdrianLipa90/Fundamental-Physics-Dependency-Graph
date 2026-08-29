@@ -1,0 +1,56 @@
+{
+  "schema": "FPDG_GREMLIN_SOURCE_BINDING_V0_5",
+  "status": "VERIFIED_SOURCE_BOUND_CANDIDATE_HELPER",
+  "generated_at_utc": "2026-08-29T21:59:13Z",
+  "gremlin": {
+    "repository": "AdrianLipa90/GREMLIN",
+    "source_commit": "f775cd5f0b2619692e6d2250e2c6204776b6ce24",
+    "version": "0.5.0",
+    "update": "OCTOPUS_AUDITABLE_SEMANTIC_ROUTING",
+    "router": {
+      "path": "gremlin_mcp/router.py",
+      "blob_sha": "388759ef37facbb22e6be5c58c2efccbcc3b6b5c"
+    },
+    "pipeline": {
+      "path": "gremlin_mcp/pipeline.py",
+      "blob_sha": "c67cfd8bd4d306de5f5a596b8bfa944ec8650549"
+    },
+    "hosted_validation": {
+      "workflow": "GREMLIN MCP v0.5",
+      "run_id": 33270995252,
+      "run_number": 71,
+      "status": "SUCCESS"
+    }
+  },
+  "session_route": {
+    "task": "FPDG dependency/evidence coverage audit before physical-scale/coupling promotion",
+    "router": "OCTOPUS",
+    "route_mask": [
+      "OWL",
+      "SPIDER"
+    ],
+    "scores": {
+      "OWL": 21.0,
+      "SPIDER": 13.0,
+      "HOUND": 4.0,
+      "ANT": 2.0,
+      "RAVEN": 0.0,
+      "MOLE": 0.0,
+      "MANTIS": 0.0
+    },
+    "route_commitment": "ec0a367fe737c0c8b1cd4b1d8658832351fb7d07194a32454e6728d1a51feebf",
+    "interpretation": "OWL evidence/provenance audit and SPIDER dependency-topology audit are the selected candidate-assistance surfaces. The route is an inspection priority only."
+  },
+  "authority": {
+    "runtime_execution_authority": false,
+    "canon_write_authority": false,
+    "scientific_claim_promotion_authority": false,
+    "promotion_state": "CANDIDATE_ONLY",
+    "epistemic": "CHYBA"
+  },
+  "constraints": [
+    "GREMLIN output may prioritize inspection and propose candidate relations.",
+    "Source repositories remain authoritative for scientific claim status and local dependency edges.",
+    "FPDG may localize and reconcile source-owned evidence but may not promote GREMLIN candidates into canon."
+  ]
+}
