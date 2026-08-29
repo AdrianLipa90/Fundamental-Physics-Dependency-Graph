@@ -13,11 +13,11 @@ Each source repository remains authoritative for its own equations, proofs, vali
 
 ## Current baseline
 
-`v0.2` expands the bootstrap graph to a claim-level executable dependency kernel:
+`v0.3` is a claim-level executable federated dependency kernel:
 
 ```text
-74 claims / 74 dependency edges
-9 cross-repository edges
+82 claims / 91 dependency edges
+11 cross-repository edges
 4 CANDIDATE_ONLY edges
 ```
 
@@ -45,15 +45,31 @@ TIR.TIME_JOIN
       -> Einstein Closure
 
 IDT Temporal Primitive
-  -> gauge-covariant Noether source
-  -> RFC conserved source / RF-M1/RF-E0 bridge surface
-       |-> IDT relativistic bridge -> Einstein Closure
-       +-> RFC matter / Lorentzian / information-curvature spine
-            -> RFC L5/L5A
-            -> [IDT Gamma_t + TIR spatial carrier]
-            -> RFC E8 -> E9 -> E10 -> E11 -> E12 -> E13
-                                             |
-                                             +-> physical scale/coupling frontier
+  |-> gauge-covariant Noether source
+  |    -> RFC conserved source / RF-M1/RF-E0 bridge surface
+  |         -> IDT relativistic bridge -> Einstein Closure
+  |
+  +-> IDT 05D local-clock relative entropy
+       -> RFC E14 directional relative-information potential
+            -> E15 Legendre audit -> E17 scalar-action potential
+                                      -> E18 physical-velocity firewall
+                                           -> E19 Noether material congruence
+                                                -> E20 tetra-clock mass-scale closure
+
+RFC ADM action spine
+RFC matter / Lorentzian / information-curvature
+  -> L5/L5A
+  -> [IDT Gamma_t + TIR spatial carrier]
+  -> E8 -> E9 -> E10 -> E11 -> E12 -> E13
+                                  |
+                                  +-> physical scale/coupling frontier
+
+RFC post-E13 information/clock branch
+E8 + IDT 05D -> E14 -> E15 -> E17
+E8 + current carrier -> E16 -> E18
+E17 + E16 + E8 -> E18 -> E19
+current/measure carrier -> E19
+E17 + E19 + TIR tetrahedron -> E20 -> physical scale/coupling frontier
 
 RFC parallel coupling spine
 YM/BCJ -> 4pt DC -> 5pt KLT -> RFG29 -> ... -> RFG34
@@ -64,7 +80,9 @@ XFI.03 / XFI.28.02 / XFI.28.03 --CANDIDATE_ONLY--> IDT half/NOW interfaces
 TIR negative-inverse bridge --CANDIDATE_ONLY--> SOH Li/Weil native closure
 ```
 
-The relativistic IDT↔RFC bridge is anchored to the hardened `IDT-01AC -> IDT-01AG -> RF-M1 -> RF-E0 -> EINSTEIN_CLOSURE` chain. It is kept distinct from the later RFC ADM `E8 -> ... -> E13` action-level spine.
+The relativistic IDT↔RFC bridge is anchored to the hardened `IDT-01AC -> IDT-01AG -> RF-M1 -> RF-E0 -> EINSTEIN_CLOSURE` chain. It remains distinct from the RFC ADM `E8 -> ... -> E13` action-level spine and from the later E14–E20 information/clock branch.
+
+RF-E20 keeps its physical SI edge scale and dimensionless tetrahedral selector explicit. The TIR tetrahedron edge supplies the geometric carrier dependency; it does not by itself promote the physical scale/coupling frontier.
 
 ## Canonical files
 
@@ -80,10 +98,13 @@ The relativistic IDT↔RFC bridge is anchored to the hardened `IDT-01AC -> IDT-0
 - `tools/import_exports.py` — source-local surface reconciler
 - `tools/fetch_locked_exports.py` — exact commit-addressed export fetcher
 - `tools/check_upstream_heads.py` — upstream source freshness gate
+- `tools/watch_source_drift.py` — source-main drift and promoted blast-radius projector
 - `schemas/dependency_export.schema.json` — source-repository export contract
 - `tests/test_impact.py` — executable propagation invariants
+- `tests/test_source_drift.py` — fail-closed source-drift mapping tests
 - `.github/workflows/validate-dag.yml` — canonical DAG CI gate
 - `.github/workflows/validate-source-exports.yml` — federated source freshness/reconciliation gate
+- `.github/workflows/watch-source-drift.yml` — scheduled source-drift watch and receipt generation
 - `receipts/` — immutable integration and validation receipts
 
 ## Operational impact analysis
@@ -107,12 +128,12 @@ This makes `REVALIDATION_REQUIRED` propagation executable instead of merely docu
 
 `schemas/dependency_export.schema.json` defines `DEPENDENCY_EXPORT.json` for TIR, IDT, RFC and SOH. Each export identifies its repository, exact source commit, claim statuses, evidence classes and local dependency edges.
 
-The first source-owned exports are staged on dedicated PRs:
+The source-owned export PRs currently used by the lock are:
 
 ```text
 TIR  PR #107
 IDT  PR #69
-RFC  PR #64
+RFC  PR #67   post-E13 RF-E14–RF-E20 sync
 SOH  PR #69
 ```
 
@@ -127,6 +148,14 @@ reconcile source claims + local edges against canonical FPDG local surface
 ```
 
 A source-main advance therefore fails the freshness gate until its export, FPDG lock and affected downstream dependency surface are reconciled. This is the fail-closed cross-repository holonomy rule.
+
+## Source drift watch
+
+The scheduled watcher checks the four source `main` heads every 30 minutes and can also be run manually. When a source has advanced, changed source paths are mapped to owned claims and the promoted downstream blast radius is calculated.
+
+If changed paths cannot be mapped to known claims, the watcher falls back conservatively to every claim owned by the changed repository. `CANDIDATE_ONLY` edges remain excluded from canonical invalidation.
+
+Every watch produces JSON and Markdown receipts. A drifted source fails the watch until the source export, lock and dependency surface are reconciled.
 
 ## Dependency invariant
 
