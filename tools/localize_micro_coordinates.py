@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Resolve FPDG pain zones to sub-claim source coordinates.
 
-This layer consumes the original structured evidence plus the deterministic claim-level
-diagnosis. It preserves exact line/equation/symbol/validator/receipt coordinates when
+This layer consumes the original structured evidence plus the deterministic diagnosis.
+It preserves exact line/equation/symbol/validator/receipt/interface coordinates when
 available and never invents a finer location than the evidence supports. Integration-
-only diagnoses are supported without fabricating a scientific observation.
+only diagnoses may carry the exact source/test locator that observed the integration
+failure without projecting the failure onto scientific endpoint claims.
 """
 
 from __future__ import annotations
@@ -141,22 +142,51 @@ def _evidence_observation_index(evidence: dict[str, Any]) -> dict[str, dict[str,
     return out
 
 
-def integration_coordinates(diagnosis: dict[str, Any]) -> list[dict[str, Any]]:
+def integration_coordinates(
+    diagnosis: dict[str, Any],
+    evidence_by_id: dict[str, dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
     rows = []
+    evidence_by_id = evidence_by_id or {}
     for index, point in enumerate(diagnosis.get("integration_pain_points", []), 1):
         if not isinstance(point, dict):
             raise MicroLocalizationError("integration pain point must be an object")
         location = point.get("location")
         if not isinstance(location, str) or not location:
             raise MicroLocalizationError("integration pain point requires location")
+        obs_id = point.get("observation_id")
+        source_locator: dict[str, Any] = {}
+        evidence_refs = list(point.get("evidence_refs", []))
+        if isinstance(obs_id, str) and obs_id in evidence_by_id:
+            source_locator = normalize_locator(evidence_by_id[obs_id])
+            evidence_refs = sorted(
+                set(evidence_refs)
+                | {
+                    ref
+                    for ref in evidence_by_id[obs_id].get("evidence_refs", [])
+                    if isinstance(ref, str)
+                }
+            )
+        precision = (
+            precision_level(source_locator, None)
+            if source_locator
+            else "INTEGRATION_METADATA_LOCATION"
+        )
         rows.append(
             {
                 "coordinate_id": f"MICRO.INTEGRATION.{index:03d}",
+                "observation_id": obs_id,
                 "location": location,
                 "kind": point.get("kind"),
                 "repository": point.get("repository"),
-                "precision": "INTEGRATION_METADATA_LOCATION",
+                "interface_id": point.get("interface_id"),
+                "precision": precision,
+                "source_locator": source_locator,
                 "witness_locations": point.get("witness_locations", []),
+                "evidence_refs": evidence_refs,
+                "causal_endpoint_projection_performed": point.get(
+                    "causal_endpoint_projection_performed", False
+                ),
             }
         )
     return rows
@@ -170,7 +200,7 @@ def localize(
 
     diagnosed = _diagnosis_observation_index(diagnosis)
     if diagnosed and evidence is None:
-        raise MicroLocalizationError("claim-level diagnosis requires original inconsistency evidence")
+        raise MicroLocalizationError("claim/interface diagnosis requires original inconsistency evidence")
     if evidence is None:
         observed: dict[str, dict[str, Any]] = {}
         source_evidence_schema = None
@@ -234,13 +264,20 @@ def localize(
             }
         )
 
-    integration_rows = integration_coordinates(diagnosis)
+    integration_rows = integration_coordinates(diagnosis, observed)
+    integration_observation_ids = {
+        row.get("observation_id")
+        for row in integration_rows
+        if isinstance(row.get("observation_id"), str)
+    }
     unassigned = sorted(
-        coord["coordinate_id"] for coord in coordinates if coord["coordinate_id"] not in used_coordinate_ids
+        coord["coordinate_id"]
+        for coord in coordinates
+        if coord["coordinate_id"] not in used_coordinate_ids
+        and coord.get("observation_id") not in integration_observation_ids
     )
     precisions = [coord["precision"] for coord in coordinates]
-    if integration_rows:
-        precisions.extend(point["precision"] for point in integration_rows)
+    precisions.extend(point["precision"] for point in integration_rows)
 
     return {
         "schema": "FPDG_PAIN_MICRO_COORDINATES_V0_1",
@@ -263,11 +300,11 @@ _PRECISION_ORDER = {
     "SOURCE_PATH": 2,
     "RECEIPT": 3,
     "INTERFACE_CONTRACT": 4,
+    "INTEGRATION_METADATA_LOCATION": 4,
     "VALIDATOR_OR_TEST": 5,
     "SYMBOL": 6,
     "EQUATION": 7,
     "SOURCE_RANGE": 8,
-    "INTEGRATION_METADATA_LOCATION": 9,
 }
 
 
@@ -295,8 +332,12 @@ def render_markdown(report: dict[str, Any]) -> str:
             lines.append("  - " + "; ".join(details))
     for coordinate in report.get("integration_coordinates", []):
         lines.append(
-            f"- `{coordinate['coordinate_id']}` — `INTEGRATION_METADATA_LOCATION` — `{coordinate.get('location')}`"
+            f"- `{coordinate['coordinate_id']}` — `{coordinate['precision']}` — `{coordinate.get('location')}`"
         )
+        locator = coordinate.get("source_locator", {})
+        if locator:
+            details = [f"{key}={locator[key]}" for key in sorted(locator)]
+            lines.append("  - " + "; ".join(details))
     lines.extend(
         [
             "",
