@@ -3,8 +3,8 @@
 
 Pipeline:
 validation failure receipt -> FPDG evidence -> claim frontier -> dependency/interface
-seams -> micro coordinates -> repository-agnostic pain signature -> incident retrieval ->
-GREMLIN candidate packet enriched with exact micro coordinates.
+seams -> micro coordinates -> graph bottlenecks -> deterministic probe order ->
+repository-agnostic pain signature -> incident retrieval -> GREMLIN candidate packet.
 """
 
 from __future__ import annotations
@@ -18,6 +18,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BUILD_DIR = ROOT / "build"
 sys.path.insert(0, str(ROOT / "tools"))
 
+from analyze_diagnostic_bottlenecks import BottleneckError, analyze as analyze_bottlenecks, render_markdown as render_bottlenecks  # noqa: E402
+from build_diagnostic_probe_plan import ProbePlanError, build_plan, render_markdown as render_probe_plan  # noqa: E402
 from build_gremlin_pain_packet import PacketError, build_packet  # noqa: E402
 from build_pain_signature import SignatureError, build_signature  # noqa: E402
 from diagnose_inconsistency import DiagnosisError, diagnose, load_claims, load_graph, render_markdown  # noqa: E402
@@ -56,6 +58,7 @@ def main() -> int:
             load_seam_yaml(SEAM_INTERFACES_PATH),
         )
         micro = localize_micro(diagnosis, evidence)
+        bottlenecks = analyze_bottlenecks(diagnosis, graph)
         signature = build_signature(diagnosis, seams)
         signature_path = BUILD_DIR / "PAIN_SIGNATURE.json"
         matches = match_signature(
@@ -63,15 +66,21 @@ def main() -> int:
             collect_incidents(DEFAULT_INCIDENT_DIR, signature_path),
             args.threshold,
         )
+        plan = build_plan(seams, micro, matches)
         packet = build_packet(diagnosis, seams, signature, matches)
         packet_micro = enrich(packet, micro)
+        packet_micro["diagnostic_bottlenecks"] = bottlenecks
+        packet_micro["diagnostic_probe_plan"] = plan
 
         BUILD_DIR.mkdir(exist_ok=True)
         outputs = {
             "VALIDATION_INCONSISTENCY_EVIDENCE.json": evidence,
+            "INCONSISTENCY_EVIDENCE.json": evidence,
             "INCONSISTENCY_DIAGNOSIS.json": diagnosis,
             "PAIN_SEAM_REPORT.json": seams,
             "PAIN_MICRO_COORDINATES.json": micro,
+            "DIAGNOSTIC_BOTTLENECKS.json": bottlenecks,
+            "DIAGNOSTIC_PROBE_PLAN.json": plan,
             "PAIN_SIGNATURE.json": signature,
             "PAIN_SIGNATURE_MATCHES.json": matches,
             "GREMLIN_PAIN_PACKET.json": packet,
@@ -82,13 +91,25 @@ def main() -> int:
         (BUILD_DIR / "INCONSISTENCY_DIAGNOSIS.md").write_text(render_markdown(diagnosis), encoding="utf-8")
         (BUILD_DIR / "PAIN_SEAM_REPORT.md").write_text(render_seam_markdown(seams), encoding="utf-8")
         (BUILD_DIR / "PAIN_MICRO_COORDINATES.md").write_text(render_micro_markdown(micro), encoding="utf-8")
+        (BUILD_DIR / "DIAGNOSTIC_BOTTLENECKS.md").write_text(render_bottlenecks(bottlenecks), encoding="utf-8")
+        (BUILD_DIR / "DIAGNOSTIC_PROBE_PLAN.md").write_text(render_probe_plan(plan), encoding="utf-8")
 
+        first_probes = [
+            zone["first_probe"]
+            for zone in plan.get("zones", [])
+            if isinstance(zone.get("first_probe"), dict)
+        ]
         summary = {
+            "schema": "FPDG_VALIDATION_PAIN_SUMMARY_V0_1",
             "status": diagnosis["status"],
             "localization_mode": diagnosis["localization_mode"],
             "minimal_failing_frontier": diagnosis["minimal_failing_frontier"],
             "seam_status": seams["status"],
             "finest_micro_precision": micro["finest_precision"],
+            "first_deterministic_probes": first_probes,
+            "mandatory_bottleneck_edge_count": sum(
+                len(zone.get("mandatory_edges", [])) for zone in bottlenecks.get("zones", [])
+            ),
             "incident_match_count": matches["match_count"],
             "gremlin_claim_zones": len(packet_micro.get("zones", [])),
             "gremlin_integration_zones": len(packet_micro.get("integration_zones", [])),
@@ -101,9 +122,10 @@ def main() -> int:
         if args.json:
             print(json.dumps(summary, indent=2))
         else:
+            probe_ids = [row.get("probe_id") for row in first_probes]
             print(
                 f"{summary['status']}: frontier={summary['minimal_failing_frontier']} "
-                f"finest={summary['finest_micro_precision']} "
+                f"finest={summary['finest_micro_precision']} first_probes={probe_ids} "
                 f"matches={summary['incident_match_count']}"
             )
         return 0 if diagnosis["status"] == "LOCALIZED" else 2
@@ -114,6 +136,8 @@ def main() -> int:
         DiagnosisError,
         SeamError,
         MicroLocalizationError,
+        BottleneckError,
+        ProbePlanError,
         SignatureError,
         MatchError,
         PacketError,
