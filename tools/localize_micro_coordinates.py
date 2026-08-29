@@ -3,7 +3,8 @@
 
 This layer consumes the original structured evidence plus the deterministic claim-level
 diagnosis. It preserves exact line/equation/symbol/validator/receipt coordinates when
-available and never invents a finer location than the evidence supports.
+available and never invents a finer location than the evidence supports. Integration-
+only diagnoses are supported without fabricating a scientific observation.
 """
 
 from __future__ import annotations
@@ -140,12 +141,43 @@ def _evidence_observation_index(evidence: dict[str, Any]) -> dict[str, dict[str,
     return out
 
 
-def localize(diagnosis: dict[str, Any], evidence: dict[str, Any]) -> dict[str, Any]:
+def integration_coordinates(diagnosis: dict[str, Any]) -> list[dict[str, Any]]:
+    rows = []
+    for index, point in enumerate(diagnosis.get("integration_pain_points", []), 1):
+        if not isinstance(point, dict):
+            raise MicroLocalizationError("integration pain point must be an object")
+        location = point.get("location")
+        if not isinstance(location, str) or not location:
+            raise MicroLocalizationError("integration pain point requires location")
+        rows.append(
+            {
+                "coordinate_id": f"MICRO.INTEGRATION.{index:03d}",
+                "location": location,
+                "kind": point.get("kind"),
+                "repository": point.get("repository"),
+                "precision": "INTEGRATION_METADATA_LOCATION",
+                "witness_locations": point.get("witness_locations", []),
+            }
+        )
+    return rows
+
+
+def localize(
+    diagnosis: dict[str, Any], evidence: dict[str, Any] | None = None
+) -> dict[str, Any]:
     if diagnosis.get("schema") != "FPDG_INCONSISTENCY_DIAGNOSIS_V0_1":
         raise MicroLocalizationError(f"unsupported diagnosis schema {diagnosis.get('schema')!r}")
 
     diagnosed = _diagnosis_observation_index(diagnosis)
-    observed = _evidence_observation_index(evidence)
+    if diagnosed and evidence is None:
+        raise MicroLocalizationError("claim-level diagnosis requires original inconsistency evidence")
+    if evidence is None:
+        observed: dict[str, dict[str, Any]] = {}
+        source_evidence_schema = None
+    else:
+        observed = _evidence_observation_index(evidence)
+        source_evidence_schema = evidence.get("schema")
+
     missing = sorted(set(diagnosed) - set(observed))
     if missing:
         raise MicroLocalizationError(f"diagnosis references observations absent from evidence: {missing}")
@@ -202,37 +234,23 @@ def localize(diagnosis: dict[str, Any], evidence: dict[str, Any]) -> dict[str, A
             }
         )
 
-    integration_coordinates = []
-    for index, point in enumerate(diagnosis.get("integration_pain_points", []), 1):
-        if not isinstance(point, dict):
-            raise MicroLocalizationError("integration pain point must be an object")
-        integration_coordinates.append(
-            {
-                "coordinate_id": f"MICRO.INTEGRATION.{index:03d}",
-                "location": point.get("location"),
-                "kind": point.get("kind"),
-                "repository": point.get("repository"),
-                "precision": "INTEGRATION_METADATA_LOCATION",
-                "witness_locations": point.get("witness_locations", []),
-            }
-        )
-
+    integration_rows = integration_coordinates(diagnosis)
     unassigned = sorted(
         coord["coordinate_id"] for coord in coordinates if coord["coordinate_id"] not in used_coordinate_ids
     )
     precisions = [coord["precision"] for coord in coordinates]
-    if integration_coordinates:
-        precisions.extend(point["precision"] for point in integration_coordinates)
+    if integration_rows:
+        precisions.extend(point["precision"] for point in integration_rows)
 
     return {
         "schema": "FPDG_PAIN_MICRO_COORDINATES_V0_1",
-        "status": "LOCALIZED" if coordinates or integration_coordinates else "NO_COORDINATES",
+        "status": "LOCALIZED" if coordinates or integration_rows else "NO_COORDINATES",
         "source_diagnosis_schema": diagnosis.get("schema"),
-        "source_evidence_schema": evidence.get("schema"),
+        "source_evidence_schema": source_evidence_schema,
         "finest_precision": finest_precision(precisions),
         "coordinates": coordinates,
         "zones": zones,
-        "integration_coordinates": integration_coordinates,
+        "integration_coordinates": integration_rows,
         "unassigned_coordinate_ids": unassigned,
         "causal_inference_performed": False,
         "candidate_edges_included": False,
@@ -292,12 +310,20 @@ def render_markdown(report: dict[str, Any]) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("diagnosis", type=Path)
-    parser.add_argument("evidence", type=Path)
+    parser.add_argument(
+        "evidence",
+        type=Path,
+        nargs="?",
+        help="FPDG_INCONSISTENCY_EVIDENCE_V0_1 JSON; omit only for integration-only diagnosis",
+    )
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
 
     try:
-        report = localize(load_json(args.diagnosis), load_json(args.evidence))
+        report = localize(
+            load_json(args.diagnosis),
+            load_json(args.evidence) if args.evidence is not None else None,
+        )
         BUILD_DIR.mkdir(exist_ok=True)
         (BUILD_DIR / "PAIN_MICRO_COORDINATES.json").write_text(
             json.dumps(report, indent=2) + "\n", encoding="utf-8"
