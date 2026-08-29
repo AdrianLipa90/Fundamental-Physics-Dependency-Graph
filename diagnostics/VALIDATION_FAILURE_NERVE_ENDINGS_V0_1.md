@@ -22,6 +22,8 @@ source validator/test
    -> FPDG minimal failing frontier
    -> exact entry/exit dependency seam
    -> downstream REVALIDATION_REQUIRED
+   -> mandatory promoted-path bottlenecks
+   -> deterministic first probe
    -> incident signature
    -> GREMLIN candidate recurrence search
 ```
@@ -50,6 +52,8 @@ interface_id
 
 The FPDG adapter never infers a line, symbol or equation from a claim name. A validator that knows only the claim produces claim-level localization. A validator that records an equation and line range permits source-range localization.
 
+A source-side test runner may legitimately report the failing **test** path/line while binding the failure to a scientific `claim_id`. The scientific derivation source remains a separate provenance reference. This prevents a test-line coordinate from being misreported as a derivation-line coordinate.
+
 ## End-to-end command
 
 ```text
@@ -63,6 +67,8 @@ VALIDATION_INCONSISTENCY_EVIDENCE.json
 INCONSISTENCY_DIAGNOSIS.json
 PAIN_SEAM_REPORT.json
 PAIN_MICRO_COORDINATES.json
+DIAGNOSTIC_BOTTLENECKS.json
+DIAGNOSTIC_PROBE_PLAN.json
 PAIN_SIGNATURE.json
 PAIN_SIGNATURE_MATCHES.json
 GREMLIN_PAIN_PACKET.json
@@ -71,6 +77,21 @@ VALIDATION_PAIN_SUMMARY.json
 ```
 
 The resulting GREMLIN packet contains deterministic evidence coordinates and recurrence candidates only. It remains `CHYBA / CANDIDATE_ONLY`, with no runtime or canon-write authority. Canonical KAKU resolution, explicit cross-domain alignment and one exact 36D basis remain mandatory before PNCS lowering.
+
+## First source-side producer: RFC
+
+`AdrianLipa90/Relational-Field-Closure` PR #70 implements the first live producer:
+
+```text
+RFC reference pytest suite
+ -> explicit RFC test-to-FPDG-claim binding table
+ -> FPDG_VALIDATION_FAILURE_RECEIPT_V0_1 on failure
+ -> Actions artifact: fpdg-validation-failure-receipt
+```
+
+The binding table currently covers RF-E8 through RF-E20. Exact pytest-observed test/path/line coordinates are carried in `source_locator`; scientific claim sources and existing RFC validation receipts are carried as evidence references.
+
+The first instrumented hosted run (#325) exposed a wrapper import-path regression (`ModuleNotFoundError: src`) before reference tests could execute. That run also demonstrated a missing collection-failure receipt hook, so no artifact was produced. Both defects were repaired: the wrapper now preserves repository-root import semantics and records pytest collection failures. The subsequent hosted run (#327) executed the complete reference suite successfully: **1049 passed**. The instrumentation therefore preserves the existing green suite while remaining armed to emit a receipt on a future failure.
 
 ## Example
 
