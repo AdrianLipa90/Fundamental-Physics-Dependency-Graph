@@ -19,6 +19,13 @@ producers:
       - RFC.E5.CARRIER_ENERGY
       - RFC.E6.LORENTZIAN_ACTION
       - RFC.E7.SCALAR_T_DECOMPOSITION
+      - RFC.L1.LAMBDA_TARGET
+      - RFC.L2.LAMBDA_ACTION_STABILITY
+      - RFC.L3.INFORMATION_SCALAR_POTENTIAL
+      - RFC.L4.INFORMATION_CURVATURE_PULLBACK
+      - RFC.L4A.SHANNON_FISHER_NORMALIZATION
+      - RFC.L5.TEMPORAL_WAVE_KG_BRIDGE
+      - RFC.L5A.PREMETRIC_CALIBRATION
       - RFC.ADM.E8
       - RFC.ADM.E9
       - RFC.ADM.E10
@@ -34,9 +41,9 @@ producers:
       - RFC.E20.TETRA_CLOCK_MASS_SCALE
     mapped_interfaces: []
     latest_hosted_validation:
-      workflow_run_number: 343
+      workflow_run_number: 346
       status: SUCCESS
-      tests_passed: 1054
+      tests_passed: 1055
     precision_contract:
       test_coordinate: EXACT_WHEN_PYTEST_SUPPLIES
       scientific_claim_binding: EXPLICIT_SOURCE_OWNED
