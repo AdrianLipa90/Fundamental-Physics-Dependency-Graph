@@ -1,0 +1,39 @@
+{
+  "schema": "FPDG_SOURCE_EXPORT_LOCK_V0_1",
+  "generated_at": "2026-08-29T18:41:30+01:00",
+  "sources": {
+    "TIR": {
+      "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+      "export_commit": "b2fae10d322018920fa0933087aebe9f0cc3c64a",
+      "source_commit": "ccc89fc06bdf42c1937c0a2303d3e477db487e0f",
+      "path": "DEPENDENCY_EXPORT.json",
+      "pull_request": 107
+    },
+    "IDT": {
+      "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
+      "export_commit": "fe1d9b41d2dc5196900a66164ae2d3cc59b3aea6",
+      "source_commit": "ed902458b6e0ad338ca4ba637d8d8228bc7c549b",
+      "path": "DEPENDENCY_EXPORT.json",
+      "pull_request": 69
+    },
+    "RFC": {
+      "repository": "AdrianLipa90/Relational-Field-Closure",
+      "export_commit": "7dd171f90c273d6b9c8158450b57007042f15d5f",
+      "source_commit": "8073b0f6648b5d9c81f7561f5c1a56c266ea6890",
+      "path": "DEPENDENCY_EXPORT.json",
+      "pull_request": 64
+    },
+    "SOH": {
+      "repository": "AdrianLipa90/secret-of-a-half",
+      "export_commit": "0d0ffa1765381cc644aadb03c453d9ac6dbe7ea3",
+      "source_commit": "19b9820165cb46f441d006e0ff6e94f8c08f37b8",
+      "path": "DEPENDENCY_EXPORT.json",
+      "pull_request": 69
+    }
+  },
+  "authority": {
+    "source_claims_and_local_edges": "source_repository",
+    "cross_repository_edges": "Fundamental-Physics-Dependency-Graph",
+    "candidate_promotion_by_export": false
+  }
+}
