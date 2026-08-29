@@ -64,8 +64,27 @@ def seam_index(seam_report: dict[str, Any] | None) -> dict[str, dict[str, Any]]:
     }
 
 
+def validate_signature(value: dict[str, Any] | None) -> dict[str, Any] | None:
+    if value is None:
+        return None
+    if value.get("schema") != "FPDG_PAIN_SIGNATURE_V0_1":
+        raise PacketError(f"unsupported pain signature schema {value.get('schema')!r}")
+    return value
+
+
+def validate_matches(value: dict[str, Any] | None) -> dict[str, Any] | None:
+    if value is None:
+        return None
+    if value.get("schema") != "FPDG_PAIN_SIGNATURE_MATCHES_V0_1":
+        raise PacketError(f"unsupported pain match schema {value.get('schema')!r}")
+    return value
+
+
 def build_packet(
-    diagnosis: dict[str, Any], seam_report: dict[str, Any] | None = None
+    diagnosis: dict[str, Any],
+    seam_report: dict[str, Any] | None = None,
+    pain_signature: dict[str, Any] | None = None,
+    pain_matches: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     zones = []
     integration_zones = []
@@ -73,6 +92,8 @@ def build_packet(
         row["observation_id"]: row for row in diagnosis.get("observations", [])
     }
     seams_by_frontier = seam_index(seam_report)
+    pain_signature = validate_signature(pain_signature)
+    pain_matches = validate_matches(pain_matches)
 
     for index, zone in enumerate(diagnosis.get("pain_zones", []), 1):
         frontier = zone["frontier_claim"]
@@ -195,6 +216,8 @@ def build_packet(
         },
         "diagnosis_status": diagnosis.get("status"),
         "localization_mode": diagnosis.get("localization_mode"),
+        "incident_signature": pain_signature,
+        "incident_recurrence_candidates": pain_matches,
         "zones": zones,
         "integration_zones": integration_zones,
     }
@@ -204,13 +227,17 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("diagnosis", type=Path, help="FPDG_INCONSISTENCY_DIAGNOSIS_V0_1 JSON")
     parser.add_argument("--seams", type=Path, help="optional FPDG_PAIN_SEAM_REPORT_V0_1 JSON")
+    parser.add_argument("--signature", type=Path, help="optional FPDG_PAIN_SIGNATURE_V0_1 JSON")
+    parser.add_argument("--matches", type=Path, help="optional FPDG_PAIN_SIGNATURE_MATCHES_V0_1 JSON")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
 
     try:
         diagnosis = load_diagnosis(args.diagnosis)
         seam_report = load_json(args.seams) if args.seams else None
-        packet = build_packet(diagnosis, seam_report)
+        signature = load_json(args.signature) if args.signature else None
+        matches = load_json(args.matches) if args.matches else None
+        packet = build_packet(diagnosis, seam_report, signature, matches)
         BUILD_DIR.mkdir(exist_ok=True)
         output = BUILD_DIR / "GREMLIN_PAIN_PACKET.json"
         output.write_text(json.dumps(packet, indent=2) + "\n", encoding="utf-8")
