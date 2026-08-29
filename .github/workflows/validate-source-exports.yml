@@ -1,0 +1,32 @@
+name: Validate Locked Source Exports
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - 'feat/**'
+
+jobs:
+  source-export-reconciliation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install --disable-pip-version-check pyyaml
+      - name: Check upstream source freshness
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/check_upstream_heads.py
+      - name: Fetch exact locked exports
+        run: python tools/fetch_locked_exports.py --out .source_exports
+      - name: Reconcile all source-local surfaces
+        run: >-
+          python tools/import_exports.py --require-all --summary-json
+          .source_exports/TIR.json
+          .source_exports/IDT.json
+          .source_exports/RFC.json
+          .source_exports/SOH.json

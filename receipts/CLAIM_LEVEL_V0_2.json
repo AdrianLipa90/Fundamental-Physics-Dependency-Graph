@@ -1,0 +1,52 @@
+{
+  "schema": "FPDG_CLAIM_LEVEL_EXPANSION_RECEIPT_V0_2",
+  "date": "2026-08-29",
+  "status": "PASS_HOSTED_CI",
+  "branch": "feat/canonical-fundamental-dag-v0.1",
+  "validated_head": "264467b7d170401211177eb9aa22f7171160acdd",
+  "hosted_ci": {
+    "workflow": "Validate Fundamental Dependency DAG",
+    "run_id": 33264430248,
+    "run_number": 19,
+    "conclusion": "success"
+  },
+  "graph_counts": {
+    "nodes": 74,
+    "edges": 74,
+    "cross_repo_edges": 9,
+    "candidate_edges": 4
+  },
+  "source_snapshots": {
+    "TIR": {
+      "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+      "path": "TIR/CURRENT_STATUS.md",
+      "source_modified": "2026-08-29T09:37:00Z"
+    },
+    "IDT": {
+      "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
+      "path": "CURRENT_STATUS.md",
+      "source_modified": "2026-08-28T19:59:33Z",
+      "retrodiction_07U_validation": "run_33205507810_551_of_551",
+      "retrodiction_07U_merge": "f6ccb49cecbe9da9beb91f29b1c7bbc9e15283f3"
+    },
+    "RFC": {
+      "repository": "AdrianLipa90/Relational-Field-Closure",
+      "path": "formalism/DEPENDENCY_GRAPH.md",
+      "source_modified": "2026-08-29T11:08:43Z",
+      "status": "ACTION_LEVEL_ADM_SPINE_CLOSED_THROUGH_RF_E13"
+    },
+    "SOH": {
+      "repository": "AdrianLipa90/secret-of-a-half",
+      "path": "research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json",
+      "source_modified": "2026-08-29T10:22:30Z",
+      "status": "CANDIDATE_ONLY",
+      "epistemic": "CHYBA"
+    }
+  },
+  "gremlin_authority": {
+    "runtime_execution_authority": false,
+    "canon_write_authority": false,
+    "promotion_state": "CANDIDATE_ONLY"
+  },
+  "promotion": "READY_FOR_REVIEW_NOT_MERGED"
+}

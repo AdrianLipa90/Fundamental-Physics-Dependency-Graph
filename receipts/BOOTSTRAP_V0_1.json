@@ -1,0 +1,41 @@
+{
+  "schema": "FPDG_BOOTSTRAP_RECEIPT_V0_1",
+  "date": "2026-08-29",
+  "status": "BOOTSTRAP_BRANCH_CREATED",
+  "branch": "feat/canonical-fundamental-dag-v0.1",
+  "source_snapshots": {
+    "TIR_CURRENT_STATUS": {
+      "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+      "path": "TIR/CURRENT_STATUS.md",
+      "blob_sha": "6308583ae24b78e0ffb1b39c0e4b4854934802d3"
+    },
+    "TIR_FOUR_REPO_INTEGRATION_RECEIPT": {
+      "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+      "path": "TIR/integration/TOE_FOUR_REPO_MAIN_INTEGRATION_RECEIPT_2026-08-29.json",
+      "blob_sha": "d9a6b759263d2c137204c7529a0e692b72ade82f"
+    },
+    "RFC_DEPENDENCY_GRAPH": {
+      "repository": "AdrianLipa90/Relational-Field-Closure",
+      "path": "formalism/DEPENDENCY_GRAPH.md",
+      "blob_sha": "da65c95b2b0579495d6032e0cc97b9369091446d",
+      "status": "CURRENT_FRONTIER / ACTION_LEVEL_ADM_SPINE_CLOSED_THROUGH_RF_E13"
+    }
+  },
+  "gremlin_authority": {
+    "runtime_execution_authority": false,
+    "canon_write_authority": false,
+    "promotion_state": "CANDIDATE_ONLY",
+    "epistemic": "CHYBA"
+  },
+  "bootstrap_contents": [
+    "repos.yaml",
+    "dependency_graph.yaml",
+    "claims.jsonl",
+    "interfaces/cross_repo_interfaces.yaml",
+    "gates/PROMOTION_POLICY.md",
+    "DEPENDENCY_GRAPH.md",
+    "tools/validate_dag.py",
+    ".github/workflows/validate-dag.yml"
+  ],
+  "promotion": "PENDING_PULL_REQUEST_VALIDATION"
+}
