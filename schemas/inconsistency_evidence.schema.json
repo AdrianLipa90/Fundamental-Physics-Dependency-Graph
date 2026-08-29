@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/fpdg/inconsistency_evidence.schema.json",
+  "title": "FPDG inconsistency evidence v0.1",
+  "type": "object",
+  "required": ["schema", "observations"],
+  "properties": {
+    "schema": {"const": "FPDG_INCONSISTENCY_EVIDENCE_V0_1"},
+    "incident_id": {"type": "string", "minLength": 1},
+    "observations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["observation_id", "kind"],
+        "properties": {
+          "observation_id": {"type": "string", "minLength": 1},
+          "kind": {
+            "type": "string",
+            "enum": [
+              "STATUS_DRIFT",
+              "MISSING_CLAIM",
+              "EXTRA_CLAIM",
+              "MISSING_EDGE",
+              "EXTRA_EDGE",
+              "SOURCE_PATH_DRIFT",
+              "VALIDATOR_FAILURE",
+              "RECEIPT_FAILURE",
+              "CROSS_REPO_CONTRACT_FAILURE",
+              "SOURCE_HEAD_DRIFT",
+              "OTHER"
+            ]
+          },
+          "repository": {"type": "string"},
+          "claim_id": {"type": "string"},
+          "source_path": {"type": "string"},
+          "edge": {
+            "type": "object",
+            "required": ["from", "to"],
+            "properties": {
+              "from": {"type": "string"},
+              "to": {"type": "string"},
+              "authority": {"type": "string"}
+            },
+            "additionalProperties": true
+          },
+          "expected": {},
+          "observed": {},
+          "evidence_refs": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
