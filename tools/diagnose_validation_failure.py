@@ -102,9 +102,9 @@ def main() -> int:
             if isinstance(zone.get("first_probe"), dict)
         ]
         first_probes.extend(
-            row["first_probe"]
-            for row in plan.get("integration_zones", [])
-            if isinstance(row.get("first_probe"), dict)
+            row
+            for row in plan.get("integration_probes", [])
+            if isinstance(row, dict)
         )
         summary = {
             "schema": "FPDG_VALIDATION_PAIN_SUMMARY_V0_1",
