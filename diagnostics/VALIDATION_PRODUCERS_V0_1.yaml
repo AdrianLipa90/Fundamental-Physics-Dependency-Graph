@@ -11,6 +11,10 @@ producers:
     workflow: .github/workflows/reference-suite.yml
     artifact: fpdg-validation-failure-receipt
     mapped_claims:
+      - RFC.SOURCE.CONSERVED_CARRIER
+      - RFC.N1B2K.CURRENT_MEASURE
+      - RFC.N1B2O.MATTER_SOURCE_FACTORIZATION
+      - RFC.N1B2P.MAXWELL_INTERTWINER
       - RFC.ADM.E8
       - RFC.ADM.E9
       - RFC.ADM.E10
@@ -26,9 +30,9 @@ producers:
       - RFC.E20.TETRA_CLOCK_MASS_SCALE
     mapped_interfaces: []
     latest_hosted_validation:
-      workflow_run_number: 328
+      workflow_run_number: 337
       status: SUCCESS
-      tests_passed: 1051
+      tests_passed: 1053
     precision_contract:
       test_coordinate: EXACT_WHEN_PYTEST_SUPPLIES
       scientific_claim_binding: EXPLICIT_SOURCE_OWNED
@@ -58,9 +62,9 @@ producers:
     mapped_interfaces:
       - IFACE.IDT_TO_RFC.NOETHER_SOURCE
     latest_hosted_validation:
-      workflow_run_number: 904
+      workflow_run_number: 908
       status: SUCCESS
-      tests_passed: 866
+      tests_passed: 868
     precision_contract:
       test_coordinate: EXACT_WHEN_PYTEST_SUPPLIES
       scientific_claim_binding: EXPLICIT_SOURCE_OWNED
