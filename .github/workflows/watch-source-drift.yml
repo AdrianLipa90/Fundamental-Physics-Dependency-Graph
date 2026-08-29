@@ -11,10 +11,12 @@ on:
       - 'dependency_graph.yaml'
       - 'tools/watch_source_drift.py'
       - 'tools/diagnose_source_drift.py'
+      - 'tools/diff_dependency_export.py'
       - 'tools/diagnose_inconsistency.py'
       - 'tools/build_gremlin_pain_packet.py'
       - 'tests/test_source_drift.py'
       - 'tests/test_diagnose_inconsistency.py'
+      - 'tests/test_dependency_export_diff.py'
       - '.github/workflows/watch-source-drift.yml'
   push:
     branches:
@@ -26,10 +28,12 @@ on:
       - 'dependency_graph.yaml'
       - 'tools/watch_source_drift.py'
       - 'tools/diagnose_source_drift.py'
+      - 'tools/diff_dependency_export.py'
       - 'tools/diagnose_inconsistency.py'
       - 'tools/build_gremlin_pain_packet.py'
       - 'tests/test_source_drift.py'
       - 'tests/test_diagnose_inconsistency.py'
+      - 'tests/test_dependency_export_diff.py'
       - '.github/workflows/watch-source-drift.yml'
 
 permissions:
@@ -45,12 +49,14 @@ jobs:
           python-version: '3.12'
       - name: Install dependency
         run: python -m pip install --disable-pip-version-check pyyaml
-      - name: Compute source drift and promoted blast radius
+      - name: Compute source drift and provisional promoted blast radius
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python tools/watch_source_drift.py --fail-on-drift --json
       - name: Localize exact pain frontier and prepare GREMLIN packet
         if: always()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: python tools/diagnose_source_drift.py --json
       - name: Publish drift and diagnosis to job summary
         if: always()
@@ -70,6 +76,7 @@ jobs:
           path: |
             build/SOURCE_DRIFT_REPORT.json
             build/SOURCE_DRIFT_REPORT.md
+            build/DEPENDENCY_EXPORT_SEMANTIC_DIFF.json
             build/INCONSISTENCY_EVIDENCE.json
             build/INCONSISTENCY_DIAGNOSIS.json
             build/INCONSISTENCY_DIAGNOSIS.md
