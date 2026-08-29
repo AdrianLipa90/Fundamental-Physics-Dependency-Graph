@@ -2,9 +2,10 @@
 """Run the full exact-pain stack from a source-side validation failure receipt.
 
 Pipeline:
-validation failure receipt -> FPDG evidence -> claim frontier -> dependency/interface
-seams -> micro coordinates -> graph bottlenecks -> deterministic probe order ->
-repository-agnostic pain signature -> incident retrieval -> GREMLIN candidate packet.
+validation failure receipt -> FPDG evidence -> claim frontier and/or exact interface
+coordinate -> dependency/interface seams -> micro coordinates -> graph bottlenecks ->
+deterministic probe order -> repository-agnostic pain signature -> incident retrieval ->
+GREMLIN candidate packet.
 """
 
 from __future__ import annotations
@@ -25,6 +26,7 @@ from build_pain_signature import SignatureError, build_signature  # noqa: E402
 from diagnose_inconsistency import DiagnosisError, diagnose, load_claims, load_graph, render_markdown  # noqa: E402
 from enrich_gremlin_pain_packet_with_micro import MicroPacketError, enrich  # noqa: E402
 from ingest_validation_failure import ReceiptError, load_json, receipt_to_evidence  # noqa: E402
+from localize_interface_evidence import InterfaceEvidenceError, enrich_interface_diagnosis  # noqa: E402
 from localize_interface_seams import (  # noqa: E402
     GRAPH_PATH as SEAM_GRAPH_PATH,
     INTERFACES_PATH as SEAM_INTERFACES_PATH,
@@ -51,7 +53,7 @@ def main() -> int:
         evidence = receipt_to_evidence(load_json(args.receipt))
         claims = load_claims(ROOT / "claims.jsonl")
         graph = load_graph()
-        diagnosis = diagnose(graph, claims, evidence)
+        diagnosis = enrich_interface_diagnosis(diagnose(graph, claims, evidence), evidence)
         seams = localize_seams(
             diagnosis,
             load_seam_yaml(SEAM_GRAPH_PATH),
@@ -99,11 +101,17 @@ def main() -> int:
             for zone in plan.get("zones", [])
             if isinstance(zone.get("first_probe"), dict)
         ]
+        first_probes.extend(
+            row["first_probe"]
+            for row in plan.get("integration_zones", [])
+            if isinstance(row.get("first_probe"), dict)
+        )
         summary = {
             "schema": "FPDG_VALIDATION_PAIN_SUMMARY_V0_1",
             "status": diagnosis["status"],
             "localization_mode": diagnosis["localization_mode"],
             "minimal_failing_frontier": diagnosis["minimal_failing_frontier"],
+            "interface_pain_points": diagnosis.get("integration_pain_points", []),
             "seam_status": seams["status"],
             "finest_micro_precision": micro["finest_precision"],
             "first_deterministic_probes": first_probes,
@@ -125,6 +133,7 @@ def main() -> int:
             probe_ids = [row.get("probe_id") for row in first_probes]
             print(
                 f"{summary['status']}: frontier={summary['minimal_failing_frontier']} "
+                f"interfaces={len(summary['interface_pain_points'])} "
                 f"finest={summary['finest_micro_precision']} first_probes={probe_ids} "
                 f"matches={summary['incident_match_count']}"
             )
@@ -134,6 +143,7 @@ def main() -> int:
         json.JSONDecodeError,
         ReceiptError,
         DiagnosisError,
+        InterfaceEvidenceError,
         SeamError,
         MicroLocalizationError,
         BottleneckError,
