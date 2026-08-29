@@ -46,13 +46,14 @@ TIR.TIME_JOIN
 
 IDT Temporal Primitive
   -> gauge-covariant Noether source
-  -> RFC conserved source / matter / Lorentzian / information-curvature spine
-  -> RFC L5/L5A
-  -> [IDT Gamma_t + TIR spatial carrier]
-  -> RFC E8 -> E9 -> E10 -> E11 -> E12 -> E13
-       |                                  |
-       |                                  +-> physical scale/coupling frontier
-       +------------------------------------> IDT relativistic bridge -> Einstein Closure
+  -> RFC conserved source / RF-M1/RF-E0 bridge surface
+       |-> IDT relativistic bridge -> Einstein Closure
+       +-> RFC matter / Lorentzian / information-curvature spine
+            -> RFC L5/L5A
+            -> [IDT Gamma_t + TIR spatial carrier]
+            -> RFC E8 -> E9 -> E10 -> E11 -> E12 -> E13
+                                             |
+                                             +-> physical scale/coupling frontier
 
 RFC parallel coupling spine
 YM/BCJ -> 4pt DC -> 5pt KLT -> RFG29 -> ... -> RFG34
@@ -62,6 +63,8 @@ SOH candidate surfaces
 XFI.03 / XFI.28.02 / XFI.28.03 --CANDIDATE_ONLY--> IDT half/NOW interfaces
 TIR negative-inverse bridge --CANDIDATE_ONLY--> SOH Li/Weil native closure
 ```
+
+The relativistic IDT↔RFC bridge is anchored to the hardened `IDT-01AC -> IDT-01AG -> RF-M1 -> RF-E0 -> EINSTEIN_CLOSURE` chain. It is kept distinct from the later RFC ADM `E8 -> ... -> E13` action-level spine.
 
 ## Canonical files
 
