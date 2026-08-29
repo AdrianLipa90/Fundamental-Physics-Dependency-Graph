@@ -98,4 +98,6 @@ explicit claim_id -> grammar atom mapping
 -> READ_ONLY candidate program
 ```
 
+The PNCS ingress implementation is currently proposed on PR #54. Its code-level contract is wired, but its hosted GitHub Actions runs have so far terminated before any job step was executed, so FPDG does not treat those hosted runs as validator evidence yet.
+
 All GREMLIN-derived explanation candidates remain `CHYBA / CANDIDATE_ONLY` until source-side validation and promotion gates pass.
