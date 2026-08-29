@@ -1,71 +1,149 @@
 # Fundamental Physics — Cross-Repository Dependency Graph
 
-Status: `BOOTSTRAP_V0_1 / CANONICAL_CROSS_REPO_BASELINE`
+Status: `V0_2 / ACTIVE_CLAIM_LEVEL_BASELINE`
+
+The machine-readable authority is `dependency_graph.yaml`. This document is its human-readable projection.
+
+## 1. TIR primitive and spatial spine
 
 ```text
-TIR.FOUNDATION.C2
-  -> TIR.SPACE.LOCAL_R3
-  -> TIR.SPACE.TETRAHEDRON
-  -> TIR.HOLONOMY.WIJ
-       -> TIR.GLOBAL_GLUING                         GREMLIN_CANDIDATE_SEARCH
-       -> TIR.STANDARD_MODEL                       ACTIVE_RECONCILIATION
-
-IDT.CLOCK.GAMMA_T                                  CROSS_REPO_PASS
-  -> RFC.ADM.E8                                    PASS
-       -> RFC.ADM.E9                               PASS
-       -> RFC.ADM.E10                              PASS
-       -> RFC.ADM.E11                              PASS
-       -> RFC.ADM.E12                              PASS
-       -> RFC.ADM.E13                              PASS / MAIN
-       -> RFC.PHYSICAL_SCALE_COUPLING              ACTIVE_FRONTIER
-
-TIR.SPACE.LOCAL_R3
-  -> RFC.ADM.E8
-     [physical spatial Gamma_x / cell-width remains a calibration gate]
-
-SOH.HALF.CROSSLINKS                                CANDIDATE_ONLY
-  - - -> TIR.FOUNDATION.C2                         PROMOTION_REQUIRED
-
-SOH.LI_WEIL.NATIVE_CLOSURE                         OPEN_FRONTIER
+TIR.PRIMITIVE.ZERO
+ -> TIR.PRIMITIVE.POINT
+ -> TIR.PRIMITIVE.FIRST_DISTINCTION
+ -> TIR.PRIMITIVE.POLES_NS
+ -> TIR.FOUNDATION.HALF
+ -> TIR.FOUNDATION.LN2
+ -> TIR.FOUNDATION.C2
+ -> TIR.SPACE.DENSITY_CARRIER
+ -> TIR.SPACE.A2
+ -> TIR.SPACE.RELATIONAL_DISTANCE
+ -> TIR.SPACE.LOCAL_R3
+      |-> TIR.SPACE.PYTHAGOREAN
+      +-> TIR.SPACE.TETRAHEDRON
+           -> TIR.HOLONOMY.WIJ
+                |-> TIR.GLOBAL_GLUING
+                |-> TIR.TORSION
+                +-> TIR.STANDARD_MODEL
 ```
 
-## Source anchors
+The half/ln2 branch also feeds `TIR.KAPPA.NORMALIZATION`. `TIR.FOUNDATION.C2` feeds the sibling temporal interface `TIR.TIME_JOIN`.
 
-TIR source status records the foundational spine
+## 2. IDT temporal spine
 
 ```text
-0 -> P -> FIRST DISTINCTION -> {N,S} -> 1/2 -> ln2 -> C^2
+TIR.TIME_JOIN
+ -> IDT.TEMPORAL.PRIMITIVE
+ -> IDT.TEMPORAL.WAVE
+ -> IDT.NOW
+ -> IDT.BIFURCATION
+ -> IDT.TEMPORAL.TRANSPORT
+ -> IDT.MEMORY
+ -> IDT.ORCHORBITAL
+ -> IDT.RETRODICTION
+ -> IDT.RETROCAUSAL_TESTS
+ -> IDT.EINSTEIN.CLOSURE
 ```
 
-and the local spatial continuation
+The parallel relativistic prerequisite begins at the same temporal primitive:
 
 ```text
-C^2 -> rho_x -> A_2 -> delta(rho_x,rho_y) -> Herm_0(2) ~= R^3
+IDT.TEMPORAL.PRIMITIVE
+ -> IDT.NOETHER.GAUGE_COVARIANT_SOURCE
+ -> RFC.SOURCE.CONSERVED_CARRIER
+ -> ...
+ -> RFC.ADM.E13
+ -> IDT.RELATIVISTIC.FIELD_BRIDGE
+ -> IDT.EINSTEIN.CLOSURE
 ```
 
-with the Euclidean and tetrahedral branches downstream.
+`IDT.TEMPORAL.WAVE -> IDT.CLOCK.GAMMA_T`, and the promoted material clock calibration feeds the RFC ADM assembly.
 
-RFC source status records the action-level ADM chain through RF-E13 and keeps physical carrier/scale/coupling promotion as the active downstream frontier. The same source records the promoted IDT temporal calibration
+## 3. RFC field/action/ADM spine
 
 ```text
-Gamma_t = T_r * a_r
-Gamma_tau,x|r = T_r * a_x = N_R * Gamma_t
+RFC.SOURCE.CONSERVED_CARRIER
+ -> RFC.N1B2K.CURRENT_MEASURE
+ -> RFC.N1B2O.MATTER_SOURCE_FACTORIZATION
+ -> RFC.N1B2P.MAXWELL_INTERTWINER
+ -> RFC.E4.PHASE_STRESS_ENERGY
+ -> RFC.E5.CARRIER_ENERGY
+ -> RFC.E6.LORENTZIAN_ACTION
+ -> RFC.E7.SCALAR_T_DECOMPOSITION
+ -> RFC.MATTER.SCALAR_TMN
+ -> RFC.L1.LAMBDA_TARGET
+ -> RFC.L2.LAMBDA_ACTION_STABILITY
+ -> RFC.L3.INFORMATION_SCALAR_POTENTIAL
+ -> RFC.L4.INFORMATION_CURVATURE_PULLBACK
+ -> RFC.L4A.SHANNON_FISHER_NORMALIZATION
+ -> RFC.L5.TEMPORAL_WAVE_KG_BRIDGE
+ -> RFC.L5A.PREMETRIC_CALIBRATION
+ -> RFC.ADM.E8
+ -> RFC.ADM.E9
+ -> RFC.ADM.E10
+ -> RFC.ADM.E11
+ -> RFC.ADM.E12
+ -> RFC.ADM.E13
+ -> RFC.PHYSICAL_SCALE_COUPLING
 ```
 
-while physical `Gamma_x` remains an upstream calibration gate.
+`RFC.ADM.E8` has two explicit cross-repository prerequisites in the graph:
 
-## Edge classes
+```text
+IDT.CLOCK.GAMMA_T -> RFC.ADM.E8
+TIR.SPACE.LOCAL_R3 -> RFC.ADM.E8
+```
 
-`CANONICAL` — intra-repository dependency explicitly promoted by the source.
+The second edge records the upstream spatial carrier while preserving the source-side `Gamma_x / cell-width` calibration frontier.
 
-`CANONICAL_CROSS_REPO` — cross-repository dependency stated by a source repository or promoted by an exact cross-repository validation receipt.
+## 4. RFC coupling spine
 
-`CANONICAL_FRONTIER` — promoted dependency leading into an active frontier.
+```text
+RFC.COUPLING.YM_BCJ
+ -> RFC.COUPLING.FOUR_POINT_DC
+ -> RFC.COUPLING.FIVE_POINT_KLT
+ -> RFC.COUPLING.RFG29
+ -> RFC.COUPLING.RFG30
+ -> RFC.COUPLING.RFG31
+ -> RFC.COUPLING.RFG32
+ -> RFC.COUPLING.RFG33
+ -> RFC.COUPLING.RFG34
+ -> RFC.COUPLING.RFG35
+ -> RFC.COUPLING.PHYSICAL_G
+ -> RFC.PHYSICAL_SCALE_COUPLING
+```
 
-`CANDIDATE_ONLY` — relational-isomorphism or discovery edge awaiting an explicit promotion gate.
+`RFG35` and physical `G` remain frontier/open states; they are represented as dependencies rather than promoted numerical physical constants.
 
-## Revalidation propagation
+## 5. SOH candidate overlay
 
-Promoted edges carry invalidation downstream. If an upstream promoted claim changes materially, every reachable promoted descendant is marked `REVALIDATION_REQUIRED` until its evidence gate passes against the new upstream state.
+The following edges are isolated from canonical invalidation propagation until their explicit promotion gates pass:
 
-Candidate-only edges remain isolated from canonical invalidation propagation until promotion.
+```text
+SOH.SU2.DOUBLE_COVER
+ - -XFI.03- -> IDT.HALF_SEAM.DOUBLE_COVER_SIGNATURE
+
+SOH.HALF.ZERO_ORDER_DOUBLING
+ - -XFI.28.02- -> IDT.HALF_SEAM.RELATIONAL_ZERO
+
+SOH.BLOCH.CENTERED_RAPIDITY
+ - -XFI.28.03- -> IDT.NOW.HYPERBOLIC_CHART
+
+TIR.SOH.NEGATIVE_INVERSE
+ - -candidate- -> SOH.LI_WEIL.NATIVE_CLOSURE
+```
+
+The first two require theorem/validator/receipt promotion. XFI.28.03 requires a domain/inverse/singular-boundary audit. The Li/Weil edge requires native closure to complete positivity.
+
+## 6. Edge authority
+
+`CANONICAL` means promoted intra-repository dependency.
+
+`CANONICAL_CROSS_REPO` means promoted cross-repository dependency supported by a source status/bridge/validation record.
+
+`CANONICAL_FRONTIER` means a promoted dependency into an explicitly open or active frontier.
+
+`CANDIDATE_ONLY` means discovery/relational-isomorphism state with no canon authority and an explicit promotion gate.
+
+## 7. Revalidation propagation
+
+A material upstream change propagates `REVALIDATION_REQUIRED` through every reachable promoted descendant. Candidate-only edges remain excluded until promotion.
