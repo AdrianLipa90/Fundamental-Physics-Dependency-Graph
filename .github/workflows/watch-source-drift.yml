@@ -10,16 +10,20 @@ on:
       - 'claims.jsonl'
       - 'dependency_graph.yaml'
       - 'interfaces/cross_repo_interfaces.yaml'
+      - 'diagnostics/incidents/**'
       - 'tools/watch_source_drift.py'
       - 'tools/diagnose_source_drift.py'
       - 'tools/diff_dependency_export.py'
       - 'tools/diagnose_inconsistency.py'
       - 'tools/localize_interface_seams.py'
+      - 'tools/build_pain_signature.py'
+      - 'tools/match_pain_signatures.py'
       - 'tools/build_gremlin_pain_packet.py'
       - 'tests/test_source_drift.py'
       - 'tests/test_diagnose_inconsistency.py'
       - 'tests/test_dependency_export_diff.py'
       - 'tests/test_localize_interface_seams.py'
+      - 'tests/test_pain_signatures.py'
       - '.github/workflows/watch-source-drift.yml'
   push:
     branches:
@@ -30,16 +34,20 @@ on:
       - 'claims.jsonl'
       - 'dependency_graph.yaml'
       - 'interfaces/cross_repo_interfaces.yaml'
+      - 'diagnostics/incidents/**'
       - 'tools/watch_source_drift.py'
       - 'tools/diagnose_source_drift.py'
       - 'tools/diff_dependency_export.py'
       - 'tools/diagnose_inconsistency.py'
       - 'tools/localize_interface_seams.py'
+      - 'tools/build_pain_signature.py'
+      - 'tools/match_pain_signatures.py'
       - 'tools/build_gremlin_pain_packet.py'
       - 'tests/test_source_drift.py'
       - 'tests/test_diagnose_inconsistency.py'
       - 'tests/test_dependency_export_diff.py'
       - 'tests/test_localize_interface_seams.py'
+      - 'tests/test_pain_signatures.py'
       - '.github/workflows/watch-source-drift.yml'
 
 permissions:
@@ -59,7 +67,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python tools/watch_source_drift.py --fail-on-drift --json
-      - name: Localize exact pain frontier, seams, and prepare GREMLIN packet
+      - name: Localize exact pain, build signature memory query, and prepare GREMLIN packet
         if: always()
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -92,5 +100,7 @@ jobs:
             build/INCONSISTENCY_DIAGNOSIS.md
             build/PAIN_SEAM_REPORT.json
             build/PAIN_SEAM_REPORT.md
+            build/PAIN_SIGNATURE.json
+            build/PAIN_SIGNATURE_MATCHES.json
             build/GREMLIN_PAIN_PACKET.json
           if-no-files-found: warn
