@@ -1,19 +1,19 @@
 schema: FPDG_SOURCE_HEADS_V0_1
-captured_at: '2026-08-29T18:59:00+01:00'
+captured_at: '2026-08-30T23:50:00+01:00'
 sources:
   TIR:
     repository: AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations
-    commit: ccc89fc06bdf42c1937c0a2303d3e477db487e0f
-    note: main; tetrahedral congruence-class closure merged
+    commit: 15b76e13e258c6b46a6d4f98c48687dce9f52e03
+    note: post-merge scientific source state represented by locked dependency export
   IDT:
     repository: AdrianLipa90/Informational-Dynamics-of-Time
-    commit: ed902458b6e0ad338ca4ba637d8d8228bc7c549b
-    note: main; includes 05D local-clock relative-entropy source and 01AJ-01AM bridge state
+    commit: ceb3d74b581fc2445c3fad2474a7506a76b588fa
+    note: post-merge scientific source state represented by locked dependency export
   RFC:
     repository: AdrianLipa90/Relational-Field-Closure
-    commit: a522484a1751bd348520cba50f31efe1eb04bc32
-    note: main; RF-E14-RF-E20 information-clock/material-congruence branch present through RF-E20 compatibility merge
+    commit: 5bb01438a44a68b0d747a3d1f9114aa648bd7395
+    note: post-merge scientific source state represented by locked dependency export
   SOH:
     repository: AdrianLipa90/secret-of-a-half
     commit: 19b9820165cb46f441d006e0ff6e94f8c08f37b8
-    note: main; GREMLIN dependency promotion manifest v0.1
+    note: post-merge scientific source state represented by locked dependency export

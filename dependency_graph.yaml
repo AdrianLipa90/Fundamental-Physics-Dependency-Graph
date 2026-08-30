@@ -1,5 +1,5 @@
-schema: FPDG_CANONICAL_DEPENDENCY_GRAPH_V0_3
-status: ACTIVE_CLAIM_LEVEL_FEDERATED_BASELINE
+schema: FPDG_CANONICAL_DEPENDENCY_GRAPH_V0_4
+status: ACTIVE_CLAIM_LEVEL_FEDERATED_BASELINE_2026_08_30
 graph_semantics:
   direction: upstream_to_downstream
   node_key: claim_id
@@ -7,627 +7,326 @@ graph_semantics:
   source_claim_authority: source_repository
   cross_repo_dependency_authority: this_repository
   candidate_edges_enter_canon: false
+  gremlin_role: candidate_generation_and_dependency_audit_only
+  deterministic_validator_authority: true
+_edge_defaults:
+  canonical: &CAN {authority: CANONICAL}
+  frontier: &FR {authority: CANONICAL_FRONTIER}
+  cross: &CR {authority: CANONICAL_CROSS_REPO}
+  candidate: &CD {authority: CANDIDATE_ONLY, promotion_required: true}
 nodes:
-- claim_id: TIR.PRIMITIVE.ZERO
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.PRIMITIVE.POINT
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.PRIMITIVE.FIRST_DISTINCTION
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.PRIMITIVE.POLES_NS
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.FOUNDATION.HALF
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.FOUNDATION.LN2
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.FOUNDATION.C2
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.SPACE.DENSITY_CARRIER
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.SPACE.A2
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.SPACE.RELATIONAL_DISTANCE
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.SPACE.LOCAL_R3
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.SPACE.PYTHAGOREAN
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.SPACE.TETRAHEDRON
-  repository: TIR
-  status: CLOSED
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.KAPPA.NORMALIZATION
-  repository: TIR
-  status: CLOSED_INTERNAL_DERIVATION
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.HOLONOMY.WIJ
-  repository: TIR
-  status: SOURCE_BOUND_CROSSWALK
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.GLOBAL_GLUING
-  repository: TIR
-  status: GREMLIN_CANDIDATE_SEARCH
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.TORSION
-  repository: TIR
-  status: UNIVERSAL_LOOP_SOURCE_BINDING
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.STANDARD_MODEL
-  repository: TIR
-  status: ACTIVE_RECONCILIATION
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.SOH.NEGATIVE_INVERSE
-  repository: TIR
-  status: LOCAL_CLOSED_GLOBAL_DOMINATION_CANDIDATE
-  source: TIR/CURRENT_STATUS.md
-- claim_id: TIR.TIME_JOIN
-  repository: TIR
-  status: SIBLING_INTERFACE
-  source: TIR/CURRENT_STATUS.md
-- claim_id: IDT.TEMPORAL.PRIMITIVE
-  repository: IDT
-  status: CANONICAL
-  source: CURRENT_STATUS.md
-- claim_id: IDT.TEMPORAL.WAVE
-  repository: IDT
-  status: CANONICAL
-  source: CURRENT_STATUS.md
-- claim_id: IDT.NOW
-  repository: IDT
-  status: CANONICAL
-  source: CURRENT_STATUS.md
-- claim_id: IDT.BIFURCATION
-  repository: IDT
-  status: CANONICAL
-  source: CURRENT_STATUS.md
-- claim_id: IDT.TEMPORAL.TRANSPORT
-  repository: IDT
-  status: CANONICAL
-  source: CURRENT_STATUS.md
-- claim_id: IDT.MEMORY
-  repository: IDT
-  status: HOSTED_FULL_SUITE_PASS
-  source: CURRENT_STATUS.md
-- claim_id: IDT.ORCHORBITAL
-  repository: IDT
-  status: HOSTED_FULL_SUITE_PASS
-  source: CURRENT_STATUS.md
-- claim_id: IDT.RETRODICTION
-  repository: IDT
-  status: ACTIVE_CONSTRUCTIVE_LAYER
-  source: CURRENT_STATUS.md
-- claim_id: IDT.RETROCAUSAL_TESTS
-  repository: IDT
-  status: DOWNSTREAM_TARGET
-  source: CURRENT_STATUS.md
-- claim_id: IDT.NOETHER.GAUGE_COVARIANT_SOURCE
-  repository: IDT
-  status: CANONICAL_RELATIVISTIC_PREREQUISITE
-  source: CURRENT_STATUS.md
-- claim_id: IDT.RELATIVISTIC.FIELD_BRIDGE
-  repository: IDT
-  status: CROSS_REPO_PREREQUISITE
-  source: CURRENT_STATUS.md
-- claim_id: IDT.EINSTEIN.CLOSURE
-  repository: IDT
-  status: JOINT_TARGET
-  source: CURRENT_STATUS.md
-- claim_id: IDT.CLOCK.GAMMA_T
-  repository: IDT
-  status: CROSS_REPO_PASS
-  source: CURRENT_STATUS.md
-- claim_id: IDT.CLOCK.RELATIVE_ENTROPY_05D
-  repository: IDT
-  status: "EXACT_CONDITIONAL_MEMORYLESS_CLOCK_REALIZATION / SHANNON_KL_GATE / NON_ENERGY_CARRIER"
-  source: formalism/05D_local_clock_relative_entropy_potential.md
-- claim_id: RFC.SOURCE.CONSERVED_CARRIER
-  repository: RFC
-  status: ADMITTED_SOURCE_INTERFACE
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.N1B2K.CURRENT_MEASURE
-  repository: RFC
-  status: ACTIVE_PHYSICAL_REALIZATION
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.N1B2O.MATTER_SOURCE_FACTORIZATION
-  repository: RFC
-  status: CANONICAL
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.N1B2P.MAXWELL_INTERTWINER
-  repository: RFC
-  status: CANONICAL
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.E4.PHASE_STRESS_ENERGY
-  repository: RFC
-  status: CANONICAL
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.E5.CARRIER_ENERGY
-  repository: RFC
-  status: CANONICAL
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.E6.LORENTZIAN_ACTION
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.E7.SCALAR_T_DECOMPOSITION
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.MATTER.SCALAR_TMN
-  repository: RFC
-  status: CLOSED
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.L1.LAMBDA_TARGET
-  repository: RFC
-  status: ADMITTED
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.L2.LAMBDA_ACTION_STABILITY
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.L3.INFORMATION_SCALAR_POTENTIAL
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.L4.INFORMATION_CURVATURE_PULLBACK
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.L4A.SHANNON_FISHER_NORMALIZATION
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.L5.TEMPORAL_WAVE_KG_BRIDGE
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.L5A.PREMETRIC_CALIBRATION
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.ADM.E8
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.ADM.E9
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.ADM.E10
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.ADM.E11
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.ADM.E12
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.ADM.E13
-  repository: RFC
-  status: PASS_MAIN
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.E14.DIRECTIONAL_RELATIVE_ENTROPY
-  repository: RFC
-  status: "EXACT_ADM_RECIPROCAL_RATIO / CONDITIONAL_IDT_PARENT / SCALE_UNFIXED"
-  source: closure/einstein/RF_E14_ADM_DIRECTIONAL_RELATIVE_ENTROPY_POTENTIAL.md
-- claim_id: RFC.E15.INFORMATION_LEGENDRE_HAMILTONIAN
-  repository: RFC
-  status: "LEGENDRE_TRANSFORM_EXACT / HAMILTONIAN_IDENTIFICATION_CONDITIONAL / DYNAMICAL_CARRIER_UNFIXED"
-  source: closure/einstein/RF_E15_INFORMATION_LEGENDRE_HAMILTONIAN_AUDIT.md
-- claim_id: RFC.E16.SHIFT_NOETHER_FIREWALL
-  repository: RFC
-  status: "ADM_SHIFT_TENSORIAL / NOETHER_SECTOR_TYPED / IDENTIFICATION_REJECTED"
-  source: closure/einstein/RF_E16_ADM_SHIFT_NOETHER_PHASE_ENERGY_BINDING.md
-- claim_id: RFC.E17.CLOCK_INFORMATION_SCALAR_ACTION
-  repository: RFC
-  status: "COVARIANT_ACTION_TEMPLATE / NORMALIZATION_CONDITIONAL / POTENTIAL_SHAPE_BOUND"
-  source: closure/einstein/RF_E17_CLOCK_INFORMATION_SCALAR_ACTION_POTENTIAL.md
-- claim_id: RFC.E18.PHYSICAL_VELOCITY_FIREWALL
-  repository: RFC
-  status: "SHIFT_GAUGE_TRANSFORMATION_EXACT / PHYSICAL_VELOCITY_CARRIER_BOUND / BETA_SHIFT_IDENTIFICATION_REJECTED"
-  source: closure/einstein/RF_E18_ADM_SHIFT_VELOCITY_GAUGE_FIREWALL.md
-- claim_id: RFC.E19.NOETHER_MATERIAL_CONGRUENCE
-  repository: RFC
-  status: "EXACT_TIMELIKE_CURRENT_DECOMPOSITION / MATERIAL_FLOW_BINDING_CONDITIONAL / BETA_PHYS_SOURCE_PASS_CONDITIONAL"
-  source: closure/einstein/RF_E19_NOETHER_CURRENT_MATERIAL_CONGRUENCE.md
-- claim_id: RFC.E20.TETRA_CLOCK_MASS_SCALE
-  repository: RFC
-  status: "TETRA_CLOCK_DIMENSIONAL_CLOSURE / MASS_FORMULA_EXACT_CONDITIONAL / SCALE_SOLVE_DEPENDENT"
-  source: closure/einstein/RF_E20_TETRA_CLOCK_MASS_SCALE_CLOSURE.md
-- claim_id: RFC.PHYSICAL_SCALE_COUPLING
-  repository: RFC
-  status: ACTIVE_FRONTIER
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.COUPLING.YM_BCJ
-  repository: RFC
-  status: CANONICAL_PARALLEL_LINE
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.COUPLING.FOUR_POINT_DC
-  repository: RFC
-  status: CANONICAL_PARALLEL_LINE
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.COUPLING.FIVE_POINT_KLT
-  repository: RFC
-  status: CANONICAL_PARALLEL_LINE
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.COUPLING.RFG29
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.COUPLING.RFG30
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.COUPLING.RFG31
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.COUPLING.RFG32
-  repository: RFC
-  status: FIREWALL
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.COUPLING.RFG33
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.COUPLING.RFG34
-  repository: RFC
-  status: PASS
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.COUPLING.RFG35
-  repository: RFC
-  status: NEXT_COUPLING_FRONTIER
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: RFC.COUPLING.PHYSICAL_G
-  repository: RFC
-  status: OPEN
-  source: formalism/DEPENDENCY_GRAPH.md
-- claim_id: SOH.SU2.DOUBLE_COVER
-  repository: SOH
-  status: CANDIDATE_SOURCE
-  source: research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json
-- claim_id: SOH.HALF.ZERO_ORDER_DOUBLING
-  repository: SOH
-  status: CANDIDATE_SOURCE
-  source: research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json
-- claim_id: SOH.BLOCH.CENTERED_RAPIDITY
-  repository: SOH
-  status: CANDIDATE_SOURCE
-  source: research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json
-- claim_id: SOH.LI_WEIL.NATIVE_CLOSURE
-  repository: SOH
-  status: OPEN_FRONTIER
-  source: research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json
-- claim_id: IDT.HALF_SEAM.DOUBLE_COVER_SIGNATURE
-  repository: IDT
-  status: CANDIDATE_TARGET
-  source: SOH/research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json
-- claim_id: IDT.HALF_SEAM.RELATIONAL_ZERO
-  repository: IDT
-  status: CANDIDATE_TARGET
-  source: SOH/research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json
-- claim_id: IDT.NOW.HYPERBOLIC_CHART
-  repository: IDT
-  status: CANDIDATE_TARGET
-  source: SOH/research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json
+- {claim_id: "TIR.PRIMITIVE.ZERO", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.PRIMITIVE.POINT", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.PRIMITIVE.FIRST_DISTINCTION", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.PRIMITIVE.POLES_NS", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.FOUNDATION.HALF", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.FOUNDATION.LN2", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.FOUNDATION.C2", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.SPACE.DENSITY_CARRIER", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.SPACE.A2", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.SPACE.RELATIONAL_DISTANCE", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.SPACE.LOCAL_R3", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.SPACE.PYTHAGOREAN", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.SPACE.TETRAHEDRON", repository: TIR, status: "CLOSED", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.KAPPA.NORMALIZATION", repository: TIR, status: "CLOSED_INTERNAL_DERIVATION", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.HOLONOMY.WIJ", repository: TIR, status: "SOURCE_BOUND_CROSSWALK", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.GLOBAL_GLUING", repository: TIR, status: "GREMLIN_CANDIDATE_SEARCH", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.TORSION", repository: TIR, status: "UNIVERSAL_LOOP_SOURCE_BINDING", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.STANDARD_MODEL", repository: TIR, status: "ACTIVE_RECONCILIATION", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.SOH.NEGATIVE_INVERSE", repository: TIR, status: "LOCAL_CLOSED_GLOBAL_DOMINATION_CANDIDATE", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.TIME_JOIN", repository: TIR, status: "SIBLING_INTERFACE", source: "TIR/CURRENT_STATUS.md"}
+- {claim_id: "TIR.SPACE.CARTAN_REFINEMENT_A2", repository: TIR, status: "EXACT_SE3_LOOP_LOG_DECOMPOSITION / TETRAHEDRAL_MC_APPROACH / CONTINUUM_CLOSURE_PENDING", source: "TIR/foundations/TIR_CARTAN_REFINEMENT_CURVATURE_TORSION_SEPARATION_V0_1.md"}
+- {claim_id: "TIR.SPACE.LEVI_CIVITA_A3", repository: TIR, status: "EXACT_LEVI_CIVITA_UNIQUENESS_TRANSFER / DISCRETE_TORSIONLESS_QUADRATIC_TO_LEADING_ORDER_ESTABLISHED / CONTINUUM_GLUE_OPEN", source: "TIR/foundations/TIR_ZERO_TORSION_LEVI_CIVITA_SELECTION_V0_1.md"}
+- {claim_id: "TIR.SPACE.METRIC_JET_A4", repository: TIR, status: "EXACT_STOKES_CANCELLATION_LEMMA / LEADING_LOCALITY_METRIC_JET_ORDER_LE2 / HIGHER_DERIVATIVES_SUBLEADING / GLOBAL_SMOOTH_REFINEMENT_OPEN", source: "TIR/foundations/TIR_LEADING_LOOP_LOCALITY_METRIC_JET_V0_1.md"}
+- {claim_id: "TIR.SPACE.GLOBAL_3MANIFOLD_A5", repository: TIR, status: "EXACT_COMBINATORIAL_MANIFOLD_CERTIFICATE / STANDARD_MOISE_SMOOTHING_BRIDGE / GLOBAL_METRIC_LEVI_CIVITA_GLUE_PASS_ON_CERTIFICATE / ACTUAL_RELATIONAL_COMPLEX_CERTIFICATE_OPEN", source: "TIR/foundations/TIR_GLOBAL_3MANIFOLD_SMOOTH_CERTIFICATE_V0_1.md"}
+- {claim_id: "IDT.TEMPORAL.PRIMITIVE", repository: IDT, status: "CANONICAL", source: "CURRENT_STATUS.md"}
+- {claim_id: "IDT.TEMPORAL.WAVE", repository: IDT, status: "CANONICAL", source: "CURRENT_STATUS.md"}
+- {claim_id: "IDT.NOW", repository: IDT, status: "CANONICAL", source: "CURRENT_STATUS.md"}
+- {claim_id: "IDT.BIFURCATION", repository: IDT, status: "CANONICAL", source: "CURRENT_STATUS.md"}
+- {claim_id: "IDT.TEMPORAL.TRANSPORT", repository: IDT, status: "CANONICAL", source: "CURRENT_STATUS.md"}
+- {claim_id: "IDT.MEMORY", repository: IDT, status: "HOSTED_FULL_SUITE_PASS", source: "CURRENT_STATUS.md"}
+- {claim_id: "IDT.ORCHORBITAL", repository: IDT, status: "HOSTED_FULL_SUITE_PASS", source: "CURRENT_STATUS.md"}
+- {claim_id: "IDT.RETRODICTION", repository: IDT, status: "ACTIVE_CONSTRUCTIVE_LAYER", source: "CURRENT_STATUS.md"}
+- {claim_id: "IDT.RETROCAUSAL_TESTS", repository: IDT, status: "DOWNSTREAM_TARGET", source: "CURRENT_STATUS.md"}
+- {claim_id: "IDT.NOETHER.GAUGE_COVARIANT_SOURCE", repository: IDT, status: "CANONICAL_RELATIVISTIC_PREREQUISITE", source: "CURRENT_STATUS.md"}
+- {claim_id: "IDT.RELATIVISTIC.FIELD_BRIDGE", repository: IDT, status: "CROSS_REPO_PREREQUISITE", source: "CURRENT_STATUS.md"}
+- {claim_id: "IDT.EINSTEIN.CLOSURE", repository: IDT, status: "JOINT_TARGET", source: "CURRENT_STATUS.md"}
+- {claim_id: "IDT.CLOCK.GAMMA_T", repository: IDT, status: "CROSS_REPO_PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "IDT.CLOCK.RELATIVE_ENTROPY_05D", repository: IDT, status: "EXACT_CONDITIONAL_MEMORYLESS_CLOCK_REALIZATION / SHANNON_KL_GATE / NON_ENERGY_CARRIER", source: "formalism/05D_local_clock_relative_entropy_potential.md"}
+- {claim_id: "IDT.HALF_SEAM.DOUBLE_COVER_SIGNATURE", repository: IDT, status: "CANDIDATE_TARGET", source: "research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json"}
+- {claim_id: "IDT.HALF_SEAM.RELATIONAL_ZERO", repository: IDT, status: "CANDIDATE_TARGET", source: "research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json"}
+- {claim_id: "IDT.NOW.HYPERBOLIC_CHART", repository: IDT, status: "CANDIDATE_TARGET", source: "research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json"}
+- {claim_id: "IDT.CLOCK.RELATIONAL_LAPSE_05C", repository: IDT, status: "EXACT_POSITIVE_CLOCK_RATIO / REPARAMETERIZATION_INVARIANT / PHYSICAL_CLOCK_BINDING_CANDIDATE", source: "formalism/05C_relational_lapse_interface.md"}
+- {claim_id: "IDT.CLOCK.GLOBAL_COCYCLE_05E", repository: IDT, status: "EXACT_FINITE_CLOCK_COCYCLE_THEOREM / GLOBAL_POSITIVE_LAPSE_POTENTIAL_PASS_ON_CYCLE_CLOSURE / COMMON_REPARAMETERIZATION_INVARIANT / CAUSAL_TIME_FUNCTION_GATE_NEXT", source: "formalism/05E_global_relational_clock_cocycle.md"}
+- {claim_id: "IDT.CLOCK.FOLIATION_05G", repository: IDT, status: "LOCAL_FROBENIUS_PASS / REGULAR_LEVEL_SET_THEOREM_PASS_ON_GLOBAL_CLOCK_INPUT / GLOBAL_CLOCK_SCALAR_INPUT_OPEN / CAUCHY_GLOBAL_HYPERBOLICITY_OPEN", source: "formalism/05G_global_temporal_foliation.md"}
+- {claim_id: "IDT.CLOCK.EVENT_EXACTNESS_05H", repository: IDT, status: "EXACT_GRAPH_COHOMOLOGY_THEOREM / PATH_INDEPENDENCE_CERTIFIER_PASS / PREFIX_TREE_EXACTNESS_AUTOMATIC / PRODUCTION_EVENT_COMPLEX_INPUT_OPEN / SMOOTH_SPACETIME_EXTENSION_OPEN", source: "formalism/05H_global_event_clock_exactness.md"}
+- {claim_id: "IDT.CLOCK.TEMPORAL_TRACE_LIFT_V02", repository: IDT, status: "CANDIDATE / EXACT CANONICAL-LIFT THEOREM + PHYSICAL BINDING GATE", source: "docs/candidates/spacetime_dimension/TEMPORAL_TRACE_BINDING_CANONICAL_LIFT_V0_2.md"}
+- {claim_id: "IDT.CLOCK.TEMPORAL_TRACE_UNIQUENESS_V06", repository: IDT, status: "CANDIDATE / EXACT INVARIANT-EXTENSIVE FUNCTIONAL THEOREM", source: "docs/candidates/spacetime_dimension/IDT_TEMPORAL_TRACE_UNIQUENESS_V0_6.md"}
+- {claim_id: "RFC.SOURCE.CONSERVED_CARRIER", repository: RFC, status: "ADMITTED_SOURCE_INTERFACE", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.N1B2K.CURRENT_MEASURE", repository: RFC, status: "ACTIVE_PHYSICAL_REALIZATION", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.N1B2O.MATTER_SOURCE_FACTORIZATION", repository: RFC, status: "CANONICAL", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.N1B2P.MAXWELL_INTERTWINER", repository: RFC, status: "CANONICAL", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.E4.PHASE_STRESS_ENERGY", repository: RFC, status: "CANONICAL", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.E5.CARRIER_ENERGY", repository: RFC, status: "CANONICAL", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.E6.LORENTZIAN_ACTION", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.E7.SCALAR_T_DECOMPOSITION", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.MATTER.SCALAR_TMN", repository: RFC, status: "CLOSED", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.L1.LAMBDA_TARGET", repository: RFC, status: "ADMITTED", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.L2.LAMBDA_ACTION_STABILITY", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.L3.INFORMATION_SCALAR_POTENTIAL", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.L4.INFORMATION_CURVATURE_PULLBACK", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.L4A.SHANNON_FISHER_NORMALIZATION", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.L5.TEMPORAL_WAVE_KG_BRIDGE", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.L5A.PREMETRIC_CALIBRATION", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.ADM.E8", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.ADM.E9", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.ADM.E10", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.ADM.E11", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.ADM.E12", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.ADM.E13", repository: RFC, status: "PASS_MAIN", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.E14.DIRECTIONAL_RELATIVE_ENTROPY", repository: RFC, status: "EXACT_ADM_RECIPROCAL_RATIO / CONDITIONAL_IDT_PARENT / SCALE_UNFIXED", source: "closure/einstein/RF_E14_ADM_DIRECTIONAL_RELATIVE_ENTROPY_POTENTIAL.md"}
+- {claim_id: "RFC.E15.INFORMATION_LEGENDRE_HAMILTONIAN", repository: RFC, status: "LEGENDRE_TRANSFORM_EXACT / HAMILTONIAN_IDENTIFICATION_CONDITIONAL / DYNAMICAL_CARRIER_UNFIXED", source: "closure/einstein/RF_E15_INFORMATION_LEGENDRE_HAMILTONIAN_AUDIT.md"}
+- {claim_id: "RFC.E16.SHIFT_NOETHER_FIREWALL", repository: RFC, status: "ADM_SHIFT_TENSORIAL / NOETHER_SECTOR_TYPED / IDENTIFICATION_REJECTED", source: "closure/einstein/RF_E16_ADM_SHIFT_NOETHER_PHASE_ENERGY_BINDING.md"}
+- {claim_id: "RFC.E17.CLOCK_INFORMATION_SCALAR_ACTION", repository: RFC, status: "COVARIANT_ACTION_TEMPLATE / NORMALIZATION_CONDITIONAL / POTENTIAL_SHAPE_BOUND", source: "closure/einstein/RF_E17_CLOCK_INFORMATION_SCALAR_ACTION_POTENTIAL.md"}
+- {claim_id: "RFC.E18.PHYSICAL_VELOCITY_FIREWALL", repository: RFC, status: "SHIFT_GAUGE_TRANSFORMATION_EXACT / PHYSICAL_VELOCITY_CARRIER_BOUND / BETA_SHIFT_IDENTIFICATION_REJECTED", source: "closure/einstein/RF_E18_ADM_SHIFT_VELOCITY_GAUGE_FIREWALL.md"}
+- {claim_id: "RFC.E19.NOETHER_MATERIAL_CONGRUENCE", repository: RFC, status: "EXACT_TIMELIKE_CURRENT_DECOMPOSITION / MATERIAL_FLOW_BINDING_CONDITIONAL / BETA_PHYS_SOURCE_PASS_CONDITIONAL", source: "closure/einstein/RF_E19_NOETHER_CURRENT_MATERIAL_CONGRUENCE.md"}
+- {claim_id: "RFC.E20.TETRA_CLOCK_MASS_SCALE", repository: RFC, status: "TETRA_CLOCK_DIMENSIONAL_CLOSURE / MASS_FORMULA_EXACT_CONDITIONAL / SCALE_SOLVE_DEPENDENT", source: "closure/einstein/RF_E20_TETRA_CLOCK_MASS_SCALE_CLOSURE.md"}
+- {claim_id: "RFC.PHYSICAL_SCALE_COUPLING", repository: RFC, status: "ACTIVE_FRONTIER", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.COUPLING.YM_BCJ", repository: RFC, status: "CANONICAL_PARALLEL_LINE", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.COUPLING.FOUR_POINT_DC", repository: RFC, status: "CANONICAL_PARALLEL_LINE", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.COUPLING.FIVE_POINT_KLT", repository: RFC, status: "CANONICAL_PARALLEL_LINE", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.COUPLING.RFG29", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.COUPLING.RFG30", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.COUPLING.RFG31", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.COUPLING.RFG32", repository: RFC, status: "FIREWALL", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.COUPLING.RFG33", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.COUPLING.RFG34", repository: RFC, status: "PASS", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.COUPLING.RFG35", repository: RFC, status: "NEXT_COUPLING_FRONTIER", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.COUPLING.PHYSICAL_G", repository: RFC, status: "OPEN", source: "formalism/DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F0.PRIMITIVE_STATE", repository: RFC, status: "CANONICAL_PRIMITIVES", source: "formalism/RF_F0_F9_FOUNDATIONAL_FORMALIZATION_SPINE.md"}
+- {claim_id: "RFC.F1.GAUGE_RELATIONAL_PHASE", repository: RFC, status: "PASS_EXACT", source: "formalism/RF_F0_F9_FOUNDATIONAL_FORMALIZATION_SPINE.md"}
+- {claim_id: "RFC.F2.EULER_BERRY_CLOSURE", repository: RFC, status: "PASS_EXACT_PARENT", source: "formalism/RF_F0_F9_FOUNDATIONAL_FORMALIZATION_SPINE.md"}
+- {claim_id: "RFC.F3.PHASE_RATE_CELL", repository: RFC, status: "PASS_EXACT_PARENT_COMPOSITION", source: "formalism/RF_F0_F9_FOUNDATIONAL_FORMALIZATION_SPINE.md"}
+- {claim_id: "RFC.F4.OCCUPATION_CURRENT", repository: RFC, status: "PASS_PARENT", source: "formalism/RF_F0_F9_FOUNDATIONAL_FORMALIZATION_SPINE.md"}
+- {claim_id: "RFC.F5.PHASE_ENERGY_ONE_FORM", repository: RFC, status: "PASS_EXACT", source: "formalism/RF_F0_F9_FOUNDATIONAL_FORMALIZATION_SPINE.md"}
+- {claim_id: "RFC.F6.COVARIANT_SOURCE", repository: RFC, status: "PASS_EXACT", source: "formalism/RF_F0_F9_FOUNDATIONAL_FORMALIZATION_SPINE.md"}
+- {claim_id: "RFC.F7.STRESS_ENERGY_BIANCHI", repository: RFC, status: "PASS_EXACT_PARENT_COMPOSITION", source: "formalism/RF_F0_F9_FOUNDATIONAL_FORMALIZATION_SPINE.md"}
+- {claim_id: "RFC.F8.EOS_PHASE_CONTINUITY", repository: RFC, status: "PASS_EXACT_CONDITIONAL", source: "formalism/RF_F0_F9_FOUNDATIONAL_FORMALIZATION_SPINE.md"}
+- {claim_id: "RFC.F9.NOETHER_HAMILTONIAN_EINSTEIN", repository: RFC, status: "PASS_PARENT", source: "formalism/RF_F0_F9_FOUNDATIONAL_FORMALIZATION_SPINE.md"}
+- {claim_id: "RFC.F10.PHASE_ENERGY_CURVATURE", repository: RFC, status: "PASS_EXACT_LOCAL", source: "formalism/RF_F10_F12_DYNAMICAL_PHASE_TRANSPORT.md"}
+- {claim_id: "RFC.F11.PHASE_ENERGY_TRANSPORT", repository: RFC, status: "PASS_EXACT_PARENT_COMPOSITION", source: "formalism/RF_F10_F12_DYNAMICAL_PHASE_TRANSPORT.md"}
+- {claim_id: "RFC.F12.FLRW_PHASE_SCALING", repository: RFC, status: "PASS_EXACT_CONDITIONAL", source: "formalism/RF_F10_F12_DYNAMICAL_PHASE_TRANSPORT.md"}
+- {claim_id: "RFC.F13.VARIATIONAL_COMMON_ACTION", repository: RFC, status: "PASS_BRANCH_REFERENCE_SUITE_CONDITIONAL_PHYSICAL_BINDING", source: "formalism/RF_F13_VARIATIONAL_INTEGRABILITY_COMMON_ACTION.md"}
+- {claim_id: "RFC.F14.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F15.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F16.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F17.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F18.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F19.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F20.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F21.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F22.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F23.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F24.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F25.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F26.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F27.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.F28.STACK_GATE", repository: RFC, status: "REFERENCE_PASS", source: "formalism/RF_F13_F28_STACK_DEPENDENCY_GRAPH.md"}
+- {claim_id: "RFC.DIMENSION.PREMETRIC_TRANSVERSALITY_V05", repository: RFC, status: "CANDIDATE / EXACT TRACE–TRACELESS TRANSVERSALITY THEOREM", source: "docs/candidates/spacetime_dimension/PREMETRIC_TEMPORAL_SPATIAL_TRANSVERSALITY_V0_5.md"}
+- {claim_id: "RFC.DIMENSION.LOCAL_4D_CARRIER_V07", repository: RFC, status: "CANDIDATE / EXACT LOCAL-CARRIER DIMENSION THEOREM / PHYSICAL SPACETIME SOLDERING CANDIDATE", source: "docs/candidates/spacetime_dimension/TIR_IDT_RFC_DIMENSION_CLOSURE_V0_7.md"}
+- {claim_id: "RFC.L6.COVARIANT_PROPAGATION", repository: RFC, status: "EXACT_ADM_DIVERGENCE_FORM / VARIABLE_LAPSE_SHIFT_CURVED_PROPAGATION_PASS_CANDIDATE / RF_L5A_LOCAL_LIMIT_PASS / IDT_LAPSE_GRADIENT_BINDING_EXACT / GLOBAL_WELLPOSEDNESS_OPEN", source: "closure/lambda0/RF_L6_VARIABLE_LAPSE_CURVED_COVARIANT_PROPAGATION.md"}
+- {claim_id: "RFC.L7.CAUCHY_HYPERBOLICITY", repository: RFC, status: "EXACT_LOCAL_PRINCIPAL_HYPERBOLICITY / EXACT_CAUCHY_DATA_MAP / POSITIVE_SLICE_ENERGY_FOR_NONNEGATIVE_MASS / GLOBAL_WELLPOSEDNESS_CONDITIONAL_ON_CAUCHY_FOLIATION / GLOBAL_CAUCHY_PROMOTION_OPEN", source: "closure/lambda0/RF_L7_CAUCHY_HYPERBOLICITY_WELLPOSEDNESS.md"}
+- {claim_id: "RFC.E21.EINSTEIN_UNIQUENESS_SELECTION", repository: RFC, status: "EXACT_LOVELOCK_SELECTION_THEOREM_ON_DECLARED_PREMISES / TIR_IDT_4D_CARRIER_PRESENT / LEVI_CIVITA_GLOBAL_PROMOTION_OPEN / SECOND_ORDER_NATURALITY_GATE_OPEN / HKT_INDEPENDENT_ROUTE_OPEN", source: "closure/einstein/RF_E21_EINSTEIN_UNIQUENESS_SELECTION.md"}
+- {claim_id: "RFC.E22.TIR_CARTAN_LEVI_CIVITA_BINDING", repository: RFC, status: "TIR_CARTAN_REFINEMENT_BOUND / LOCAL_LEVI_CIVITA_SPATIAL_GR_PASS / GLOBAL_REFINEMENT_EXISTENCE_OPEN / RF_E21_SECOND_ORDER_SELECTION_FRONTIER", source: "closure/einstein/RF_E22_TIR_CARTAN_LEVI_CIVITA_BINDING.md"}
+- {claim_id: "RFC.E23.CONSERVED_SOURCE_SELECTION", repository: RFC, status: "EXACT_CONSERVED_SOURCE_PARENT / UNIVERSAL_COUPLING_CONSISTENCY_SELECTION_PASS / DIVERGENCE_FREE_OPERATOR_CLASS_BOUND / DYNAMIC_LAMBDA_EXCHANGE_BRANCH_PRESERVED", source: "closure/einstein/RF_E23_CONSERVED_SOURCE_DIVERGENCE_FREE_SELECTION.md"}
+- {claim_id: "RFC.E24.LOCAL_EINSTEIN_FORM", repository: RFC, status: "LOCAL_EINSTEIN_FIELD_EQUATION_FORM_PASS / BIANCHI_SOURCE_CONSERVATION_PASS / DIMENSIONFUL_NORMALIZATION_CONVENTION_FIXED / UNIVERSAL_SOURCE_AUTONOMY_GATE_EXPLICIT / NORMALIZATION_INDEPENDENCE_EXPLICIT", source: "closure/einstein/RF_E24_LOCAL_EINSTEIN_FORM_CLOSURE.md"}
+- {claim_id: "RFC.E25.SHARED_SPACETIME_ATLAS", repository: RFC, status: "SHARED_SPACETIME_ATLAS_CERTIFIER / EXACT_OVERLAP_GATE / PRODUCTION_SHARED_ATLAS_OPEN_INPUT", source: "closure/einstein/RF_E25_SHARED_SPACETIME_ATLAS_COCYCLE.md"}
+- {claim_id: "SOH.SU2.DOUBLE_COVER", repository: SOH, status: "CANDIDATE_SOURCE", source: "research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json"}
+- {claim_id: "SOH.HALF.ZERO_ORDER_DOUBLING", repository: SOH, status: "CANDIDATE_SOURCE", source: "research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json"}
+- {claim_id: "SOH.BLOCH.CENTERED_RAPIDITY", repository: SOH, status: "CANDIDATE_SOURCE", source: "research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json"}
+- {claim_id: "SOH.LI_WEIL.NATIVE_CLOSURE", repository: SOH, status: "OPEN_FRONTIER", source: "research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json"}
 edges:
-- from: TIR.PRIMITIVE.ZERO
-  to: TIR.PRIMITIVE.POINT
-  authority: CANONICAL
-- from: TIR.PRIMITIVE.POINT
-  to: TIR.PRIMITIVE.FIRST_DISTINCTION
-  authority: CANONICAL
-- from: TIR.PRIMITIVE.FIRST_DISTINCTION
-  to: TIR.PRIMITIVE.POLES_NS
-  authority: CANONICAL
-- from: TIR.PRIMITIVE.POLES_NS
-  to: TIR.FOUNDATION.HALF
-  authority: CANONICAL
-- from: TIR.FOUNDATION.HALF
-  to: TIR.FOUNDATION.LN2
-  authority: CANONICAL
-- from: TIR.FOUNDATION.LN2
-  to: TIR.FOUNDATION.C2
-  authority: CANONICAL
-- from: TIR.FOUNDATION.C2
-  to: TIR.SPACE.DENSITY_CARRIER
-  authority: CANONICAL
-- from: TIR.SPACE.DENSITY_CARRIER
-  to: TIR.SPACE.A2
-  authority: CANONICAL
-- from: TIR.SPACE.A2
-  to: TIR.SPACE.RELATIONAL_DISTANCE
-  authority: CANONICAL
-- from: TIR.SPACE.RELATIONAL_DISTANCE
-  to: TIR.SPACE.LOCAL_R3
-  authority: CANONICAL
-- from: TIR.SPACE.LOCAL_R3
-  to: TIR.SPACE.PYTHAGOREAN
-  authority: CANONICAL
-- from: TIR.SPACE.LOCAL_R3
-  to: TIR.SPACE.TETRAHEDRON
-  authority: CANONICAL
-- from: TIR.FOUNDATION.HALF
-  to: TIR.KAPPA.NORMALIZATION
-  authority: CANONICAL
-- from: TIR.FOUNDATION.LN2
-  to: TIR.KAPPA.NORMALIZATION
-  authority: CANONICAL
-- from: TIR.SPACE.TETRAHEDRON
-  to: TIR.HOLONOMY.WIJ
-  authority: CANONICAL
-- from: TIR.HOLONOMY.WIJ
-  to: TIR.GLOBAL_GLUING
-  authority: CANONICAL_FRONTIER
-- from: TIR.HOLONOMY.WIJ
-  to: TIR.TORSION
-  authority: CANONICAL_FRONTIER
-- from: TIR.HOLONOMY.WIJ
-  to: TIR.STANDARD_MODEL
-  authority: CANONICAL
-- from: TIR.FOUNDATION.HALF
-  to: TIR.SOH.NEGATIVE_INVERSE
-  authority: CANONICAL_FRONTIER
-- from: TIR.FOUNDATION.C2
-  to: TIR.TIME_JOIN
-  authority: CANONICAL
-- from: TIR.TIME_JOIN
-  to: IDT.TEMPORAL.PRIMITIVE
-  authority: CANONICAL_CROSS_REPO
-  note: IDT CURRENT_STATUS declares TIR -> Temporal Primitive; TIR classifies time join as SIBLING_INTERFACE.
-- from: IDT.TEMPORAL.PRIMITIVE
-  to: IDT.TEMPORAL.WAVE
-  authority: CANONICAL
-- from: IDT.TEMPORAL.WAVE
-  to: IDT.NOW
-  authority: CANONICAL
-- from: IDT.NOW
-  to: IDT.BIFURCATION
-  authority: CANONICAL
-- from: IDT.BIFURCATION
-  to: IDT.TEMPORAL.TRANSPORT
-  authority: CANONICAL
-- from: IDT.TEMPORAL.TRANSPORT
-  to: IDT.MEMORY
-  authority: CANONICAL
-- from: IDT.MEMORY
-  to: IDT.ORCHORBITAL
-  authority: CANONICAL
-- from: IDT.ORCHORBITAL
-  to: IDT.RETRODICTION
-  authority: CANONICAL
-- from: IDT.RETRODICTION
-  to: IDT.RETROCAUSAL_TESTS
-  authority: CANONICAL
-- from: IDT.RETROCAUSAL_TESTS
-  to: IDT.EINSTEIN.CLOSURE
-  authority: CANONICAL
-- from: IDT.TEMPORAL.PRIMITIVE
-  to: IDT.NOETHER.GAUGE_COVARIANT_SOURCE
-  authority: CANONICAL
-- from: IDT.TEMPORAL.PRIMITIVE
-  to: IDT.CLOCK.RELATIVE_ENTROPY_05D
-  authority: CANONICAL
-  note: IDT 05D starts from the promoted activity-derived temporal primitive and an explicit local memoryless realization.
-- from: IDT.NOETHER.GAUGE_COVARIANT_SOURCE
-  to: RFC.SOURCE.CONSERVED_CARRIER
-  authority: CANONICAL_CROSS_REPO
-  note: IDT executable source interface 01AC/01AG enters RFC source/bridge surface; RF-M1/RF-E0 is separately hardened.
-- from: RFC.SOURCE.CONSERVED_CARRIER
-  to: IDT.RELATIVISTIC.FIELD_BRIDGE
-  authority: CANONICAL_CROSS_REPO
-  note: RF-M1/RF-E0 hardening receipt records bridge chain IDT-01AC -> IDT-01AG -> RF-M1 -> RF-E0 -> EINSTEIN_CLOSURE.
-- from: IDT.RELATIVISTIC.FIELD_BRIDGE
-  to: IDT.EINSTEIN.CLOSURE
-  authority: CANONICAL
-- from: IDT.TEMPORAL.WAVE
-  to: IDT.CLOCK.GAMMA_T
-  authority: CANONICAL
-- from: RFC.SOURCE.CONSERVED_CARRIER
-  to: RFC.N1B2K.CURRENT_MEASURE
-  authority: CANONICAL
-- from: RFC.N1B2K.CURRENT_MEASURE
-  to: RFC.N1B2O.MATTER_SOURCE_FACTORIZATION
-  authority: CANONICAL
-- from: RFC.N1B2O.MATTER_SOURCE_FACTORIZATION
-  to: RFC.N1B2P.MAXWELL_INTERTWINER
-  authority: CANONICAL
-- from: RFC.N1B2P.MAXWELL_INTERTWINER
-  to: RFC.E4.PHASE_STRESS_ENERGY
-  authority: CANONICAL
-- from: RFC.E4.PHASE_STRESS_ENERGY
-  to: RFC.E5.CARRIER_ENERGY
-  authority: CANONICAL
-- from: RFC.E5.CARRIER_ENERGY
-  to: RFC.E6.LORENTZIAN_ACTION
-  authority: CANONICAL
-- from: RFC.E6.LORENTZIAN_ACTION
-  to: RFC.E7.SCALAR_T_DECOMPOSITION
-  authority: CANONICAL
-- from: RFC.E7.SCALAR_T_DECOMPOSITION
-  to: RFC.MATTER.SCALAR_TMN
-  authority: CANONICAL
-- from: RFC.MATTER.SCALAR_TMN
-  to: RFC.L1.LAMBDA_TARGET
-  authority: CANONICAL
-- from: RFC.L1.LAMBDA_TARGET
-  to: RFC.L2.LAMBDA_ACTION_STABILITY
-  authority: CANONICAL
-- from: RFC.L2.LAMBDA_ACTION_STABILITY
-  to: RFC.L3.INFORMATION_SCALAR_POTENTIAL
-  authority: CANONICAL
-- from: RFC.L3.INFORMATION_SCALAR_POTENTIAL
-  to: RFC.L4.INFORMATION_CURVATURE_PULLBACK
-  authority: CANONICAL
-- from: RFC.L4.INFORMATION_CURVATURE_PULLBACK
-  to: RFC.L4A.SHANNON_FISHER_NORMALIZATION
-  authority: CANONICAL
-- from: RFC.L4A.SHANNON_FISHER_NORMALIZATION
-  to: RFC.L5.TEMPORAL_WAVE_KG_BRIDGE
-  authority: CANONICAL
-- from: RFC.L5.TEMPORAL_WAVE_KG_BRIDGE
-  to: RFC.L5A.PREMETRIC_CALIBRATION
-  authority: CANONICAL
-- from: RFC.L5A.PREMETRIC_CALIBRATION
-  to: RFC.ADM.E8
-  authority: CANONICAL
-- from: RFC.ADM.E8
-  to: RFC.ADM.E9
-  authority: CANONICAL
-- from: RFC.ADM.E9
-  to: RFC.ADM.E10
-  authority: CANONICAL
-- from: RFC.ADM.E10
-  to: RFC.ADM.E11
-  authority: CANONICAL
-- from: RFC.ADM.E11
-  to: RFC.ADM.E12
-  authority: CANONICAL
-- from: RFC.ADM.E12
-  to: RFC.ADM.E13
-  authority: CANONICAL
-- from: IDT.CLOCK.GAMMA_T
-  to: RFC.ADM.E8
-  authority: CANONICAL_CROSS_REPO
-- from: TIR.SPACE.LOCAL_R3
-  to: RFC.ADM.E8
-  authority: CANONICAL_CROSS_REPO
-  note: Spatial carrier admitted upstream; physical Gamma_x/cell-width remains a calibration gate.
-- from: RFC.ADM.E13
-  to: RFC.PHYSICAL_SCALE_COUPLING
-  authority: CANONICAL_FRONTIER
-- from: IDT.CLOCK.RELATIVE_ENTROPY_05D
-  to: RFC.E14.DIRECTIONAL_RELATIVE_ENTROPY
-  authority: CANONICAL_CROSS_REPO
-  note: RF-E14 declares the IDT 05D relative-information clock potential as its conditional parent.
-- from: RFC.ADM.E8
-  to: RFC.E14.DIRECTIONAL_RELATIVE_ENTROPY
-  authority: CANONICAL
-- from: RFC.E14.DIRECTIONAL_RELATIVE_ENTROPY
-  to: RFC.E15.INFORMATION_LEGENDRE_HAMILTONIAN
-  authority: CANONICAL
-- from: RFC.ADM.E8
-  to: RFC.E16.SHIFT_NOETHER_FIREWALL
-  authority: CANONICAL
-- from: RFC.N1B2K.CURRENT_MEASURE
-  to: RFC.E16.SHIFT_NOETHER_FIREWALL
-  authority: CANONICAL
-- from: RFC.E14.DIRECTIONAL_RELATIVE_ENTROPY
-  to: RFC.E17.CLOCK_INFORMATION_SCALAR_ACTION
-  authority: CANONICAL
-- from: RFC.E15.INFORMATION_LEGENDRE_HAMILTONIAN
-  to: RFC.E17.CLOCK_INFORMATION_SCALAR_ACTION
-  authority: CANONICAL
-- from: RFC.E17.CLOCK_INFORMATION_SCALAR_ACTION
-  to: RFC.E18.PHYSICAL_VELOCITY_FIREWALL
-  authority: CANONICAL
-- from: RFC.E16.SHIFT_NOETHER_FIREWALL
-  to: RFC.E18.PHYSICAL_VELOCITY_FIREWALL
-  authority: CANONICAL
-- from: RFC.ADM.E8
-  to: RFC.E18.PHYSICAL_VELOCITY_FIREWALL
-  authority: CANONICAL
-- from: RFC.E18.PHYSICAL_VELOCITY_FIREWALL
-  to: RFC.E19.NOETHER_MATERIAL_CONGRUENCE
-  authority: CANONICAL
-- from: RFC.N1B2K.CURRENT_MEASURE
-  to: RFC.E19.NOETHER_MATERIAL_CONGRUENCE
-  authority: CANONICAL
-- from: RFC.E17.CLOCK_INFORMATION_SCALAR_ACTION
-  to: RFC.E20.TETRA_CLOCK_MASS_SCALE
-  authority: CANONICAL
-- from: RFC.E19.NOETHER_MATERIAL_CONGRUENCE
-  to: RFC.E20.TETRA_CLOCK_MASS_SCALE
-  authority: CANONICAL
-- from: TIR.SPACE.TETRAHEDRON
-  to: RFC.E20.TETRA_CLOCK_MASS_SCALE
-  authority: CANONICAL_CROSS_REPO
-  note: TIR supplies the regular-tetrahedron geometric carrier; RF-E20 keeps the physical SI edge scale ell_* and sigma_tet selector explicit and unresolved.
-- from: RFC.E20.TETRA_CLOCK_MASS_SCALE
-  to: RFC.PHYSICAL_SCALE_COUPLING
-  authority: CANONICAL_FRONTIER
-- from: RFC.COUPLING.YM_BCJ
-  to: RFC.COUPLING.FOUR_POINT_DC
-  authority: CANONICAL
-- from: RFC.COUPLING.FOUR_POINT_DC
-  to: RFC.COUPLING.FIVE_POINT_KLT
-  authority: CANONICAL
-- from: RFC.COUPLING.FIVE_POINT_KLT
-  to: RFC.COUPLING.RFG29
-  authority: CANONICAL
-- from: RFC.COUPLING.RFG29
-  to: RFC.COUPLING.RFG30
-  authority: CANONICAL
-- from: RFC.COUPLING.RFG30
-  to: RFC.COUPLING.RFG31
-  authority: CANONICAL
-- from: RFC.COUPLING.RFG31
-  to: RFC.COUPLING.RFG32
-  authority: CANONICAL
-- from: RFC.COUPLING.RFG32
-  to: RFC.COUPLING.RFG33
-  authority: CANONICAL
-- from: RFC.COUPLING.RFG33
-  to: RFC.COUPLING.RFG34
-  authority: CANONICAL
-- from: RFC.COUPLING.RFG34
-  to: RFC.COUPLING.RFG35
-  authority: CANONICAL_FRONTIER
-- from: RFC.COUPLING.RFG35
-  to: RFC.COUPLING.PHYSICAL_G
-  authority: CANONICAL_FRONTIER
-- from: RFC.COUPLING.PHYSICAL_G
-  to: RFC.PHYSICAL_SCALE_COUPLING
-  authority: CANONICAL_FRONTIER
-- from: SOH.SU2.DOUBLE_COVER
-  to: IDT.HALF_SEAM.DOUBLE_COVER_SIGNATURE
-  authority: CANDIDATE_ONLY
-  promotion_required: true
-  candidate_id: XFI.03
-  promotion_gate: THEOREM_VALIDATOR_RECEIPT_REQUIRED
-- from: SOH.HALF.ZERO_ORDER_DOUBLING
-  to: IDT.HALF_SEAM.RELATIONAL_ZERO
-  authority: CANDIDATE_ONLY
-  promotion_required: true
-  candidate_id: XFI.28.02
-  promotion_gate: THEOREM_VALIDATOR_RECEIPT_REQUIRED
-- from: SOH.BLOCH.CENTERED_RAPIDITY
-  to: IDT.NOW.HYPERBOLIC_CHART
-  authority: CANDIDATE_ONLY
-  promotion_required: true
-  candidate_id: XFI.28.03
-  promotion_gate: DOMAIN_INVERSE_SINGULAR_BOUNDARY_AUDIT_REQUIRED
-- from: TIR.SOH.NEGATIVE_INVERSE
-  to: SOH.LI_WEIL.NATIVE_CLOSURE
-  authority: CANDIDATE_ONLY
-  promotion_required: true
-  promotion_gate: NATIVE_CLOSURE_TO_COMPLETE_LI_WEIL_POSITIVITY
+- {<<: *CAN, from: "TIR.PRIMITIVE.ZERO", to: "TIR.PRIMITIVE.POINT"}
+- {<<: *CAN, from: "TIR.PRIMITIVE.POINT", to: "TIR.PRIMITIVE.FIRST_DISTINCTION"}
+- {<<: *CAN, from: "TIR.PRIMITIVE.FIRST_DISTINCTION", to: "TIR.PRIMITIVE.POLES_NS"}
+- {<<: *CAN, from: "TIR.PRIMITIVE.POLES_NS", to: "TIR.FOUNDATION.HALF"}
+- {<<: *CAN, from: "TIR.FOUNDATION.HALF", to: "TIR.FOUNDATION.LN2"}
+- {<<: *CAN, from: "TIR.FOUNDATION.LN2", to: "TIR.FOUNDATION.C2"}
+- {<<: *CAN, from: "TIR.FOUNDATION.C2", to: "TIR.SPACE.DENSITY_CARRIER"}
+- {<<: *CAN, from: "TIR.SPACE.DENSITY_CARRIER", to: "TIR.SPACE.A2"}
+- {<<: *CAN, from: "TIR.SPACE.A2", to: "TIR.SPACE.RELATIONAL_DISTANCE"}
+- {<<: *CAN, from: "TIR.SPACE.RELATIONAL_DISTANCE", to: "TIR.SPACE.LOCAL_R3"}
+- {<<: *CAN, from: "TIR.SPACE.LOCAL_R3", to: "TIR.SPACE.PYTHAGOREAN"}
+- {<<: *CAN, from: "TIR.SPACE.LOCAL_R3", to: "TIR.SPACE.TETRAHEDRON"}
+- {<<: *CAN, from: "TIR.FOUNDATION.HALF", to: "TIR.KAPPA.NORMALIZATION"}
+- {<<: *CAN, from: "TIR.FOUNDATION.LN2", to: "TIR.KAPPA.NORMALIZATION"}
+- {<<: *CAN, from: "TIR.SPACE.TETRAHEDRON", to: "TIR.HOLONOMY.WIJ"}
+- {<<: *CAN, from: "TIR.HOLONOMY.WIJ", to: "TIR.STANDARD_MODEL"}
+- {<<: *CAN, from: "TIR.FOUNDATION.C2", to: "TIR.TIME_JOIN"}
+- {<<: *FR, from: "TIR.HOLONOMY.WIJ", to: "TIR.GLOBAL_GLUING"}
+- {<<: *FR, from: "TIR.HOLONOMY.WIJ", to: "TIR.TORSION"}
+- {<<: *FR, from: "TIR.FOUNDATION.HALF", to: "TIR.SOH.NEGATIVE_INVERSE"}
+- {<<: *CAN, from: "TIR.SPACE.LOCAL_R3", to: "TIR.SPACE.CARTAN_REFINEMENT_A2"}
+- {<<: *CAN, from: "TIR.HOLONOMY.WIJ", to: "TIR.SPACE.CARTAN_REFINEMENT_A2"}
+- {<<: *CAN, from: "TIR.SPACE.CARTAN_REFINEMENT_A2", to: "TIR.SPACE.LEVI_CIVITA_A3"}
+- {<<: *CAN, from: "TIR.SPACE.LEVI_CIVITA_A3", to: "TIR.SPACE.METRIC_JET_A4"}
+- {<<: *FR, from: "TIR.SPACE.METRIC_JET_A4", to: "TIR.SPACE.GLOBAL_3MANIFOLD_A5"}
+- {<<: *FR, from: "TIR.SPACE.GLOBAL_3MANIFOLD_A5", to: "TIR.GLOBAL_GLUING"}
+- {<<: *CAN, from: "IDT.TEMPORAL.PRIMITIVE", to: "IDT.TEMPORAL.WAVE"}
+- {<<: *CAN, from: "IDT.TEMPORAL.WAVE", to: "IDT.NOW"}
+- {<<: *CAN, from: "IDT.NOW", to: "IDT.BIFURCATION"}
+- {<<: *CAN, from: "IDT.BIFURCATION", to: "IDT.TEMPORAL.TRANSPORT"}
+- {<<: *CAN, from: "IDT.TEMPORAL.TRANSPORT", to: "IDT.MEMORY"}
+- {<<: *CAN, from: "IDT.MEMORY", to: "IDT.ORCHORBITAL"}
+- {<<: *CAN, from: "IDT.ORCHORBITAL", to: "IDT.RETRODICTION"}
+- {<<: *CAN, from: "IDT.RETRODICTION", to: "IDT.RETROCAUSAL_TESTS"}
+- {<<: *CAN, from: "IDT.RETROCAUSAL_TESTS", to: "IDT.EINSTEIN.CLOSURE"}
+- {<<: *CAN, from: "IDT.TEMPORAL.PRIMITIVE", to: "IDT.NOETHER.GAUGE_COVARIANT_SOURCE"}
+- {<<: *CAN, from: "IDT.TEMPORAL.WAVE", to: "IDT.CLOCK.GAMMA_T"}
+- {<<: *CAN, from: "IDT.TEMPORAL.PRIMITIVE", to: "IDT.CLOCK.RELATIVE_ENTROPY_05D"}
+- {<<: *CAN, from: "IDT.RELATIVISTIC.FIELD_BRIDGE", to: "IDT.EINSTEIN.CLOSURE"}
+- {<<: *CAN, from: "IDT.TEMPORAL.PRIMITIVE", to: "IDT.CLOCK.RELATIONAL_LAPSE_05C"}
+- {<<: *CAN, from: "IDT.CLOCK.RELATIONAL_LAPSE_05C", to: "IDT.CLOCK.GLOBAL_COCYCLE_05E"}
+- {<<: *CAN, from: "IDT.CLOCK.RELATIONAL_LAPSE_05C", to: "IDT.CLOCK.FOLIATION_05G"}
+- {<<: *CAN, from: "IDT.TEMPORAL.PRIMITIVE", to: "IDT.CLOCK.EVENT_EXACTNESS_05H"}
+- {<<: *FR, from: "IDT.CLOCK.GLOBAL_COCYCLE_05E", to: "IDT.CLOCK.FOLIATION_05G"}
+- {<<: *FR, from: "IDT.CLOCK.EVENT_EXACTNESS_05H", to: "IDT.CLOCK.FOLIATION_05G"}
+- {<<: *CD, from: "IDT.TEMPORAL.PRIMITIVE", to: "IDT.CLOCK.TEMPORAL_TRACE_LIFT_V02", promotion_gate: "IDT_ELAPSED_SCALE_AS_HERMITIAN_TRACE_COORDINATE"}
+- {<<: *CD, from: "IDT.CLOCK.TEMPORAL_TRACE_LIFT_V02", to: "IDT.CLOCK.TEMPORAL_TRACE_UNIQUENESS_V06", promotion_gate: "IDT_ELAPSED_SCALE_AS_HERMITIAN_TRACE_COORDINATE"}
+- {<<: *CAN, from: "RFC.SOURCE.CONSERVED_CARRIER", to: "RFC.N1B2K.CURRENT_MEASURE"}
+- {<<: *CAN, from: "RFC.N1B2K.CURRENT_MEASURE", to: "RFC.N1B2O.MATTER_SOURCE_FACTORIZATION"}
+- {<<: *CAN, from: "RFC.N1B2O.MATTER_SOURCE_FACTORIZATION", to: "RFC.N1B2P.MAXWELL_INTERTWINER"}
+- {<<: *CAN, from: "RFC.N1B2P.MAXWELL_INTERTWINER", to: "RFC.E4.PHASE_STRESS_ENERGY"}
+- {<<: *CAN, from: "RFC.E4.PHASE_STRESS_ENERGY", to: "RFC.E5.CARRIER_ENERGY"}
+- {<<: *CAN, from: "RFC.E5.CARRIER_ENERGY", to: "RFC.E6.LORENTZIAN_ACTION"}
+- {<<: *CAN, from: "RFC.E6.LORENTZIAN_ACTION", to: "RFC.E7.SCALAR_T_DECOMPOSITION"}
+- {<<: *CAN, from: "RFC.E7.SCALAR_T_DECOMPOSITION", to: "RFC.MATTER.SCALAR_TMN"}
+- {<<: *CAN, from: "RFC.MATTER.SCALAR_TMN", to: "RFC.L1.LAMBDA_TARGET"}
+- {<<: *CAN, from: "RFC.L1.LAMBDA_TARGET", to: "RFC.L2.LAMBDA_ACTION_STABILITY"}
+- {<<: *CAN, from: "RFC.L2.LAMBDA_ACTION_STABILITY", to: "RFC.L3.INFORMATION_SCALAR_POTENTIAL"}
+- {<<: *CAN, from: "RFC.L3.INFORMATION_SCALAR_POTENTIAL", to: "RFC.L4.INFORMATION_CURVATURE_PULLBACK"}
+- {<<: *CAN, from: "RFC.L4.INFORMATION_CURVATURE_PULLBACK", to: "RFC.L4A.SHANNON_FISHER_NORMALIZATION"}
+- {<<: *CAN, from: "RFC.L4A.SHANNON_FISHER_NORMALIZATION", to: "RFC.L5.TEMPORAL_WAVE_KG_BRIDGE"}
+- {<<: *CAN, from: "RFC.L5.TEMPORAL_WAVE_KG_BRIDGE", to: "RFC.L5A.PREMETRIC_CALIBRATION"}
+- {<<: *CAN, from: "RFC.L5A.PREMETRIC_CALIBRATION", to: "RFC.ADM.E8"}
+- {<<: *CAN, from: "RFC.ADM.E8", to: "RFC.ADM.E9"}
+- {<<: *CAN, from: "RFC.ADM.E9", to: "RFC.ADM.E10"}
+- {<<: *CAN, from: "RFC.ADM.E10", to: "RFC.ADM.E11"}
+- {<<: *CAN, from: "RFC.ADM.E11", to: "RFC.ADM.E12"}
+- {<<: *CAN, from: "RFC.ADM.E12", to: "RFC.ADM.E13"}
+- {<<: *FR, from: "RFC.ADM.E13", to: "RFC.PHYSICAL_SCALE_COUPLING"}
+- {<<: *CAN, from: "RFC.ADM.E8", to: "RFC.E14.DIRECTIONAL_RELATIVE_ENTROPY"}
+- {<<: *CAN, from: "RFC.E14.DIRECTIONAL_RELATIVE_ENTROPY", to: "RFC.E15.INFORMATION_LEGENDRE_HAMILTONIAN"}
+- {<<: *CAN, from: "RFC.ADM.E8", to: "RFC.E16.SHIFT_NOETHER_FIREWALL"}
+- {<<: *CAN, from: "RFC.N1B2K.CURRENT_MEASURE", to: "RFC.E16.SHIFT_NOETHER_FIREWALL"}
+- {<<: *CAN, from: "RFC.E14.DIRECTIONAL_RELATIVE_ENTROPY", to: "RFC.E17.CLOCK_INFORMATION_SCALAR_ACTION"}
+- {<<: *CAN, from: "RFC.E15.INFORMATION_LEGENDRE_HAMILTONIAN", to: "RFC.E17.CLOCK_INFORMATION_SCALAR_ACTION"}
+- {<<: *CAN, from: "RFC.E17.CLOCK_INFORMATION_SCALAR_ACTION", to: "RFC.E18.PHYSICAL_VELOCITY_FIREWALL"}
+- {<<: *CAN, from: "RFC.E16.SHIFT_NOETHER_FIREWALL", to: "RFC.E18.PHYSICAL_VELOCITY_FIREWALL"}
+- {<<: *CAN, from: "RFC.ADM.E8", to: "RFC.E18.PHYSICAL_VELOCITY_FIREWALL"}
+- {<<: *CAN, from: "RFC.E18.PHYSICAL_VELOCITY_FIREWALL", to: "RFC.E19.NOETHER_MATERIAL_CONGRUENCE"}
+- {<<: *CAN, from: "RFC.N1B2K.CURRENT_MEASURE", to: "RFC.E19.NOETHER_MATERIAL_CONGRUENCE"}
+- {<<: *CAN, from: "RFC.E17.CLOCK_INFORMATION_SCALAR_ACTION", to: "RFC.E20.TETRA_CLOCK_MASS_SCALE"}
+- {<<: *CAN, from: "RFC.E19.NOETHER_MATERIAL_CONGRUENCE", to: "RFC.E20.TETRA_CLOCK_MASS_SCALE"}
+- {<<: *FR, from: "RFC.E20.TETRA_CLOCK_MASS_SCALE", to: "RFC.PHYSICAL_SCALE_COUPLING"}
+- {<<: *CAN, from: "RFC.COUPLING.YM_BCJ", to: "RFC.COUPLING.FOUR_POINT_DC"}
+- {<<: *CAN, from: "RFC.COUPLING.FOUR_POINT_DC", to: "RFC.COUPLING.FIVE_POINT_KLT"}
+- {<<: *CAN, from: "RFC.COUPLING.FIVE_POINT_KLT", to: "RFC.COUPLING.RFG29"}
+- {<<: *CAN, from: "RFC.COUPLING.RFG29", to: "RFC.COUPLING.RFG30"}
+- {<<: *CAN, from: "RFC.COUPLING.RFG30", to: "RFC.COUPLING.RFG31"}
+- {<<: *CAN, from: "RFC.COUPLING.RFG31", to: "RFC.COUPLING.RFG32"}
+- {<<: *CAN, from: "RFC.COUPLING.RFG32", to: "RFC.COUPLING.RFG33"}
+- {<<: *CAN, from: "RFC.COUPLING.RFG33", to: "RFC.COUPLING.RFG34"}
+- {<<: *FR, from: "RFC.COUPLING.RFG34", to: "RFC.COUPLING.RFG35"}
+- {<<: *FR, from: "RFC.COUPLING.RFG35", to: "RFC.COUPLING.PHYSICAL_G"}
+- {<<: *FR, from: "RFC.COUPLING.PHYSICAL_G", to: "RFC.PHYSICAL_SCALE_COUPLING"}
+- {<<: *CAN, from: "RFC.F0.PRIMITIVE_STATE", to: "RFC.F1.GAUGE_RELATIONAL_PHASE"}
+- {<<: *CAN, from: "RFC.F1.GAUGE_RELATIONAL_PHASE", to: "RFC.F2.EULER_BERRY_CLOSURE"}
+- {<<: *CAN, from: "RFC.F2.EULER_BERRY_CLOSURE", to: "RFC.F3.PHASE_RATE_CELL"}
+- {<<: *CAN, from: "RFC.F3.PHASE_RATE_CELL", to: "RFC.F4.OCCUPATION_CURRENT"}
+- {<<: *CAN, from: "RFC.F4.OCCUPATION_CURRENT", to: "RFC.F5.PHASE_ENERGY_ONE_FORM"}
+- {<<: *CAN, from: "RFC.F5.PHASE_ENERGY_ONE_FORM", to: "RFC.F6.COVARIANT_SOURCE"}
+- {<<: *CAN, from: "RFC.F6.COVARIANT_SOURCE", to: "RFC.F7.STRESS_ENERGY_BIANCHI"}
+- {<<: *CAN, from: "RFC.F7.STRESS_ENERGY_BIANCHI", to: "RFC.F8.EOS_PHASE_CONTINUITY"}
+- {<<: *CAN, from: "RFC.F8.EOS_PHASE_CONTINUITY", to: "RFC.F9.NOETHER_HAMILTONIAN_EINSTEIN"}
+- {<<: *CAN, from: "RFC.F5.PHASE_ENERGY_ONE_FORM", to: "RFC.F10.PHASE_ENERGY_CURVATURE"}
+- {<<: *CAN, from: "RFC.F6.COVARIANT_SOURCE", to: "RFC.F10.PHASE_ENERGY_CURVATURE"}
+- {<<: *CAN, from: "RFC.F10.PHASE_ENERGY_CURVATURE", to: "RFC.F11.PHASE_ENERGY_TRANSPORT"}
+- {<<: *CAN, from: "RFC.F11.PHASE_ENERGY_TRANSPORT", to: "RFC.F12.FLRW_PHASE_SCALING"}
+- {<<: *CAN, from: "RFC.F8.EOS_PHASE_CONTINUITY", to: "RFC.F13.VARIATIONAL_COMMON_ACTION"}
+- {<<: *CAN, from: "RFC.F9.NOETHER_HAMILTONIAN_EINSTEIN", to: "RFC.F13.VARIATIONAL_COMMON_ACTION"}
+- {<<: *CAN, from: "RFC.F11.PHASE_ENERGY_TRANSPORT", to: "RFC.F13.VARIATIONAL_COMMON_ACTION"}
+- {<<: *CAN, from: "RFC.F13.VARIATIONAL_COMMON_ACTION", to: "RFC.F14.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F14.STACK_GATE", to: "RFC.F15.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F15.STACK_GATE", to: "RFC.F16.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F16.STACK_GATE", to: "RFC.F17.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F17.STACK_GATE", to: "RFC.F18.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F18.STACK_GATE", to: "RFC.F19.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F19.STACK_GATE", to: "RFC.F20.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F20.STACK_GATE", to: "RFC.F21.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F21.STACK_GATE", to: "RFC.F22.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F22.STACK_GATE", to: "RFC.F23.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F23.STACK_GATE", to: "RFC.F24.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F24.STACK_GATE", to: "RFC.F25.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F25.STACK_GATE", to: "RFC.F26.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F26.STACK_GATE", to: "RFC.F27.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F27.STACK_GATE", to: "RFC.F28.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F5.PHASE_ENERGY_ONE_FORM", to: "RFC.F22.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F8.EOS_PHASE_CONTINUITY", to: "RFC.F22.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F10.PHASE_ENERGY_CURVATURE", to: "RFC.F23.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F16.STACK_GATE", to: "RFC.F23.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F10.PHASE_ENERGY_CURVATURE", to: "RFC.F24.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F16.STACK_GATE", to: "RFC.F24.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F19.STACK_GATE", to: "RFC.F24.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F18.STACK_GATE", to: "RFC.F25.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F19.STACK_GATE", to: "RFC.F25.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F20.STACK_GATE", to: "RFC.F25.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F5.PHASE_ENERGY_ONE_FORM", to: "RFC.F27.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F8.EOS_PHASE_CONTINUITY", to: "RFC.F27.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F1.GAUGE_RELATIONAL_PHASE", to: "RFC.F28.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F2.EULER_BERRY_CLOSURE", to: "RFC.F28.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F3.PHASE_RATE_CELL", to: "RFC.F28.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F4.OCCUPATION_CURRENT", to: "RFC.F28.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F10.PHASE_ENERGY_CURVATURE", to: "RFC.F28.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F11.PHASE_ENERGY_TRANSPORT", to: "RFC.F28.STACK_GATE"}
+- {<<: *CAN, from: "RFC.F13.VARIATIONAL_COMMON_ACTION", to: "RFC.F28.STACK_GATE"}
+- {<<: *CD, from: "RFC.DIMENSION.PREMETRIC_TRANSVERSALITY_V05", to: "RFC.DIMENSION.LOCAL_4D_CARRIER_V07", promotion_gate: "PHYSICAL_SPACETIME_SOLDERING_REQUIRED"}
+- {<<: *CD, from: "RFC.DIMENSION.LOCAL_4D_CARRIER_V07", to: "RFC.E21.EINSTEIN_UNIQUENESS_SELECTION", promotion_gate: "PHYSICAL_SPACETIME_SOLDERING_REQUIRED"}
+- {<<: *CAN, from: "RFC.L2.LAMBDA_ACTION_STABILITY", to: "RFC.L6.COVARIANT_PROPAGATION"}
+- {<<: *CAN, from: "RFC.L5A.PREMETRIC_CALIBRATION", to: "RFC.L6.COVARIANT_PROPAGATION"}
+- {<<: *CAN, from: "RFC.ADM.E8", to: "RFC.L6.COVARIANT_PROPAGATION"}
+- {<<: *CAN, from: "RFC.L6.COVARIANT_PROPAGATION", to: "RFC.L7.CAUCHY_HYPERBOLICITY"}
+- {<<: *FR, from: "RFC.E22.TIR_CARTAN_LEVI_CIVITA_BINDING", to: "RFC.E21.EINSTEIN_UNIQUENESS_SELECTION"}
+- {<<: *CAN, from: "RFC.E23.CONSERVED_SOURCE_SELECTION", to: "RFC.E21.EINSTEIN_UNIQUENESS_SELECTION"}
+- {<<: *CAN, from: "RFC.E6.LORENTZIAN_ACTION", to: "RFC.E23.CONSERVED_SOURCE_SELECTION"}
+- {<<: *CAN, from: "RFC.E21.EINSTEIN_UNIQUENESS_SELECTION", to: "RFC.E24.LOCAL_EINSTEIN_FORM"}
+- {<<: *CAN, from: "RFC.E23.CONSERVED_SOURCE_SELECTION", to: "RFC.E24.LOCAL_EINSTEIN_FORM"}
+- {<<: *CAN, from: "RFC.ADM.E13", to: "RFC.E24.LOCAL_EINSTEIN_FORM"}
+- {<<: *FR, from: "RFC.E24.LOCAL_EINSTEIN_FORM", to: "RFC.E25.SHARED_SPACETIME_ATLAS"}
+- {<<: *FR, from: "RFC.ADM.E8", to: "RFC.E25.SHARED_SPACETIME_ATLAS"}
+- {<<: *CR, from: "TIR.TIME_JOIN", to: "IDT.TEMPORAL.PRIMITIVE", note: "IDT temporal primitive consumes the TIR sibling time interface."}
+- {<<: *CR, from: "IDT.NOETHER.GAUGE_COVARIANT_SOURCE", to: "RFC.SOURCE.CONSERVED_CARRIER", note: "Gauge-covariant IDT Noether source enters the RFC conserved-source interface."}
+- {<<: *CR, from: "RFC.SOURCE.CONSERVED_CARRIER", to: "IDT.RELATIVISTIC.FIELD_BRIDGE", note: "RFC source hardening returns the typed relativistic field bridge consumed by IDT Einstein closure."}
+- {<<: *CR, from: "IDT.CLOCK.GAMMA_T", to: "RFC.ADM.E8"}
+- {<<: *CR, from: "TIR.SPACE.LOCAL_R3", to: "RFC.ADM.E8", note: "TIR supplies the rank-three spatial carrier; physical scale calibration remains typed downstream."}
+- {<<: *CR, from: "IDT.CLOCK.RELATIVE_ENTROPY_05D", to: "RFC.E14.DIRECTIONAL_RELATIVE_ENTROPY"}
+- {<<: *CR, from: "TIR.SPACE.TETRAHEDRON", to: "RFC.E20.TETRA_CLOCK_MASS_SCALE", note: "TIR supplies the regular-tetrahedron geometric carrier; physical SI edge scale remains explicit."}
+- {<<: *CR, from: "TIR.SPACE.LEVI_CIVITA_A3", to: "RFC.E22.TIR_CARTAN_LEVI_CIVITA_BINDING"}
+- {<<: *CR, from: "TIR.SPACE.METRIC_JET_A4", to: "RFC.E21.EINSTEIN_UNIQUENESS_SELECTION"}
+- {<<: *CR, from: "IDT.CLOCK.RELATIONAL_LAPSE_05C", to: "RFC.E24.LOCAL_EINSTEIN_FORM"}
+- {<<: *CR, from: "TIR.SPACE.METRIC_JET_A4", to: "RFC.E24.LOCAL_EINSTEIN_FORM"}
+- {<<: *CR, from: "TIR.SPACE.GLOBAL_3MANIFOLD_A5", to: "RFC.E25.SHARED_SPACETIME_ATLAS"}
+- {<<: *CR, from: "IDT.CLOCK.FOLIATION_05G", to: "RFC.E25.SHARED_SPACETIME_ATLAS"}
+- {<<: *CR, from: "IDT.CLOCK.EVENT_EXACTNESS_05H", to: "RFC.E25.SHARED_SPACETIME_ATLAS"}
+- {<<: *CR, from: "IDT.CLOCK.RELATIONAL_LAPSE_05C", to: "RFC.L6.COVARIANT_PROPAGATION"}
+- {<<: *CR, from: "IDT.CLOCK.FOLIATION_05G", to: "RFC.L7.CAUCHY_HYPERBOLICITY", note: "IDT supplies the foliation gate; RFC.L7 retains global Cauchy promotion OPEN."}
+- {<<: *CR, from: "TIR.SPACE.TETRAHEDRON", to: "RFC.F15.STACK_GATE", note: "RF-F15 sidecar declares dependence on TIR local four-relation geometry."}
+- {<<: *CD, from: "TIR.SPACE.LOCAL_R3", to: "RFC.DIMENSION.PREMETRIC_TRANSVERSALITY_V05", promotion_gate: "PHYSICAL_SPACETIME_SOLDERING_REQUIRED"}
+- {<<: *CD, from: "IDT.CLOCK.TEMPORAL_TRACE_UNIQUENESS_V06", to: "RFC.DIMENSION.PREMETRIC_TRANSVERSALITY_V05", promotion_gate: "PHYSICAL_SPACETIME_SOLDERING_REQUIRED"}
+- {<<: *CD, from: "SOH.SU2.DOUBLE_COVER", to: "IDT.HALF_SEAM.DOUBLE_COVER_SIGNATURE", candidate_id: "XFI.03", promotion_gate: "THEOREM_VALIDATOR_RECEIPT_REQUIRED"}
+- {<<: *CD, from: "SOH.HALF.ZERO_ORDER_DOUBLING", to: "IDT.HALF_SEAM.RELATIONAL_ZERO", candidate_id: "XFI.28.02", promotion_gate: "THEOREM_VALIDATOR_RECEIPT_REQUIRED"}
+- {<<: *CD, from: "SOH.BLOCH.CENTERED_RAPIDITY", to: "IDT.NOW.HYPERBOLIC_CHART", candidate_id: "XFI.28.03", promotion_gate: "DOMAIN_INVERSE_SINGULAR_BOUNDARY_AUDIT_REQUIRED"}
+- {<<: *CD, from: "TIR.SOH.NEGATIVE_INVERSE", to: "SOH.LI_WEIL.NATIVE_CLOSURE", promotion_gate: "NATIVE_CLOSURE_TO_COMPLETE_LI_WEIL_POSITIVITY"}
 invalidation_policy:
   rule: any_changed_upstream_claim_marks_all_reachable_downstream_claims_REVALIDATION_REQUIRED
   candidate_edges_propagate_invalidation: false

@@ -1,27 +1,27 @@
 schema: FPDG_SOURCE_EXPORT_HEADS_V0_1
-captured_at: '2026-08-29T18:34:00+01:00'
+captured_at: '2026-08-30T23:50:00+01:00'
 exports:
   TIR:
     repository: AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations
-    export_commit: b2fae10d322018920fa0933087aebe9f0cc3c64a
+    export_commit: 62a13ba92f0db641d6d699a88059aedf33528300
     path: DEPENDENCY_EXPORT.json
-    source_commit: ccc89fc06bdf42c1937c0a2303d3e477db487e0f
-    promotion: SOURCE_PR_PENDING
+    source_commit: 15b76e13e258c6b46a6d4f98c48687dce9f52e03
+    promotion: SOURCE_MAIN_LOCKED
   IDT:
     repository: AdrianLipa90/Informational-Dynamics-of-Time
-    export_commit: fe1d9b41d2dc5196900a66164ae2d3cc59b3aea6
+    export_commit: f186aab6024a592be406684785069edfe2f3d5bf
     path: DEPENDENCY_EXPORT.json
-    source_commit: ed902458b6e0ad338ca4ba637d8d8228bc7c549b
-    promotion: SOURCE_PR_PENDING
+    source_commit: ceb3d74b581fc2445c3fad2474a7506a76b588fa
+    promotion: SOURCE_MAIN_LOCKED
   RFC:
     repository: AdrianLipa90/Relational-Field-Closure
-    export_commit: 7dd171f90c273d6b9c8158450b57007042f15d5f
+    export_commit: 012d4aa790bca7d631caf5c8002bebaa3a07710a
     path: DEPENDENCY_EXPORT.json
-    source_commit: 8073b0f6648b5d9c81f7561f5c1a56c266ea6890
-    promotion: SOURCE_PR_PENDING
+    source_commit: 5bb01438a44a68b0d747a3d1f9114aa648bd7395
+    promotion: SOURCE_MAIN_LOCKED
   SOH:
     repository: AdrianLipa90/secret-of-a-half
     export_commit: 0d0ffa1765381cc644aadb03c453d9ac6dbe7ea3
     path: DEPENDENCY_EXPORT.json
     source_commit: 19b9820165cb46f441d006e0ff6e94f8c08f37b8
-    promotion: SOURCE_PR_PENDING
+    promotion: SOURCE_MAIN_LOCKED_METADATA_HEAD_ADVANCED
