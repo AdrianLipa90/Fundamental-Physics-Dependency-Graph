@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/fpdg/pain_signature_matches.schema.json",
+  "title": "FPDG pain signature matches v0.1",
+  "type": "object",
+  "required": [
+    "schema",
+    "current_signature_hash",
+    "threshold",
+    "matches",
+    "match_count",
+    "interpretation",
+    "gremlin_promotion_authority"
+  ],
+  "properties": {
+    "schema": {"const": "FPDG_PAIN_SIGNATURE_MATCHES_V0_1"},
+    "current_signature_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "threshold": {"type": "number", "minimum": 0, "maximum": 1},
+    "matches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "incident_path",
+          "signature_hash",
+          "exact_structural_match",
+          "feature_jaccard",
+          "shared_feature_count",
+          "current_feature_count",
+          "historical_feature_count"
+        ],
+        "properties": {
+          "incident_path": {"type": "string"},
+          "signature_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "exact_structural_match": {"type": "boolean"},
+          "feature_jaccard": {"type": "number", "minimum": 0, "maximum": 1},
+          "shared_feature_count": {"type": "integer", "minimum": 0},
+          "current_feature_count": {"type": "integer", "minimum": 0},
+          "historical_feature_count": {"type": "integer", "minimum": 0},
+          "exact_coordinates": {"type": "object"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "match_count": {"type": "integer", "minimum": 0},
+    "interpretation": {"const": "RETRIEVAL_CANDIDATES_ONLY"},
+    "gremlin_promotion_authority": {"const": false}
+  },
+  "additionalProperties": true
+}

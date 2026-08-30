@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/fpdg/gremlin_pain_packet.schema.json",
+  "title": "FPDG GREMLIN pain packet v0.1",
+  "type": "object",
+  "required": [
+    "schema",
+    "epistemic",
+    "promotion_state",
+    "runtime_execution_authority",
+    "canon_write_authority",
+    "vector_guessing_allowed",
+    "zones"
+  ],
+  "properties": {
+    "schema": {"const": "FPDG_GREMLIN_PAIN_PACKET_V0_1"},
+    "epistemic": {"const": "CHYBA"},
+    "promotion_state": {"const": "CANDIDATE_ONLY"},
+    "runtime_execution_authority": {"const": false},
+    "canon_write_authority": {"const": false},
+    "vector_guessing_allowed": {"const": false},
+    "candidate_edges_enter_canon": {"const": false},
+    "zones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "finding_request_id",
+          "invariant_id",
+          "frontier_claim",
+          "raw_chains",
+          "required_gates",
+          "compiler_state"
+        ],
+        "properties": {
+          "finding_request_id": {"type": "string", "minLength": 1},
+          "invariant_id": {"const": "MINIMAL_PROMOTED_DEPENDENCY_FAILURE_FRONTIER"},
+          "frontier_claim": {"type": "string", "minLength": 1},
+          "raw_chains": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["chain_id", "claims"],
+              "properties": {
+                "chain_id": {"type": "string"},
+                "claims": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {"type": "string"}
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "required_gates": {
+            "type": "object",
+            "required": [
+              "explicit_cross_domain_alignment",
+              "canonical_kaku_resolution",
+              "single_exact_36d_basis",
+              "unknown_relation_binding_fail_closed"
+            ],
+            "properties": {
+              "explicit_cross_domain_alignment": {"const": true},
+              "canonical_kaku_resolution": {"const": true},
+              "single_exact_36d_basis": {"const": true},
+              "unknown_relation_binding_fail_closed": {"const": true}
+            },
+            "additionalProperties": false
+          },
+          "compiler_state": {
+            "const": "BLOCKED_PENDING_GREMLIN_ALIGNMENT_AND_KAKU_RESOLUTION"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

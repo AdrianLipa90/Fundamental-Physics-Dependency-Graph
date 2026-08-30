@@ -1,0 +1,85 @@
+{
+  "schema": "FPDG_GREMLIN_SOURCE_COVERAGE_FINDING_V0_1",
+  "status": "SOURCE_EXPORT_COVERAGE_GAP_VERIFIED",
+  "finding_id": "GREMLIN.OWL.RFC.SCALE_EXPORT_COVERAGE.001",
+  "generated_at_utc": "2026-08-29T21:59:13Z",
+  "classification": "INTEGRATION_PROVENANCE_GAP",
+  "scientific_contradiction": false,
+  "source_repository": {
+    "repository": "AdrianLipa90/Relational-Field-Closure",
+    "main_commit": "58655c7fe9d25d09c13545965e951f171316e6b2"
+  },
+  "gremlin": {
+    "source_commit": "f775cd5f0b2619692e6d2250e2c6204776b6ce24",
+    "router_version": "0.5.0",
+    "focused_route_mask": [
+      "OWL"
+    ],
+    "focused_route_scores": {
+      "OWL": 19.0,
+      "SPIDER": 5.0
+    },
+    "focused_route_commitment": "fcc0b25011172e5e70d831ad86cb51e92efbeb5742b9a36daabb417c4e67d491",
+    "role": "evidence/provenance inspection priority only"
+  },
+  "observations": [
+    {
+      "kind": "SOURCE_TREE_FACT",
+      "evidence": "closure/scale at RFC main contains RF_S1 through RF_S22 gate documents plus RF_SCALE_CANONICAL_INDEX.md"
+    },
+    {
+      "kind": "CANONICAL_INDEX_FACT",
+      "evidence": "RF_SCALE_CANONICAL_INDEX.md is naming authority for RF-S13 through RF-S22 and gives the explicit branch RF-S13 -> S14 -> S15 -> S16 -> S17, then S17 -> S18 -> S19 and S17 -> S20 -> S21 -> S22"
+    },
+    {
+      "kind": "EXPORT_FACT",
+      "evidence": "RFC DEPENDENCY_EXPORT.json represents source_commit a522484a1751bd348520cba50f31efe1eb04bc32 and contains no RF-S13..RF-S22 claim family or local edges"
+    },
+    {
+      "kind": "FPDG_EFFECT",
+      "evidence": "Because FPDG consumes source-owned exports, the canonical RF-S13..RF-S22 source/scale branch is absent from the central claim graph and validation-producer coverage"
+    }
+  ],
+  "verified_minimum_missing_branch": {
+    "nodes": [
+      "RF-S13 Relational Generator Source Density",
+      "RF-S14 Generator Matter/Vacuum Source-Placement Firewall",
+      "RF-S15 Phase-Clock Relational Volume Reduction",
+      "RF-S16 Occupation <-> Noether Current Binding",
+      "RF-S17 Carrier-Normalization Invariance",
+      "RF-S18 Relational Generator -> Relativistic Dust Stress-Energy Lift",
+      "RF-S19 Four-Current Dust Tensor Closure",
+      "RF-S20 Noether-Profile Source Reconstruction",
+      "RF-S21 IDT <-> Noether Profile Source Binding",
+      "RF-S22 Noether-Hamiltonian Extensive Source Closure"
+    ],
+    "edges": [
+      "RF-S13 -> RF-S14",
+      "RF-S14 -> RF-S15",
+      "RF-S15 -> RF-S16",
+      "RF-S16 -> RF-S17",
+      "RF-S17 -> RF-S18",
+      "RF-S18 -> RF-S19",
+      "RF-S17 -> RF-S20",
+      "RF-S20 -> RF-S21",
+      "RF-S21 -> RF-S22"
+    ]
+  },
+  "additional_audit_surface": {
+    "status": "SOURCE_AUDIT_REQUIRED_BEFORE_CENTRAL_PROMOTION",
+    "scope": "RF-S1 through RF-S12 also exist in the current source tree and are absent from the export; their exact central claim IDs and dependency topology must be source-read before FPDG insertion."
+  },
+  "source_first_repair_plan": [
+    "Regenerate or amend RFC DEPENDENCY_EXPORT.json from current source authority.",
+    "Add explicit RFC-owned test-to-claim bindings for the admitted RF-S gates before central failure localization claims exact coverage.",
+    "Run the RFC hosted reference suite on the exact repair head.",
+    "Only after source-side PASS, reconcile the locked RFC export into FPDG and regenerate central diagnostics."
+  ],
+  "authority": {
+    "runtime_execution_authority": false,
+    "canon_write_authority": false,
+    "scientific_claim_promotion_authority": false,
+    "promotion_state": "CANDIDATE_ASSISTED_VERIFIED_INTEGRATION_FINDING",
+    "source_claim_authority": "Relational-Field-Closure"
+  }
+}

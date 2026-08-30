@@ -21,7 +21,27 @@ jobs:
         run: python tools/validate_dag.py
       - name: Validate dependency export schema JSON
         run: python -m json.tool schemas/dependency_export.schema.json > /dev/null
-      - name: Test downstream revalidation propagation
+      - name: Validate inconsistency evidence schema JSON
+        run: python -m json.tool schemas/inconsistency_evidence.schema.json > /dev/null
+      - name: Validate validation failure receipt schema JSON
+        run: python -m json.tool schemas/validation_failure_receipt.schema.json > /dev/null
+      - name: Validate pain seam report schema JSON
+        run: python -m json.tool schemas/pain_seam_report.schema.json > /dev/null
+      - name: Validate pain micro-coordinate schema JSON
+        run: python -m json.tool schemas/pain_micro_coordinates.schema.json > /dev/null
+      - name: Validate diagnostic bottleneck schema JSON
+        run: python -m json.tool schemas/diagnostic_bottlenecks.schema.json > /dev/null
+      - name: Validate diagnostic probe plan schema JSON
+        run: python -m json.tool schemas/diagnostic_probe_plan.schema.json > /dev/null
+      - name: Validate pain signature schema JSON
+        run: python -m json.tool schemas/pain_signature.schema.json > /dev/null
+      - name: Validate pain signature matches schema JSON
+        run: python -m json.tool schemas/pain_signature_matches.schema.json > /dev/null
+      - name: Validate GREMLIN pain packet schema JSON
+        run: python -m json.tool schemas/gremlin_pain_packet.schema.json > /dev/null
+      - name: Test dependency, drift, seam, micro-coordinate, bottleneck, probe, signature, coverage, and localization invariants
         run: python -m unittest discover -s tests -v
+      - name: Audit direct source nerve-ending coverage
+        run: python tools/audit_validation_coverage.py
       - name: Validate four-source dependency export roundtrip
         run: python tools/export_roundtrip.py

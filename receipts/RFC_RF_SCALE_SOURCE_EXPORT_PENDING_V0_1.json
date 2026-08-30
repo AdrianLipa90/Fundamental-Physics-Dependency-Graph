@@ -1,0 +1,41 @@
+{
+  "schema": "FPDG_RFC_RF_SCALE_SOURCE_EXPORT_PENDING_V0_1",
+  "status": "SOURCE_GREEN_PENDING_CANONICAL_INGESTION",
+  "observed_date_utc": "2026-08-29",
+  "source_repository": "AdrianLipa90/Relational-Field-Closure",
+  "source_parent_pr": 70,
+  "source_scale_pr": 86,
+  "source_scale_branch": "feat/fpdg-rf-scale-export-v0.1",
+  "source_scale_head": "29282e1373be5670fb5adf5969c46aceac7ad3b3",
+  "scientific_source_commit": "58655c7fe9d25d09c13545965e951f171316e6b2",
+  "source_registry": "validation/FPDG_RF_SCALE_EXPORT_V0_1.json",
+  "source_failure_bindings": "validation/FPDG_RF_SCALE_FAILURE_BINDINGS_V0_1.json",
+  "claim_count": 22,
+  "intra_family_edge_count": 23,
+  "reference_suite": {
+    "workflow_run_id": 33278260131,
+    "workflow_run_number": 373,
+    "job_id": 99168752192,
+    "conclusion": "success",
+    "failure_receipt_upload": "skipped_because_suite_green"
+  },
+  "gremlin_octopus_v0_5": {
+    "source_commit": "f775cd5f0b2619692e6d2250e2c6204776b6ce24",
+    "route_mask": ["OWL", "SPIDER"],
+    "scores": {"OWL": 21.0, "SPIDER": 18.0, "HOUND": 6.0},
+    "selection_threshold": 9.45,
+    "route_commitment": "d879cc9dd19b4160eeb83f5e61b2bf000f97203b65937703b0834c3cf13fcad1",
+    "role": "evidence/provenance audit plus dependency-topology audit"
+  },
+  "ingestion_policy": {
+    "central_dag_mutated_by_this_receipt": false,
+    "source_claim_status_reclassified": false,
+    "candidate_promoted": false,
+    "next_gate": "ingest RFC.SCALE.S1..S22 only from the green source-owned registry with explicit cross-repository interface resolution"
+  },
+  "authority": {
+    "runtime_execution_authority": false,
+    "canon_write_authority": false,
+    "gremlin_promotion_state": "CANDIDATE_ONLY"
+  }
+}

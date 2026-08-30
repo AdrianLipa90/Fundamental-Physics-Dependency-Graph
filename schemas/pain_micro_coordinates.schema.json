@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/fpdg/pain_micro_coordinates.schema.json",
+  "title": "FPDG pain micro coordinates v0.1",
+  "type": "object",
+  "required": [
+    "schema",
+    "status",
+    "finest_precision",
+    "coordinates",
+    "zones",
+    "integration_coordinates",
+    "causal_inference_performed",
+    "candidate_edges_included"
+  ],
+  "properties": {
+    "schema": {"const": "FPDG_PAIN_MICRO_COORDINATES_V0_1"},
+    "status": {"enum": ["LOCALIZED", "NO_COORDINATES"]},
+    "finest_precision": {
+      "enum": [
+        "UNSPECIFIED",
+        "CLAIM",
+        "SOURCE_PATH",
+        "RECEIPT",
+        "INTERFACE_CONTRACT",
+        "VALIDATOR_OR_TEST",
+        "SYMBOL",
+        "EQUATION",
+        "SOURCE_RANGE",
+        "INTEGRATION_METADATA_LOCATION"
+      ]
+    },
+    "coordinates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "coordinate_id",
+          "observation_id",
+          "anchored_claims",
+          "source_locator",
+          "precision"
+        ],
+        "properties": {
+          "coordinate_id": {"type": "string", "minLength": 1},
+          "observation_id": {"type": "string", "minLength": 1},
+          "claim_id": {"type": ["string", "null"]},
+          "anchored_claims": {"type": "array", "items": {"type": "string"}},
+          "source_locator": {"type": "object"},
+          "precision": {"type": "string"},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": true
+      }
+    },
+    "zones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["frontier_claim", "coordinate_ids", "finest_precision"],
+        "properties": {
+          "frontier_claim": {"type": ["string", "null"]},
+          "coordinate_ids": {"type": "array", "items": {"type": "string"}},
+          "finest_precision": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "integration_coordinates": {"type": "array", "items": {"type": "object"}},
+    "unassigned_coordinate_ids": {"type": "array", "items": {"type": "string"}},
+    "causal_inference_performed": {"const": false},
+    "candidate_edges_included": {"const": false}
+  },
+  "additionalProperties": true
+}

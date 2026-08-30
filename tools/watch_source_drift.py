@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Detect source-main drift and project its dependency blast radius.
 
-This watcher is intentionally conservative. It compares each locked source commit with
-that repository's current main head. When a source has advanced, changed file paths are
-mapped to source-owned claim records. If no claim can be mapped from the changed paths,
-all claims owned by that repository are treated as changed.
+Repository freshness is compared against `repository_head` in source_exports.lock.json.
+The export's `source_commit` is a different quantity: the scientific source state that
+the dependency export represents. This distinction prevents dependency-export/addendum
+merges from being misclassified as scientific claim changes.
 
+When a repository head genuinely advances beyond the locked repository_head, changed file
+paths are mapped conservatively to source-owned claims. The downstream diagnosis layer
+then performs a semantic dependency-export diff before accepting that coarse mapping.
 CANDIDATE_ONLY edges are excluded from canonical revalidation impact.
 """
 
@@ -34,7 +37,7 @@ from impact import compute_impact, load_graph  # noqa: E402
 def github_headers() -> dict[str, str]:
     headers = {
         "Accept": "application/vnd.github+json",
-        "User-Agent": "FPDG-source-drift-watch/0.1",
+        "User-Agent": "FPDG-source-drift-watch/0.2",
         "X-GitHub-Api-Version": "2022-11-28",
     }
     token = os.environ.get("GITHUB_TOKEN")
@@ -55,6 +58,13 @@ def current_main_sha(repository: str) -> str:
     if not isinstance(sha, str) or len(sha) != 40:
         raise RuntimeError(f"{repository}: GitHub did not return a 40-char main SHA")
     return sha
+
+
+def expected_repository_head(entry: dict[str, Any]) -> str:
+    value = entry.get("repository_head", entry.get("source_commit"))
+    if not isinstance(value, str) or len(value) != 40:
+        raise RuntimeError("source lock entry has no valid repository_head/source_commit")
+    return value
 
 
 def changed_paths(repository: str, base: str, head: str) -> list[str]:
@@ -125,22 +135,21 @@ def render_markdown(report: dict[str, Any]) -> str:
     for source in report["sources"]:
         lines.append(
             f"- **{source['repository_id']}** — {source['status']} — "
-            f"locked `{source['locked_source_commit'][:12]}` / current `{source['current_main'][:12]}`"
+            f"locked head `{source['locked_repository_head'][:12]}` / current `{source['current_main'][:12]}`"
         )
+        lines.append(f"  - represented scientific source: `{source['represented_source_commit'][:12]}`")
         if source.get("changed_paths"):
             lines.append(f"  - changed paths: {len(source['changed_paths'])}")
         if source.get("changed_claims"):
             mode = "conservative all-owned fallback" if source.get("fallback_all_owned") else "path-mapped"
-            lines.append(f"  - changed claims: {len(source['changed_claims'])} ({mode})")
-    lines.extend(["", f"Promoted downstream claims requiring revalidation: **{len(report['impacted'])}**", ""])
+            lines.append(f"  - provisional changed claims: {len(source['changed_claims'])} ({mode})")
+    lines.extend(["", f"Promoted downstream claims provisionally requiring revalidation: **{len(report['impacted'])}**", ""])
     for row in report["impacted"]:
-        lines.append(
-            f"- `{row['claim_id']}` ({row['repository']}, distance {row['distance']})"
-        )
+        lines.append(f"- `{row['claim_id']}` ({row['repository']}, distance {row['distance']})")
     if not report["impacted"]:
         lines.append("- none")
     lines.append("")
-    lines.append("`CANDIDATE_ONLY` edges were excluded from canonical invalidation propagation.")
+    lines.append("`CANDIDATE_ONLY` edges were excluded. Semantic export diagnosis runs downstream of this provisional detector.")
     return "\n".join(lines) + "\n"
 
 
@@ -160,15 +169,18 @@ def main() -> int:
         for repo_id in ("TIR", "IDT", "RFC", "SOH"):
             entry = lock["sources"][repo_id]
             repository = entry["repository"]
-            expected = entry["source_commit"]
+            expected_head = expected_repository_head(entry)
+            represented_source = entry["source_commit"]
             actual = current_main_sha(repository)
             source = {
                 "repository_id": repo_id,
                 "repository": repository,
-                "locked_source_commit": expected,
+                "locked_repository_head": expected_head,
+                "locked_source_commit": represented_source,
+                "represented_source_commit": represented_source,
                 "current_main": actual,
             }
-            if actual == expected:
+            if actual == expected_head:
                 source.update(
                     {
                         "status": "FRESH",
@@ -178,7 +190,7 @@ def main() -> int:
                     }
                 )
             else:
-                paths = changed_paths(repository, expected, actual)
+                paths = changed_paths(repository, expected_head, actual)
                 mapped, fallback = map_paths_to_claims(repo_id, paths, claims)
                 all_changed_claims.update(mapped)
                 source.update(
@@ -194,41 +206,34 @@ def main() -> int:
         impacted = aggregate_impact(graph, sorted(all_changed_claims))
         drifted = [row["repository_id"] for row in source_reports if row["status"] == "DRIFT"]
         report = {
-            "schema": "FPDG_SOURCE_DRIFT_REPORT_V0_1",
+            "schema": "FPDG_SOURCE_DRIFT_REPORT_V0_2",
             "status": "DRIFT" if drifted else "FRESH",
             "drifted_repositories": drifted,
             "changed_claims": sorted(all_changed_claims),
             "sources": source_reports,
             "impacted": impacted,
             "candidate_edges_included": False,
+            "changed_claims_are_provisional_until_semantic_export_diff": True,
         }
 
         BUILD_DIR.mkdir(exist_ok=True)
         (BUILD_DIR / "SOURCE_DRIFT_REPORT.json").write_text(
             json.dumps(report, indent=2) + "\n", encoding="utf-8"
         )
-        (BUILD_DIR / "SOURCE_DRIFT_REPORT.md").write_text(
-            render_markdown(report), encoding="utf-8"
-        )
+        (BUILD_DIR / "SOURCE_DRIFT_REPORT.md").write_text(render_markdown(report), encoding="utf-8")
 
         if args.json:
             print(json.dumps(report, indent=2))
         else:
             print(
                 f"{report['status']}: drifted={drifted} "
-                f"changed_claims={len(all_changed_claims)} impacted={len(impacted)}"
+                f"provisional_changed_claims={len(all_changed_claims)} impacted={len(impacted)}"
             )
 
         if drifted and args.fail_on_drift:
             return 2
         return 0
-    except (
-        OSError,
-        KeyError,
-        json.JSONDecodeError,
-        RuntimeError,
-        urllib.error.URLError,
-    ) as exc:
+    except (OSError, KeyError, json.JSONDecodeError, RuntimeError, urllib.error.URLError) as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
         return 1
 

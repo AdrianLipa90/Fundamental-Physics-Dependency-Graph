@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/fpdg/diagnostic_probe_plan.schema.json",
+  "title": "FPDG diagnostic probe plan v0.1",
+  "type": "object",
+  "required": [
+    "schema",
+    "status",
+    "causal_inference_performed",
+    "candidate_edges_included",
+    "zones",
+    "integration_probes",
+    "gremlin_hints"
+  ],
+  "properties": {
+    "schema": {"const": "FPDG_DIAGNOSTIC_PROBE_PLAN_V0_1"},
+    "status": {"enum": ["READY", "NO_PROBES"]},
+    "causal_inference_performed": {"const": false},
+    "candidate_edges_included": {"const": false},
+    "zones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["frontier_claim", "probes", "first_probe"],
+        "properties": {
+          "frontier_claim": {"type": "string", "minLength": 1},
+          "probes": {
+            "type": "array",
+            "items": {"$ref": "#/$defs/probe"}
+          },
+          "first_probe": {
+            "anyOf": [
+              {"$ref": "#/$defs/probe"},
+              {"type": "null"}
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "integration_probes": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/probe"}
+    },
+    "gremlin_hints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "authority"],
+        "properties": {
+          "kind": {"const": "INCIDENT_RECURRENCE_CANDIDATE"},
+          "authority": {"const": "CANDIDATE_ONLY"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "$defs": {
+    "probe": {
+      "type": "object",
+      "required": ["probe_id", "kind", "priority", "authority", "reason"],
+      "properties": {
+        "probe_id": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "minLength": 1},
+        "priority": {"type": "integer", "minimum": 0},
+        "authority": {"const": "DETERMINISTIC_DIAGNOSTIC_COORDINATE"},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
