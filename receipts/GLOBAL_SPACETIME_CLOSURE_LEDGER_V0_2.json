@@ -1,0 +1,131 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_LEDGER_V0_2",
+  "date": "2026-08-30",
+  "authority": "NONCANONICAL_CROSS_REPO_AUDIT",
+  "promotion_authority": false,
+  "canonical_graph_mutated": false,
+  "canonical_source_locks_mutated": false,
+  "fpdg_base": {
+    "main_commit": "1e5e46a214c141bb07aa422740038b10a38f57d8",
+    "state": "POST_MERGE_V0_4_FEDERATION_WITH_REFRESHED_SOURCE_LOCKS"
+  },
+  "overall_status": "LOCAL_EINSTEIN_FORM_PASS__SPATIAL_CERTIFIER_PASS__TEMPORAL_EXACTNESS_CERTIFIER_PASS__REGULAR_CLOCK_EXTENSION_CERTIFIER_PASS__LOCAL_FROBENIUS_PASS__SHARED_ATLAS_CERTIFIER_PASS__GLOBAL_EINSTEIN_CARRIER_CERTIFIER_PASS__PRODUCTION_GLOBAL_SPACETIME_REALIZATION_OPEN__GLOBAL_HYPERBOLICITY_OPEN",
+  "current_main_heads": {
+    "TIR": "62a13ba92f0db641d6d699a88059aedf33528300",
+    "IDT": "f186aab6024a592be406684785069edfe2f3d5bf",
+    "RFC": "012d4aa790bca7d631caf5c8002bebaa3a07710a",
+    "FPDG": "1e5e46a214c141bb07aa422740038b10a38f57d8"
+  },
+  "validated_witnesses": {
+    "TIR_A5": {
+      "head": "2568fb24e0bc91e8f1c75dcfdc5659a57ca382b9",
+      "workflow_run_id": 33331003616,
+      "conclusion": "SUCCESS",
+      "status": "PASS_CERTIFIER_WITH_PRODUCTION_SPATIAL_COMPLEX_OPEN_INPUT"
+    },
+    "IDT_05I": {
+      "substantive_commit": "10049d5de3819d2654f19ce5158af5dd85f5198f",
+      "head": "fc87c4176dfcc480529ba28bd67042d3ebf02c72",
+      "workflow_run_number": 2,
+      "workflow_run_id": 33339841644,
+      "conclusion": "SUCCESS",
+      "status": "PASS_REGULAR_SMOOTH_CLOCK_EXTENSION_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN"
+    },
+    "RFC_RF_E24": {
+      "head": "5e8ca5e5aea4ecb63a3ea5fd005518fa63183d3d",
+      "workflow_run_id": 33330773981,
+      "conclusion": "SUCCESS",
+      "status": "PASS_LOCAL_EINSTEIN_FORM_ON_DECLARED_SELECTION_RULES"
+    },
+    "RFC_RF_E25": {
+      "substantive_commit": "15e7eed8bbe0c75ba4ac30517f86cb2b70b7dbf8",
+      "head": "4d581ac8d03e637f65fdefa2b9326ffc1effe0e1",
+      "workflow_run_id": 33337181002,
+      "conclusion": "SUCCESS",
+      "status": "PASS_SHARED_SPACETIME_ATLAS_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN"
+    },
+    "RFC_RF_E26": {
+      "substantive_commit": "1f276b7da65fee7f609319d9894c883431730246",
+      "head": "d9779608754aae294e3a37a5e5c9fef63ff37a39",
+      "workflow_run_number": 401,
+      "workflow_run_id": 33341138133,
+      "conclusion": "SUCCESS",
+      "status": "PASS_GLOBAL_EINSTEIN_CARRIER_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN",
+      "diagnostic_failed_run": {
+        "workflow_run_number": 400,
+        "workflow_run_id": 33341085574,
+        "class": "TEST_IMPORT_LAYOUT",
+        "mathematical_assertions_executed": false
+      }
+    },
+    "RFC_RF_L7": {
+      "main_merge_commit": "5bb01438a44a68b0d747a3d1f9114aa648bd7395",
+      "status": "LOCAL_CAUCHY_HYPERBOLICITY_CONTRACT_PASS__GLOBAL_CAUCHY_PROMOTION_OPEN"
+    }
+  },
+  "closed_surfaces": [
+    "TIR_3_MANIFOLD_SMOOTH_REALIZATION_CERTIFIER",
+    "IDT_EVENT_CLOCK_EXACTNESS_CERTIFIER",
+    "IDT_REGULAR_SMOOTH_CLOCK_EXTENSION_CERTIFIER",
+    "IDT_POSITIVE_LAPSE_LOCAL_FROBENIUS_THEOREM",
+    "RFC_LOCAL_EINSTEIN_FIELD_EQUATION_FORM",
+    "RFC_SHARED_SPACETIME_ATLAS_COCYCLE_CERTIFIER",
+    "RFC_GLOBAL_EINSTEIN_CARRIER_GLUE_CERTIFIER",
+    "RFC_LOCAL_CAUCHY_HYPERBOLICITY_CONTRACT"
+  ],
+  "global_frontier": [
+    {
+      "id": "GSC-1",
+      "name": "PRODUCTION_SPATIAL_REALIZATION",
+      "owner": "TIR",
+      "status": "OPEN_INPUT",
+      "certifier": "TIR_A5"
+    },
+    {
+      "id": "GSC-2",
+      "name": "PRODUCTION_TEMPORAL_EVENT_COMPLEX",
+      "owner": "IDT",
+      "status": "OPEN_INPUT",
+      "certifier": "IDT_05H"
+    },
+    {
+      "id": "GSC-3",
+      "name": "PRODUCTION_REGULAR_SMOOTH_CLOCK_WITNESS",
+      "owner": "IDT",
+      "status": "CERTIFIER_PASS_WITH_PRODUCTION_REGULAR_CLOCK_WITNESS_OPEN_INPUT",
+      "certifier": "IDT_05I"
+    },
+    {
+      "id": "GSC-4",
+      "name": "PRODUCTION_SHARED_SPACETIME_ATLAS",
+      "owner": "TIR_IDT_RFC",
+      "status": "CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_OPEN_INPUT",
+      "certifier": "RFC_RF-E25"
+    },
+    {
+      "id": "GSC-5",
+      "name": "PRODUCTION_GLOBAL_EINSTEIN_CARRIER",
+      "owner": "RFC",
+      "status": "CERTIFIER_PASS_WITH_PRODUCTION_GSC_1_TO_GSC_4_AND_DOMAIN_COVERAGE_OPEN_INPUT",
+      "certifier": "RFC_RF-E26"
+    },
+    {
+      "id": "GSC-6",
+      "name": "GLOBAL_HYPERBOLICITY_CAUCHY_FOLIATION",
+      "owner": "RFC",
+      "status": "OPEN_SEPARATE_RF_L7_GATE",
+      "certifier": "RF_L7_PROMOTION_CONTRACT"
+    }
+  ],
+  "promotion_firewall": {
+    "source_claim_authority_remains_source_owned": true,
+    "production_inputs_may_not_be_replaced_by_reference_data": true,
+    "gremlin_promotion_authority": false,
+    "forbidden_overall_promotions": [
+      "GLOBAL_GR_PASS",
+      "GLOBAL_SPACETIME_REALIZATION_PASS",
+      "GLOBAL_HYPERBOLICITY_PASS"
+    ]
+  },
+  "verdict": "PASS_GSC_1_TO_GSC_5_CERTIFIER_LAYER_WITH_PRODUCTION_REALIZATION_AND_GSC_6_OPEN"
+}
