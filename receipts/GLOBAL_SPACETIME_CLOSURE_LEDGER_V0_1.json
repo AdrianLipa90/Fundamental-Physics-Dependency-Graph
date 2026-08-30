@@ -1,0 +1,134 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_LEDGER_V0_1",
+  "date": "2026-08-30",
+  "authority": "NONCANONICAL_CROSS_REPO_AUDIT",
+  "promotion_authority": false,
+  "canonical_graph_mutated": false,
+  "canonical_source_locks_mutated": false,
+  "overall_status": "LOCAL_EINSTEIN_FORM_PASS__SPATIAL_CERTIFIER_PASS__TEMPORAL_CERTIFIER_PASS__LOCAL_FROBENIUS_PASS__GLOBAL_SPACETIME_REALIZATION_INPUT_OPEN__GLOBAL_HYPERBOLICITY_OPEN",
+  "fpdg_base": {
+    "repository": "AdrianLipa90/Fundamental-Physics-Dependency-Graph",
+    "main_commit": "e1e07ef294fe02bfc208dba6aee76ff0517b505b"
+  },
+  "sources": {
+    "TIR": {
+      "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+      "main_baseline": "3f5a08ef04ec53c1a155263d23e8b10a96404370",
+      "branch": "feat/tir-cartan-refinement-v0.1",
+      "exact_head": "2568fb24e0bc91e8f1c75dcfdc5659a57ca382b9",
+      "gate": "A5_GLOBAL_3_MANIFOLD_SMOOTH_CERTIFICATE",
+      "gate_status": "PASS_CERTIFIER_WITH_PRODUCTION_SPATIAL_COMPLEX_OPEN_INPUT",
+      "workflow": {
+        "name": "TIR global 3-manifold smooth certificate",
+        "run_number": 1,
+        "run_id": 33331003616,
+        "conclusion": "SUCCESS"
+      }
+    },
+    "IDT": {
+      "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
+      "main_baseline": "84ce1886175af872ae4a56ba36f7e106d8e23635",
+      "branch": "feat/idt-temporal-foliation-v0.1",
+      "exact_head": "a36cdb7bffa3789bef154c2b987ebab68ccfb2d5",
+      "gates": {
+        "05G": {
+          "substantive_head": "ef80f706c79bc4fbd15266c0608d2ec09674508b",
+          "status": "PASS_LOCAL_FROBENIUS_WITH_GLOBAL_REGULAR_CLOCK_INTERFACE_OPEN",
+          "workflow_run_number": 913,
+          "workflow_run_id": 33333216909,
+          "conclusion": "SUCCESS"
+        },
+        "05H": {
+          "substantive_commit": "8eda524ad9a3ba1e1876915a4724db12e0a95bd1",
+          "status": "PASS_EVENT_CLOCK_EXACTNESS_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN",
+          "workflow_run_number": 916,
+          "workflow_run_id": 33336267608,
+          "conclusion": "SUCCESS"
+        }
+      }
+    },
+    "RFC": {
+      "repository": "AdrianLipa90/Relational-Field-Closure",
+      "main_baseline": "63418a88d686021c2a6fe6ab159d6152db303c19",
+      "branch": "feat/rfe21-einstein-uniqueness-selection-v0.1",
+      "exact_head": "5e8ca5e5aea4ecb63a3ea5fd005518fa63183d3d",
+      "gate": "RF-E24_LOCAL_EINSTEIN_FORM_CLOSURE",
+      "gate_status": "PASS_ON_DECLARED_SELECTION_RULES",
+      "workflow": {
+        "name": "RFC reference suite",
+        "run_number": 390,
+        "run_id": 33330773981,
+        "conclusion": "SUCCESS"
+      },
+      "open_coordinates": [
+        "PROJECT_ABSOLUTE_G_PROMOTION",
+        "HKT_CROSSCHECK"
+      ]
+    }
+  },
+  "closed_surfaces": [
+    "TIR_LOCAL_CARTAN_REFINEMENT",
+    "TIR_TORSION_FREE_LEVI_CIVITA_SECTOR",
+    "TIR_LEADING_SECOND_ORDER_METRIC_JET_ON_LRR",
+    "TIR_3_MANIFOLD_SMOOTH_REALIZATION_CERTIFIER",
+    "IDT_EVENT_CLOCK_EXACTNESS_THEOREM_AND_CERTIFIER",
+    "IDT_POSITIVE_LAPSE_LOCAL_FROBENIUS_THEOREM_AND_CERTIFIER",
+    "RFC_LOCAL_EINSTEIN_FIELD_EQUATION_FORM_ON_DECLARED_SELECTION_RULES",
+    "RFC_LOCAL_ADM_PARENT_ROUNDTRIP"
+  ],
+  "global_frontier": [
+    {
+      "id": "GSC-1",
+      "name": "PRODUCTION_SPATIAL_3_COMPLEX",
+      "status": "OPEN_INPUT",
+      "owner": "TIR",
+      "required_verdict": "PASS_3_MANIFOLD"
+    },
+    {
+      "id": "GSC-2",
+      "name": "PRODUCTION_TEMPORAL_EVENT_COMPLEX",
+      "status": "OPEN_INPUT",
+      "owner": "IDT",
+      "required_verdict": "PASS_EXACT_EVENT_CLOCK"
+    },
+    {
+      "id": "GSC-3",
+      "name": "REGULAR_SMOOTH_CLOCK_EXTENSION",
+      "status": "OPEN_INTERFACE",
+      "owner": "IDT",
+      "required_verdict": "PASS_REGULAR_CLOCK_EXTENSION"
+    },
+    {
+      "id": "GSC-4",
+      "name": "SHARED_SPATIAL_TEMPORAL_SPACETIME_REALIZATION",
+      "status": "OPEN_CROSS_REPO_INTERFACE",
+      "owner": "TIR_IDT_RFC",
+      "required_verdict": "PASS_SHARED_SPACETIME_REALIZATION"
+    },
+    {
+      "id": "GSC-5",
+      "name": "GLOBAL_DOMAIN_FOR_RF_E24_LOCAL_EINSTEIN_FORM",
+      "status": "CONDITIONAL_ON_GSC_1_TO_GSC_4",
+      "owner": "RFC",
+      "required_verdict": "PASS_GLOBAL_EINSTEIN_REALIZATION"
+    },
+    {
+      "id": "GSC-6",
+      "name": "GLOBAL_HYPERBOLICITY_CAUCHY_FOLIATION",
+      "status": "OPEN_SEPARATE_GATE",
+      "owner": "RFC",
+      "required_verdict": "PASS_GLOBAL_CAUCHY_HYPERBOLICITY"
+    }
+  ],
+  "promotion_firewall": {
+    "source_heads_are_draft_feature_heads": true,
+    "canonical_fpdg_promotion_deferred": true,
+    "gremlin_promotion_authority": false,
+    "forbidden_overall_statuses_while_frontier_open": [
+      "GLOBAL_SPACETIME_PASS",
+      "GLOBAL_GR_PASS",
+      "GLOBAL_HYPERBOLICITY_PASS"
+    ]
+  },
+  "verdict": "PASS_CROSS_REPO_LEDGER_WITH_GLOBAL_REALIZATION_INPUT_OPEN"
+}
