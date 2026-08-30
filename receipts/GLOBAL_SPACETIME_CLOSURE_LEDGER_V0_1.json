@@ -5,7 +5,7 @@
   "promotion_authority": false,
   "canonical_graph_mutated": false,
   "canonical_source_locks_mutated": false,
-  "overall_status": "LOCAL_EINSTEIN_FORM_PASS__SPATIAL_CERTIFIER_PASS__TEMPORAL_CERTIFIER_PASS__LOCAL_FROBENIUS_PASS__GLOBAL_SPACETIME_REALIZATION_INPUT_OPEN__GLOBAL_HYPERBOLICITY_OPEN",
+  "overall_status": "LOCAL_EINSTEIN_FORM_PASS__SPATIAL_CERTIFIER_PASS__TEMPORAL_CERTIFIER_PASS__LOCAL_FROBENIUS_PASS__SHARED_ATLAS_CERTIFIER_PASS__GLOBAL_SPACETIME_REALIZATION_INPUT_OPEN__GLOBAL_HYPERBOLICITY_OPEN",
   "fpdg_base": {
     "repository": "AdrianLipa90/Fundamental-Physics-Dependency-Graph",
     "main_commit": "e1e07ef294fe02bfc208dba6aee76ff0517b505b"
@@ -51,14 +51,29 @@
       "repository": "AdrianLipa90/Relational-Field-Closure",
       "main_baseline": "63418a88d686021c2a6fe6ab159d6152db303c19",
       "branch": "feat/rfe21-einstein-uniqueness-selection-v0.1",
-      "exact_head": "5e8ca5e5aea4ecb63a3ea5fd005518fa63183d3d",
-      "gate": "RF-E24_LOCAL_EINSTEIN_FORM_CLOSURE",
-      "gate_status": "PASS_ON_DECLARED_SELECTION_RULES",
-      "workflow": {
-        "name": "RFC reference suite",
-        "run_number": 390,
-        "run_id": 33330773981,
-        "conclusion": "SUCCESS"
+      "exact_head": "4d581ac8d03e637f65fdefa2b9326ffc1effe0e1",
+      "gates": {
+        "RF-E24": {
+          "exact_head": "5e8ca5e5aea4ecb63a3ea5fd005518fa63183d3d",
+          "status": "PASS_LOCAL_EINSTEIN_FORM_ON_DECLARED_SELECTION_RULES",
+          "workflow_run_number": 390,
+          "workflow_run_id": 33330773981,
+          "conclusion": "SUCCESS"
+        },
+        "RF-E25": {
+          "substantive_commit": "15e7eed8bbe0c75ba4ac30517f86cb2b70b7dbf8",
+          "exact_head": "4d581ac8d03e637f65fdefa2b9326ffc1effe0e1",
+          "status": "PASS_SHARED_SPACETIME_ATLAS_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN",
+          "workflow_run_number": 392,
+          "workflow_run_id": 33337181002,
+          "conclusion": "SUCCESS",
+          "diagnostic_failed_run": {
+            "run_number": 391,
+            "run_id": 33337107285,
+            "class": "TEST_IMPORT_LAYOUT",
+            "mathematical_assertions_executed": false
+          }
+        }
       },
       "open_coordinates": [
         "PROJECT_ABSOLUTE_G_PROMOTION",
@@ -74,7 +89,8 @@
     "IDT_EVENT_CLOCK_EXACTNESS_THEOREM_AND_CERTIFIER",
     "IDT_POSITIVE_LAPSE_LOCAL_FROBENIUS_THEOREM_AND_CERTIFIER",
     "RFC_LOCAL_EINSTEIN_FIELD_EQUATION_FORM_ON_DECLARED_SELECTION_RULES",
-    "RFC_LOCAL_ADM_PARENT_ROUNDTRIP"
+    "RFC_LOCAL_ADM_PARENT_ROUNDTRIP",
+    "RFC_SHARED_SPACETIME_ATLAS_COCYCLE_CERTIFIER"
   ],
   "global_frontier": [
     {
@@ -101,14 +117,15 @@
     {
       "id": "GSC-4",
       "name": "SHARED_SPATIAL_TEMPORAL_SPACETIME_REALIZATION",
-      "status": "OPEN_CROSS_REPO_INTERFACE",
+      "status": "CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_OPEN_INPUT",
       "owner": "TIR_IDT_RFC",
+      "certifier": "RFC_RF-E25",
       "required_verdict": "PASS_SHARED_SPACETIME_REALIZATION"
     },
     {
       "id": "GSC-5",
       "name": "GLOBAL_DOMAIN_FOR_RF_E24_LOCAL_EINSTEIN_FORM",
-      "status": "CONDITIONAL_ON_GSC_1_TO_GSC_4",
+      "status": "CONDITIONAL_ON_PRODUCTION_PASS_GSC_1_TO_GSC_4",
       "owner": "RFC",
       "required_verdict": "PASS_GLOBAL_EINSTEIN_REALIZATION"
     },
