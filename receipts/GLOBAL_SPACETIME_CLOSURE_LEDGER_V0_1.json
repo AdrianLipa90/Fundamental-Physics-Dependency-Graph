@@ -5,7 +5,7 @@
   "promotion_authority": false,
   "canonical_graph_mutated": false,
   "canonical_source_locks_mutated": false,
-  "overall_status": "LOCAL_EINSTEIN_FORM_PASS__SPATIAL_CERTIFIER_PASS__TEMPORAL_CERTIFIER_PASS__LOCAL_FROBENIUS_PASS__SHARED_ATLAS_CERTIFIER_PASS__GLOBAL_SPACETIME_REALIZATION_INPUT_OPEN__GLOBAL_HYPERBOLICITY_OPEN",
+  "overall_status": "LOCAL_EINSTEIN_FORM_PASS__SPATIAL_CERTIFIER_PASS__TEMPORAL_EXACTNESS_CERTIFIER_PASS__REGULAR_CLOCK_EXTENSION_CERTIFIER_PASS__LOCAL_FROBENIUS_PASS__SHARED_ATLAS_CERTIFIER_PASS__GLOBAL_SPACETIME_REALIZATION_INPUT_OPEN__GLOBAL_HYPERBOLICITY_OPEN",
   "fpdg_base": {
     "repository": "AdrianLipa90/Fundamental-Physics-Dependency-Graph",
     "main_commit": "e1e07ef294fe02bfc208dba6aee76ff0517b505b"
@@ -27,13 +27,13 @@
     },
     "IDT": {
       "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
-      "main_baseline": "84ce1886175af872ae4a56ba36f7e106d8e23635",
+      "main_baseline": "ceb3d74b581fc2445c3fad2474a7506a76b588fa",
       "branch": "feat/idt-temporal-foliation-v0.1",
-      "exact_head": "a36cdb7bffa3789bef154c2b987ebab68ccfb2d5",
+      "exact_head": "fc87c4176dfcc480529ba28bd67042d3ebf02c72",
       "gates": {
         "05G": {
           "substantive_head": "ef80f706c79bc4fbd15266c0608d2ec09674508b",
-          "status": "PASS_LOCAL_FROBENIUS_WITH_GLOBAL_REGULAR_CLOCK_INTERFACE_OPEN",
+          "status": "PASS_LOCAL_FROBENIUS_WITH_GLOBAL_REGULAR_CLOCK_INPUT_REQUIRED",
           "workflow_run_number": 913,
           "workflow_run_id": 33333216909,
           "conclusion": "SUCCESS"
@@ -44,7 +44,34 @@
           "workflow_run_number": 916,
           "workflow_run_id": 33336267608,
           "conclusion": "SUCCESS"
+        },
+        "05I": {
+          "substantive_commit": "10049d5de3819d2654f19ce5158af5dd85f5198f",
+          "exact_head": "fc87c4176dfcc480529ba28bd67042d3ebf02c72",
+          "status": "PASS_REGULAR_SMOOTH_CLOCK_EXTENSION_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN",
+          "workflow": {
+            "name": "IDT 05I regular smooth clock extension",
+            "run_number": 2,
+            "run_id": 33339841644,
+            "conclusion": "SUCCESS"
+          },
+          "diagnostic_failed_run": {
+            "run_number": 1,
+            "run_id": 33339745130,
+            "class": "WORKFLOW_DEPENDENCY_ENVIRONMENT",
+            "mathematical_assertions_executed": false
+          }
         }
+      },
+      "full_reference_suite_baseline_blocker": {
+        "main_run_number": 925,
+        "main_run_id": 33339429528,
+        "exact_head_run_number": 928,
+        "exact_head_run_id": 33339841677,
+        "class": "PRE_EXISTING_SEAM_COLLECTION_IMPORT",
+        "symbol": "onsager_dissipation",
+        "conclusion": "FAILURE",
+        "independent_of_05I_gate": true
       }
     },
     "RFC": {
@@ -87,6 +114,7 @@
     "TIR_LEADING_SECOND_ORDER_METRIC_JET_ON_LRR",
     "TIR_3_MANIFOLD_SMOOTH_REALIZATION_CERTIFIER",
     "IDT_EVENT_CLOCK_EXACTNESS_THEOREM_AND_CERTIFIER",
+    "IDT_REGULAR_SMOOTH_CLOCK_EXTENSION_WITNESS_CERTIFIER",
     "IDT_POSITIVE_LAPSE_LOCAL_FROBENIUS_THEOREM_AND_CERTIFIER",
     "RFC_LOCAL_EINSTEIN_FIELD_EQUATION_FORM_ON_DECLARED_SELECTION_RULES",
     "RFC_LOCAL_ADM_PARENT_ROUNDTRIP",
@@ -110,8 +138,9 @@
     {
       "id": "GSC-3",
       "name": "REGULAR_SMOOTH_CLOCK_EXTENSION",
-      "status": "OPEN_INTERFACE",
+      "status": "CERTIFIER_PASS_WITH_PRODUCTION_REGULAR_CLOCK_WITNESS_OPEN_INPUT",
       "owner": "IDT",
+      "certifier": "IDT_05I",
       "required_verdict": "PASS_REGULAR_CLOCK_EXTENSION"
     },
     {
