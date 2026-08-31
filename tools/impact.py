@@ -3,17 +3,18 @@ import argparse
 import json
 from collections import defaultdict, deque
 from pathlib import Path
-
-import yaml
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-GRAPH_PATH = ROOT / "dependency_graph.yaml"
+sys.path.insert(0, str(ROOT / "tools"))
+from federation_surface import BASE_GRAPH_PATH, load_effective_graph  # noqa: E402
+
+GRAPH_PATH = BASE_GRAPH_PATH
 PROMOTED_AUTHORITIES = {"CANONICAL", "CANONICAL_CROSS_REPO", "CANONICAL_FRONTIER"}
 
 
 def load_graph(path=GRAPH_PATH):
-    with Path(path).open("r", encoding="utf-8") as fh:
-        return yaml.safe_load(fh)
+    return load_effective_graph(path)
 
 
 def compute_impact(graph, claim_id, include_candidates=False):
@@ -58,12 +59,8 @@ def main():
         description="Compute downstream revalidation impact for one changed claim."
     )
     parser.add_argument("claim_id")
-    parser.add_argument(
-        "--include-candidates",
-        action="store_true",
-        help="also traverse CANDIDATE_ONLY edges; disabled by default",
-    )
-    parser.add_argument("--json", action="store_true", help="emit JSON")
+    parser.add_argument("--include-candidates", action="store_true")
+    parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
 
     graph = load_graph()

@@ -2,16 +2,16 @@
 import json
 from collections import defaultdict, deque
 from pathlib import Path
-
-try:
-    import yaml
-except ImportError as exc:
-    raise SystemExit("PyYAML is required: pip install pyyaml") from exc
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-GRAPH_PATH = ROOT / "dependency_graph.yaml"
-CLAIMS_PATH = ROOT / "claims.jsonl"
-REPOS_PATH = ROOT / "repos.yaml"
+sys.path.insert(0, str(ROOT / "tools"))
+from federation_surface import (  # noqa: E402
+    FederationSurfaceError,
+    load_effective_claims,
+    load_effective_graph,
+    repository_registry,
+)
 
 PROMOTED_AUTHORITIES = {"CANONICAL", "CANONICAL_CROSS_REPO", "CANONICAL_FRONTIER"}
 ALLOWED_AUTHORITIES = PROMOTED_AUTHORITIES | {"CANDIDATE_ONLY"}
@@ -20,31 +20,6 @@ ALLOWED_AUTHORITIES = PROMOTED_AUTHORITIES | {"CANDIDATE_ONLY"}
 def fail(message: str) -> None:
     print(f"FAIL: {message}")
     raise SystemExit(1)
-
-
-def load_yaml(path: Path):
-    with path.open("r", encoding="utf-8") as fh:
-        data = yaml.safe_load(fh)
-    if not isinstance(data, dict):
-        fail(f"{path.name} must contain a mapping")
-    return data
-
-
-def load_claims():
-    rows = []
-    with CLAIMS_PATH.open("r", encoding="utf-8") as fh:
-        for line_no, line in enumerate(fh, 1):
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                row = json.loads(line)
-            except json.JSONDecodeError as exc:
-                fail(f"claims.jsonl line {line_no}: {exc}")
-            if not isinstance(row, dict):
-                fail(f"claims.jsonl line {line_no}: row must be an object")
-            rows.append(row)
-    return rows
 
 
 def assert_promoted_dag(node_set, edges):
@@ -66,17 +41,18 @@ def assert_promoted_dag(node_set, edges):
             indegree[dst] -= 1
             if indegree[dst] == 0:
                 queue.append(dst)
-
     if seen != len(node_set):
         cyclic = sorted(node for node, degree in indegree.items() if degree > 0)
         fail(f"promoted dependency graph contains a cycle involving {cyclic}")
 
 
 def main() -> None:
-    graph = load_yaml(GRAPH_PATH)
-    repos = load_yaml(REPOS_PATH).get("repositories", {})
-    if not repos:
-        fail("repos.yaml must define repositories")
+    try:
+        graph = load_effective_graph()
+        repos = repository_registry()
+        claim_rows = load_effective_claims()
+    except (OSError, json.JSONDecodeError, FederationSurfaceError) as exc:
+        fail(str(exc))
 
     nodes = graph.get("nodes", [])
     edges = graph.get("edges", [])
@@ -87,7 +63,7 @@ def main() -> None:
     if any(not claim_id for claim_id in node_ids):
         fail("every graph node must have claim_id")
     if len(node_ids) != len(set(node_ids)):
-        fail("duplicate claim_id in dependency_graph.yaml")
+        fail("duplicate claim_id in effective dependency graph")
 
     node_map = {node["claim_id"]: node for node in nodes}
     node_set = set(node_map)
@@ -112,7 +88,6 @@ def main() -> None:
             fail(f"edge {idx}: self dependency {src}")
         if authority not in ALLOWED_AUTHORITIES:
             fail(f"edge {idx}: invalid authority {authority}")
-
         key = (src, dst, authority)
         if key in edge_keys:
             fail(f"edge {idx}: duplicate edge {key}")
@@ -123,7 +98,6 @@ def main() -> None:
             fail(f"edge {idx}: cross-repository canonical edge must use CANONICAL_CROSS_REPO")
         if authority == "CANONICAL_CROSS_REPO" and not cross_repo:
             fail(f"edge {idx}: CANONICAL_CROSS_REPO used for intra-repository edge")
-
         if authority == "CANDIDATE_ONLY":
             if not edge.get("promotion_required", False):
                 fail(f"edge {idx}: candidate edge must declare promotion_required=true")
@@ -132,30 +106,31 @@ def main() -> None:
 
     assert_promoted_dag(node_set, edges)
 
-    claim_rows = load_claims()
     claim_ids = [row.get("claim_id") for row in claim_rows]
     if any(not claim_id for claim_id in claim_ids):
-        fail("every claims.jsonl row must have claim_id")
+        fail("every effective claim row must have claim_id")
     if len(claim_ids) != len(set(claim_ids)):
-        fail("duplicate claim_id in claims.jsonl")
+        fail("duplicate claim_id in effective claim registry")
 
     claim_map = {row["claim_id"]: row for row in claim_rows}
     if set(claim_map) != node_set:
-        missing_registry = sorted(node_set - set(claim_map))
-        missing_graph = sorted(set(claim_map) - node_set)
         fail(
-            "graph/claim registry mismatch: "
-            f"missing_registry={missing_registry}, missing_graph={missing_graph}"
+            "effective graph/claim registry mismatch: "
+            f"missing_registry={sorted(node_set - set(claim_map))}, "
+            f"missing_graph={sorted(set(claim_map) - node_set)}"
         )
 
     for claim_id, node in node_map.items():
         row = claim_map[claim_id]
         if row.get("repository") != node.get("repository"):
-            fail(f"{claim_id}: repository mismatch graph={node.get('repository')} claims={row.get('repository')}")
+            fail(f"{claim_id}: repository mismatch")
         if row.get("status") != node.get("status"):
-            fail(f"{claim_id}: status mismatch graph={node.get('status')} claims={row.get('status')}")
+            fail(
+                f"{claim_id}: status mismatch graph={node.get('status')} "
+                f"claims={row.get('status')}"
+            )
         if not row.get("evidence_class"):
-            fail(f"{claim_id}: missing evidence_class in claims.jsonl")
+            fail(f"{claim_id}: missing evidence_class")
 
     candidate_count = sum(edge["authority"] == "CANDIDATE_ONLY" for edge in edges)
     cross_repo_count = sum(
@@ -163,8 +138,9 @@ def main() -> None:
         for edge in edges
     )
     print(
-        "PASS: canonical DAG structurally valid; "
+        "PASS: effective canonical DAG structurally valid; "
         f"nodes={len(nodes)} edges={len(edges)} claims={len(claim_rows)} "
+        f"repositories={len(repos)} overlays={len(graph.get('effective_federation_overlays', []))} "
         f"cross_repo_edges={cross_repo_count} candidate_edges={candidate_count}"
     )
 

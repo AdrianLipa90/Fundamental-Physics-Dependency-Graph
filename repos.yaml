@@ -1,4 +1,4 @@
-schema: FPDG_REPOSITORY_REGISTRY_V0_2
+schema: FPDG_REPOSITORY_REGISTRY_V0_3
 status: ACTIVE_REGISTRY
 repositories:
   TIR:
@@ -30,6 +30,14 @@ repositories:
     canonical_status_path: research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json
     exports_expected:
       - research
+  RC:
+    repository: AdrianLipa90/Resonant-Chemistry
+    role: nuclear_atomic_and_chemical_effective_branch
+    canonical_status_path: STATUS.md
+    exports_expected:
+      - THEORY
+      - validation
+      - semantic_cards
 policy:
   source_repositories_remain_authoritative_for_their_claims: true
   this_repository_is_cross_repo_dependency_authority: true

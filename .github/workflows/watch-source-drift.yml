@@ -6,70 +6,76 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - 'repos.yaml'
+      - 'source_heads.yaml'
       - 'source_exports.lock.json'
       - 'claims.jsonl'
       - 'dependency_graph.yaml'
+      - 'federation_overlays/**'
       - 'interfaces/cross_repo_interfaces.yaml'
       - 'diagnostics/incidents/**'
-      - 'schemas/diagnostic_bottlenecks.schema.json'
-      - 'schemas/diagnostic_probe_plan.schema.json'
+      - 'diagnostics/VALIDATION_PRODUCERS_RC_V0_1.yaml'
+      - 'tools/federation_surface.py'
+      - 'tools/impact.py'
       - 'tools/watch_source_drift.py'
       - 'tools/diagnose_source_drift.py'
-      - 'tools/diff_dependency_export.py'
+      - 'tools/diagnose_source_drift_effective.py'
       - 'tools/diagnose_inconsistency.py'
+      - 'tools/diagnose_inconsistency_effective.py'
       - 'tools/localize_interface_seams.py'
+      - 'tools/localize_interface_seams_effective.py'
+      - 'tools/audit_validation_coverage.py'
+      - 'tools/audit_validation_coverage_effective.py'
+      - 'tools/diff_dependency_export.py'
       - 'tools/localize_micro_coordinates.py'
       - 'tools/analyze_diagnostic_bottlenecks.py'
+      - 'tools/analyze_diagnostic_bottlenecks_effective.py'
       - 'tools/enrich_gremlin_pain_packet_with_micro.py'
       - 'tools/build_diagnostic_probe_plan.py'
       - 'tools/finalize_inconsistency_localization.py'
+      - 'tools/finalize_inconsistency_localization_effective.py'
       - 'tools/build_pain_signature.py'
       - 'tools/match_pain_signatures.py'
       - 'tools/build_gremlin_pain_packet.py'
-      - 'tests/test_source_drift.py'
-      - 'tests/test_diagnose_inconsistency.py'
-      - 'tests/test_dependency_export_diff.py'
-      - 'tests/test_localize_interface_seams.py'
-      - 'tests/test_micro_localization.py'
-      - 'tests/test_diagnostic_bottlenecks.py'
-      - 'tests/test_enrich_gremlin_micro.py'
-      - 'tests/test_diagnostic_probe_plan.py'
-      - 'tests/test_pain_signatures.py'
+      - 'tests/**'
       - '.github/workflows/watch-source-drift.yml'
   push:
     branches:
       - main
       - 'feat/**'
     paths:
+      - 'repos.yaml'
+      - 'source_heads.yaml'
       - 'source_exports.lock.json'
       - 'claims.jsonl'
       - 'dependency_graph.yaml'
+      - 'federation_overlays/**'
       - 'interfaces/cross_repo_interfaces.yaml'
       - 'diagnostics/incidents/**'
-      - 'schemas/diagnostic_bottlenecks.schema.json'
-      - 'schemas/diagnostic_probe_plan.schema.json'
+      - 'diagnostics/VALIDATION_PRODUCERS_RC_V0_1.yaml'
+      - 'tools/federation_surface.py'
+      - 'tools/impact.py'
       - 'tools/watch_source_drift.py'
       - 'tools/diagnose_source_drift.py'
-      - 'tools/diff_dependency_export.py'
+      - 'tools/diagnose_source_drift_effective.py'
       - 'tools/diagnose_inconsistency.py'
+      - 'tools/diagnose_inconsistency_effective.py'
       - 'tools/localize_interface_seams.py'
+      - 'tools/localize_interface_seams_effective.py'
+      - 'tools/audit_validation_coverage.py'
+      - 'tools/audit_validation_coverage_effective.py'
+      - 'tools/diff_dependency_export.py'
       - 'tools/localize_micro_coordinates.py'
       - 'tools/analyze_diagnostic_bottlenecks.py'
+      - 'tools/analyze_diagnostic_bottlenecks_effective.py'
       - 'tools/enrich_gremlin_pain_packet_with_micro.py'
       - 'tools/build_diagnostic_probe_plan.py'
       - 'tools/finalize_inconsistency_localization.py'
+      - 'tools/finalize_inconsistency_localization_effective.py'
       - 'tools/build_pain_signature.py'
       - 'tools/match_pain_signatures.py'
       - 'tools/build_gremlin_pain_packet.py'
-      - 'tests/test_source_drift.py'
-      - 'tests/test_diagnose_inconsistency.py'
-      - 'tests/test_dependency_export_diff.py'
-      - 'tests/test_localize_interface_seams.py'
-      - 'tests/test_micro_localization.py'
-      - 'tests/test_diagnostic_bottlenecks.py'
-      - 'tests/test_enrich_gremlin_micro.py'
-      - 'tests/test_diagnostic_probe_plan.py'
-      - 'tests/test_pain_signatures.py'
+      - 'tests/**'
       - '.github/workflows/watch-source-drift.yml'
 
 permissions:
@@ -85,44 +91,34 @@ jobs:
           python-version: '3.12'
       - name: Install dependency
         run: python -m pip install --disable-pip-version-check pyyaml
-      - name: Compute source drift and provisional promoted blast radius
+      - name: Compute registry-driven source drift and promoted blast radius
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python tools/watch_source_drift.py --fail-on-drift --json
-      - name: Localize claim/interface inconsistency and prepare GREMLIN packet
+      - name: Localize effective-graph inconsistency and prepare GREMLIN packet
         if: always()
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: python tools/diagnose_source_drift.py --json
+        run: python tools/diagnose_source_drift_effective.py --json
       - name: Finalize exact sub-claim coordinates, bottlenecks, and probe order
         if: always()
-        run: python tools/finalize_inconsistency_localization.py
+        run: python tools/finalize_inconsistency_localization_effective.py
       - name: Publish drift and diagnosis to job summary
         if: always()
         run: |
-          if [ -f build/SOURCE_DRIFT_REPORT.md ]; then
-            cat build/SOURCE_DRIFT_REPORT.md >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f build/INCONSISTENCY_DIAGNOSIS.md ]; then
-            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
-            cat build/INCONSISTENCY_DIAGNOSIS.md >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f build/PAIN_SEAM_REPORT.md ]; then
-            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
-            cat build/PAIN_SEAM_REPORT.md >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f build/PAIN_MICRO_COORDINATES.md ]; then
-            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
-            cat build/PAIN_MICRO_COORDINATES.md >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f build/DIAGNOSTIC_BOTTLENECKS.md ]; then
-            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
-            cat build/DIAGNOSTIC_BOTTLENECKS.md >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f build/DIAGNOSTIC_PROBE_PLAN.md ]; then
-            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
-            cat build/DIAGNOSTIC_PROBE_PLAN.md >> "$GITHUB_STEP_SUMMARY"
-          fi
+          for f in \
+            build/SOURCE_DRIFT_REPORT.md \
+            build/INCONSISTENCY_DIAGNOSIS.md \
+            build/PAIN_SEAM_REPORT.md \
+            build/PAIN_MICRO_COORDINATES.md \
+            build/DIAGNOSTIC_BOTTLENECKS.md \
+            build/DIAGNOSTIC_PROBE_PLAN.md
+          do
+            if [ -f "$f" ]; then
+              printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+              cat "$f" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
       - name: Upload drift and localization receipts
         if: always()
         uses: actions/upload-artifact@v4

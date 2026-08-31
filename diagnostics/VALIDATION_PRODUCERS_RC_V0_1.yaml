@@ -1,0 +1,24 @@
+schema: FPDG_VALIDATION_PRODUCER_OVERLAY_V0_1
+status: ACTIVE_SOURCE_INSTRUMENTATION_EXTENSION
+producers:
+  RC:
+    repository: AdrianLipa90/Resonant-Chemistry
+    branch: feat/nucleon-boundary-federation-v0.1
+    pull_request: 20
+    status: SOURCE_STRUCTURAL_PROVENANCE_PRODUCER
+    producer: tools/validate_nucleon_boundary_v0_1.py
+    workflow: .github/workflows/nucleon-boundary-v0.1.yml
+    artifact: rc-nucleon-boundary-v0.1-validation
+    receipt_schema: RC_NUCLEON_BOUNDARY_VALIDATION_V0_1
+    mapped_claims:
+      - RC.NUCLEON_BOUNDARY
+    mapped_interfaces: []
+    latest_hosted_validation:
+      workflow_run_number: 2
+      status: SUCCESS
+      gate: STRUCTURAL_PROVENANCE_PASS
+    precision_contract:
+      scientific_claim_binding: EXPLICIT_SOURCE_OWNED
+      claim_coordinate: RC.NUCLEON_BOUNDARY
+      physical_observable_validation: PENDING_NUCLEON_PACKET_AND_DEUTERON_GATES
+      interface_binding: NONE_AT_THIS_GATE

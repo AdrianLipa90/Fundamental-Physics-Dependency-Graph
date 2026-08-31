@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
-"""Fail closed when a locked source repository head no longer matches current main.
-
-`repository_head` tracks repository-level freshness. `source_commit` separately records
-the scientific source state represented by DEPENDENCY_EXPORT.json. Keeping these values
-distinct prevents a metadata-only merge of an already locked export from masquerading as
-scientific claim drift.
-"""
-
+"""Fail closed when any registered locked repository head differs from current main."""
 from __future__ import annotations
 
 import json
@@ -17,6 +10,9 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+from federation_surface import FederationSurfaceError, repository_registry  # noqa: E402
+
 LOCK_PATH = ROOT / "source_exports.lock.json"
 
 
@@ -24,7 +20,7 @@ def current_main_sha(repository: str) -> str:
     url = f"https://api.github.com/repos/{repository}/commits/main"
     headers = {
         "Accept": "application/vnd.github+json",
-        "User-Agent": "FPDG-upstream-head-check/0.2",
+        "User-Agent": "FPDG-upstream-head-check/0.3",
         "X-GitHub-Api-Version": "2022-11-28",
     }
     token = os.environ.get("GITHUB_TOKEN")
@@ -50,9 +46,16 @@ def main() -> int:
     try:
         lock = json.loads(LOCK_PATH.read_text(encoding="utf-8"))
         sources = lock.get("sources", {})
+        registry = repository_registry()
+        if set(sources) != set(registry):
+            raise RuntimeError(
+                f"source lock/registry mismatch: lock={sorted(sources)} registry={sorted(registry)}"
+            )
         stale = []
-        for repo_id in ("TIR", "IDT", "RFC", "SOH"):
+        for repo_id in sorted(registry):
             entry = sources[repo_id]
+            if entry.get("repository") != registry[repo_id].get("repository"):
+                raise RuntimeError(f"{repo_id}: repository identity mismatch")
             expected = expected_repository_head(entry)
             represented = entry["source_commit"]
             actual = current_main_sha(entry["repository"])
@@ -63,19 +66,27 @@ def main() -> int:
             else:
                 stale.append((repo_id, expected, actual))
                 print(
-                    f"{repo_id}: STALE locked_repository_head={expected} current_main={actual} "
-                    f"represented_source={represented}",
+                    f"{repo_id}: STALE locked_repository_head={expected} "
+                    f"current_main={actual} represented_source={represented}",
                     file=sys.stderr,
                 )
         if stale:
             print(
-                "FAIL: upstream repository main advanced; run semantic export diff, refresh repository_head, and revalidate affected dependency surface",
+                "FAIL: upstream main advanced; run semantic export diff, refresh lock, "
+                "and revalidate affected surface",
                 file=sys.stderr,
             )
             return 2
-        print("PASS: all locked repository heads equal current source main heads")
+        print(f"PASS: all {len(registry)} registered repository heads are fresh")
         return 0
-    except (OSError, KeyError, json.JSONDecodeError, RuntimeError, urllib.error.URLError) as exc:
+    except (
+        OSError,
+        KeyError,
+        json.JSONDecodeError,
+        RuntimeError,
+        FederationSurfaceError,
+        urllib.error.URLError,
+    ) as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
         return 1
 
