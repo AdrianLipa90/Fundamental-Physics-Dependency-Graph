@@ -1,0 +1,46 @@
+{
+  "schema": "FPDG_GSC3A_MATCHING_FLOW_SOLDERING_CANDIDATE_RECEIPT_V0_1",
+  "status": "PASS_NONCANONICAL_GSC3A_CANDIDATE_FEDERATION",
+  "validated_head": "729a28feee7657f1de2904da6d3c5a42e6b6a4b7",
+  "source_rfc": {
+    "pull_request": 99,
+    "head": "caaf9d881aadb458f055ff5c2c3eb816222faebb",
+    "reference_suite_run": 414,
+    "reference_suite_run_id": 33348300043,
+    "conclusion": "success"
+  },
+  "fpdg_validation": {
+    "dependency_dag": {
+      "run_number": 343,
+      "run_id": 33348482900,
+      "conclusion": "success"
+    },
+    "locked_source_exports": {
+      "run_number": 282,
+      "run_id": 33348483063,
+      "conclusion": "success"
+    },
+    "source_drift_watch": {
+      "run_number": 152,
+      "run_id": 33348482934,
+      "conclusion": "success"
+    }
+  },
+  "route_semantics": "MATCHING_FIELD_COCYCLE + (DIRECT_FLOW_COVERAGE OR GLOBAL_CLOCK_PROPERNESS) + EVENT_PLACEMENT",
+  "production_open": [
+    "DIRECT_INTERVAL_COMPLETE_FLOW_COVERAGE_OR_GLOBAL_CLOCK_PROPERNESS",
+    "SOURCE_OWNED_PHYSICAL_EVENT_PLACEMENT",
+    "RF_E25_PRODUCTION_SHARED_ADM_COFRAME_ATLAS"
+  ],
+  "joint_live_36d_audit": {
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "source_event_id": "gremlin:whisper:sha256:1ffec7bc4f5aa53f1b4b2ea5a826714d7e1df543f8bc9858e1b327a382fe905d",
+    "shape": [8, 36],
+    "terminal_receipt_sha256": "4a4307461b53917fb3fa423edc1a4b848d355040749c900a154fa33a61c427a7",
+    "phasenav_trace_sha256": "a062dfa190690e1a306fa55f99bf83e08b2c99a46edffbf44f4b9a566c936b74"
+  },
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "verdict": "PASS_FPDG_GSC3A_REFINED_CANDIDATE_FRONTIER_WITH_PRODUCTION_INPUTS_OPEN"
+}
