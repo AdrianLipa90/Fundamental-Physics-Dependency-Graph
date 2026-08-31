@@ -35,6 +35,7 @@ def base_manifest(target=TARGET_GR, route=FLOW_ROUTE):
             spatial_carrier_id="sigma-prod-1",
             clock_id="clock-prod-1",
             realization_id="spacetime-prod-1",
+            product_provenance="FLOW_COVERAGE",
         ),
         "W3_GSC4_NUMERIC_SPATIAL_GEOMETRY": certified(
             spatial_carrier_id="sigma-prod-1", cover_id="cover-1"
@@ -74,6 +75,51 @@ def test_complete_flow_route_is_ready_for_source_resolution_only():
     assert result["source_receipt_resolution_required"] is True
     assert result["production_promoted"] is False
     assert result["promotion_authority"] is False
+
+
+def test_flow_coverage_product_provenance_is_admitted():
+    manifest = base_manifest()
+    assert manifest["witnesses"]["W2_GSC3A_GLOBAL_PRODUCT_CLOCK"]["lineage"]["product_provenance"] == "FLOW_COVERAGE"
+    result = certify_manifest(manifest)
+    assert result["status"] == "READY_FOR_SOURCE_RESOLUTION"
+
+
+def test_clock_properness_product_provenance_is_rejected_as_dependency_cycle():
+    manifest = base_manifest()
+    lineage = manifest["witnesses"]["W2_GSC3A_GLOBAL_PRODUCT_CLOCK"]["lineage"]
+    lineage["product_provenance"] = "CLOCK_PROPERNESS"
+    result = certify_manifest(manifest)
+    assert result["status"] == "LINEAGE_CONFLICTS"
+    assert "W2_GSC3A_GLOBAL_PRODUCT_CLOCK:PROPER_CLOCK_ANCESTRY_CYCLE" in result["lineage_conflicts"]
+
+
+def test_missing_product_provenance_is_fail_closed():
+    manifest = base_manifest()
+    manifest["witnesses"]["W2_GSC3A_GLOBAL_PRODUCT_CLOCK"]["lineage"].pop("product_provenance")
+    result = certify_manifest(manifest)
+    assert result["status"] == "LINEAGE_CONFLICTS"
+    assert "W2_GSC3A_GLOBAL_PRODUCT_CLOCK:MISSING_PRODUCT_PROVENANCE" in result["lineage_conflicts"]
+
+
+def test_independent_source_product_requires_explicit_no_proper_clock_ancestry():
+    manifest = base_manifest()
+    lineage = manifest["witnesses"]["W2_GSC3A_GLOBAL_PRODUCT_CLOCK"]["lineage"]
+    lineage["product_provenance"] = "INDEPENDENT_SOURCE_RECEIPT"
+    result_blocked = certify_manifest(manifest)
+    assert result_blocked["status"] == "LINEAGE_CONFLICTS"
+    assert "W2_GSC3A_GLOBAL_PRODUCT_CLOCK:INDEPENDENT_PRODUCT_ANCESTRY_NOT_CERTIFIED" in result_blocked["lineage_conflicts"]
+
+    lineage["no_proper_clock_ancestry"] = True
+    result_admitted = certify_manifest(manifest)
+    assert result_admitted["status"] == "READY_FOR_SOURCE_RESOLUTION"
+
+
+def test_unsupported_product_provenance_is_fail_closed():
+    manifest = base_manifest()
+    manifest["witnesses"]["W2_GSC3A_GLOBAL_PRODUCT_CLOCK"]["lineage"]["product_provenance"] = "UNDECLARED"
+    result = certify_manifest(manifest)
+    assert result["status"] == "LINEAGE_CONFLICTS"
+    assert "W2_GSC3A_GLOBAL_PRODUCT_CLOCK:UNSUPPORTED_PRODUCT_PROVENANCE:UNDECLARED" in result["lineage_conflicts"]
 
 
 def test_missing_required_group_is_reported():
