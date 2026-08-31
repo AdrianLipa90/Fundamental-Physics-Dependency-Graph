@@ -1,6 +1,6 @@
 # Global Spacetime Closure Ledger v0.1
 
-Status: `LOCAL_EINSTEIN_FORM_PASS / SPATIAL_INPUT_CONTRACT_PASS / TEMPORAL_INPUT_CONTRACT_PASS / REGULAR_CLOCK_EXTENSION_CERTIFIER_PASS / SHARED_ATLAS_CERTIFIER_PASS / PRODUCTION_GLOBAL_SPACETIME_OPEN / GLOBAL_HYPERBOLICITY_OPEN`
+Status: `LOCAL_EINSTEIN_FORM_PASS / GSC1_TO_GSC6_THEOREM_CERTIFIER_LAYER_TYPED / PRODUCTION_GLOBAL_SPACETIME_OPEN / PRODUCTION_GLOBAL_HYPERBOLICITY_OPEN`
 
 Date: 2026-08-31
 
@@ -9,15 +9,15 @@ Authority: `NONCANONICAL_CROSS_REPO_AUDIT`. Source claims remain owned by TIR, I
 ## 1. Current dependency surface
 
 ```text
-TIR local tetrahedral geometry
- -> TIR A5 global 3-manifold certifier
- -> TIR GSC-1 spatial input contract
+TIR local spatial geometry
+ -> TIR GSC-1 production spatial-complex input contract
+ -> A5 global 3-manifold/smooth-realization certifier
  -> actual production tetrahedral incidence dataset OPEN
 
-IDT 00F prefix occurrences
- -> IDT 05J explicit occurrence-to-event quotient/input contract
+IDT realized occurrences
+ -> IDT 05J occurrence-to-event quotient/input contract
  -> IDT 05H exact event-clock certifier
- -> actual production event incidence/quotient dataset OPEN
+ -> actual production event dataset OPEN
  -> IDT 05I regular smooth-clock extension certifier
  -> actual production continuum clock witness/coverage OPEN
  -> IDT 05G positive-lapse Frobenius foliation
@@ -29,140 +29,206 @@ TIR spatial realization
  -> actual production shared spacetime atlas OPEN
 
 RFC RF-E24 local Einstein field-equation form
- + production PASS GSC-1..GSC-4
- -> GSC-5 global Lorentzian domain carrying RF-E24
+ + production shared atlas + explicit target-domain coverage
+ -> RFC RF-E26 local-to-global tensor-gluing certifier
+ -> GSC-5 global Einstein carrier
 
-stronger downstream causal/PDE gate
+IDT/RFC global regular clock + global Lorentzian carrier
+ + certified finite global lapse upper bound
+ + complete ADM Wick metric
+ -> RFC RF-L8 completely-uniform-temporal certifier
  -> GSC-6 global hyperbolicity / Cauchy foliation
+
+production GSC-5 + production GSC-6
+ -> GLOBAL_GR_CAUCHY_CARRIER
 ```
 
-GSC-1 and GSC-2 now have executable source-owned input contracts. Their production datasets remain open.
+All six GSC coordinates now have a typed theorem, input contract, or executable certifier. Production realization witnesses remain open and are not replaced by reference fixtures.
 
-## 2. TIR spatial geometry and GSC-1
+## 2. TIR spatial geometry — GSC-1
 
 Repository: `AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations`.
 
-Current main baseline used for the input contract: `62a13ba92f0db641d6d699a88059aedf33528300`.
-
-A5 global 3-manifold/smooth-realization certifier remains the topology authority for a supplied tetrahedral complex. Its earlier validated research head `2568fb24e0bc91e8f1c75dcfdc5659a57ca382b9` has hosted SUCCESS run `33331003616`.
-
-GSC-1 input-contract branch:
-`feat/tir-global-spatial-complex-input-contract-v0.1`.
-
-Exact head:
+GSC-1 contract exact head:
 `5aaf572e9e931525f16bb0fa105afbb0d34c59c9`.
 
 Hosted `TIR global spatial-complex input contract`, run #1, id `33343473631`: `SUCCESS`.
 
-The contract requires explicit dataset provenance, canonical incidence SHA-256, unique vertex identifiers and a closed tetrahedral-complex representation before handing the incidence table to A5. Reference `boundary(Delta^4)=S^3` data are frozen with `production=false`.
+A5 validated research head:
+`2568fb24e0bc91e8f1c75dcfdc5659a57ca382b9`, hosted run `33331003616`: `SUCCESS`.
 
-Verdict:
+The production datum remains the actual source-owned tetrahedral incidence complex with provenance/digest followed by A5 production PASS.
 
+State:
 `INPUT_CONTRACT_PASS_WITH_PRODUCTION_SPATIAL_COMPLEX_OPEN_INPUT`.
 
-## 3. IDT temporal geometry and GSC-2/GSC-3
+## 3. IDT temporal geometry — GSC-2 / GSC-3
 
 Repository: `AdrianLipa90/Informational-Dynamics-of-Time`.
 
-Current main baseline used for 05J: `f186aab6024a592be406684785069edfe2f3d5bf`.
+### 3.1 GSC-2 / 05J + 05H
 
-### 3.1 05J — production event-complex input contract
-
-Branch:
-`feat/idt-production-event-complex-input-contract-v0.1`.
-
-Exact head:
+05J exact head:
 `44e2da0a7048df387f277f4e93e6970c445d4b67`.
 
 Hosted `IDT 05J production event-complex input`, run #1, id `33343481792`: `SUCCESS`.
 
-05J requires a supplied set of realized occurrence IDs and an explicit partition
+05J requires an explicit occurrence set, quotient
 
 \[
-q:O\to E
+q:O\to E,
 \]
 
-into event classes. Directed event edges carry positive finite elapsed increments and unique source-relation provenance IDs. A canonical SHA-256 binds the occurrences, quotient classes and edge incidence.
-
-After structural/integrity validation, 05J passes the event graph directly to 05H. A temporal-holonomy failure remains an exactness failure rather than being hidden as an input parser failure.
-
-Verdict:
-
-`INPUT_CONTRACT_PASS_WITH_PRODUCTION_EVENT_COMPLEX_OPEN_INPUT`.
-
-### 3.2 05H — exact discrete event clock
-
-05H certifies
+event incidence, positive elapsed edges and provenance. 05H then certifies the exact clock condition
 
 \[
 \vartheta=\delta t
 \quad\Longleftrightarrow\quad
-\oint_C\vartheta=0
+\oint_C\vartheta=0.
 \]
 
-on the supplied connected event graph. The production event complex remains required through 05J.
+State:
+`INPUT_CONTRACT_PASS_WITH_PRODUCTION_EVENT_COMPLEX_OPEN_INPUT`.
 
-### 3.3 05I — regular smooth clock-extension witness
+### 3.2 GSC-3 / 05I + 05G
 
-05I is maintained on the parallel research branch `feat/idt-temporal-foliation-v0.1`.
-
-Exact hosted-PASS head:
+05I exact hosted-PASS head:
 `fc87c4176dfcc480529ba28bd67042d3ebf02c72`.
 
-Dedicated `IDT 05I regular smooth clock extension`, run #2, id `33339841644`: `SUCCESS`.
+Dedicated run #2, id `33339841644`: `SUCCESS`.
 
-It certifies a supplied compatible affine-chart scalar witness
+05I certifies a supplied regular clock witness
 
 \[
 t_p(x)=a_p\cdot x+b_p,\qquad a_p\neq0,
 \]
 
-with overlap/cocycle and event-embedding compatibility. Production continuum witness and domain coverage remain open.
-
-Verdict:
-
-`CERTIFIER_PASS_WITH_PRODUCTION_REGULAR_CLOCK_WITNESS_OPEN_INPUT`.
-
-### 3.4 05G — positive-lapse foliation
-
-On a supplied regular clock domain,
+with overlap/cocycle and event-embedding compatibility. 05G then gives
 
 \[
-\Theta_R=N_Rc\,dt,\qquad N_R>0
+\Theta_R=N_Rc\,dt,\qquad N_R>0,
 \]
-
-gives
 
 \[
 \Theta_R\wedge d\Theta_R=0.
 \]
 
-05I owns the regular smooth-clock witness gate feeding this theorem.
+State:
+`CERTIFIER_PASS_WITH_PRODUCTION_REGULAR_CLOCK_WITNESS_OPEN_INPUT`.
 
-### 3.5 Independent IDT full-suite blocker
+The independent IDT repository-wide seam collection blocker remains tracked separately; it does not replace the dedicated 05I/05J hosted verdicts.
 
-The 05J exact-head repository-wide Reference suite #935, id `33343481782`, fails during collection because the seam stack imports a missing `onsager_dissipation` symbol from `idt.schrodinger_onsager_seam_balance`. The same failure class pre-dates 05J. It is retained as an independent repository-maintenance blocker and does not replace the dedicated 05J or 05I verdicts.
-
-## 4. RFC relativistic geometry
+## 4. RFC relativistic closure — GSC-4 / GSC-5 / GSC-6
 
 Repository: `AdrianLipa90/Relational-Field-Closure`.
 
-RF-E24 exact head `5e8ca5e5aea4ecb63a3ea5fd005518fa63183d3d`, reference suite #390 id `33330773981`: `SUCCESS`.
+### 4.1 RF-E24 local Einstein form
+
+RF-E24 exact head:
+`5e8ca5e5aea4ecb63a3ea5fd005518fa63183d3d`, reference suite id `33330773981`: `SUCCESS`.
 
 On the admitted selected branch,
 
 \[
-G_{\mu\nu}+\Lambda g_{\mu\nu}=\kappa_E T_{\mu\nu},
-\qquad \kappa_E=\frac{8\pi G}{c^4}.
+G_{\mu\nu}+\Lambda g_{\mu\nu}
+=\kappa_E T_{\mu\nu},
+\qquad
+\kappa_E=\frac{8\pi G}{c^4}.
 \]
 
-RF-E25 exact head `4d581ac8d03e637f65fdefa2b9326ffc1effe0e1`, reference suite #392 id `33337181002`: `SUCCESS`.
+### 4.2 GSC-4 / RF-E25 shared spacetime atlas
 
-The shared-atlas gate checks coframe/coordinate compatibility, Lorentz metric preservation, orientation/time orientation, overlap connectedness and coordinate/frame cocycles.
+RF-E25 exact head:
+`4d581ac8d03e637f65fdefa2b9326ffc1effe0e1`, reference suite #392 id `33337181002`: `SUCCESS`.
 
-Verdict:
+RF-E25 checks the ADM coframe/coordinate overlap equation
 
+\[
+E_qJ_{q\leftarrow p}=\Lambda_{q\leftarrow p}E_p,
+\]
+
+Lorentz preservation, orientation/time orientation, connectedness and coordinate/frame cocycles.
+
+State:
 `CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_OPEN_INPUT`.
+
+### 4.3 GSC-5 / RF-E26 global Einstein carrier
+
+Branch:
+`feat/rfe26-global-einstein-carrier-v0.1`.
+
+Exact head:
+`d9779608754aae294e3a37a5e5c9fef63ff37a39`.
+
+Hosted full `RFC reference suite` run #401, id `33341138133`: `SUCCESS`.
+
+RF-E26 defines on each patch
+
+\[
+\mathcal R_p=G_p+\Lambda g_p-\kappa_ET_p
+\]
+
+and checks the covariant overlap law
+
+\[
+X_p=J^TX_qJ,
+\qquad X\in\{g,G,T,\mathcal R\}.
+\]
+
+If RF-E25 is certified, the patches cover the target domain, one common `Lambda` and `kappa_E` are used, and every local residual vanishes, locality/tensor gluing gives
+
+\[
+\boxed{G+\Lambda g=\kappa_ET}
+\]
+
+globally on the supplied covered domain.
+
+State:
+`CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_AND_DOMAIN_COVERAGE_OPEN_INPUT`.
+
+The RF-E26 static source receipt still contains a pre-hosted `PENDING` field; the GitHub hosted run above is the later exact-head validation witness and is recorded separately rather than rewriting source authority here.
+
+### 4.4 GSC-6 / RF-L8 global hyperbolicity
+
+Branch:
+`feat/rf-l8-global-hyperbolicity-v0.1`.
+
+Exact head:
+`329bdcf981245189b52cea81509bf983c0396668`.
+
+Hosted full `RFC reference suite` run #402, id `33341545793`: `SUCCESS`.
+
+RF-L8 uses the ADM carrier
+
+\[
+g=-N^2dt^2+h_{ij}(dx^i+b^idt)(dx^j+b^jdt)
+\]
+
+and the Wick metric
+
+\[
+W=dt^2+h_{ij}(dx^i+b^idt)(dx^j+b^jdt).
+\]
+
+For a certified global finite bound `0<N<=N_max`, define
+
+\[
+\varepsilon=(1+N_{\max}^2)^{-1/2},
+\qquad H=\varepsilon^2W.
+\]
+
+The exact causal estimate gives
+
+\[
+dt(v)\ge\|v\|_H
+\]
+
+for every future-directed causal vector. With a production completeness witness for `W` (equivalently the required complete metric witness), the typed completely-uniform-temporal theorem promotes global hyperbolicity/Cauchy foliation.
+
+State:
+`CERTIFIER_PASS_WITH_PRODUCTION_GLOBAL_LAPSE_BOUND_AND_WICK_COMPLETENESS_OPEN_INPUT`.
+
+The RF-L8 static source receipt likewise retains a pre-hosted `PENDING` field; hosted run #402 is the later validation witness.
 
 ## 5. Closed theorem/certifier/interface surfaces
 
@@ -176,64 +242,51 @@ Verdict:
 | IDT 05I regular smooth clock-extension certifier | `PASS` |
 | IDT positive-lapse Frobenius theorem/certifier | `PASS` |
 | RFC local Einstein field-equation form | `PASS_ON_DECLARED_SELECTION_RULES` |
-| RFC shared-spacetime atlas/coframe cocycle certifier | `PASS` |
+| RFC RF-E25 shared-spacetime atlas certifier | `PASS` |
+| RFC RF-E26 global Einstein-carrier gluing certifier | `PASS` |
+| RFC RF-L8 uniform-temporal global-hyperbolicity certifier | `PASS` |
 
 ## 6. Remaining production frontier
 
-### GSC-1 — production spatial complex
-
-Contract/certifier state:
+### GSC-1
 `INPUT_CONTRACT_PASS_WITH_PRODUCTION_SPATIAL_COMPLEX_OPEN_INPUT`.
 
-Remaining datum: actual source-owned global TIR tetrahedral incidence dataset with provenance/digest, followed by A5 PASS.
-
-### GSC-2 — production temporal event complex
-
-Contract/certifier state:
+### GSC-2
 `INPUT_CONTRACT_PASS_WITH_PRODUCTION_EVENT_COMPLEX_OPEN_INPUT`.
 
-Remaining datum: actual source-owned IDT occurrence set, occurrence-to-event quotient, directed event incidence and elapsed-edge values, followed by 05H PASS.
-
-### GSC-3 — regular smooth clock extension
-
-State:
+### GSC-3
 `CERTIFIER_PASS_WITH_PRODUCTION_REGULAR_CLOCK_WITNESS_OPEN_INPUT`.
 
-### GSC-4 — shared spatial-temporal spacetime realization
-
-State:
+### GSC-4
 `CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_OPEN_INPUT`.
 
-### GSC-5 — global carrier for RF-E24
+### GSC-5
+`CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_AND_DOMAIN_COVERAGE_OPEN_INPUT`.
 
-State:
-`CONDITIONAL_ON_PRODUCTION_PASS_GSC_1_TO_GSC_4`.
+### GSC-6
+`CERTIFIER_PASS_WITH_PRODUCTION_GLOBAL_LAPSE_BOUND_AND_WICK_COMPLETENESS_OPEN_INPUT`.
 
-### GSC-6 — global hyperbolicity / Cauchy foliation
-
-State:
-`OPEN_SEPARATE_GATE`.
+For the final GR Cauchy carrier, production GSC-5 and production GSC-6 must both pass.
 
 ## 7. Minimal remaining closure line
 
 ```text
-GSC-1 actual spatial incidence      -> TIR input contract -> A5
-GSC-2 actual event quotient/data    -> IDT 05J -> 05H
-GSC-3 actual smooth clock witness   -> IDT 05I -> 05G
-GSC-4 actual shared 4D atlas        -> RFC RF-E25
----------------------------------------------------------
-production PASS of GSC-1..4
- -> GSC-5 global domain carrying RF-E24
-
-stronger downstream:
-GSC-6 global hyperbolicity / Cauchy foliation
+actual TIR spatial incidence             -> GSC-1 contract -> A5 production PASS
+actual IDT event quotient/data           -> 05J -> 05H production PASS
+actual smooth global clock witness       -> 05I -> 05G production PASS
+actual shared 4D atlas                   -> RF-E25 production PASS
+explicit target-domain coverage          -> RF-E26 production GSC-5 PASS
+global lapse upper bound + complete W    -> RF-L8 production GSC-6 PASS
+--------------------------------------------------------------------------
+production GSC-5 + production GSC-6
+ -> GLOBAL_GR_CAUCHY_CARRIER
 ```
 
-The remaining GSC-1..GSC-4 coordinates are now typed production-realization inputs rather than undefined interfaces.
+The theorem/certifier layer of the global-relativity closure is now typed through GSC-6. The remaining closure is production realization/proof-carrying input, not an undefined mathematical interface.
 
 ## 8. FPDG authority firewall
 
-This ledger remains noncanonical while it cites draft feature heads. It leaves these canonical surfaces unchanged:
+This ledger remains noncanonical while it cites draft feature heads. It leaves unchanged:
 
 - `dependency_graph.yaml`;
 - `claims.jsonl`;
@@ -249,12 +302,10 @@ Canonical promotion requires explicit source-side promotion and freshness proced
 \boxed{
 \begin{aligned}
 &\text{LOCAL EINSTEIN FORM} &&= \text{PASS},\\
-&\text{GSC-1 INPUT CONTRACT} &&= \text{PASS; PRODUCTION DATA OPEN},\\
-&\text{GSC-2 INPUT CONTRACT} &&= \text{PASS; PRODUCTION DATA OPEN},\\
-&\text{GSC-3 CLOCK CERTIFIER} &&= \text{PASS; PRODUCTION WITNESS OPEN},\\
-&\text{GSC-4 SHARED ATLAS CERTIFIER} &&= \text{PASS; PRODUCTION ATLAS OPEN},\\
-&\text{GSC-5 GLOBAL EINSTEIN DOMAIN} &&= \text{CONDITIONAL},\\
-&\text{GSC-6 GLOBAL HYPERBOLICITY} &&= \text{OPEN}.
+&\text{GSC-1..GSC-6 THEOREM/CERTIFIER LAYER} &&= \text{TYPED / PASS AT REFERENCE GATES},\\
+&\text{PRODUCTION GLOBAL EINSTEIN CARRIER} &&= \text{OPEN INPUT},\\
+&\text{PRODUCTION GLOBAL HYPERBOLICITY} &&= \text{OPEN INPUT},\\
+&\text{GLOBAL GR CAUCHY CARRIER} &&= \text{CONDITIONAL ON PRODUCTION GSC-5 + GSC-6}.
 \end{aligned}
 }
 \]

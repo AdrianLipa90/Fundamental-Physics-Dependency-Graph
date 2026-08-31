@@ -5,7 +5,7 @@
   "promotion_authority": false,
   "canonical_graph_mutated": false,
   "canonical_source_locks_mutated": false,
-  "overall_status": "LOCAL_EINSTEIN_FORM_PASS__SPATIAL_INPUT_CONTRACT_PASS__TEMPORAL_INPUT_CONTRACT_PASS__REGULAR_CLOCK_EXTENSION_CERTIFIER_PASS__SHARED_ATLAS_CERTIFIER_PASS__PRODUCTION_GLOBAL_SPACETIME_OPEN__GLOBAL_HYPERBOLICITY_OPEN",
+  "overall_status": "LOCAL_EINSTEIN_FORM_PASS__GSC1_TO_GSC6_THEOREM_CERTIFIER_LAYER_TYPED__PRODUCTION_GLOBAL_SPACETIME_OPEN__PRODUCTION_GLOBAL_HYPERBOLICITY_OPEN",
   "fpdg_base": {
     "repository": "AdrianLipa90/Fundamental-Physics-Dependency-Graph",
     "main_commit": "e1e07ef294fe02bfc208dba6aee76ff0517b505b"
@@ -88,7 +88,7 @@
     },
     "RFC": {
       "repository": "AdrianLipa90/Relational-Field-Closure",
-      "exact_head": "4d581ac8d03e637f65fdefa2b9326ffc1effe0e1",
+      "research_stack_head": "329bdcf981245189b52cea81509bf983c0396668",
       "gates": {
         "RF-E24": {
           "exact_head": "5e8ca5e5aea4ecb63a3ea5fd005518fa63183d3d",
@@ -101,6 +101,30 @@
           "status": "PASS_SHARED_SPACETIME_ATLAS_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN",
           "workflow_run_id": 33337181002,
           "conclusion": "SUCCESS"
+        },
+        "RF-E26": {
+          "branch": "feat/rfe26-global-einstein-carrier-v0.1",
+          "exact_head": "d9779608754aae294e3a37a5e5c9fef63ff37a39",
+          "status": "PASS_RFE26_GLOBAL_EINSTEIN_CARRIER_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN",
+          "workflow": {
+            "name": "RFC reference suite",
+            "run_number": 401,
+            "run_id": 33341138133,
+            "conclusion": "SUCCESS"
+          },
+          "static_receipt_hosted_field": "PENDING_STALE_RELATIVE_TO_HOSTED_RUN"
+        },
+        "RF-L8": {
+          "branch": "feat/rf-l8-global-hyperbolicity-v0.1",
+          "exact_head": "329bdcf981245189b52cea81509bf983c0396668",
+          "status": "PASS_RF_L8_UNIFORM_TEMPORAL_GLOBAL_HYPERBOLICITY_CERTIFIER_WITH_COMPLETENESS_INPUT_OPEN",
+          "workflow": {
+            "name": "RFC reference suite",
+            "run_number": 402,
+            "run_id": 33341545793,
+            "conclusion": "SUCCESS"
+          },
+          "static_receipt_hosted_field": "PENDING_STALE_RELATIVE_TO_HOSTED_RUN"
         }
       }
     }
@@ -115,7 +139,9 @@
     "IDT_REGULAR_SMOOTH_CLOCK_EXTENSION_WITNESS_CERTIFIER",
     "IDT_POSITIVE_LAPSE_LOCAL_FROBENIUS_THEOREM_AND_CERTIFIER",
     "RFC_LOCAL_EINSTEIN_FIELD_EQUATION_FORM_ON_DECLARED_SELECTION_RULES",
-    "RFC_SHARED_SPACETIME_ATLAS_COCYCLE_CERTIFIER"
+    "RFC_SHARED_SPACETIME_ATLAS_COCYCLE_CERTIFIER",
+    "RFC_GLOBAL_EINSTEIN_CARRIER_GLUE_CERTIFIER",
+    "RFC_UNIFORM_TEMPORAL_GLOBAL_HYPERBOLICITY_CERTIFIER"
   ],
   "global_frontier": [
     {
@@ -153,27 +179,38 @@
     {
       "id": "GSC-5",
       "name": "GLOBAL_DOMAIN_FOR_RF_E24_LOCAL_EINSTEIN_FORM",
-      "status": "CONDITIONAL_ON_PRODUCTION_PASS_GSC_1_TO_GSC_4",
+      "status": "CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_AND_DOMAIN_COVERAGE_OPEN_INPUT",
       "owner": "RFC",
+      "certifier": "RFC_RF-E26",
       "required_verdict": "PASS_GLOBAL_EINSTEIN_REALIZATION"
     },
     {
       "id": "GSC-6",
       "name": "GLOBAL_HYPERBOLICITY_CAUCHY_FOLIATION",
-      "status": "OPEN_SEPARATE_GATE",
+      "status": "CERTIFIER_PASS_WITH_PRODUCTION_GLOBAL_LAPSE_BOUND_AND_WICK_COMPLETENESS_OPEN_INPUT",
       "owner": "RFC",
+      "certifier": "RFC_RF-L8",
       "required_verdict": "PASS_GLOBAL_CAUCHY_HYPERBOLICITY"
     }
   ],
+  "production_frontier": {
+    "GSC-1": "actual TIR tetrahedral incidence dataset plus A5 production PASS",
+    "GSC-2": "actual IDT occurrence quotient/event incidence and elapsed-edge data plus 05H production PASS",
+    "GSC-3": "actual regular smooth global clock witness and target-domain coverage",
+    "GSC-4": "actual shared TIR x IDT x RFC spacetime atlas realization",
+    "GSC-5": "production RF-E25 parent plus explicit target-domain coverage into RF-E26",
+    "GSC-6": "production global finite lapse upper bound plus complete ADM Wick-metric witness; full GR Cauchy carrier also requires production GSC-5"
+  },
   "promotion_firewall": {
     "source_heads_are_draft_feature_heads": true,
     "canonical_fpdg_promotion_deferred": true,
     "gremlin_promotion_authority": false,
-    "forbidden_overall_statuses_while_frontier_open": [
+    "forbidden_overall_statuses_while_production_frontier_open": [
       "GLOBAL_SPACETIME_PASS",
       "GLOBAL_GR_PASS",
-      "GLOBAL_HYPERBOLICITY_PASS"
+      "GLOBAL_HYPERBOLICITY_PASS",
+      "GLOBAL_GR_CAUCHY_CARRIER_PASS"
     ]
   },
-  "verdict": "PASS_CROSS_REPO_LEDGER_WITH_TYPED_PRODUCTION_INPUTS_OPEN"
+  "verdict": "PASS_CROSS_REPO_LEDGER_WITH_GSC1_TO_GSC6_CERTIFIERS_TYPED_AND_PRODUCTION_INPUTS_OPEN"
 }
