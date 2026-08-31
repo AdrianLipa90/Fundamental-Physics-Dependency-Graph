@@ -1,0 +1,58 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_RECEIPT_V0_3",
+  "date": "2026-08-31",
+  "technical_status": "PASS",
+  "verdict": "PASS_NONCANONICAL_GSC1_GSC2_GSC3_CANDIDATE_FEDERATION_WITH_PRODUCTION_FRONTIER_OPEN",
+  "tested_head": "65f7853467ac2d51d03cad31dd8b7f6b3c7bacea",
+  "hosted_validation": {
+    "validate_fundamental_dependency_dag": {
+      "run_number": 337,
+      "run_id": 33346090415,
+      "conclusion": "success"
+    },
+    "validate_locked_source_exports": {
+      "run_number": 276,
+      "run_id": 33346090615,
+      "conclusion": "success"
+    },
+    "watch_fundamental_source_drift": {
+      "run_number": 149,
+      "run_id": 33346090526,
+      "conclusion": "success"
+    }
+  },
+  "source_candidate_heads": {
+    "TIR_GSC1": "5cc9f1e1a33972cf89369a3b97716e04901324ba",
+    "IDT_GSC2": "1ee977008a616a481d6d12dc6c258fcd43e601e6",
+    "RFC_GSC3_PRODUCT": "385528e1c87823dd6f681a0a7cdf277aa6389b38"
+  },
+  "live_research_audit": {
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "gremlin_generation": "7e28fb102af2a7015f0e73f7828a0f1bc611fd9d478919dd072a39779d7d60fd",
+    "source_event_id": "gremlin:whisper:sha256:668473fe1f568b1104d659875133f6e9cb3b38571c942b9b0901744a55c4a555",
+    "event_type": "RESEARCH_PACKET",
+    "terminal36d_receipt_sha256": "65dd8a9bb8cb0cfd4fbf242bac1dc1e2eb8cf4d7471ba14aef5f6d43e7a81610",
+    "phasenav_trace_sha256": "93b16a59254848a9de7eef00db0733f8b24e42c7456db10059480af44a5f99d5",
+    "phase_shape": [5, 36],
+    "return_event_type": "GREMLIN_PHASE36D_FUSED",
+    "authority": "CANDIDATE_ONLY",
+    "promotion_authority": false,
+    "role": "HEURISTIC_STRUCTURAL_AND_FALSIFICATION_AUDIT_EVIDENCE"
+  },
+  "candidate_result": {
+    "GSC1": "INPUT_CONTRACT_HOSTED_PASS_PRODUCTION_SPATIAL_COMPLEX_OPEN",
+    "GSC2": "INPUT_CONTRACT_HOSTED_PASS_PRODUCTION_EVENT_COMPLEX_OPEN",
+    "GSC3_PRODUCT_ROUTE": "EXACT_COORDINATE_CERTIFIER_HOSTED_PASS_PHYSICAL_PRODUCT_REALIZATION_OPEN",
+    "canonical_graph_promotion": false
+  },
+  "open_frontier": [
+    "GSC1_PRODUCTION_GLOBAL_TETRAHEDRAL_FACET_INCIDENCE",
+    "GSC2_PRODUCTION_PHYSICAL_EVENT_INCIDENCE_AND_ELAPSED_EDGES",
+    "PHYSICAL_TIR_IDT_PRODUCT_REALIZATION_AND_EVENT_PLACEMENT",
+    "GSC4_PRODUCTION_SHARED_ADM_COFRAME_ATLAS",
+    "GSC5_PRODUCTION_GLOBAL_EINSTEIN_CARRIER_AND_DOMAIN_COVERAGE",
+    "GSC6_GLOBAL_FINITE_LAPSE_BOUND_AND_COMPLETE_ADM_WICK_METRIC"
+  ],
+  "canonical_files_mutated": false,
+  "canon_promotion": false
+}
