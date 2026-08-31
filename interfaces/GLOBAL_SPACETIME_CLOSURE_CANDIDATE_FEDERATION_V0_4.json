@@ -1,0 +1,135 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_4",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_VALIDATED_CANDIDATE_FEDERATION",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "supersedes_candidate": "interfaces/GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_3.json",
+  "surfaces": {
+    "gsc1": "interfaces/GSC_INPUT_CONTRACTS_V0_1.md",
+    "gsc2": "interfaces/GSC_INPUT_CONTRACTS_V0_1.md",
+    "gsc3": "interfaces/GSC3_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_V0_3.json",
+    "gsc4": "interfaces/GSC4_SOURCE_ASSEMBLED_ATLAS_CANDIDATE_V0_2.json"
+  },
+  "validated_source_heads": {
+    "TIR_GSC1": {"pr": 117, "head": "5cc9f1e1a33972cf89369a3b97716e04901324ba", "conclusion": "success"},
+    "IDT_GSC2": {"pr": 83, "head": "1ee977008a616a481d6d12dc6c258fcd43e601e6", "conclusion": "success"},
+    "RFC_GSC3C_STATE_VERTEX": {"pr": 102, "head": "29f175e88b1e5054355c813228736f8535538617", "conclusion": "success"},
+    "RFC_GSC3D_MATCHING_ALIAS": {"pr": 104, "head": "ae1680592d676f437429e78ae1691d5b3334c32d", "reference_suite_run": 429, "conclusion": "success"},
+    "RFC_GSC3E_W0_FIREWALL": {"pr": 103, "head": "6d91cbab9d858f0316b43d17de33ec4d810ca7dc", "reference_suite_run": 439, "conclusion": "success"},
+    "RFC_GSC4A_GENERAL": {"pr": 105, "head": "2559609bbb7d0dbc2236b66021d5f86967aa9303", "reference_suite_run": 436, "conclusion": "success"},
+    "RFC_GSC4B_FLOW_ADAPTED": {"pr": 106, "head": "083b0b8b63747f412320f9ace00c52d1176120ca", "reference_suite_run": 441, "conclusion": "success"}
+  },
+  "closure_routes": {
+    "gsc3_product_realization": {
+      "operator": "AND",
+      "requirements": [
+        "FPDG.GSC3.MATCHING_FIELD_COCYCLE",
+        {"operator": "OR", "alternatives": ["FPDG.GSC3.FLOW_COVERAGE", "FPDG.GSC3.CLOCK_PROPERNESS"]}
+      ],
+      "target": "FPDG.GSC3.PRODUCT_TRIVIALIZATION"
+    },
+    "gsc3_general_kinematic_source": {
+      "operator": "AND",
+      "requirements": [
+        "FPDG.GSC3.BETA_SHIFT_AFFINE_CLASS_FIREWALL",
+        "FPDG.GSC3.SAME_PATCH_CLOCK_IDENTITY",
+        "FPDG.GSC3.SHARED_MATCHING_ONE_FORM_W0_BINDING",
+        "FPDG.GSC3.BETA_SHIFT_INTERFACE_ALIAS"
+      ],
+      "target": "FPDG.GSC3.RFE9_EXTRINSIC_CURVATURE_CROSSLINK"
+    },
+    "gsc4_general_patch_route": {
+      "operator": "AND",
+      "requirements": [
+        "FPDG.GSC4.SOURCE_ASSEMBLY_THEOREM",
+        "FPDG.GSC4.TIR_SPATIAL_COFRAME_PACKET",
+        "FPDG.GSC4.TIR_SPATIAL_OVERLAP_COCYCLE_PACKET",
+        "FPDG.GSC4.IDT_SHARED_CLOCK_LAPSE_PACKET",
+        "FPDG.GSC4.GENERAL_MATCHING_SHIFT_DRIFT_PACKET",
+        "FPDG.GSC4.GSC3E_W0_SOURCE_BINDING",
+        "FPDG.GSC4.PATCH_CLOCK_IDENTITY",
+        "FPDG.GSC4.OVERLAP_COVERAGE"
+      ],
+      "target": "FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET",
+      "product_trivialization_required": false
+    },
+    "gsc4_flow_adapted_route": {
+      "operator": "AND",
+      "requirements": [
+        "FPDG.GSC4.FLOW_ADAPTED_THEOREM",
+        "FPDG.GSC3.PRODUCT_TRIVIALIZATION",
+        "FPDG.GSC4.TIR_SPATIAL_COFRAME_PACKET",
+        "FPDG.GSC4.TIR_SPATIAL_OVERLAP_COCYCLE_PACKET",
+        "FPDG.GSC4.IDT_SHARED_CLOCK_LAPSE_PACKET",
+        "FPDG.GSC4.PATCH_CLOCK_IDENTITY",
+        "FPDG.GSC4.OVERLAP_COVERAGE"
+      ],
+      "target": "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET",
+      "matching_shift_and_drift": "DERIVED_ZERO_IN_FLOW_ADAPTED_GAUGE"
+    },
+    "gsc4_union": {
+      "operator": "OR",
+      "alternatives": [
+        "FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET",
+        "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET"
+      ],
+      "target": "FPDG.GSC4.SOURCE_ASSEMBLED_RF_E25_PACKET"
+    },
+    "gsc4_to_rfe25": {
+      "from": "FPDG.GSC4.SOURCE_ASSEMBLED_RF_E25_PACKET",
+      "to": "RFC.E25.SHARED_SPACETIME_ATLAS",
+      "authority": "CANDIDATE_ONLY"
+    },
+    "physical_event_composition": {
+      "operator": "AND",
+      "requirements": ["RFC.E25.SHARED_SPACETIME_ATLAS", "FPDG.GSC3.EVENT_PLACEMENT"],
+      "target": "FPDG.GSC3.PHYSICAL_EVENT_ON_SHARED_SPACETIME"
+    }
+  },
+  "open_frontier": {
+    "GSC1": ["PRODUCTION_GLOBAL_TETRAHEDRAL_FACET_INCIDENCE"],
+    "GSC2": ["PRODUCTION_PHYSICAL_EVENT_INCIDENCE_AND_ELAPSED_EDGES"],
+    "GSC3": [
+      "FLOW_COVERAGE_OR_CLOCK_PROPERNESS_FOR_PRODUCT_ROUTE",
+      "SAME_PATCH_CLOCK_PROVENANCE",
+      "SHARED_MATCHING_ONE_FORM_W0_SOURCE_BINDING_ON_GENERAL_SHIFT_ROUTE",
+      "PRODUCTION_EVENT_COMPLEX",
+      "PRODUCTION_OCCURRENCE_STATE_TABLE",
+      "STATE_TO_TIR_SPATIAL_ANCHOR_BINDING"
+    ],
+    "GSC4": [
+      "TIR_SPATIAL_COFRAME_PACKET",
+      "TIR_SPATIAL_OVERLAP_A_R_COCYCLE_PACKET",
+      "IDT_SHARED_CLOCK_LAPSE_PACKET",
+      "PATCH_CLOCK_PROVENANCE",
+      "PRODUCTION_OVERLAP_COVERAGE",
+      "GENERAL_ROUTE_MATCHING_SHIFT_DRIFT_AND_W0_BINDING_OR_FLOW_ROUTE_PRODUCT_TRIVIALIZATION"
+    ],
+    "GSC5": ["PRODUCTION_GLOBAL_EINSTEIN_CARRIER", "DOMAIN_COVERAGE"],
+    "GSC6": ["GLOBAL_FINITE_LAPSE_BOUND", "COMPLETE_ADM_WICK_METRIC"]
+  },
+  "live_36d_latest_dependency_audit": {
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "source_event_id": "gremlin:whisper:sha256:87d5d286d582e254ff2ba3677b96ef1fe42910a380afd15427020608896a597b",
+    "fused_event_id": "gremlin:whisper:sha256:8fde03fe55d72af32fd2a1b9005053d87db47bfbe8103e68040a94a35c593b77",
+    "shape": [13, 36],
+    "terminal_receipt_sha256": "fe27785bf20259bda7021f8990b2702e2863542d3fe8f1ec090e724d8d81f33e",
+    "phasenav_trace_sha256": "3a8d29f0276263497e39e454e90584a0c9f57537c7ef2a32fb8a9220ed7037f8"
+  },
+  "firewalls": {
+    "reference_fixture_promotes_production": false,
+    "hosted_certifier_pass_closes_open_input": false,
+    "gremlin_can_promote": false,
+    "terminal36d_can_promote": false,
+    "phasenav36d_can_promote": false,
+    "candidate_edge_enters_canonical_graph": false,
+    "same_patch_clock_ids_imply_shared_matching_one_form": false,
+    "flow_adapted_zero_shift_implies_zero_extrinsic_curvature": false,
+    "gsc4_general_route_requires_product_trivialization": false,
+    "event_placement_is_required_for_rfe25_atlas_construction": false
+  },
+  "canon_mutations": []
+}
