@@ -1,0 +1,29 @@
+{
+  "schema": "FPDG_IDT_TIR_STATE_VERTEX_GREMLIN_PHASE36D_AUDIT_V0_1",
+  "status": "PASS_LIVE_TRIAD_CANDIDATE_AUDIT",
+  "runtime_surface": "/dev/shm/ciel_noema",
+  "generation": "7e28fb102af2a7015f0e73f7828a0f1bc611fd9d478919dd072a39779d7d60fd",
+  "runtime_admission": {
+    "gremlin": "ACTIVE",
+    "terminal36d": "ACTIVE",
+    "tether": "ACTIVE"
+  },
+  "source_event_id": "gremlin:whisper:sha256:624abda3cf61141607dd307daedddc8bedbd628422eb2d79d48bb08d8140078c",
+  "shape": [10, 36],
+  "terminal_receipt_sha256": "e81b6a2482921a847c6a23c883392ed5ab539f70bf4c4b1d33c8233d9620f48f",
+  "phasenav_trace_sha256": "f3e7eb415d8f42d708ee49764115d01679e9b7387eb4838acccc3b5610a57018",
+  "candidate_checks": [
+    "shared-namespace assumption",
+    "injectivity requirement",
+    "surjectivity requirement",
+    "occurrence-id inference",
+    "state-recurrence ambiguity",
+    "source-coordinate drift"
+  ],
+  "epistemic": {
+    "authority": "CANDIDATE_ONLY",
+    "canon_allowed": false,
+    "promotion_evidence": false,
+    "deterministic_source_and_provenance_validation_required": true
+  }
+}

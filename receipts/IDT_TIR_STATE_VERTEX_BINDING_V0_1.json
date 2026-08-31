@@ -1,0 +1,71 @@
+{
+  "schema": "FPDG_IDT_TIR_STATE_VERTEX_BINDING_RECEIPT_V0_1",
+  "status": "PASS_BINDING_CONTRACT_WITH_PRODUCTION_MAPPING_OPEN",
+  "tested_head_sha": "48fa380035fb904ff6d80c72057b1de0e6e31b1b",
+  "upstream_coordinates": {
+    "idt_00g": {
+      "pr": 88,
+      "theorem_head_sha": "740e03a4fc2c20eae3bb8eb0cf11dbe7d94ae160",
+      "receipt_head_sha": "0ce9f89f160e94b9d8ad56ddf055bcfed19aa970",
+      "hosted_00g_run": {"number": 3, "id": 33350225110, "conclusion": "SUCCESS"},
+      "hosted_05j_run": {"number": 6, "id": 33350224989, "conclusion": "SUCCESS"},
+      "hosted_reference_run": {"number": 951, "id": 33350224980, "conclusion": "SUCCESS"},
+      "production_occurrence_state_table": "OPEN_INPUT"
+    },
+    "tir_gsc1": {
+      "pr": 117,
+      "head_sha": "5cc9f1e1a33972cf89369a3b97716e04901324ba",
+      "production_spatial_complex": "OPEN_INPUT"
+    }
+  },
+  "validation": {
+    "local_deterministic_tests": "6_OF_6_PASS",
+    "hosted_binding_gate": {
+      "workflow": "Validate IDT-TIR state-vertex binding",
+      "run_number": 3,
+      "run_id": 33350285323,
+      "conclusion": "SUCCESS"
+    },
+    "hosted_locked_exports": {
+      "workflow": "Validate Locked Source Exports",
+      "run_number": 317,
+      "run_id": 33350285285,
+      "conclusion": "SUCCESS"
+    },
+    "hosted_fundamental_dag": {
+      "workflow": "Validate Fundamental Dependency DAG",
+      "run_number": 378,
+      "run_id": 33350285310,
+      "conclusion": "SUCCESS"
+    }
+  },
+  "contract_results": [
+    "binding is total and single-valued on the supplied terminal-state domain",
+    "all targets belong to the supplied TIR GSC-1 vertex domain",
+    "injectivity and surjectivity are reported rather than assumed",
+    "IDT and TIR source-coordinate drift fails closed",
+    "binding evidence identifiers are unique",
+    "binding digest tampering fails closed"
+  ],
+  "live_candidate_audit": {
+    "authority": "CANDIDATE_ONLY",
+    "canon_allowed": false,
+    "promotion_evidence": false,
+    "generation": "7e28fb102af2a7015f0e73f7828a0f1bc611fd9d478919dd072a39779d7d60fd",
+    "source_event_id": "gremlin:whisper:sha256:624abda3cf61141607dd307daedddc8bedbd628422eb2d79d48bb08d8140078c",
+    "shape": [10, 36],
+    "terminal_receipt_sha256": "e81b6a2482921a847c6a23c883392ed5ab539f70bf4c4b1d33c8233d9620f48f",
+    "phasenav_trace_sha256": "f3e7eb415d8f42d708ee49764115d01679e9b7387eb4838acccc3b5610a57018"
+  },
+  "production_open": [
+    "PRODUCTION_IDT_OCCURRENCE_TERMINAL_STATE_TABLE",
+    "PRODUCTION_IDT_TERMINAL_STATE_TO_TIR_VERTEX_BINDING",
+    "PRODUCTION_TIR_GSC1_SPATIAL_COMPLEX"
+  ],
+  "epistemic": {
+    "canon_allowed": false,
+    "canonical_dependency_graph_mutated": false,
+    "source_locks_mutated": false
+  },
+  "verdict": "PASS_FPDG_IDT_TIR_STATE_VERTEX_BINDING_CONTRACT_WITH_PRODUCTION_BINDING_OPEN"
+}
