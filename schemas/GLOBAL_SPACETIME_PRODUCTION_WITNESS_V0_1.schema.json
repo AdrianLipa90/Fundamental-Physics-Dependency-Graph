@@ -34,12 +34,18 @@
     },
     "witness": {
       "type": "object",
-      "required": ["status", "receipt", "lineage"],
+      "required": ["status", "lineage"],
       "properties": {
         "status": {"enum": ["CERTIFIED_PRODUCTION", "OPEN", "QUARANTINED"]},
         "receipt": {"$ref": "#/$defs/receipt_ref"},
         "lineage": {"type": "object"}
       },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "CERTIFIED_PRODUCTION"}}},
+          "then": {"required": ["receipt"]}
+        }
+      ],
       "additionalProperties": true
     }
   },
