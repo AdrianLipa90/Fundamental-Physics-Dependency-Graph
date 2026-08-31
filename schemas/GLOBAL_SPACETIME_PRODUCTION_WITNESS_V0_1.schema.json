@@ -13,7 +13,11 @@
       ]
     },
     "route": {
-      "enum": ["FLOW_ADAPTED_COMPACT_FIBER", "GENERAL_MATCHING_COMPACT_FIBER"]
+      "enum": [
+        "FLOW_ADAPTED_COMPACT_FIBER",
+        "FLOW_ADAPTED_CANONICAL_ATLAS_DOMAIN",
+        "GENERAL_MATCHING_COMPACT_FIBER"
+      ]
     },
     "witnesses": {
       "type": "object",
