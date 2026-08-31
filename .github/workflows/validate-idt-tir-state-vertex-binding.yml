@@ -1,0 +1,23 @@
+name: Validate IDT-TIR state-vertex binding
+
+on:
+  pull_request:
+    paths:
+      - "interfaces/IDT_TIR_TERMINAL_STATE_SPATIAL_VERTEX_BINDING_V0_1.md"
+      - "tools/certify_idt_tir_state_vertex_binding.py"
+      - "tests/test_idt_tir_state_vertex_binding_v0_1.py"
+      - "receipts/IDT_TIR_STATE_VERTEX_BINDING_V0_1.json"
+      - "receipts/IDT_TIR_STATE_VERTEX_GREMLIN_PHASE36D_AUDIT_V0_1.json"
+      - ".github/workflows/validate-idt-tir-state-vertex-binding.yml"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install pytest
+      - run: python -m pytest -q tests/test_idt_tir_state_vertex_binding_v0_1.py
