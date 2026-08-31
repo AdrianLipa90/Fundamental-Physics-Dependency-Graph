@@ -14,6 +14,7 @@ on:
       - 'federation_overlays/**'
       - 'interfaces/cross_repo_interfaces.yaml'
       - 'diagnostics/incidents/**'
+      - 'diagnostics/VALIDATION_PRODUCERS_RC_V0_1.yaml'
       - 'tools/federation_surface.py'
       - 'tools/impact.py'
       - 'tools/watch_source_drift.py'
@@ -23,12 +24,16 @@ on:
       - 'tools/diagnose_inconsistency_effective.py'
       - 'tools/localize_interface_seams.py'
       - 'tools/localize_interface_seams_effective.py'
+      - 'tools/audit_validation_coverage.py'
+      - 'tools/audit_validation_coverage_effective.py'
       - 'tools/diff_dependency_export.py'
       - 'tools/localize_micro_coordinates.py'
       - 'tools/analyze_diagnostic_bottlenecks.py'
+      - 'tools/analyze_diagnostic_bottlenecks_effective.py'
       - 'tools/enrich_gremlin_pain_packet_with_micro.py'
       - 'tools/build_diagnostic_probe_plan.py'
       - 'tools/finalize_inconsistency_localization.py'
+      - 'tools/finalize_inconsistency_localization_effective.py'
       - 'tools/build_pain_signature.py'
       - 'tools/match_pain_signatures.py'
       - 'tools/build_gremlin_pain_packet.py'
@@ -47,6 +52,7 @@ on:
       - 'federation_overlays/**'
       - 'interfaces/cross_repo_interfaces.yaml'
       - 'diagnostics/incidents/**'
+      - 'diagnostics/VALIDATION_PRODUCERS_RC_V0_1.yaml'
       - 'tools/federation_surface.py'
       - 'tools/impact.py'
       - 'tools/watch_source_drift.py'
@@ -56,12 +62,16 @@ on:
       - 'tools/diagnose_inconsistency_effective.py'
       - 'tools/localize_interface_seams.py'
       - 'tools/localize_interface_seams_effective.py'
+      - 'tools/audit_validation_coverage.py'
+      - 'tools/audit_validation_coverage_effective.py'
       - 'tools/diff_dependency_export.py'
       - 'tools/localize_micro_coordinates.py'
       - 'tools/analyze_diagnostic_bottlenecks.py'
+      - 'tools/analyze_diagnostic_bottlenecks_effective.py'
       - 'tools/enrich_gremlin_pain_packet_with_micro.py'
       - 'tools/build_diagnostic_probe_plan.py'
       - 'tools/finalize_inconsistency_localization.py'
+      - 'tools/finalize_inconsistency_localization_effective.py'
       - 'tools/build_pain_signature.py'
       - 'tools/match_pain_signatures.py'
       - 'tools/build_gremlin_pain_packet.py'
@@ -92,7 +102,7 @@ jobs:
         run: python tools/diagnose_source_drift_effective.py --json
       - name: Finalize exact sub-claim coordinates, bottlenecks, and probe order
         if: always()
-        run: python tools/finalize_inconsistency_localization.py
+        run: python tools/finalize_inconsistency_localization_effective.py
       - name: Publish drift and diagnosis to job summary
         if: always()
         run: |

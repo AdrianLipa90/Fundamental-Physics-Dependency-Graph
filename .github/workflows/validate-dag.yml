@@ -41,7 +41,7 @@ jobs:
         run: python -m json.tool schemas/gremlin_pain_packet.schema.json > /dev/null
       - name: Test complete dependency and candidate invariant surface
         run: python -m pytest -q tests
-      - name: Audit direct source nerve-ending coverage
-        run: python tools/audit_validation_coverage.py
+      - name: Audit effective direct source nerve-ending coverage
+        run: python tools/audit_validation_coverage_effective.py
       - name: Validate registry-driven dependency export roundtrip
         run: python tools/export_roundtrip.py
