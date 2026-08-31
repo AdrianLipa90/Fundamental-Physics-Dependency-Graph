@@ -1,0 +1,60 @@
+{
+  "schema": "FPDG_GLOBAL_GR_PRODUCTION_WITNESS_BUNDLE_CONTRACT_V0_1",
+  "date": "2026-08-31",
+  "status": "REFERENCE_CONTRACT_IMPLEMENTED_WITH_PRODUCTION_WITNESSES_OPEN",
+  "authority": "FPDG_INTEGRATION_ONLY",
+  "promotion_authority": false,
+  "source_claim_owners": [
+    "TIR",
+    "IDT",
+    "RFC"
+  ],
+  "implementation": "tools/validate_global_gr_production_bundle.py",
+  "interface": "interfaces/GLOBAL_GR_PRODUCTION_WITNESS_BUNDLE_V0_1.md",
+  "reference_fixture": "fixtures/global_gr_production_witness_bundle_reference_v0_1.json",
+  "tests": "tests/test_global_gr_production_witness_bundle.py",
+  "required_gates": [
+    "GSC-1",
+    "GSC-2",
+    "GSC-3",
+    "GSC-4",
+    "GSC-5",
+    "GSC-6"
+  ],
+  "required_global_witnesses": [
+    "target_domain_coverage",
+    "global_lapse_upper_bound",
+    "adm_wick_completeness"
+  ],
+  "required_dependency_bindings": {
+    "GSC-5": [
+      "GSC-1",
+      "GSC-2",
+      "GSC-3",
+      "GSC-4"
+    ],
+    "GSC-6": [
+      "GSC-3",
+      "GSC-4",
+      "GSC-5"
+    ]
+  },
+  "production_firewall": {
+    "production_bundle_requires_evidence_class": "PRODUCTION",
+    "reference_fixture_evidence_class": "REFERENCE_CONTROL",
+    "reference_fixture_production": false,
+    "synthetic_fixture_classes_admissible_for_production": false,
+    "source_receipt_digest_binding_required": true,
+    "common_lineage_id_required": true,
+    "common_target_domain_id_required": true,
+    "production_observed_verdict_must_equal_required_source_verdict": true,
+    "fpdg_source_claim_promotion_authority": false
+  },
+  "reference_expected_result": {
+    "structural_pass": true,
+    "production_promotable": false,
+    "global_gr_cauchy_carrier_eligible": false
+  },
+  "hosted_validation_authority": "GitHub Actions exact-head run is recorded after execution; this static receipt does not pre-assert a future run",
+  "target_verdict": "PASS_GLOBAL_GR_PRODUCTION_WITNESS_BUNDLE_CONTRACT_WITH_PRODUCTION_WITNESSES_OPEN"
+}
