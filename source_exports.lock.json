@@ -1,6 +1,6 @@
 {
   "schema": "FPDG_SOURCE_EXPORT_LOCK_V0_2",
-  "generated_at": "2026-08-30T23:50:00+01:00",
+  "generated_at": "2026-08-31T00:52:00+01:00",
   "sources": {
     "TIR": {
       "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
@@ -27,7 +27,7 @@
       "repository": "AdrianLipa90/secret-of-a-half",
       "export_commit": "0d0ffa1765381cc644aadb03c453d9ac6dbe7ea3",
       "source_commit": "19b9820165cb46f441d006e0ff6e94f8c08f37b8",
-      "repository_head": "a759aa0930b82f2dcaec5bd4ce8b5bdcb73256ee",
+      "repository_head": "a759a64c498d5ab6b31fb8566969dcf0716feb59",
       "path": "DEPENDENCY_EXPORT.json"
     }
   },
