@@ -28,6 +28,14 @@ EVENT_GROUPS = (
 )
 GENERAL_ROUTE_GROUPS = ("M1_SHARED_MATCHING_ONE_FORM_W0",)
 
+PRODUCT_PROVENANCE_FLOW = "FLOW_COVERAGE"
+PRODUCT_PROVENANCE_INDEPENDENT = "INDEPENDENT_SOURCE_RECEIPT"
+PRODUCT_PROVENANCE_CLOCK = "CLOCK_PROPERNESS"
+PRODUCT_PROVENANCE_ALLOWED = {
+    PRODUCT_PROVENANCE_FLOW,
+    PRODUCT_PROVENANCE_INDEPENDENT,
+}
+
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 
@@ -62,6 +70,40 @@ def _validate_receipt(group_id: str, witness: dict[str, Any], conflicts: list[st
         conflicts.append(f"{group_id}:INVALID_RECEIPT_PATH")
     if not isinstance(digest, str) or HEX64.fullmatch(digest) is None:
         conflicts.append(f"{group_id}:INVALID_RECEIPT_SHA256")
+
+
+def _validate_product_provenance(witness: Any, conflicts: list[str]) -> None:
+    """Enforce the GSC6C product-lineage firewall on W2.
+
+    GSC3 admits both FLOW_COVERAGE and CLOCK_PROPERNESS as sufficient product
+    routes. The compact-fiber GSC6C route derives properness from the product, so
+    a W2 production witness used by this certifier must have ancestry independent
+    of proper-clock promotion. FLOW_COVERAGE is intrinsically admissible. An
+    INDEPENDENT_SOURCE_RECEIPT is admissible only with an explicit
+    no_proper_clock_ancestry=True lineage bit.
+    """
+
+    group_id = "W2_GSC3A_GLOBAL_PRODUCT_CLOCK"
+    if not _certified(witness):
+        return
+
+    provenance = _lineage(witness, "product_provenance")
+    if not isinstance(provenance, str) or not provenance.strip():
+        conflicts.append(f"{group_id}:MISSING_PRODUCT_PROVENANCE")
+        return
+
+    tag = provenance.strip().upper()
+    if tag == PRODUCT_PROVENANCE_CLOCK:
+        conflicts.append(f"{group_id}:PROPER_CLOCK_ANCESTRY_CYCLE")
+        return
+    if tag == PRODUCT_PROVENANCE_INDEPENDENT:
+        if _lineage(witness, "no_proper_clock_ancestry") is not True:
+            conflicts.append(f"{group_id}:INDEPENDENT_PRODUCT_ANCESTRY_NOT_CERTIFIED")
+        return
+    if tag == PRODUCT_PROVENANCE_FLOW:
+        return
+
+    conflicts.append(f"{group_id}:UNSUPPORTED_PRODUCT_PROVENANCE:{tag}")
 
 
 def _require_equal(
@@ -131,6 +173,11 @@ def certify_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
             conflicts.append(f"{group_id}:INVALID_STATUS")
             continue
         _validate_receipt(group_id, witness, conflicts)
+
+    # W2 is the product witness consumed by the compact-fiber GSC6C route.
+    # Its ancestry must be independent of the proper-clock coordinate derived
+    # downstream, otherwise the manifest would contain a dependency cycle.
+    _validate_product_provenance(witnesses.get("W2_GSC3A_GLOBAL_PRODUCT_CLOCK"), conflicts)
 
     # Shared clock lineage across product clock, scale field and lapse.
     _require_equal(
