@@ -1,0 +1,114 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_8",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_VALIDATED_CANDIDATE_FEDERATION",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "supersedes_candidate": "interfaces/GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_7.json",
+  "source_validations": {
+    "gsc4a_general_source_assembly": {"rfc_pr": 105, "status": "HOSTED_PASS_LINEAGE"},
+    "gsc4b_flow_adapted_route": {"rfc_pr": 106, "status": "HOSTED_PASS_LINEAGE"},
+    "gsc4c_vertex_star_coverage": {"rfc_pr": 107, "head": "08c370302acaeeb05f37b941b5ab5e700410f763", "reference_suite_run": 446, "conclusion": "success"},
+    "gsc4d_pointwise_rigid_geometry": {"rfc_pr": 108, "receipt_head": "964e64d89ef45d4d7fbf59b4a5b7a0eff53b3b44", "reference_suite_run": 457, "conclusion": "success", "semantics": "OVERLAP_LOCAL_PHASE_FIELD"},
+    "gsc4e_phase_magnitude_binding": {"rfc_pr": 109, "receipt_head": "7dbc50d1a49ed95436dbdabde401c977f41a7a13", "reference_suite_run": 462, "pytest": "1393 passed, 1 warning in 9.89s", "conclusion": "success"},
+    "gsc4f_global_se3_quotient": {"rfc_pr": 110, "validated_head": "489553e7205517ba14cbdee8a235bea19ae2dfee", "reference_suite_run": 463, "pytest": "1402 passed, 1 warning in 8.16s", "conclusion": "success"}
+  },
+  "gsc4_spatial_geometry_packet": {
+    "operator": "OR",
+    "alternatives": [
+      {
+        "route": "GENERAL_SOURCE_PACKET",
+        "requirements": [
+          "FPDG.GSC4.TIR_SPATIAL_COFRAME_PACKET",
+          "FPDG.GSC4.TIR_SPATIAL_OVERLAP_GEOMETRY_PACKET"
+        ]
+      },
+      {
+        "route": "ANCHORED_PHASE_SCALED_RIGID_PACKET_MOD_GLOBAL_SE3",
+        "operator": "AND",
+        "requirements": [
+          "FPDG.GSC4D.POINTWISE_RIGID_GEOMETRY_THEOREM",
+          "FPDG.GSC4E.PHASE_MAGNITUDE_BINDING_THEOREM",
+          "FPDG.GSC4F.GLOBAL_SE3_QUOTIENT_THEOREM",
+          "FPDG.GSC4F.PRODUCTION_RELATIVE_RIGID_CONFIGURATION_MOD_GLOBAL_SE3",
+          "FPDG.GSC4E.PRODUCTION_OVERLAP_LOCAL_PHASE_MAGNITUDE_SAMPLES",
+          "FPDG.GSC4E.PRODUCTION_PHASE_MAGNITUDE_FIELD_ID",
+          "FPDG.GSC4E.PRODUCTION_CLOCK_CALIBRATION_ID",
+          "FPDG.GSC4E.PRODUCTION_PHYSICAL_SAMPLE_IDENTITIES"
+        ],
+        "gauge_quotient": {
+          "action": "r_p -> S^T(r_p-a), Q_p -> S^T Q_p",
+          "group": "SE(3)",
+          "canonical_reference_patch": "r_p0=0, Q_p0=I3",
+          "global_gauge_dof_removed": 6,
+          "retained_source_geometry": "RELATIVE_RIGID_CONFIGURATION"
+        },
+        "derived_outputs": [
+          "nu(x)=abs(omega_t(x))",
+          "e_p(x)=c/(sqrt(6)*nu_p(x))*I3",
+          "A_qp=Q_q^T Q_p",
+          "R_qp=Q_q^T Q_p",
+          "t_qp=Q_q^T(r_p-r_q)"
+        ],
+        "pointwise_gluing": "nu_p(x_alpha)=nu_q(x_alpha)",
+        "field_variation": "nu(x_alpha) and nu(x_beta) remain independently source-valued at distinct physical samples"
+      }
+    ],
+    "target": "FPDG.GSC4.SPATIAL_GEOMETRY_PACKET"
+  },
+  "typed_carrier_ownership": {
+    "RIGID_RELATIVE_GEOMETRY": {"carrier": "{(r_p,Q_p)}_p / global SE(3)", "owner": "RFC_GSC4D_GSC4F", "input_scope": "RELATIVE_RIGID_CONFIGURATION"},
+    "RIGID_SPATIAL_SCALE": {"carrier": "nu(x)=abs(omega_t(x))", "owner": "RFC_GSC4D_GSC4E", "input_scope": "OVERLAP_LOCAL_POSITIVE_MAGNITUDE_FIELD"},
+    "SIGNED_PHASE_RATE_DYNAMICS": {"carrier": "omega_t(x)", "owner": "PHASE_DYNAMICS_LINEAGE", "input_scope": "SIGNED_DYNAMIC_FIELD"},
+    "TEMPORAL_LAPSE": {"carrier": "N_R", "owner": "IDT_RFN0_LINEAGE", "input_scope": "RELATIONAL_CLOCK_RATE"},
+    "EVENT_CLOCK": {"carrier": "elapsed_temporal_event_structure", "owner": "IDT_05H_LINEAGE", "input_scope": "EVENT_TEMPORAL_STRUCTURE"}
+  },
+  "global_routes": {
+    "spatial_topology_to_atlas_cover": {"operator": "AND", "requirements": ["GSC1_PRODUCTION_TETRAHEDRAL_FACET_LIST", "TIR.SPACE.GLOBAL_3MANIFOLD_A5"], "target": "FPDG.GSC4.VERTEX_STAR_COVERAGE"},
+    "general_gsc4a_atlas": {"operator": "AND", "requirements": ["FPDG.GSC4.SPATIAL_GEOMETRY_PACKET", "IDT_SHARED_CLOCK_LAPSE_AND_CALIBRATION", "FPDG.GSC4.VERTEX_STAR_COVERAGE", "GENERAL_ROUTE_RFC_SHIFT_DRIFT_OR_TIR_BOUND_SHIFT_SOURCE", "PATCH_CLOCK_PROVENANCE"], "target": "FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET"},
+    "flow_adapted_gsc4b_atlas": {"operator": "AND", "requirements": ["FPDG.GSC4.SPATIAL_GEOMETRY_PACKET", "IDT_SHARED_CLOCK_LAPSE_AND_CALIBRATION", "FPDG.GSC4.VERTEX_STAR_COVERAGE", "FPDG.GSC3.PRODUCT_TRIVIALIZATION", "PATCH_CLOCK_PROVENANCE"], "derived_coordinate_specialization": {"matching_shift": "b=0", "temporal_spatial_drift": "v=0"}, "target": "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET"},
+    "gsc4_atlas": {"operator": "OR", "alternatives": ["FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET", "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET"], "target": "RFC.E25.SHARED_SPACETIME_ATLAS"},
+    "physical_event_on_atlas": {"operator": "AND", "requirements": ["RFC.E25.SHARED_SPACETIME_ATLAS", "FPDG.GSC3.EVENT_PLACEMENT"], "target": "FPDG.GSC3.PHYSICAL_EVENT_ON_SHARED_SPACETIME"}
+  },
+  "open_frontier": {
+    "GSC1": ["PRODUCTION_GLOBAL_TETRAHEDRAL_FACET_LIST"],
+    "GSC2": ["PRODUCTION_EVENT_COMPLEX_WITH_EXACT_ELAPSED_EDGES"],
+    "GSC3": ["FLOW_COVERAGE_OR_CLOCK_PROPERNESS_FOR_PRODUCT_ROUTE", "PATCH_CLOCK_PROVENANCE", "SHARED_MATCHING_ONE_FORM_W0_BINDING_WHEN_TIR_MATCHING_FIELD_IS_IMPORTED", "PRODUCTION_OCCURRENCE_STATE_TABLE", "STATE_TO_TIR_SPATIAL_ANCHOR_BINDING"],
+    "GSC4": ["GENERAL_RAW_SPATIAL_PACKET_OR_GSC4F_RELATIVE_RIGID_CONFIGURATION_MOD_GLOBAL_SE3_PLUS_GSC4E_MAGNITUDE_PACKET", "PRODUCTION_RELATIVE_RIGID_CONFIGURATION_MOD_GLOBAL_SE3_ON_RIGID_ROUTE", "PRODUCTION_OVERLAP_LOCAL_PHASE_MAGNITUDE_FIELD_SAMPLES_ON_RIGID_ROUTE", "PRODUCTION_PHASE_MAGNITUDE_FIELD_AND_PHYSICAL_SAMPLE_PROVENANCE_ON_RIGID_ROUTE", "IDT_SHARED_CLOCK_LAPSE_AND_CALIBRATION", "GENERAL_ROUTE_RFC_SHIFT_DRIFT_OR_FLOW_ROUTE_PRODUCT_TRIVIALIZATION", "PATCH_CLOCK_PROVENANCE"],
+    "GSC5": ["PRODUCTION_GLOBAL_EINSTEIN_CARRIER", "DOMAIN_COVERAGE"],
+    "GSC6": ["GLOBAL_FINITE_LAPSE_BOUND", "COMPLETE_ADM_WICK_METRIC"]
+  },
+  "derived_or_eliminated_from_frontier": [
+    "LOCAL_SPACETIME_DIMENSION_4",
+    "PREMETRIC_TEMPORAL_SPATIAL_TRANSVERSALITY",
+    "FULL_4D_JACOBIAN_AS_INDEPENDENT_INPUT",
+    "LORENTZ_TRANSITION_AS_INDEPENDENT_INPUT",
+    "METRIC_PULLBACK_AS_INDEPENDENT_INPUT",
+    "GSC4_OVERLAP_COVERAGE_AS_INDEPENDENT_INPUT_ON_VERTEX_STAR_ROUTE",
+    "GSC4_PAIR_TRIPLE_OVERLAP_INCIDENCE_AS_INDEPENDENT_INPUT_ON_VERTEX_STAR_ROUTE",
+    "GSC4_MATCHING_SHIFT_DRIFT_AS_INDEPENDENT_INPUT_ON_FLOW_ADAPTED_ROUTE",
+    "INDEPENDENT_E_A_R_MATRICES_ON_GSC4D_RIGID_ROUTE",
+    "SIGNED_PHASE_RATE_IDENTITY_AS_RIGID_SPATIAL_SCALE_INPUT",
+    "PATCH_CONSTANT_PHASE_SCALE_AS_RIGID_SPATIAL_REPRESENTATION",
+    "ABSOLUTE_RIGID_ANCHOR_ORIGIN_AS_PRODUCTION_INPUT",
+    "ABSOLUTE_RIGID_FRAME_ORIENTATION_AS_PRODUCTION_INPUT",
+    "GLOBAL_SE3_GAUGE_COORDINATES_6"
+  ],
+  "preserved_structure": {
+    "RELATIVE_RIGID_CONFIGURATION": "SOURCE_REPRESENTABLE_AND_RETAINED",
+    "A5_TOPOLOGY_SCOPE": "TOPOLOGY_AND_COVERAGE_WITH_RELATIVE_NUMERIC_GEOMETRY_SEPARATELY_SOURCE_BOUND",
+    "RF02I_VARIABLE_PHASE_SCALE_CONNECTION": "PRESERVED_BY_OVERLAP_LOCAL_FIELD_SEMANTICS",
+    "RF02I_PHASE_SCALE_GRADIENTS": "SOURCE_REPRESENTABLE",
+    "GENERAL_SMOOTH_GSC4A_ROUTE": "PARALLEL_SUFFICIENT_ROUTE",
+    "SIGNED_PHASE_RATE_DYNAMICS": "SEPARATELY_TYPED",
+    "IDT_LAPSE": "SEPARATELY_TYPED",
+    "IDT_EVENT_CLOCK": "SEPARATELY_TYPED"
+  },
+  "live_36d_audits": {
+    "gsc4f_global_se3_quotient": {"source_event_id": "gremlin:whisper:sha256:8609d93ffe0ef3804778db90384c299a7df7ef6fd3b8beb7f38511d17b5ef73e", "fused_event_id": "gremlin:whisper:sha256:0970d60244e47887f1f3c127c5747810fb111dd1a6983cc9ec4ca1d6f0eafacf", "terminal_receipt_sha256": "db1df21b30f75fda97671ce4e235a67d2b27dcfad5e4dce3a82178215f0cf963", "phasenav_trace_sha256": "1031a3423894408b1f288097873789f411355c6f3e84c8d3568b3500d5b6682e", "shape": [12, 36]},
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false
+  },
+  "authority": {"source_claim_promotion": "HOSTED_DETERMINISTIC_VALIDATION_PLUS_SOURCE_PROVENANCE_REQUIRED", "runtime_audit_role": "CANDIDATE_GENERATION_AND_AUDIT_ONLY"},
+  "canon_mutations": []
+}

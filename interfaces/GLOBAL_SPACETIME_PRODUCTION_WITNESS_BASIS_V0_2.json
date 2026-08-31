@@ -1,0 +1,67 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_PRODUCTION_WITNESS_BASIS_V0_2",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_CURRENT_ROUTE_MINIMAL_WITNESS_BASIS_CANDIDATE",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "base_basis": "interfaces/GLOBAL_SPACETIME_PRODUCTION_WITNESS_BASIS_V0_1.json",
+  "witness_group_count": 7,
+  "refinement": {
+    "group": "W2_GSC3A_GLOBAL_PRODUCT_CLOCK",
+    "owner": "TIR_IDT_RFC_CROSS_REPO",
+    "required": [
+      "production regular shared scalar clock",
+      "production global GSC3 product-trivialization receipt",
+      "common clock/patch/spatial-carrier provenance",
+      "product_provenance"
+    ],
+    "product_provenance": {
+      "operator": "OR",
+      "admitted": [
+        "FLOW_COVERAGE",
+        "INDEPENDENT_SOURCE_RECEIPT_WITH_NO_PROPER_CLOCK_ANCESTRY"
+      ],
+      "blocked_on_GSC6C_elimination_route": [
+        "CLOCK_PROPERNESS",
+        "UNKNOWN"
+      ]
+    },
+    "derived": [
+      "M is globally trivialized as I x Sigma",
+      "clock image I is a nonempty open interval",
+      "flow-adapted atlas route is available on FLOW_COVERAGE lineage",
+      "GSC6C proper R-clock after compact-fiber reparametrization on acyclic lineage"
+    ]
+  },
+  "unchanged_independent_groups": [
+    "W1_GSC1_SPATIAL_TOPOLOGY",
+    "W3_GSC4_NUMERIC_SPATIAL_GEOMETRY",
+    "W4_GSC4_PHASE_MAGNITUDE_SCALE_FIELD",
+    "W5_IDT_GLOBAL_LAPSE",
+    "W6_RF_E24_PATCHWISE_LOCAL_SOLUTIONS",
+    "W7_TARGET_DOMAIN_COVERAGE"
+  ],
+  "event_extension_unchanged": [
+    "E1_GSC2_TEMPORAL_EVENT_COMPLEX",
+    "E2_EVENT_SPATIAL_ANCHOR_BINDING"
+  ],
+  "conditional_general_matching_extension_unchanged": "M1_SHARED_MATCHING_ONE_FORM_W0",
+  "derived_coordinates_excluded_from_independent_basis_addition": [
+    "separately supplied proper R-clock on the acyclic GSC6C route",
+    "separately supplied reparametrized lapse N_tau",
+    "separately supplied reparametrized shift b_tau"
+  ],
+  "minimality_boundary": {
+    "claim": "CURRENT_ROUTE_MINIMALITY_ONLY",
+    "absolute_information_theoretic_minimality_claimed": false,
+    "meaning": "The refinement changes W2 provenance typing, not the number of independent production witness groups."
+  },
+  "firewalls": {
+    "proper_clock_can_be_ancestor_of_W2_when_W2_is_used_to_derive_proper_clock": false,
+    "missing_W2_product_provenance_is_admissible": false,
+    "candidate_basis_promotes_source_inputs": false,
+    "runtime_audit_can_promote": false,
+    "canonical_graph_mutated": false
+  },
+  "canon_mutations": []
+}

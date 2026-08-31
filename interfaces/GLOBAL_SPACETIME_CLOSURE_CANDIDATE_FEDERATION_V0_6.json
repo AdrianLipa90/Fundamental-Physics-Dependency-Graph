@@ -1,0 +1,144 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_6",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_VALIDATED_CANDIDATE_FEDERATION",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "supersedes_candidate": "interfaces/GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_5.json",
+  "source_validations": {
+    "gsc4a_general_source_assembly": {"rfc_pr": 105, "status": "HOSTED_PASS_LINEAGE"},
+    "gsc4b_flow_adapted_route": {"rfc_pr": 106, "status": "HOSTED_PASS_LINEAGE"},
+    "gsc4c_vertex_star_coverage": {"rfc_pr": 107, "head": "08c370302acaeeb05f37b941b5ab5e700410f763", "reference_suite_run": 446, "conclusion": "success"},
+    "gsc4d_anchored_phase_scaled_rigid_geometry": {"rfc_pr": 108, "validated_head": "c60f69b5b9966bd10251b1401e6de87f88910efd", "reference_suite_run": 451, "conclusion": "success"}
+  },
+  "gsc4_spatial_geometry_packet": {
+    "operator": "OR",
+    "alternatives": [
+      {
+        "route": "GENERAL_SOURCE_PACKET",
+        "requirements": [
+          "FPDG.GSC4.TIR_SPATIAL_COFRAME_PACKET",
+          "FPDG.GSC4.TIR_SPATIAL_OVERLAP_GEOMETRY_PACKET"
+        ]
+      },
+      {
+        "route": "ANCHORED_PHASE_SCALED_RIGID_PACKET",
+        "operator": "AND",
+        "requirements": [
+          "FPDG.GSC4D.HOSTED_THEOREM",
+          "FPDG.GSC4D.PRODUCTION_ANCHOR_VECTORS",
+          "FPDG.GSC4D.PRODUCTION_SO3_FRAME_MATRICES",
+          "FPDG.GSC4D.PRODUCTION_FINITE_NONZERO_PHASE_RATE_FIELD",
+          "FPDG.GSC4D.PRODUCTION_SHARED_PHASE_SCALE_BINDING"
+        ],
+        "derived_outputs": [
+          "e_p=c/(sqrt(6)*abs(omega_t,p))*I3",
+          "A_qp=Q_q^T Q_p",
+          "R_qp=Q_q^T Q_p",
+          "t_qp=Q_q^T(r_p-r_q)"
+        ]
+      }
+    ],
+    "target": "FPDG.GSC4.SPATIAL_GEOMETRY_PACKET"
+  },
+  "global_routes": {
+    "spatial_topology_to_atlas_cover": {
+      "operator": "AND",
+      "requirements": ["GSC1_PRODUCTION_TETRAHEDRAL_FACET_LIST", "TIR.SPACE.GLOBAL_3MANIFOLD_A5"],
+      "target": "FPDG.GSC4.VERTEX_STAR_COVERAGE"
+    },
+    "general_gsc4a_atlas": {
+      "operator": "AND",
+      "requirements": [
+        "FPDG.GSC4.SPATIAL_GEOMETRY_PACKET",
+        "IDT_SHARED_CLOCK_LAPSE_AND_CALIBRATION",
+        "FPDG.GSC4.VERTEX_STAR_COVERAGE",
+        "GENERAL_ROUTE_RFC_SHIFT_DRIFT_OR_TIR_BOUND_SHIFT_SOURCE",
+        "PATCH_CLOCK_PROVENANCE"
+      ],
+      "target": "FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET"
+    },
+    "flow_adapted_gsc4b_atlas": {
+      "operator": "AND",
+      "requirements": [
+        "FPDG.GSC4.SPATIAL_GEOMETRY_PACKET",
+        "IDT_SHARED_CLOCK_LAPSE_AND_CALIBRATION",
+        "FPDG.GSC4.VERTEX_STAR_COVERAGE",
+        "FPDG.GSC3.PRODUCT_TRIVIALIZATION",
+        "PATCH_CLOCK_PROVENANCE"
+      ],
+      "derived_coordinate_specialization": {"matching_shift": "b=0", "temporal_spatial_drift": "v=0"},
+      "target": "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET"
+    },
+    "gsc4_atlas": {
+      "operator": "OR",
+      "alternatives": [
+        "FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET",
+        "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET"
+      ],
+      "target": "RFC.E25.SHARED_SPACETIME_ATLAS"
+    },
+    "physical_event_on_atlas": {
+      "operator": "AND",
+      "requirements": ["RFC.E25.SHARED_SPACETIME_ATLAS", "FPDG.GSC3.EVENT_PLACEMENT"],
+      "target": "FPDG.GSC3.PHYSICAL_EVENT_ON_SHARED_SPACETIME"
+    }
+  },
+  "open_frontier": {
+    "GSC1": ["PRODUCTION_GLOBAL_TETRAHEDRAL_FACET_LIST"],
+    "GSC2": ["PRODUCTION_EVENT_COMPLEX_WITH_EXACT_ELAPSED_EDGES"],
+    "GSC3": [
+      "FLOW_COVERAGE_OR_CLOCK_PROPERNESS_FOR_PRODUCT_ROUTE",
+      "PATCH_CLOCK_PROVENANCE",
+      "SHARED_MATCHING_ONE_FORM_W0_BINDING_WHEN_TIR_MATCHING_FIELD_IS_IMPORTED",
+      "PRODUCTION_OCCURRENCE_STATE_TABLE",
+      "STATE_TO_TIR_SPATIAL_ANCHOR_BINDING"
+    ],
+    "GSC4": [
+      "GENERAL_RAW_SPATIAL_PACKET_OR_GSC4D_ANCHOR_FRAME_PHASE_PACKET",
+      "IDT_SHARED_CLOCK_LAPSE_AND_CALIBRATION",
+      "GENERAL_ROUTE_RFC_SHIFT_DRIFT_OR_FLOW_ROUTE_PRODUCT_TRIVIALIZATION",
+      "PATCH_CLOCK_PROVENANCE",
+      "GSC4D_SHARED_PHASE_SCALE_BINDING_IF_RIGID_ROUTE_USED"
+    ],
+    "GSC5": ["PRODUCTION_GLOBAL_EINSTEIN_CARRIER", "DOMAIN_COVERAGE"],
+    "GSC6": ["GLOBAL_FINITE_LAPSE_BOUND", "COMPLETE_ADM_WICK_METRIC"]
+  },
+  "derived_or_eliminated_from_frontier": [
+    "LOCAL_SPACETIME_DIMENSION_4",
+    "PREMETRIC_TEMPORAL_SPATIAL_TRANSVERSALITY",
+    "FULL_4D_JACOBIAN_AS_INDEPENDENT_INPUT",
+    "LORENTZ_TRANSITION_AS_INDEPENDENT_INPUT",
+    "METRIC_PULLBACK_AS_INDEPENDENT_INPUT",
+    "GSC4_OVERLAP_COVERAGE_AS_INDEPENDENT_INPUT_ON_VERTEX_STAR_ROUTE",
+    "GSC4_PAIR_TRIPLE_OVERLAP_INCIDENCE_AS_INDEPENDENT_INPUT_ON_VERTEX_STAR_ROUTE",
+    "GSC4_MATCHING_SHIFT_DRIFT_AS_INDEPENDENT_INPUT_ON_FLOW_ADAPTED_ROUTE",
+    "INDEPENDENT_E_A_R_MATRICES_ON_GSC4D_RIGID_ROUTE"
+  ],
+  "gsc4d_firewalls": {
+    "a_equals_r_is_general_smooth_atlas_identity": false,
+    "a5_incidence_determines_numeric_anchor_frame_phase_packet": false,
+    "phase_rate_determines_idt_lapse": false,
+    "phase_rate_sign_changes_spatial_scale": false,
+    "hosted_pass_closes_production_anchor_frame_phase_packet": false
+  },
+  "live_36d_audits": {
+    "gsc4d_fresh_post_test_fix": {
+      "source_event_id": "gremlin:whisper:sha256:d0636efe65afa9f36db3c6c150dead63ca7c6b0835412e1b3c1233929f62f013",
+      "fused_event_id": "gremlin:whisper:sha256:7aa69593bd0fc36fe6f2b986e0923504b173c29ec384991461b02b0f6d7b3569",
+      "terminal_receipt_sha256": "1127e32a58bf5ceaeff22d49fd16e5d2bdf00dc8db49e4bfe48540cf055a0e5f",
+      "phasenav_trace_sha256": "2e77dc0eca59fa4440089bacf92b886b767fcc40977d4eb38951543ab7e30b89",
+      "shape": [11, 36]
+    },
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false
+  },
+  "firewalls": {
+    "gremlin_can_promote": false,
+    "terminal36d_can_promote": false,
+    "phasenav36d_can_promote": false,
+    "hosted_pass_closes_production_input": false,
+    "candidate_edge_enters_canonical_graph": false
+  },
+  "canon_mutations": []
+}

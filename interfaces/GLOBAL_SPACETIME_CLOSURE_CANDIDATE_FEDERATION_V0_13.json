@@ -1,0 +1,146 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_13",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_VALIDATED_CANDIDATE_REFINEMENT",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "base_candidate": "interfaces/GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_12.json",
+  "source_validation": {
+    "repository": "AdrianLipa90/Relational-Field-Closure",
+    "rfc_pr": 117,
+    "supersedes_rfc_pr": 116,
+    "theorem_head": "1da47473721169a2bb14fc9428e1227e7f738d14",
+    "receipt_head": "281863fd04c69642f686e793379a0046e7d5727b",
+    "theorem_reference_suite_run": 481,
+    "theorem_pytest": "1397 passed in 10.56s",
+    "receipt_reference_suite_run": 482,
+    "receipt_pytest": "1397 passed in 13.64s",
+    "conclusion": "success"
+  },
+  "refinement": {
+    "id": "FPDG.GSC6C.ACYCLIC_OPEN_INTERVAL_COMPACT_PRODUCT_PROPER_CLOCK",
+    "status": "HOSTED_PASS_CANDIDATE_REDUCTION",
+    "premises": [
+      "GSC1_PRODUCTION_FINITE_A5_CLOSED_SPATIAL_CARRIER",
+      "GSC3_PRODUCTION_GLOBAL_PRODUCT_TRIVIALIZATION_OVER_NONEMPTY_OPEN_INTERVAL",
+      "GSC3_PRODUCT_PROVENANCE_INDEPENDENT_OF_PROPER_CLOCK_PROMOTION",
+      "GLOBAL_REGULAR_SHARED_PRODUCT_CLOCK",
+      "RFC_E25_PRODUCTION_GLOBAL_LORENTZIAN_ADM_CARRIER",
+      "SMOOTH_FINITE_POSITIVE_LAPSE",
+      "RF_GSC6B_TYPED_PROPER_CLOCK_GLOBAL_HYPERBOLICITY_THEOREM"
+    ],
+    "exact_derivations": [
+      "FINITE_A5_REALIZATION_IMPLIES_COMPACT_SMOOTH_SPATIAL_FIBER",
+      "PROJECTION_IxSIGMA_TO_I_IS_PROPER_FOR_COMPACT_SIGMA",
+      "EVERY_NONEMPTY_OPEN_INTERVAL_I_HAS_EXPLICIT_ORIENTATION_PRESERVING_DIFFEO_PSI_TO_R",
+      "TAU_EQUALS_PSI_COMPOSE_T_IS_PROPER_REAL_VALUED_TEMPORAL_CLOCK",
+      "ADM_TIME_TRANSPORT_N_TAU_EQUALS_N_T_OVER_PSI_PRIME",
+      "ADM_TIME_TRANSPORT_B_TAU_EQUALS_B_T_OVER_PSI_PRIME",
+      "RF_GSC6B_PROPER_CLOCK_PREMISE_DERIVED_ON_ACYCLIC_PRODUCT_LINEAGE",
+      "WICK_COMPLETENESS_AND_GLOBAL_HYPERBOLICITY_DERIVED_BY_RF_GSC6B"
+    ],
+    "derived_coordinates_removed_from_production_frontier_on_this_route": [
+      "SEPARATELY_SUPPLIED_PROPER_REAL_CLOCK",
+      "SEPARATELY_SUPPLIED_REPARAMETRIZED_LAPSE_FIELD",
+      "SEPARATELY_SUPPLIED_REPARAMETRIZED_SHIFT_FIELD",
+      "SEPARATELY_SUPPLIED_GLOBAL_FINITE_LAPSE_BOUND_NMAX",
+      "SEPARATELY_SUPPLIED_COMPLETE_UNSCALED_WICK_METRIC_W",
+      "SEPARATELY_SUPPLIED_COMPLETE_ADAPTIVE_WICK_METRIC_HN"
+    ]
+  },
+  "product_provenance_firewall": {
+    "forbidden_dependency_cycle": "PROPER_CLOCK -> PRODUCT_TRIVIALIZATION -> PROPER_CLOCK",
+    "operator": "OR",
+    "admitted_independent_product_lineage": [
+      "GSC3A_FLOW_COVERAGE",
+      "INDEPENDENT_PRODUCT_SOURCE_RECEIPT_WITH_NO_PROPER_CLOCK_ANCESTRY"
+    ],
+    "not_admitted_for_GSC6C_proper_clock_elimination": [
+      "GSC3_CLOCK_PROPERNESS_ROUTE",
+      "UNKNOWN_PRODUCT_ANCESTRY"
+    ],
+    "meaning": "CLOCK_PROPERNESS remains a valid sufficient GSC3 route, but its product receipt cannot be reused to eliminate the proper-clock premise in GSC6C."
+  },
+  "gsc6_routes": {
+    "operator": "OR",
+    "alternatives": [
+      {
+        "id": "RF_L8_CONSTANT_SCALE",
+        "requirements": ["GLOBAL_FINITE_NMAX", "COMPLETE_WICK_W"]
+      },
+      {
+        "id": "RFC_GSC6A_ADAPTIVE_WICK",
+        "requirements": ["COMPLETE_ADAPTIVE_WICK_HN"]
+      },
+      {
+        "id": "RFC_GSC6B_DIRECT_PROPER_CLOCK",
+        "requirements": ["PROPER_TEMPORAL_CLOCK_TO_R"]
+      },
+      {
+        "id": "RFC_GSC6C_ACYCLIC_COMPACT_FIBER_PRODUCT",
+        "requirements": [
+          "GSC1_PRODUCTION_COMPACT_SPATIAL_CARRIER",
+          "GSC3_PRODUCTION_PRODUCT_TRIVIALIZATION_AND_REGULAR_CLOCK",
+          {
+            "operator": "OR",
+            "alternatives": [
+              "GSC3A_FLOW_COVERAGE_PRODUCT_PROVENANCE",
+              "INDEPENDENT_PRODUCT_SOURCE_RECEIPT_NO_PROPER_CLOCK_ANCESTRY"
+            ]
+          },
+          "RFC_E25_PRODUCTION_GLOBAL_LORENTZIAN_ADM_CARRIER",
+          "SMOOTH_FINITE_POSITIVE_LAPSE"
+        ],
+        "derived": [
+          "PROPER_TEMPORAL_CLOCK_TO_R",
+          "REPARAMETRIZED_ADM_LAPSE_AND_SHIFT",
+          "COMPLETE_WICK_W",
+          "GLOBAL_HYPERBOLICITY_CAUCHY_FOLIATION"
+        ]
+      }
+    ],
+    "target": "GSC6_GLOBAL_HYPERBOLICITY_CAUCHY_FOLIATION"
+  },
+  "global_gr_cauchy_composition": {
+    "operator": "AND",
+    "requirements": [
+      "RFC_E26_GSC5_PRODUCTION_GLOBAL_EINSTEIN_CARRIER",
+      "GSC6_GLOBAL_HYPERBOLICITY_CAUCHY_FOLIATION"
+    ],
+    "target": "GLOBAL_GR_CAUCHY_CARRIER"
+  },
+  "frontier_update": {
+    "GSC6C_open_parents": [
+      "PRODUCTION_GSC1_FINITE_A5_SPATIAL_REALIZATION",
+      "PRODUCTION_GSC3_GLOBAL_PRODUCT_REALIZATION",
+      "INDEPENDENT_PRODUCT_LINEAGE_OR_FLOW_COVERAGE",
+      "PRODUCTION_RF_E25_GLOBAL_LORENTZIAN_ADM_CARRIER",
+      "PRODUCTION_SMOOTH_FINITE_POSITIVE_LAPSE"
+    ],
+    "proper_clock_input": "DERIVED_ON_ACYCLIC_GSC6C_SUFFICIENT_ROUTE",
+    "reparametrized_lapse_shift_packet": "DERIVED_BY_COORDINATE_TRANSPORT",
+    "GSC5_requirement_for_full_GR_Cauchy": "PRESERVED"
+  },
+  "live_36d_audit": {
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "source_event_id": "gremlin:whisper:sha256:f9e58cc65e63a90efe0bab069c82067ac16ac675d949e7b329b28578c8bff9b4",
+    "fused_event_id": "gremlin:whisper:sha256:7c5f14f5cd53d574c3b1aac1f5cd68633d25cba93a73099ad5d81684d75cdd3c",
+    "terminal_receipt_sha256": "eb0384e234478cb75081e69973522f60b5d8e47e9113bd43d1e5dd322f2dac02",
+    "phasenav_trace_sha256": "fa4a0114da554d4d9c965035f3583611216409b7839efdf10a1080a9be2a9a43",
+    "shape": [10, 36]
+  },
+  "firewalls": {
+    "gsc6c_reuses_clock_properness_to_construct_its_product_parent": false,
+    "unknown_product_provenance_can_remove_proper_clock_input": false,
+    "gsc6c_closes_production_GSC1_parent": false,
+    "gsc6c_closes_production_GSC3_parent": false,
+    "gsc6c_closes_production_RF_E25_parent": false,
+    "gsc6c_closes_production_lapse_parent": false,
+    "gsc6c_promotes_GSC5": false,
+    "runtime_audit_can_promote": false,
+    "candidate_edge_enters_canonical_graph": false
+  },
+  "canon_mutations": []
+}

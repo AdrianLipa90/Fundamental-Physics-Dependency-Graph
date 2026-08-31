@@ -1,0 +1,150 @@
+{
+  "schema": "FPDG_GSC3A_MATCHING_FLOW_SOLDERING_CANDIDATE_V0_1",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_HOSTED_VALIDATED_CANDIDATE",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "source": {
+    "repository": "AdrianLipa90/Relational-Field-Closure",
+    "pull_request": 99,
+    "branch": "feat/gsc3a-clock-transverse-matching-flow-v0.1",
+    "head": "caaf9d881aadb458f055ff5c2c3eb816222faebb",
+    "parent_pull_request": 97,
+    "parent_head": "385528e1c87823dd6f681a0a7cdf277aa6389b38",
+    "hosted_validation": {
+      "workflow": "RFC reference suite",
+      "run_number": 414,
+      "run_id": 33348300043,
+      "conclusion": "success"
+    },
+    "deterministic_receipt": "validation/GSC3A_CLOCK_TRANSVERSE_MATCHING_FLOW_V0_1.json"
+  },
+  "exact_candidate_results": {
+    "matching_vector": "X=partial_t-b^i partial_i",
+    "clock_pairing": "dt(X)=1",
+    "spatial_coframe_pairing": "theta^a(X)=0",
+    "matching_field_overlap": "b_q=A_qp b_p-v_qp",
+    "product_trivialization": "INTERVAL_COMPLETE_MATCHING_FLOW => M diffeomorphic to I x Sigma_t0",
+    "proper_clock_route": "GLOBAL_CLOCK_PROPERNESS + dt(X)=1 => INTERVAL_COMPLETE_MATCHING_FLOW",
+    "event_clock_anchor": "t(eta(v))-t_v=C"
+  },
+  "candidate_nodes": [
+    {
+      "id": "FPDG.GSC3A.MATCHING_FIELD_COCYCLE_V01",
+      "status": "HOSTED_PASS",
+      "authority": "CANDIDATE_ONLY"
+    },
+    {
+      "id": "FPDG.GSC3A.FLOW_COVERAGE_V01",
+      "status": "OPEN_ANALYTIC_INPUT",
+      "authority": "CANDIDATE_ONLY"
+    },
+    {
+      "id": "FPDG.GSC3A.CLOCK_PROPERNESS_V01",
+      "status": "OPEN_ANALYTIC_INPUT",
+      "authority": "CANDIDATE_ONLY"
+    },
+    {
+      "id": "FPDG.GSC3A.PRODUCT_TRIVIALIZATION_V01",
+      "status": "EXACT_ON_SUFFICIENT_ROUTE",
+      "authority": "CANDIDATE_ONLY"
+    },
+    {
+      "id": "FPDG.GSC3A.EVENT_PLACEMENT_V01",
+      "status": "OPEN_PRODUCTION_INPUT",
+      "authority": "CANDIDATE_ONLY"
+    },
+    {
+      "id": "FPDG.GSC3A.EVENT_ANCHOR_V01",
+      "status": "EXACT_ON_PRODUCTION_EVENT_PLACEMENT",
+      "authority": "CANDIDATE_ONLY"
+    }
+  ],
+  "route_logic": {
+    "operator": "OR",
+    "alternatives": [
+      ["FPDG.GSC3A.FLOW_COVERAGE_V01"],
+      ["FPDG.GSC3A.CLOCK_PROPERNESS_V01"]
+    ],
+    "target": "FPDG.GSC3A.PRODUCT_TRIVIALIZATION_V01",
+    "meaning": "Either direct interval-complete flow coverage or global-clock properness is sufficient once the matching-field cocycle has passed."
+  },
+  "candidate_edges": [
+    {
+      "from": "FPDG.GSC3.PRODUCT_CLOCK_ATLAS_LIFT_V01",
+      "to": "FPDG.GSC3A.MATCHING_FIELD_COCYCLE_V01",
+      "authority": "CANDIDATE_ONLY",
+      "status": "HOSTED_PASS_REFINEMENT"
+    },
+    {
+      "from": "FPDG.GSC3A.MATCHING_FIELD_COCYCLE_V01",
+      "to": "FPDG.GSC3A.PRODUCT_TRIVIALIZATION_V01",
+      "authority": "CANDIDATE_ONLY",
+      "requires_route_logic": "OR"
+    },
+    {
+      "from": "FPDG.GSC3A.FLOW_COVERAGE_V01",
+      "to": "FPDG.GSC3A.PRODUCT_TRIVIALIZATION_V01",
+      "authority": "CANDIDATE_ONLY",
+      "route": "DIRECT_SUFFICIENT_ROUTE"
+    },
+    {
+      "from": "FPDG.GSC3A.CLOCK_PROPERNESS_V01",
+      "to": "FPDG.GSC3A.PRODUCT_TRIVIALIZATION_V01",
+      "authority": "CANDIDATE_ONLY",
+      "route": "PROPER_CLOCK_SUFFICIENT_ROUTE"
+    },
+    {
+      "from": "FPDG.GSC2.EVENT_INPUT_CONTRACT_V01",
+      "to": "FPDG.GSC3A.EVENT_ANCHOR_V01",
+      "authority": "CANDIDATE_ONLY",
+      "promotion_gate": "PRODUCTION_EVENT_COMPLEX_AND_EVENT_PLACEMENT_REQUIRED"
+    },
+    {
+      "from": "FPDG.GSC3A.EVENT_PLACEMENT_V01",
+      "to": "FPDG.GSC3A.EVENT_ANCHOR_V01",
+      "authority": "CANDIDATE_ONLY",
+      "promotion_gate": "SOURCE_OWNED_PHYSICAL_EVENT_PLACEMENT_REQUIRED"
+    },
+    {
+      "from": "FPDG.GSC3A.PRODUCT_TRIVIALIZATION_V01",
+      "to": "RFC.E25.SHARED_SPACETIME_ATLAS",
+      "authority": "CANDIDATE_ONLY",
+      "promotion_gate": "PRODUCTION_RF_E25_ADM_COFRAME_ATLAS_REQUIRED"
+    },
+    {
+      "from": "FPDG.GSC3A.EVENT_ANCHOR_V01",
+      "to": "RFC.E25.SHARED_SPACETIME_ATLAS",
+      "authority": "CANDIDATE_ONLY",
+      "promotion_gate": "PRODUCTION_RF_E25_ADM_COFRAME_ATLAS_REQUIRED"
+    }
+  ],
+  "replaces_coarse_candidate_blocker": "PHYSICAL_TIR_IDT_PRODUCT_REALIZATION_AND_EVENT_PLACEMENT",
+  "refined_open_frontier": [
+    "GSC3A_EITHER_DIRECT_INTERVAL_COMPLETE_FLOW_COVERAGE_OR_GLOBAL_CLOCK_PROPERNESS",
+    "GSC3A_SOURCE_OWNED_PHYSICAL_EVENT_PLACEMENT",
+    "GSC4_PRODUCTION_SHARED_ADM_COFRAME_ATLAS"
+  ],
+  "live_36d_audit": {
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "matching_flow": {
+      "terminal_receipt_sha256": "01dce6a2b6ca77d2bce2e3bda7cc8d379c356a73f8154438eb14df0642aab899",
+      "phasenav_trace_sha256": "d520c0dcdc0aeb57e8ce8a8f7b4f0ff0d6127bf6f8634d611eb5233727908b35"
+    },
+    "proper_clock": {
+      "terminal_receipt_sha256": "d2d48643552e441d848cbf0315a2c7abcc89fface6b4a0fd5153e0b2131845e0",
+      "phasenav_trace_sha256": "769841f0207dc32badf3d64adbd0ea86c80171bb16c6745bf0518781fcb81395"
+    }
+  },
+  "firewalls": {
+    "gremlin_can_promote": false,
+    "phase36d_can_promote": false,
+    "terminal36d_can_promote": false,
+    "hosted_certifier_pass_closes_open_production_input": false,
+    "or_routes_are_interpreted_as_and": false,
+    "candidate_edge_enters_canonical_graph": false
+  },
+  "canon_mutations": []
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "FPDG_GLOBAL_SPACETIME_PRODUCTION_WITNESS_V0_1",
+  "title": "Global Spacetime Production Witness Manifest",
+  "type": "object",
+  "required": ["schema", "target", "route", "witnesses"],
+  "properties": {
+    "schema": {"const": "FPDG_GLOBAL_SPACETIME_PRODUCTION_WITNESS_V0_1"},
+    "target": {
+      "enum": [
+        "GLOBAL_GR_CAUCHY_CARRIER",
+        "PHYSICAL_EVENT_REALIZATION_ON_GLOBAL_GR_CAUCHY_CARRIER"
+      ]
+    },
+    "route": {
+      "enum": [
+        "FLOW_ADAPTED_COMPACT_FIBER",
+        "FLOW_ADAPTED_CANONICAL_ATLAS_DOMAIN",
+        "GENERAL_MATCHING_COMPACT_FIBER"
+      ]
+    },
+    "witnesses": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/witness"}
+    }
+  },
+  "$defs": {
+    "receipt_ref": {
+      "type": "object",
+      "required": ["repository", "commit", "path", "sha256"],
+      "properties": {
+        "repository": {"type": "string", "minLength": 3},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": true
+    },
+    "witness": {
+      "type": "object",
+      "required": ["status", "lineage"],
+      "properties": {
+        "status": {"enum": ["CERTIFIED_PRODUCTION", "OPEN", "QUARANTINED"]},
+        "receipt": {"$ref": "#/$defs/receipt_ref"},
+        "lineage": {"type": "object"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "CERTIFIED_PRODUCTION"}}},
+          "then": {"required": ["receipt"]}
+        }
+      ],
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

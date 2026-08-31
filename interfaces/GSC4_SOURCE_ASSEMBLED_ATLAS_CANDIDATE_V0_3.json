@@ -1,0 +1,107 @@
+{
+  "schema": "FPDG_GSC4_SOURCE_ASSEMBLED_ATLAS_CANDIDATE_V0_3",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_HOSTED_VALIDATED_CANDIDATE",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "supersedes_candidate": "interfaces/GSC4_SOURCE_ASSEMBLED_ATLAS_CANDIDATE_V0_2.json",
+  "source_validations": {
+    "gsc4a_general_source_assembly": {"rfc_pr": 105, "status": "HOSTED_PASS_LINEAGE"},
+    "gsc4b_flow_adapted_route": {"rfc_pr": 106, "head": "083b0b8b63747f412320f9ace00c52d1176120ca", "reference_suite_run": 441, "conclusion": "success"},
+    "gsc4c_vertex_star_coverage": {"rfc_pr": 107, "head": "08c370302acaeeb05f37b941b5ab5e700410f763", "theorem_run": 33351330448, "theorem_pytest": "1379 passed, 1 warning in 8.04s", "conclusion": "success"},
+    "gsc3e_matching_source_firewall": {"rfc_pr": 103, "head": "6d91cbab9d858f0316b43d17de33ec4d810ca7dc", "conclusion": "success"}
+  },
+  "candidate_nodes": [
+    {"id": "FPDG.GSC4.SOURCE_ASSEMBLY_THEOREM", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.TIR_SPATIAL_COFRAME_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.TIR_SPATIAL_OVERLAP_GEOMETRY_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.IDT_SHARED_CLOCK_LAPSE_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.PATCH_CLOCK_IDENTITY", "status": "OPEN_PROVENANCE_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.GSC1_TETRAHEDRAL_FACET_INPUT", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.VERTEX_STAR_COVERAGE", "status": "EXACT_DERIVED_ON_A5_PARENT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.GENERAL_MATCHING_SHIFT_DRIFT_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.GSC3E_W0_SOURCE_BINDING", "status": "OPEN_SOURCE_BINDING_WHEN_TIR_BOUND_SHIFT_ROUTE_USED", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET", "status": "EXACT_ON_SOURCE_INPUTS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.FLOW_ADAPTED_THEOREM", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET", "status": "EXACT_ON_SOURCE_INPUTS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.SOURCE_ASSEMBLED_RF_E25_PACKET", "status": "EXACT_IF_EITHER_SUFFICIENT_ROUTE_PASSES", "authority": "CANDIDATE_ONLY"}
+  ],
+  "coverage_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC4.GSC1_TETRAHEDRAL_FACET_INPUT",
+      "TIR.SPACE.GLOBAL_3MANIFOLD_A5"
+    ],
+    "target": "FPDG.GSC4.VERTEX_STAR_COVERAGE",
+    "derived_outputs": ["patch_ids", "pair_overlap_incidence", "triple_overlap_incidence"],
+    "independent_overlap_coverage_packet_required": false
+  },
+  "general_shared_clock_patch_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC4.SOURCE_ASSEMBLY_THEOREM",
+      "FPDG.GSC4.TIR_SPATIAL_COFRAME_PACKET",
+      "FPDG.GSC4.TIR_SPATIAL_OVERLAP_GEOMETRY_PACKET",
+      "FPDG.GSC4.IDT_SHARED_CLOCK_LAPSE_PACKET",
+      "FPDG.GSC4.GENERAL_MATCHING_SHIFT_DRIFT_PACKET",
+      "FPDG.GSC4.PATCH_CLOCK_IDENTITY",
+      "FPDG.GSC4.VERTEX_STAR_COVERAGE"
+    ],
+    "optional_source_binding_subroute": {
+      "when": "GENERAL_MATCHING_SHIFT_DRIFT_PACKET_IS_IMPORTED_FROM_TIR_BETA_MATCH",
+      "additional_requirement": "FPDG.GSC4.GSC3E_W0_SOURCE_BINDING"
+    },
+    "target": "FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET",
+    "product_trivialization_required": false
+  },
+  "flow_adapted_product_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC4.FLOW_ADAPTED_THEOREM",
+      "FPDG.GSC3.PRODUCT_TRIVIALIZATION",
+      "FPDG.GSC4.TIR_SPATIAL_COFRAME_PACKET",
+      "FPDG.GSC4.TIR_SPATIAL_OVERLAP_GEOMETRY_PACKET",
+      "FPDG.GSC4.IDT_SHARED_CLOCK_LAPSE_PACKET",
+      "FPDG.GSC4.PATCH_CLOCK_IDENTITY",
+      "FPDG.GSC4.VERTEX_STAR_COVERAGE"
+    ],
+    "derived_coordinate_specialization": {"matching_shift": "b=0", "temporal_spatial_drift": "v=0"},
+    "target": "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET"
+  },
+  "route_union": {
+    "operator": "OR",
+    "alternatives": ["FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET", "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET"],
+    "target": "FPDG.GSC4.SOURCE_ASSEMBLED_RF_E25_PACKET"
+  },
+  "rf_e25_handoff": {"from": "FPDG.GSC4.SOURCE_ASSEMBLED_RF_E25_PACKET", "to": "RFC.E25.SHARED_SPACETIME_ATLAS", "authority": "CANDIDATE_ONLY"},
+  "input_reduction": {
+    "independent_overlap_coverage_packet_required_on_vertex_star_route": false,
+    "independent_pair_triple_incidence_required": false,
+    "independent_full_4d_jacobian_required": false,
+    "independent_lorentz_transition_required": false,
+    "independent_metric_tensor_required": false,
+    "general_route_requires_product_trivialization": false,
+    "flow_route_requires_independent_matching_shift_drift": false
+  },
+  "live_36d_coverage_audit": {
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "source_event_id": "gremlin:whisper:sha256:a7f98770730f459dbff8ec132bb53a02e0fb05c1b2845da98e533f48c257e2a0",
+    "fused_event_id": "gremlin:whisper:sha256:49101c84d93bfcaf33df5f98b89dd6e4fe80a516e0b16dff43ec9a59688b9ce0",
+    "shape": [14, 36],
+    "terminal_receipt_sha256": "b92e7a1451d2e5fd5eda8b88fff938734caba5f93cf3e840a167ba0f5f1028f1",
+    "phasenav_trace_sha256": "61e8148963c95b007287dddc75b2da5bf1b69b44f28f4b76bf7de71a2fea6452"
+  },
+  "firewalls": {
+    "gremlin_can_promote": false,
+    "terminal36d_can_promote": false,
+    "phasenav36d_can_promote": false,
+    "hosted_reference_pass_closes_gsc1_facet_input": false,
+    "vertex_star_coverage_generates_numeric_geometry": false,
+    "event_placement_is_required_for_rfe25_atlas_construction": false,
+    "flow_adapted_zero_shift_implies_zero_extrinsic_curvature": false,
+    "candidate_edge_enters_canonical_graph": false
+  },
+  "canon_mutations": []
+}

@@ -1,0 +1,107 @@
+{
+  "schema": "FPDG_GSC3B_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_V0_1",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_HOSTED_VALIDATED_CANDIDATE",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "source_validations": {
+    "gsc3a_matching_flow": {
+      "repository": "AdrianLipa90/Relational-Field-Closure",
+      "pull_request": 99,
+      "head": "19a53048dcae1783efaaae36e1db4b7fe6040282",
+      "workflow": "RFC reference suite",
+      "run_number": 418,
+      "conclusion": "success"
+    },
+    "relational_event_placement": {
+      "repository": "AdrianLipa90/Relational-Field-Closure",
+      "pull_request": 98,
+      "head": "c468769d66b8459b592f5c590578ce0f997790b8",
+      "dedicated_workflow_run": 2,
+      "dedicated_conclusion": "success",
+      "reference_suite_run": 407,
+      "reference_suite_conclusion": "success"
+    },
+    "matching_flow_rfe9_crosslink": {
+      "repository": "AdrianLipa90/Relational-Field-Closure",
+      "pull_request": 100,
+      "head": "8e38c4a66363ebc1859df43adf1e3ffb3e164cc6",
+      "workflow": "RFC reference suite",
+      "run_number": 419,
+      "conclusion": "success"
+    }
+  },
+  "candidate_nodes": [
+    {"id": "FPDG.GSC3B.MATCHING_FIELD_COCYCLE", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3B.FLOW_COVERAGE", "status": "OPEN_ANALYTIC_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3B.CLOCK_PROPERNESS", "status": "OPEN_ANALYTIC_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3B.BETA_MATCH_SHIFT_SOURCE_BINDING", "status": "OPEN_SOURCE_BINDING", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3B.PRODUCT_TRIVIALIZATION", "status": "EXACT_ON_SUFFICIENT_ROUTE", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3B.RFE9_EXTRINSIC_CURVATURE_CROSSLINK", "status": "HOSTED_PASS_ON_SOURCE_BINDING", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3B.PRODUCTION_EVENT_COMPLEX", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3B.PRODUCTION_OCCURRENCE_STATE_TABLE", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3B.STATE_TO_TIR_SPATIAL_ANCHOR_BINDING", "status": "OPEN_SOURCE_BINDING", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3B.QUOTIENT_FIBRE_CONSTANCY", "status": "EXACT_EXECUTABLE_GATE", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3B.EVENT_PLACEMENT", "status": "HOSTED_PASS_CERTIFIER_WITH_PRODUCTION_INPUTS_OPEN", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3B.PHYSICAL_EVENT_ON_SHARED_SPACETIME", "status": "OPEN_COMPOSITION", "authority": "CANDIDATE_ONLY"}
+  ],
+  "geometry_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3B.MATCHING_FIELD_COCYCLE",
+      {
+        "operator": "OR",
+        "alternatives": ["FPDG.GSC3B.FLOW_COVERAGE", "FPDG.GSC3B.CLOCK_PROPERNESS"]
+      },
+      "FPDG.GSC3B.BETA_MATCH_SHIFT_SOURCE_BINDING"
+    ],
+    "targets": [
+      "FPDG.GSC3B.PRODUCT_TRIVIALIZATION",
+      "FPDG.GSC3B.RFE9_EXTRINSIC_CURVATURE_CROSSLINK",
+      "RFC.E25.SHARED_SPACETIME_ATLAS"
+    ]
+  },
+  "event_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3B.PRODUCTION_EVENT_COMPLEX",
+      "FPDG.GSC3B.PRODUCTION_OCCURRENCE_STATE_TABLE",
+      "FPDG.GSC3B.STATE_TO_TIR_SPATIAL_ANCHOR_BINDING",
+      "FPDG.GSC3B.QUOTIENT_FIBRE_CONSTANCY"
+    ],
+    "target": "FPDG.GSC3B.EVENT_PLACEMENT",
+    "exact_descent_theorem": "a:O->V(Sigma) factors uniquely through q:O->E iff a is constant on every quotient fibre"
+  },
+  "composition": {
+    "operator": "AND",
+    "requirements": [
+      "RFC.E25.SHARED_SPACETIME_ATLAS",
+      "FPDG.GSC3B.EVENT_PLACEMENT"
+    ],
+    "target": "FPDG.GSC3B.PHYSICAL_EVENT_ON_SHARED_SPACETIME"
+  },
+  "important_separation": {
+    "event_placement_is_premise_of_rfe25_algebraic_atlas_certifier": false,
+    "event_placement_is_required_for_full_physical_event_spacetime_realization": true,
+    "beta_match_shift_binding_is_required_for_matching_flow_to_rfe9_physical_crosslink": true,
+    "flow_coverage_and_clock_properness_are_and": false,
+    "flow_coverage_and_clock_properness_are_or": true
+  },
+  "live_36d_audit": {
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "source_event_id": "gremlin:whisper:sha256:06e92f7f684a915630a3a8744949988a83a5367fd4492d57dd26878be972a5e1",
+    "terminal_receipt_sha256": "7ef3c780357a683e5372a764d969ec12988b30abd2d90752bfbe0305e96aebf8",
+    "phasenav_trace_sha256": "0ea9c339294162d7870ea8df118ee142b9927a55a1569e66744e80a89f9488e4",
+    "shape": [13, 36]
+  },
+  "firewalls": {
+    "gremlin_can_promote": false,
+    "terminal36d_can_promote": false,
+    "phasenav36d_can_promote": false,
+    "hosted_reference_pass_closes_production_inputs": false,
+    "candidate_edge_enters_canonical_graph": false
+  },
+  "canon_mutations": []
+}

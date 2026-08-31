@@ -1,0 +1,127 @@
+{
+  "schema": "FPDG_GSC4_SOURCE_ASSEMBLED_ATLAS_CANDIDATE_V0_2",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_HOSTED_VALIDATED_CANDIDATE",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "supersedes_candidate": "interfaces/GSC4A_SOURCE_ASSEMBLED_ATLAS_CANDIDATE_V0_1.json",
+  "source_validations": {
+    "gsc4a_general_source_assembly": {
+      "rfc_pr": 105,
+      "head": "2559609bbb7d0dbc2236b66021d5f86967aa9303",
+      "reference_suite_run": 436,
+      "conclusion": "success"
+    },
+    "gsc4b_flow_adapted_route": {
+      "rfc_pr": 106,
+      "validated_head": "1f3522f24ef81a516069fd8553fc2b34f25d96f7",
+      "reference_suite_run": 440,
+      "run_id": 33350893202,
+      "job_id": 99363907448,
+      "pytest": "1370 passed, 1 warning in 15.51s",
+      "conclusion": "success"
+    },
+    "gsc3e_matching_source_firewall": {
+      "rfc_pr": 103,
+      "canonical_candidate_label": "GSC3E",
+      "final_head": "6d91cbab9d858f0316b43d17de33ec4d810ca7dc",
+      "reference_suite_run": 439,
+      "conclusion": "success"
+    }
+  },
+  "candidate_nodes": [
+    {"id": "FPDG.GSC4.SOURCE_ASSEMBLY_THEOREM", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.TIR_SPATIAL_COFRAME_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.TIR_SPATIAL_OVERLAP_COCYCLE_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.IDT_SHARED_CLOCK_LAPSE_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.PATCH_CLOCK_IDENTITY", "status": "OPEN_PROVENANCE_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.OVERLAP_COVERAGE", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.GENERAL_MATCHING_SHIFT_DRIFT_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.GSC3E_W0_SOURCE_BINDING", "status": "OPEN_SOURCE_BINDING", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET", "status": "EXACT_ON_SOURCE_INPUTS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.FLOW_ADAPTED_THEOREM", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET", "status": "EXACT_ON_SOURCE_INPUTS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4.SOURCE_ASSEMBLED_RF_E25_PACKET", "status": "EXACT_IF_EITHER_SUFFICIENT_ROUTE_PASSES", "authority": "CANDIDATE_ONLY"}
+  ],
+  "general_shared_clock_patch_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC4.SOURCE_ASSEMBLY_THEOREM",
+      "FPDG.GSC4.TIR_SPATIAL_COFRAME_PACKET",
+      "FPDG.GSC4.TIR_SPATIAL_OVERLAP_COCYCLE_PACKET",
+      "FPDG.GSC4.IDT_SHARED_CLOCK_LAPSE_PACKET",
+      "FPDG.GSC4.GENERAL_MATCHING_SHIFT_DRIFT_PACKET",
+      "FPDG.GSC4.GSC3E_W0_SOURCE_BINDING",
+      "FPDG.GSC4.PATCH_CLOCK_IDENTITY",
+      "FPDG.GSC4.OVERLAP_COVERAGE"
+    ],
+    "target": "FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET",
+    "product_trivialization_required": false,
+    "meaning": "the general GSC4A theorem is patch-local/shared-clock source assembly and does not consume the global product-trivialization certificate"
+  },
+  "flow_adapted_product_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC4.FLOW_ADAPTED_THEOREM",
+      "FPDG.GSC3.PRODUCT_TRIVIALIZATION",
+      "FPDG.GSC4.TIR_SPATIAL_COFRAME_PACKET",
+      "FPDG.GSC4.TIR_SPATIAL_OVERLAP_COCYCLE_PACKET",
+      "FPDG.GSC4.IDT_SHARED_CLOCK_LAPSE_PACKET",
+      "FPDG.GSC4.PATCH_CLOCK_IDENTITY",
+      "FPDG.GSC4.OVERLAP_COVERAGE"
+    ],
+    "target": "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET",
+    "derived_coordinate_specialization": {
+      "matching_shift": "b=0",
+      "temporal_spatial_drift": "v=0",
+      "status": "EXACT_FLOW_ADAPTED_GAUGE"
+    },
+    "independent_matching_shift_drift_packet_required": false,
+    "gsc3e_w0_packet_required_on_this_route": false,
+    "reason": "the transported product coordinates construct the RFC shift/drift representation directly as b=v=0 rather than importing beta_match as an independent shift source"
+  },
+  "route_union": {
+    "operator": "OR",
+    "alternatives": [
+      "FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET",
+      "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET"
+    ],
+    "target": "FPDG.GSC4.SOURCE_ASSEMBLED_RF_E25_PACKET"
+  },
+  "rf_e25_handoff": {
+    "from": "FPDG.GSC4.SOURCE_ASSEMBLED_RF_E25_PACKET",
+    "to": "RFC.E25.SHARED_SPACETIME_ATLAS",
+    "authority": "CANDIDATE_ONLY",
+    "meaning": "either sufficient source packet is delegated to the existing RF-E25 certifier"
+  },
+  "input_reduction": {
+    "independent_full_4d_jacobian_required": false,
+    "independent_lorentz_transition_required": false,
+    "independent_metric_tensor_required": false,
+    "independent_metric_pullback_witness_required": false,
+    "general_route_requires_product_trivialization": false,
+    "flow_route_requires_independent_matching_shift_drift": false
+  },
+  "live_36d_two_route_audit": {
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "source_event_id": "gremlin:whisper:sha256:87d5d286d582e254ff2ba3677b96ef1fe42910a380afd15427020608896a597b",
+    "fused_event_id": "gremlin:whisper:sha256:8fde03fe55d72af32fd2a1b9005053d87db47bfbe8103e68040a94a35c593b77",
+    "shape": [13, 36],
+    "terminal_receipt_sha256": "fe27785bf20259bda7021f8990b2702e2863542d3fe8f1ec090e724d8d81f33e",
+    "phasenav_trace_sha256": "3a8d29f0276263497e39e454e90584a0c9f57537c7ef2a32fb8a9220ed7037f8"
+  },
+  "firewalls": {
+    "gremlin_can_promote": false,
+    "terminal36d_can_promote": false,
+    "phasenav36d_can_promote": false,
+    "hosted_reference_pass_closes_production_inputs": false,
+    "candidate_edge_enters_canonical_graph": false,
+    "general_route_silently_assumes_product_topology": false,
+    "flow_adapted_zero_shift_implies_zero_extrinsic_curvature": false,
+    "affine_overlap_class_implies_gsc3e_w0_binding": false,
+    "event_placement_is_required_for_rfe25_atlas_construction": false
+  },
+  "canon_mutations": []
+}

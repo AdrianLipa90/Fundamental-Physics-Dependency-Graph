@@ -1,0 +1,102 @@
+{
+  "schema": "FPDG_GSC3_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_V0_3",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_HOSTED_VALIDATED_CANDIDATE",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "supersedes_candidate": "interfaces/GSC3CD_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_V0_2.json",
+  "source_validations": {
+    "matching_flow_soldering": {"rfc_pr": 99, "head": "19a53048dcae1783efaaae36e1db4b7fe6040282", "reference_suite_run": 418, "conclusion": "success"},
+    "relational_event_placement": {"rfc_pr": 98, "head": "c468769d66b8459b592f5c590578ce0f997790b8", "reference_suite_run": 407, "conclusion": "success"},
+    "matching_flow_rfe9_crosslink": {"rfc_pr": 100, "head": "8e38c4a66363ebc1859df43adf1e3ffb3e164cc6", "reference_suite_run": 419, "conclusion": "success"},
+    "state_vertex_relabeling_obstruction": {"rfc_pr": 102, "canonical_candidate_label": "GSC3C", "head": "29f175e88b1e5054355c813228736f8535538617", "reference_suite_run": 425, "conclusion": "success"},
+    "matching_one_form_interface_alias": {"rfc_pr": 104, "canonical_candidate_label": "GSC3D", "head": "ae1680592d676f437429e78ae1691d5b3334c32d", "conclusion": "hosted_pass_candidate"},
+    "beta_shift_realization_binding_firewall": {"rfc_pr": 103, "canonical_candidate_label": "GSC3E", "historical_branch_label": "gsc3c", "head": "ab31c1fba78094efd7b01625adaebc1a44868845", "reference_suite_run": 438, "reference_suite_run_id": 33349672324, "pytest": "1361 passed in 15.43s", "conclusion": "success"}
+  },
+  "candidate_nodes": [
+    {"id": "FPDG.GSC3.MATCHING_FIELD_COCYCLE", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.FLOW_COVERAGE", "status": "OPEN_ANALYTIC_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.CLOCK_PROPERNESS", "status": "OPEN_ANALYTIC_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.PRODUCT_TRIVIALIZATION", "status": "EXACT_ON_SUFFICIENT_ROUTE", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.BETA_SHIFT_AFFINE_CLASS_FIREWALL", "status": "HOSTED_PASS_CERTIFIER", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.SAME_PATCH_CLOCK_IDENTITY", "status": "OPEN_PROVENANCE_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.SHARED_MATCHING_ONE_FORM_W0_BINDING", "status": "OPEN_SOURCE_BINDING", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.BETA_SHIFT_INTERFACE_ALIAS", "status": "HOSTED_PASS_ON_SHARED_ONE_FORM_WITNESS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.RFE9_EXTRINSIC_CURVATURE_CROSSLINK", "status": "HOSTED_PASS_ON_PROVENANCE_AND_SOURCE_BINDING", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.RFE25_PRODUCTION_SHARED_ATLAS", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.STATE_VERTEX_RELABELING_OBSTRUCTION", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.PRODUCTION_EVENT_COMPLEX", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.PRODUCTION_OCCURRENCE_STATE_TABLE", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.STATE_TO_TIR_SPATIAL_ANCHOR_BINDING", "status": "OPEN_SOURCE_BINDING", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.QUOTIENT_FIBRE_CONSTANCY", "status": "EXACT_EXECUTABLE_GATE", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.EVENT_PLACEMENT", "status": "HOSTED_PASS_CERTIFIER_WITH_PRODUCTION_INPUTS_OPEN", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3.PHYSICAL_EVENT_ON_SHARED_SPACETIME", "status": "OPEN_COMPOSITION", "authority": "CANDIDATE_ONLY"}
+  ],
+  "product_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3.MATCHING_FIELD_COCYCLE",
+      {"operator": "OR", "alternatives": ["FPDG.GSC3.FLOW_COVERAGE", "FPDG.GSC3.CLOCK_PROPERNESS"]}
+    ],
+    "target": "FPDG.GSC3.PRODUCT_TRIVIALIZATION"
+  },
+  "tir_rfc_kinematic_source_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3.BETA_SHIFT_AFFINE_CLASS_FIREWALL",
+      "FPDG.GSC3.SAME_PATCH_CLOCK_IDENTITY",
+      "FPDG.GSC3.SHARED_MATCHING_ONE_FORM_W0_BINDING",
+      "FPDG.GSC3.BETA_SHIFT_INTERFACE_ALIAS"
+    ],
+    "target": "FPDG.GSC3.RFE9_EXTRINSIC_CURVATURE_CROSSLINK",
+    "exact_scale": "Theta=t and x0=ct imply beta_t=c*b_0 once the shared matching-one-form carrier is source-bound"
+  },
+  "shared_atlas_route": {
+    "operator": "AND",
+    "requirements": ["FPDG.GSC3.PRODUCT_TRIVIALIZATION", "FPDG.GSC3.RFE25_PRODUCTION_SHARED_ATLAS"],
+    "target": "RFC.E25.SHARED_SPACETIME_ATLAS"
+  },
+  "event_route": {
+    "theorem_parent": "FPDG.GSC3.STATE_VERTEX_RELABELING_OBSTRUCTION",
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3.PRODUCTION_EVENT_COMPLEX",
+      "FPDG.GSC3.PRODUCTION_OCCURRENCE_STATE_TABLE",
+      "FPDG.GSC3.STATE_TO_TIR_SPATIAL_ANCHOR_BINDING",
+      "FPDG.GSC3.QUOTIENT_FIBRE_CONSTANCY"
+    ],
+    "target": "FPDG.GSC3.EVENT_PLACEMENT"
+  },
+  "physical_event_spacetime_composition": {
+    "operator": "AND",
+    "requirements": ["RFC.E25.SHARED_SPACETIME_ATLAS", "FPDG.GSC3.EVENT_PLACEMENT"],
+    "target": "FPDG.GSC3.PHYSICAL_EVENT_ON_SHARED_SPACETIME"
+  },
+  "refinements_from_v0_2": {
+    "same_patch_clock_identity_is_sufficient_for_beta_shift_identity": false,
+    "additional_required_source_witness": "SHARED_MATCHING_ONE_FORM_W0_BINDING",
+    "gsc3e_firewall": "W=beta_t-c*b_0 transforms homogeneously; W!=0 can preserve both affine overlap contracts",
+    "gsc3d_alias_scope": "exact after shared matching-one-form carrier and temporal scale are fixed",
+    "serial_label_collision_resolved": {"pr_102": "GSC3C", "pr_104": "GSC3D", "pr_103": "GSC3E"}
+  },
+  "live_36d_source_binding_audit": {
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "source_event_id": "gremlin:whisper:sha256:f81cd10e0f7f7a5aaabc61dc6314155895c535f60cbe21e20933a93ead4f8e79",
+    "terminal_receipt_sha256": "c2191f691e0b9453593c7c43ac75fdc23b03e1f5d5c16dd79312dd278efb68df",
+    "phasenav_trace_sha256": "fa0e3b3e52cc8ed7af0841a2331cf01c09852c2b2d280681cf900246bd9400ff",
+    "shape": [8, 36]
+  },
+  "firewalls": {
+    "gremlin_can_promote": false,
+    "terminal36d_can_promote": false,
+    "phasenav36d_can_promote": false,
+    "hosted_reference_pass_closes_production_inputs": false,
+    "candidate_edge_enters_canonical_graph": false,
+    "same_patch_clock_ids_imply_shared_matching_one_form": false,
+    "same_affine_overlap_class_implies_same_field": false,
+    "event_placement_is_rfe25_atlas_premise": false
+  },
+  "canon_mutations": []
+}

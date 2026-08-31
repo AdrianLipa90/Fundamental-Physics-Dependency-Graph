@@ -1,0 +1,106 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_PRODUCTION_WITNESS_V0_1",
+  "target": "PHYSICAL_EVENT_REALIZATION_ON_GLOBAL_GR_CAUCHY_CARRIER",
+  "route": "FLOW_ADAPTED_COMPACT_FIBER",
+  "status": "CURRENT_PRODUCTION_WITNESS_SLOTS_OPEN",
+  "date": "2026-08-31",
+  "witnesses": {
+    "W1_GSC1_SPATIAL_TOPOLOGY": {
+      "status": "OPEN",
+      "lineage": {},
+      "source_contract": {
+        "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+        "pr": 117,
+        "contract_status": "PASS_INPUT_CONTRACT_WITH_PRODUCTION_INPUT_OPEN"
+      }
+    },
+    "W2_GSC3A_GLOBAL_PRODUCT_CLOCK": {
+      "status": "OPEN",
+      "lineage": {},
+      "source_contract": {
+        "repository": "AdrianLipa90/Relational-Field-Closure",
+        "pr": 99,
+        "contract_status": "HOSTED_VALIDATED_THEOREM_WITH_GLOBAL_FLOW_COVERAGE_AND_PRODUCT_REALIZATION_OPEN"
+      }
+    },
+    "W3_GSC4_NUMERIC_SPATIAL_GEOMETRY": {
+      "status": "OPEN",
+      "lineage": {},
+      "source_contract": {
+        "repository": "AdrianLipa90/Relational-Field-Closure",
+        "pr": 112,
+        "contract_status": "HOSTED_VALIDATED_RECONSTRUCTION_WITH_PRODUCTION_NUMERIC_SE3_COCYCLE_OPEN"
+      }
+    },
+    "W4_GSC4_PHASE_MAGNITUDE_SCALE_FIELD": {
+      "status": "OPEN",
+      "lineage": {},
+      "source_contract": {
+        "repository": "AdrianLipa90/Relational-Field-Closure",
+        "pr": 109,
+        "contract_status": "HOSTED_VALIDATED_BINDING_FIREWALL_WITH_PRODUCTION_MAGNITUDE_FIELD_OPEN"
+      }
+    },
+    "W5_IDT_GLOBAL_LAPSE": {
+      "status": "OPEN",
+      "lineage": {},
+      "source_contract": {
+        "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
+        "path": "formalism/05C_relational_lapse_interface.md",
+        "contract_status": "EXACT_INTERFACE_WITH_PRODUCTION_GLOBAL_LAPSE_FIELD_OPEN"
+      }
+    },
+    "W6_RF_E24_PATCHWISE_LOCAL_SOLUTIONS": {
+      "status": "OPEN",
+      "lineage": {},
+      "source_contract": {
+        "repository": "AdrianLipa90/Relational-Field-Closure",
+        "pr": 111,
+        "contract_status": "GSC5A_HOSTED_PASS_WITH_PRODUCTION_PATCHWISE_RF_E24_RECEIPTS_OPEN"
+      }
+    },
+    "W7_TARGET_DOMAIN_COVERAGE": {
+      "status": "OPEN",
+      "lineage": {},
+      "source_contract": {
+        "repository": "AdrianLipa90/Relational-Field-Closure",
+        "pr": 111,
+        "contract_status": "GSC5A_HOSTED_PASS_WITH_TARGET_DOMAIN_COVERAGE_OPEN"
+      }
+    },
+    "E1_GSC2_TEMPORAL_EVENT_COMPLEX": {
+      "status": "OPEN",
+      "lineage": {},
+      "source_contract": {
+        "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
+        "pr": 83,
+        "contract_status": "PASS_INPUT_CONTRACT_WITH_PRODUCTION_EVENT_COMPLEX_OPEN"
+      }
+    },
+    "E2_EVENT_SPATIAL_ANCHOR_BINDING": {
+      "status": "OPEN",
+      "lineage": {},
+      "source_contract": {
+        "repository": "AdrianLipa90/Relational-Field-Closure",
+        "prs": [98, 102],
+        "contract_status": "HOSTED_VALIDATED_DESCENT_AND_RELABELING_FIREWALL_WITH_PRODUCTION_STATE_TO_SPATIAL_BINDING_OPEN"
+      }
+    }
+  },
+  "conditional_general_matching_slot": {
+    "M1_SHARED_MATCHING_ONE_FORM_W0": {
+      "status": "OPEN",
+      "required_for_current_route": false,
+      "source_contract": {
+        "repository": "AdrianLipa90/Relational-Field-Closure",
+        "pr": 103,
+        "contract_status": "GSC3E_HOSTED_PASS_WITH_PRODUCTION_W0_SOURCE_BINDING_OPEN"
+      }
+    }
+  },
+  "authority": {
+    "this_manifest_can_promote": false,
+    "open_source_contract_is_not_production_receipt": true,
+    "reference_fixture_is_not_production_witness": true
+  }
+}
