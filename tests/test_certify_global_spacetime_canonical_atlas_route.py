@@ -40,7 +40,7 @@ def canonical_manifest():
                 cover_id="cover-1",
                 product_provenance="FLOW_COVERAGE",
                 canonical_atlas_coverage_certified=True,
-                atlas_patch_ids=patch_ids,
+                atlas_patch_ids=list(patch_ids),
                 atlas_domain_id="domain-prod-1",
             ),
             "W3_GSC4_NUMERIC_SPATIAL_GEOMETRY": certified(
@@ -55,7 +55,7 @@ def canonical_manifest():
             "W6_RF_E24_PATCHWISE_LOCAL_SOLUTIONS": certified(
                 domain_id="domain-prod-1",
                 source_lineage_id="source-prod-1",
-                solution_patch_ids=patch_ids,
+                solution_patch_ids=list(patch_ids),
             ),
         },
     }
