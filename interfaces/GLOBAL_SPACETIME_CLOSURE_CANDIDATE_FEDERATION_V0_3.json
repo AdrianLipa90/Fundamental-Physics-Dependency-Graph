@@ -1,0 +1,148 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_3",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_VALIDATED_CANDIDATE_FEDERATION",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "purpose": "Federate hosted-validated source-branch GSC-1/GSC-2 input contracts and the RFC GSC-3 product-clock sufficient route without promoting open production witnesses.",
+  "source_candidates": {
+    "TIR_GSC1": {
+      "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+      "pull_request": 117,
+      "branch": "feat/tir-global-spatial-complex-input-contract-v0.1",
+      "head": "5cc9f1e1a33972cf89369a3b97716e04901324ba",
+      "source_gate": "TIR_GLOBAL_SPATIAL_COMPLEX_INPUT_CONTRACT_V0_1",
+      "hosted_validation": {
+        "workflow": "TIR global spatial-complex input contract",
+        "run_number": 4,
+        "run_id": 33346010181,
+        "conclusion": "success"
+      },
+      "technical_status": "PASS",
+      "production_spatial_complex": "OPEN_INPUT",
+      "minimal_combinatorial_witness": "LOSSLESS_TETRAHEDRAL_FACET_INCIDENCE",
+      "same_f_vector_falsifier": {
+        "f_vector": [6, 14, 16, 8],
+        "result": "PASS_AGGREGATE_COUNTS_INSUFFICIENT"
+      }
+    },
+    "IDT_GSC2": {
+      "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
+      "pull_request": 83,
+      "branch": "feat/gsc2-production-event-complex-input-v0.1",
+      "head": "1ee977008a616a481d6d12dc6c258fcd43e601e6",
+      "source_gate": "IDT_GLOBAL_EVENT_COMPLEX_INPUT_V0_1",
+      "hosted_validation": {
+        "workflow": "Reference suite",
+        "run_number": 943,
+        "run_id": 33345979752,
+        "conclusion": "success"
+      },
+      "technical_status": "PASS",
+      "production_event_complex": "OPEN_INPUT",
+      "minimal_nontrivial_cycle_witness": {
+        "events": 3,
+        "edges": 3,
+        "exactness_identity": "theta_ab + theta_bc = theta_ac"
+      }
+    },
+    "RFC_GSC3_PRODUCT": {
+      "repository": "AdrianLipa90/Relational-Field-Closure",
+      "pull_request": 97,
+      "branch": "feat/gsc3-product-clock-atlas-lift-v0.1",
+      "head": "385528e1c87823dd6f681a0a7cdf277aa6389b38",
+      "source_gate": "RFC_GSC3_PRODUCT_CLOCK_ATLAS_LIFT_V0_1",
+      "hosted_validation": {
+        "workflow": "RFC reference suite",
+        "run_number": 405,
+        "run_id": 33345989638,
+        "conclusion": "success"
+      },
+      "technical_status": "PASS",
+      "exact_coordinate_theorem": {
+        "carrier": "M=I x Sigma",
+        "dimension": 4,
+        "clock": "t=pr_I",
+        "dt_nowhere_zero": true,
+        "shared_clock_first_row": [1, 0, 0, 0],
+        "determinant_identity": "det(J)=det(D_x f)"
+      },
+      "physical_product_realization": "OPEN_BINDING",
+      "production_event_placement": "OPEN_INPUT",
+      "rf_e25_adm_coframe_realization": "DOWNSTREAM_PRODUCTION_GATE"
+    }
+  },
+  "candidate_nodes": [
+    {
+      "id": "FPDG.GSC1.SPATIAL_INPUT_CONTRACT_V01",
+      "source": "TIR_GSC1",
+      "status": "HOSTED_PASS_PRODUCTION_INPUT_OPEN",
+      "authority": "CANDIDATE_ONLY"
+    },
+    {
+      "id": "FPDG.GSC2.EVENT_INPUT_CONTRACT_V01",
+      "source": "IDT_GSC2",
+      "status": "HOSTED_PASS_PRODUCTION_INPUT_OPEN",
+      "authority": "CANDIDATE_ONLY"
+    },
+    {
+      "id": "FPDG.GSC3.PRODUCT_CLOCK_ATLAS_LIFT_V01",
+      "source": "RFC_GSC3_PRODUCT",
+      "status": "HOSTED_PASS_PHYSICAL_PRODUCT_REALIZATION_OPEN",
+      "authority": "CANDIDATE_ONLY"
+    }
+  ],
+  "candidate_edges": [
+    {
+      "from": "TIR.SPACE.GLOBAL_3MANIFOLD_A5",
+      "to": "FPDG.GSC1.SPATIAL_INPUT_CONTRACT_V01",
+      "authority": "CANDIDATE_ONLY",
+      "promotion_gate": "SOURCE_BRANCH_MERGE_AND_PRODUCTION_SPATIAL_COMPLEX_REQUIRED"
+    },
+    {
+      "from": "IDT.CLOCK.EVENT_EXACTNESS_05H",
+      "to": "FPDG.GSC2.EVENT_INPUT_CONTRACT_V01",
+      "authority": "CANDIDATE_ONLY",
+      "promotion_gate": "SOURCE_BRANCH_MERGE_AND_PRODUCTION_EVENT_COMPLEX_REQUIRED"
+    },
+    {
+      "from": "TIR.SPACE.GLOBAL_3MANIFOLD_A5",
+      "to": "FPDG.GSC3.PRODUCT_CLOCK_ATLAS_LIFT_V01",
+      "authority": "CANDIDATE_ONLY",
+      "promotion_gate": "PHYSICAL_TIR_IDT_PRODUCT_REALIZATION_REQUIRED"
+    },
+    {
+      "from": "IDT.CLOCK.EVENT_EXACTNESS_05H",
+      "to": "FPDG.GSC3.PRODUCT_CLOCK_ATLAS_LIFT_V01",
+      "authority": "CANDIDATE_ONLY",
+      "promotion_gate": "PRODUCTION_EVENT_CLOCK_AND_EVENT_PLACEMENT_REQUIRED"
+    },
+    {
+      "from": "FPDG.GSC3.PRODUCT_CLOCK_ATLAS_LIFT_V01",
+      "to": "IDT.CLOCK.FOLIATION_05G",
+      "authority": "CANDIDATE_ONLY",
+      "route": "SUFFICIENT_PRODUCT_CLOCK_ROUTE_ALTERNATIVE_TO_GENERAL_05I_EXTENSION",
+      "promotion_gate": "PHYSICAL_PRODUCT_REALIZATION_AND_SOURCE_GRAPH_PROMOTION_REQUIRED"
+    },
+    {
+      "from": "FPDG.GSC3.PRODUCT_CLOCK_ATLAS_LIFT_V01",
+      "to": "RFC.E25.SHARED_SPACETIME_ATLAS",
+      "authority": "CANDIDATE_ONLY",
+      "promotion_gate": "PRODUCTION_SHARED_ADM_COFRAME_ATLAS_REQUIRED"
+    }
+  ],
+  "open_frontier": [
+    "GSC1_PRODUCTION_GLOBAL_TETRAHEDRAL_FACET_INCIDENCE",
+    "GSC2_PRODUCTION_PHYSICAL_EVENT_INCIDENCE_AND_ELAPSED_EDGES",
+    "PHYSICAL_TIR_IDT_PRODUCT_REALIZATION_AND_EVENT_PLACEMENT",
+    "GSC4_PRODUCTION_SHARED_ADM_COFRAME_ATLAS",
+    "GSC5_PRODUCTION_GLOBAL_EINSTEIN_CARRIER_AND_DOMAIN_COVERAGE",
+    "GSC6_GLOBAL_FINITE_LAPSE_BOUND_AND_COMPLETE_ADM_WICK_METRIC"
+  ],
+  "firewalls": {
+    "reference_fixture_promotes_production": false,
+    "hosted_certifier_pass_closes_open_input": false,
+    "gremlin_can_promote": false,
+    "candidate_edge_enters_canonical_graph": false
+  }
+}
