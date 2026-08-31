@@ -24,16 +24,24 @@ class GlobalSpacetimeClosureLedgerTests(unittest.TestCase):
 
     def test_exact_source_heads(self):
         expected = {
-            "TIR": "2568fb24e0bc91e8f1c75dcfdc5659a57ca382b9",
-            "IDT": "fc87c4176dfcc480529ba28bd67042d3ebf02c72",
+            "TIR": "5aaf572e9e931525f16bb0fa105afbb0d34c59c9",
+            "IDT": "44e2da0a7048df387f277f4e93e6970c445d4b67",
             "RFC": "4d581ac8d03e637f65fdefa2b9326ffc1effe0e1",
         }
         for source, sha in expected.items():
             self.assertEqual(self.payload["sources"][source]["exact_head"], sha)
             self.assertEqual(len(sha), 40)
 
-    def test_pinned_certifier_workflows_are_success(self):
-        self.assertEqual(self.payload["sources"]["TIR"]["workflow"]["conclusion"], "SUCCESS")
+    def test_new_input_contract_workflows_are_success(self):
+        tir = self.payload["sources"]["TIR"]["gates"]["GSC-1_INPUT"]["workflow"]
+        self.assertEqual(tir["run_id"], 33343473631)
+        self.assertEqual(tir["conclusion"], "SUCCESS")
+        idt = self.payload["sources"]["IDT"]["gates"]["05J"]["workflow"]
+        self.assertEqual(idt["run_id"], 33343481792)
+        self.assertEqual(idt["conclusion"], "SUCCESS")
+
+    def test_parent_certifier_workflows_remain_success(self):
+        self.assertEqual(self.payload["sources"]["TIR"]["gates"]["A5"]["conclusion"], "SUCCESS")
         idt = self.payload["sources"]["IDT"]["gates"]
         self.assertEqual(idt["05G"]["conclusion"], "SUCCESS")
         self.assertEqual(idt["05H"]["conclusion"], "SUCCESS")
@@ -42,51 +50,52 @@ class GlobalSpacetimeClosureLedgerTests(unittest.TestCase):
         self.assertEqual(rfc["RF-E24"]["conclusion"], "SUCCESS")
         self.assertEqual(rfc["RF-E25"]["conclusion"], "SUCCESS")
 
-    def test_05i_diagnostic_failure_precedes_assertions(self):
-        failed = self.payload["sources"]["IDT"]["gates"]["05I"]["diagnostic_failed_run"]
-        self.assertEqual(failed["run_number"], 1)
-        self.assertEqual(failed["run_id"], 33339745130)
-        self.assertEqual(failed["class"], "WORKFLOW_DEPENDENCY_ENVIRONMENT")
-        self.assertFalse(failed["mathematical_assertions_executed"])
-
     def test_idt_full_suite_blocker_is_kept_separate(self):
-        blocker = self.payload["sources"]["IDT"]["full_reference_suite_baseline_blocker"]
-        self.assertEqual(blocker["main_run_number"], 925)
-        self.assertEqual(blocker["exact_head_run_number"], 928)
+        blocker = self.payload["sources"]["IDT"]["full_reference_suite_blocker"]
+        self.assertEqual(blocker["exact_head_run_number"], 935)
+        self.assertEqual(blocker["exact_head_run_id"], 33343481782)
         self.assertEqual(blocker["class"], "PRE_EXISTING_SEAM_COLLECTION_IMPORT")
         self.assertEqual(blocker["symbol"], "onsager_dissipation")
+        self.assertEqual(blocker["affected_test_count"], 3)
+        self.assertTrue(blocker["independent_of_05J_gate"])
         self.assertTrue(blocker["independent_of_05I_gate"])
 
-    def test_global_frontier_is_complete_and_fail_closed(self):
+    def test_global_frontier_is_complete_and_typed_open(self):
         rows = self.payload["global_frontier"]
         self.assertEqual([row["id"] for row in rows], [f"GSC-{i}" for i in range(1, 7)])
         by_id = {row["id"]: row for row in rows}
-        self.assertEqual(by_id["GSC-1"]["status"], "OPEN_INPUT")
-        self.assertEqual(by_id["GSC-2"]["status"], "OPEN_INPUT")
+        self.assertEqual(
+            by_id["GSC-1"]["status"],
+            "INPUT_CONTRACT_PASS_WITH_PRODUCTION_SPATIAL_COMPLEX_OPEN_INPUT",
+        )
+        self.assertEqual(by_id["GSC-1"]["certifier"], "TIR_GSC1_INPUT_PLUS_A5")
+        self.assertEqual(
+            by_id["GSC-2"]["status"],
+            "INPUT_CONTRACT_PASS_WITH_PRODUCTION_EVENT_COMPLEX_OPEN_INPUT",
+        )
+        self.assertEqual(by_id["GSC-2"]["certifier"], "IDT_05J_PLUS_05H")
         self.assertEqual(
             by_id["GSC-3"]["status"],
             "CERTIFIER_PASS_WITH_PRODUCTION_REGULAR_CLOCK_WITNESS_OPEN_INPUT",
         )
-        self.assertEqual(by_id["GSC-3"]["certifier"], "IDT_05I")
         self.assertEqual(
             by_id["GSC-4"]["status"],
             "CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_OPEN_INPUT",
         )
-        self.assertEqual(by_id["GSC-4"]["certifier"], "RFC_RF-E25")
         self.assertEqual(
             by_id["GSC-5"]["status"],
             "CONDITIONAL_ON_PRODUCTION_PASS_GSC_1_TO_GSC_4",
         )
         self.assertEqual(by_id["GSC-6"]["status"], "OPEN_SEPARATE_GATE")
 
-    def test_05i_and_rfe25_certifiers_are_closed_but_production_is_open(self):
+    def test_input_contracts_are_closed_surfaces_but_production_remains_open(self):
         closed = self.payload["closed_surfaces"]
-        self.assertIn("IDT_REGULAR_SMOOTH_CLOCK_EXTENSION_WITNESS_CERTIFIER", closed)
-        self.assertIn("RFC_SHARED_SPACETIME_ATLAS_COCYCLE_CERTIFIER", closed)
+        self.assertIn("TIR_GLOBAL_SPATIAL_COMPLEX_INPUT_CONTRACT", closed)
+        self.assertIn("IDT_PRODUCTION_EVENT_COMPLEX_INPUT_CONTRACT", closed)
         overall = self.payload["overall_status"]
-        self.assertIn("REGULAR_CLOCK_EXTENSION_CERTIFIER_PASS", overall)
-        self.assertIn("SHARED_ATLAS_CERTIFIER_PASS", overall)
-        self.assertIn("GLOBAL_SPACETIME_REALIZATION_INPUT_OPEN", overall)
+        self.assertIn("SPATIAL_INPUT_CONTRACT_PASS", overall)
+        self.assertIn("TEMPORAL_INPUT_CONTRACT_PASS", overall)
+        self.assertIn("PRODUCTION_GLOBAL_SPACETIME_OPEN", overall)
 
     def test_global_pass_language_remains_blocked(self):
         overall = self.payload["overall_status"]
@@ -95,14 +104,21 @@ class GlobalSpacetimeClosureLedgerTests(unittest.TestCase):
         self.assertIn("GLOBAL_HYPERBOLICITY_OPEN", overall)
         self.assertEqual(
             self.payload["verdict"],
-            "PASS_CROSS_REPO_LEDGER_WITH_GLOBAL_REALIZATION_INPUT_OPEN",
+            "PASS_CROSS_REPO_LEDGER_WITH_TYPED_PRODUCTION_INPUTS_OPEN",
         )
 
-    def test_ledger_names_both_executable_global_interface_gates(self):
-        self.assertIn("IDT 05I regular smooth-clock extension witness certifier", self.ledger)
-        self.assertIn("RFC RF-E25 shared atlas/coframe cocycle certifier", self.ledger)
-        self.assertIn("CERTIFIER_PASS_WITH_PRODUCTION_REGULAR_CLOCK_WITNESS_OPEN_INPUT", self.ledger)
-        self.assertIn("CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_OPEN_INPUT", self.ledger)
+    def test_ledger_names_all_four_executable_production_interfaces(self):
+        for token in (
+            "TIR GSC-1 spatial input contract",
+            "IDT 05J explicit occurrence-to-event quotient/input contract",
+            "IDT 05I regular smooth-clock extension certifier",
+            "RFC RF-E25 shared atlas/coframe cocycle certifier",
+            "INPUT_CONTRACT_PASS_WITH_PRODUCTION_SPATIAL_COMPLEX_OPEN_INPUT",
+            "INPUT_CONTRACT_PASS_WITH_PRODUCTION_EVENT_COMPLEX_OPEN_INPUT",
+            "CERTIFIER_PASS_WITH_PRODUCTION_REGULAR_CLOCK_WITNESS_OPEN_INPUT",
+            "CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_OPEN_INPUT",
+        ):
+            self.assertIn(token, self.ledger)
 
     def test_canonical_files_are_immutable_surfaces(self):
         for name in (

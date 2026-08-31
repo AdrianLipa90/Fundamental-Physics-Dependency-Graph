@@ -1,11 +1,11 @@
 {
   "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_LEDGER_V0_1",
-  "date": "2026-08-30",
+  "date": "2026-08-31",
   "authority": "NONCANONICAL_CROSS_REPO_AUDIT",
   "promotion_authority": false,
   "canonical_graph_mutated": false,
   "canonical_source_locks_mutated": false,
-  "overall_status": "LOCAL_EINSTEIN_FORM_PASS__SPATIAL_CERTIFIER_PASS__TEMPORAL_EXACTNESS_CERTIFIER_PASS__REGULAR_CLOCK_EXTENSION_CERTIFIER_PASS__LOCAL_FROBENIUS_PASS__SHARED_ATLAS_CERTIFIER_PASS__GLOBAL_SPACETIME_REALIZATION_INPUT_OPEN__GLOBAL_HYPERBOLICITY_OPEN",
+  "overall_status": "LOCAL_EINSTEIN_FORM_PASS__SPATIAL_INPUT_CONTRACT_PASS__TEMPORAL_INPUT_CONTRACT_PASS__REGULAR_CLOCK_EXTENSION_CERTIFIER_PASS__SHARED_ATLAS_CERTIFIER_PASS__PRODUCTION_GLOBAL_SPACETIME_OPEN__GLOBAL_HYPERBOLICITY_OPEN",
   "fpdg_base": {
     "repository": "AdrianLipa90/Fundamental-Physics-Dependency-Graph",
     "main_commit": "e1e07ef294fe02bfc208dba6aee76ff0517b505b"
@@ -13,40 +13,48 @@
   "sources": {
     "TIR": {
       "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
-      "main_baseline": "3f5a08ef04ec53c1a155263d23e8b10a96404370",
-      "branch": "feat/tir-cartan-refinement-v0.1",
-      "exact_head": "2568fb24e0bc91e8f1c75dcfdc5659a57ca382b9",
-      "gate": "A5_GLOBAL_3_MANIFOLD_SMOOTH_CERTIFICATE",
-      "gate_status": "PASS_CERTIFIER_WITH_PRODUCTION_SPATIAL_COMPLEX_OPEN_INPUT",
-      "workflow": {
-        "name": "TIR global 3-manifold smooth certificate",
-        "run_number": 1,
-        "run_id": 33331003616,
-        "conclusion": "SUCCESS"
+      "main_baseline": "62a13ba92f0db641d6d699a88059aedf33528300",
+      "branch": "feat/tir-global-spatial-complex-input-contract-v0.1",
+      "exact_head": "5aaf572e9e931525f16bb0fa105afbb0d34c59c9",
+      "gates": {
+        "A5": {
+          "validated_research_head": "2568fb24e0bc91e8f1c75dcfdc5659a57ca382b9",
+          "status": "PASS_GLOBAL_3_MANIFOLD_SMOOTH_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN",
+          "workflow_run_id": 33331003616,
+          "conclusion": "SUCCESS"
+        },
+        "GSC-1_INPUT": {
+          "status": "PASS_TIR_GLOBAL_SPATIAL_COMPLEX_INPUT_CONTRACT_WITH_PRODUCTION_INPUT_OPEN",
+          "workflow": {
+            "name": "TIR global spatial-complex input contract",
+            "run_number": 1,
+            "run_id": 33343473631,
+            "conclusion": "SUCCESS"
+          }
+        }
       }
     },
     "IDT": {
       "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
-      "main_baseline": "ceb3d74b581fc2445c3fad2474a7506a76b588fa",
-      "branch": "feat/idt-temporal-foliation-v0.1",
-      "exact_head": "fc87c4176dfcc480529ba28bd67042d3ebf02c72",
+      "main_baseline": "f186aab6024a592be406684785069edfe2f3d5bf",
+      "branch": "feat/idt-production-event-complex-input-contract-v0.1",
+      "exact_head": "44e2da0a7048df387f277f4e93e6970c445d4b67",
+      "parallel_research_heads": true,
       "gates": {
         "05G": {
           "substantive_head": "ef80f706c79bc4fbd15266c0608d2ec09674508b",
           "status": "PASS_LOCAL_FROBENIUS_WITH_GLOBAL_REGULAR_CLOCK_INPUT_REQUIRED",
-          "workflow_run_number": 913,
           "workflow_run_id": 33333216909,
           "conclusion": "SUCCESS"
         },
         "05H": {
           "substantive_commit": "8eda524ad9a3ba1e1876915a4724db12e0a95bd1",
           "status": "PASS_EVENT_CLOCK_EXACTNESS_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN",
-          "workflow_run_number": 916,
           "workflow_run_id": 33336267608,
           "conclusion": "SUCCESS"
         },
         "05I": {
-          "substantive_commit": "10049d5de3819d2654f19ce5158af5dd85f5198f",
+          "parallel_branch": "feat/idt-temporal-foliation-v0.1",
           "exact_head": "fc87c4176dfcc480529ba28bd67042d3ebf02c72",
           "status": "PASS_REGULAR_SMOOTH_CLOCK_EXTENSION_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN",
           "workflow": {
@@ -54,86 +62,77 @@
             "run_number": 2,
             "run_id": 33339841644,
             "conclusion": "SUCCESS"
-          },
-          "diagnostic_failed_run": {
+          }
+        },
+        "05J": {
+          "exact_head": "44e2da0a7048df387f277f4e93e6970c445d4b67",
+          "status": "PASS_IDT_PRODUCTION_EVENT_COMPLEX_INPUT_CONTRACT_WITH_PRODUCTION_INPUT_OPEN",
+          "workflow": {
+            "name": "IDT 05J production event-complex input",
             "run_number": 1,
-            "run_id": 33339745130,
-            "class": "WORKFLOW_DEPENDENCY_ENVIRONMENT",
-            "mathematical_assertions_executed": false
+            "run_id": 33343481792,
+            "conclusion": "SUCCESS"
           }
         }
       },
-      "full_reference_suite_baseline_blocker": {
-        "main_run_number": 925,
-        "main_run_id": 33339429528,
-        "exact_head_run_number": 928,
-        "exact_head_run_id": 33339841677,
+      "full_reference_suite_blocker": {
+        "exact_head_run_number": 935,
+        "exact_head_run_id": 33343481782,
         "class": "PRE_EXISTING_SEAM_COLLECTION_IMPORT",
         "symbol": "onsager_dissipation",
+        "affected_test_count": 3,
         "conclusion": "FAILURE",
+        "independent_of_05J_gate": true,
         "independent_of_05I_gate": true
       }
     },
     "RFC": {
       "repository": "AdrianLipa90/Relational-Field-Closure",
-      "main_baseline": "63418a88d686021c2a6fe6ab159d6152db303c19",
-      "branch": "feat/rfe21-einstein-uniqueness-selection-v0.1",
       "exact_head": "4d581ac8d03e637f65fdefa2b9326ffc1effe0e1",
       "gates": {
         "RF-E24": {
           "exact_head": "5e8ca5e5aea4ecb63a3ea5fd005518fa63183d3d",
           "status": "PASS_LOCAL_EINSTEIN_FORM_ON_DECLARED_SELECTION_RULES",
-          "workflow_run_number": 390,
           "workflow_run_id": 33330773981,
           "conclusion": "SUCCESS"
         },
         "RF-E25": {
-          "substantive_commit": "15e7eed8bbe0c75ba4ac30517f86cb2b70b7dbf8",
           "exact_head": "4d581ac8d03e637f65fdefa2b9326ffc1effe0e1",
           "status": "PASS_SHARED_SPACETIME_ATLAS_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN",
-          "workflow_run_number": 392,
           "workflow_run_id": 33337181002,
-          "conclusion": "SUCCESS",
-          "diagnostic_failed_run": {
-            "run_number": 391,
-            "run_id": 33337107285,
-            "class": "TEST_IMPORT_LAYOUT",
-            "mathematical_assertions_executed": false
-          }
+          "conclusion": "SUCCESS"
         }
-      },
-      "open_coordinates": [
-        "PROJECT_ABSOLUTE_G_PROMOTION",
-        "HKT_CROSSCHECK"
-      ]
+      }
     }
   },
   "closed_surfaces": [
     "TIR_LOCAL_CARTAN_REFINEMENT",
     "TIR_TORSION_FREE_LEVI_CIVITA_SECTOR",
-    "TIR_LEADING_SECOND_ORDER_METRIC_JET_ON_LRR",
     "TIR_3_MANIFOLD_SMOOTH_REALIZATION_CERTIFIER",
+    "TIR_GLOBAL_SPATIAL_COMPLEX_INPUT_CONTRACT",
     "IDT_EVENT_CLOCK_EXACTNESS_THEOREM_AND_CERTIFIER",
+    "IDT_PRODUCTION_EVENT_COMPLEX_INPUT_CONTRACT",
     "IDT_REGULAR_SMOOTH_CLOCK_EXTENSION_WITNESS_CERTIFIER",
     "IDT_POSITIVE_LAPSE_LOCAL_FROBENIUS_THEOREM_AND_CERTIFIER",
     "RFC_LOCAL_EINSTEIN_FIELD_EQUATION_FORM_ON_DECLARED_SELECTION_RULES",
-    "RFC_LOCAL_ADM_PARENT_ROUNDTRIP",
     "RFC_SHARED_SPACETIME_ATLAS_COCYCLE_CERTIFIER"
   ],
   "global_frontier": [
     {
       "id": "GSC-1",
       "name": "PRODUCTION_SPATIAL_3_COMPLEX",
-      "status": "OPEN_INPUT",
+      "status": "INPUT_CONTRACT_PASS_WITH_PRODUCTION_SPATIAL_COMPLEX_OPEN_INPUT",
       "owner": "TIR",
-      "required_verdict": "PASS_3_MANIFOLD"
+      "certifier": "TIR_GSC1_INPUT_PLUS_A5",
+      "required_verdict": "PASS_PRODUCTION_3_MANIFOLD"
     },
     {
       "id": "GSC-2",
       "name": "PRODUCTION_TEMPORAL_EVENT_COMPLEX",
-      "status": "OPEN_INPUT",
+      "status": "INPUT_CONTRACT_PASS_WITH_PRODUCTION_EVENT_COMPLEX_OPEN_INPUT",
       "owner": "IDT",
-      "required_verdict": "PASS_EXACT_EVENT_CLOCK"
+      "certifier": "IDT_05J_PLUS_05H",
+      "required_verdict": "PASS_PRODUCTION_EXACT_EVENT_CLOCK"
     },
     {
       "id": "GSC-3",
@@ -176,5 +175,5 @@
       "GLOBAL_HYPERBOLICITY_PASS"
     ]
   },
-  "verdict": "PASS_CROSS_REPO_LEDGER_WITH_GLOBAL_REALIZATION_INPUT_OPEN"
+  "verdict": "PASS_CROSS_REPO_LEDGER_WITH_TYPED_PRODUCTION_INPUTS_OPEN"
 }
