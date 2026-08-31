@@ -6,6 +6,7 @@ on:
       - "interfaces/IDT_TIR_TERMINAL_STATE_SPATIAL_VERTEX_BINDING_V0_1.md"
       - "tools/certify_idt_tir_state_vertex_binding.py"
       - "tests/test_idt_tir_state_vertex_binding_v0_1.py"
+      - "receipts/IDT_TIR_STATE_VERTEX_BINDING_V0_1.json"
       - "receipts/IDT_TIR_STATE_VERTEX_GREMLIN_PHASE36D_AUDIT_V0_1.json"
       - ".github/workflows/validate-idt-tir-state-vertex-binding.yml"
   workflow_dispatch:
