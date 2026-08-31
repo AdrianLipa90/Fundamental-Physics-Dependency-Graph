@@ -1,0 +1,109 @@
+{
+  "schema": "FPDG_GSC3CD_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_V0_2",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_HOSTED_VALIDATED_CANDIDATE",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "supersedes_candidate": "interfaces/GSC3B_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_V0_1.json",
+  "source_validations": {
+    "gsc3a_matching_flow": {"rfc_pr": 99, "head": "19a53048dcae1783efaaae36e1db4b7fe6040282", "reference_suite_run": 418, "conclusion": "success"},
+    "gsc3b_event_placement": {"rfc_pr": 98, "head": "c468769d66b8459b592f5c590578ce0f997790b8", "dedicated_run": 2, "reference_suite_run": 407, "conclusion": "success"},
+    "gsc3b_rfe9_crosslink": {"rfc_pr": 100, "head": "8e38c4a66363ebc1859df43adf1e3ffb3e164cc6", "reference_suite_run": 419, "conclusion": "success"},
+    "gsc3c_relabeling_obstruction": {"rfc_pr": 102, "head": "29f175e88b1e5054355c813228736f8535538617", "reference_suite_run": 425, "conclusion": "success"},
+    "gsc3d_beta_shift_alias": {"rfc_pr": 104, "theorem_head": "34f526e17719d1abf0884e41a2af7ad6cd3391c6", "reference_suite_run": 427, "conclusion": "success"}
+  },
+  "candidate_nodes": [
+    {"id": "FPDG.GSC3CD.MATCHING_FIELD_COCYCLE", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.FLOW_COVERAGE", "status": "OPEN_ANALYTIC_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.CLOCK_PROPERNESS", "status": "OPEN_ANALYTIC_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.PRODUCT_TRIVIALIZATION", "status": "EXACT_ON_SUFFICIENT_ROUTE", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.BETA_SHIFT_INTERFACE_ALIAS", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.SAME_PATCH_CLOCK_IDENTITY", "status": "OPEN_PROVENANCE_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.RFE9_EXTRINSIC_CURVATURE_CROSSLINK", "status": "HOSTED_PASS_ON_PROVENANCE_IDENTITY", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.RFE25_PRODUCTION_SHARED_ATLAS", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.STATE_VERTEX_RELABELING_OBSTRUCTION", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.PRODUCTION_EVENT_COMPLEX", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.PRODUCTION_OCCURRENCE_STATE_TABLE", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.STATE_TO_TIR_SPATIAL_ANCHOR_BINDING", "status": "OPEN_SOURCE_BINDING", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.QUOTIENT_FIBRE_CONSTANCY", "status": "EXACT_EXECUTABLE_GATE", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.EVENT_PLACEMENT", "status": "HOSTED_PASS_CERTIFIER_WITH_PRODUCTION_INPUTS_OPEN", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CD.PHYSICAL_EVENT_ON_SHARED_SPACETIME", "status": "OPEN_COMPOSITION", "authority": "CANDIDATE_ONLY"}
+  ],
+  "product_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3CD.MATCHING_FIELD_COCYCLE",
+      {"operator": "OR", "alternatives": ["FPDG.GSC3CD.FLOW_COVERAGE", "FPDG.GSC3CD.CLOCK_PROPERNESS"]}
+    ],
+    "target": "FPDG.GSC3CD.PRODUCT_TRIVIALIZATION"
+  },
+  "tir_rfc_kinematic_alias_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3CD.BETA_SHIFT_INTERFACE_ALIAS",
+      "FPDG.GSC3CD.SAME_PATCH_CLOCK_IDENTITY"
+    ],
+    "target": "FPDG.GSC3CD.RFE9_EXTRINSIC_CURVATURE_CROSSLINK",
+    "exact_alias": "beta_Theta=alpha*b_0; for Theta=t and x0=ct, beta_t=c*b_0"
+  },
+  "shared_atlas_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3CD.PRODUCT_TRIVIALIZATION",
+      "FPDG.GSC3CD.RFE25_PRODUCTION_SHARED_ATLAS"
+    ],
+    "target": "RFC.E25.SHARED_SPACETIME_ATLAS"
+  },
+  "event_route": {
+    "theorem_parent": "FPDG.GSC3CD.STATE_VERTEX_RELABELING_OBSTRUCTION",
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3CD.PRODUCTION_EVENT_COMPLEX",
+      "FPDG.GSC3CD.PRODUCTION_OCCURRENCE_STATE_TABLE",
+      "FPDG.GSC3CD.STATE_TO_TIR_SPATIAL_ANCHOR_BINDING",
+      "FPDG.GSC3CD.QUOTIENT_FIBRE_CONSTANCY"
+    ],
+    "target": "FPDG.GSC3CD.EVENT_PLACEMENT",
+    "source_information_reason": "independent Sym(S) x Sym(V) relabeling symmetry requires shared namespace or explicit source-owned binding in the nontrivial vertex sector"
+  },
+  "physical_event_spacetime_composition": {
+    "operator": "AND",
+    "requirements": ["RFC.E25.SHARED_SPACETIME_ATLAS", "FPDG.GSC3CD.EVENT_PLACEMENT"],
+    "target": "FPDG.GSC3CD.PHYSICAL_EVENT_ON_SHARED_SPACETIME"
+  },
+  "refinements_from_v0_1": {
+    "broad_beta_match_shift_source_binding_replaced_by": "SAME_PATCH_CLOCK_IDENTITY",
+    "state_vertex_binding_open_input_explained_by": "EXACT_RELABELING_OBSTRUCTION_THEOREM",
+    "product_route_separated_from_tir_rfc_kinematic_alias_route": true,
+    "event_route_separated_from_rfe25_atlas_route": true,
+    "flow_coverage_and_clock_properness_semantics": "OR"
+  },
+  "live_36d_audits": {
+    "state_vertex_binding": {
+      "authority": "CANDIDATE_ONLY",
+      "promotion_evidence": false,
+      "source_event_id": "gremlin:whisper:sha256:d5852c7bf1154c7107aee796d909a52bb03eba66066f88bbc6d54c2711db8087",
+      "terminal_receipt_sha256": "730819aab6a8cbf367f2c1ddb10fa23d99a2ed270aee8a7cc6a3bed2b66feb0e",
+      "phasenav_trace_sha256": "170c4d00626bc62ace45dd95e5ebfbf1b7cdb56b78349afcd7a9eb5745e742d8",
+      "shape": [6, 36]
+    },
+    "beta_shift_alias": {
+      "authority": "CANDIDATE_ONLY",
+      "promotion_evidence": false,
+      "source_event_id": "gremlin:whisper:sha256:d356165810d64a2fb24612fb4efb212890bad57429e049356a8459fd5308ab65",
+      "terminal_receipt_sha256": "3df281fa45df356a77b74186cfdf97d2d3f52e9114d8306cab12d002b78094b5",
+      "phasenav_trace_sha256": "385290ef2566c4140e0ad13e00ad4cac5e38c0e36686222c90c7504b023c6130",
+      "shape": [8, 36]
+    }
+  },
+  "firewalls": {
+    "gremlin_can_promote": false,
+    "terminal36d_can_promote": false,
+    "phasenav36d_can_promote": false,
+    "hosted_reference_pass_closes_production_inputs": false,
+    "candidate_edge_enters_canonical_graph": false,
+    "same_string_type_implies_shared_namespace": false,
+    "event_placement_is_rfe25_atlas_premise": false
+  },
+  "canon_mutations": []
+}
