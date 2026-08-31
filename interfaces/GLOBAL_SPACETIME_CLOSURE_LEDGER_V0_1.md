@@ -49,10 +49,13 @@ All six GSC coordinates now have a typed theorem, input contract, or executable 
 
 Repository: `AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations`.
 
-GSC-1 contract exact head:
-`5aaf572e9e931525f16bb0fa105afbb0d34c59c9`.
+Current source baseline:
+`main@62a13ba92f0db641d6d699a88059aedf33528300`.
 
-Hosted `TIR global spatial-complex input contract`, run #1, id `33343473631`: `SUCCESS`.
+GSC-1 exact feature head:
+`5cc9f1e1a33972cf89369a3b97716e04901324ba`.
+
+Hosted `TIR global spatial-complex input contract`, run #4, id `33346010181`: `SUCCESS`.
 
 A5 validated research head:
 `2568fb24e0bc91e8f1c75dcfdc5659a57ca382b9`, hosted run `33331003616`: `SUCCESS`.
@@ -66,12 +69,32 @@ State:
 
 Repository: `AdrianLipa90/Informational-Dynamics-of-Time`.
 
+Current source baseline:
+`main@f186aab6024a592be406684785069edfe2f3d5bf`.
+
+The earlier temporal research lines were reconciled on a clean stacked integration path:
+
+```text
+main f186aab...
+ -> seam API compatibility 855fbf75...
+ -> dependency-graph holonomy join 93a4e9d5...
+ -> GSC-2/GSC-3 exact integration 5a2ddc1c...
+```
+
+The intermediate holonomy-clean head `93a4e9d50241c396d7ef8842a7552cb8367c1634` passed the complete Reference suite #947, id `33349229812`: **1083/1083 PASS**.
+
+The final exact GSC-2/GSC-3 head is:
+`5a2ddc1cba572011a517657aca0174667cf1da08`.
+
+On that same exact head:
+
+- complete `Reference suite` #948, id `33349376505`: **1106/1106 PASS**;
+- `IDT 05I regular smooth clock extension` #4, id `33349376506`: `SUCCESS`;
+- `IDT 05J production event-complex input` #3, id `33349376515`: `SUCCESS`.
+
+No FPDG failure receipt was emitted by the exact-head full suite.
+
 ### 3.1 GSC-2 / 05J + 05H
-
-05J exact head:
-`44e2da0a7048df387f277f4e93e6970c445d4b67`.
-
-Hosted `IDT 05J production event-complex input`, run #1, id `33343481792`: `SUCCESS`.
 
 05J requires an explicit occurrence set, quotient
 
@@ -79,7 +102,7 @@ Hosted `IDT 05J production event-complex input`, run #1, id `33343481792`: `SUCC
 q:O\to E,
 \]
 
-event incidence, positive elapsed edges and provenance. 05H then certifies the exact clock condition
+event incidence, positive elapsed edges and provenance. 05H then certifies
 
 \[
 \vartheta=\delta t
@@ -90,20 +113,17 @@ event incidence, positive elapsed edges and provenance. 05H then certifies the e
 State:
 `INPUT_CONTRACT_PASS_WITH_PRODUCTION_EVENT_COMPLEX_OPEN_INPUT`.
 
+The contract/certifier integration is PASS. The actual production event incidence/quotient dataset remains OPEN.
+
 ### 3.2 GSC-3 / 05I + 05G
 
-05I exact hosted-PASS head:
-`fc87c4176dfcc480529ba28bd67042d3ebf02c72`.
-
-Dedicated run #2, id `33339841644`: `SUCCESS`.
-
-05I certifies a supplied regular clock witness
+05I certifies a supplied regular smooth-clock witness
 
 \[
 t_p(x)=a_p\cdot x+b_p,\qquad a_p\neq0,
 \]
 
-with overlap/cocycle and event-embedding compatibility. 05G then gives
+with chart-overlap/cocycle and event-embedding compatibility. 05G then gives
 
 \[
 \Theta_R=N_Rc\,dt,\qquad N_R>0,
@@ -116,7 +136,7 @@ with overlap/cocycle and event-embedding compatibility. 05G then gives
 State:
 `CERTIFIER_PASS_WITH_PRODUCTION_REGULAR_CLOCK_WITNESS_OPEN_INPUT`.
 
-The independent IDT repository-wide seam collection blocker remains tracked separately; it does not replace the dedicated 05I/05J hosted verdicts.
+The former seam collection blocker and dependency-graph drift were repaired on the stacked research line before the final GSC integration. They are no longer blockers for the exact-head GSC-2/GSC-3 validation.
 
 ## 4. RFC relativistic closure — GSC-4 / GSC-5 / GSC-6
 
@@ -141,13 +161,13 @@ G_{\mu\nu}+\Lambda g_{\mu\nu}
 RF-E25 exact head:
 `4d581ac8d03e637f65fdefa2b9326ffc1effe0e1`, reference suite #392 id `33337181002`: `SUCCESS`.
 
-RF-E25 checks the ADM coframe/coordinate overlap equation
+RF-E25 checks
 
 \[
 E_qJ_{q\leftarrow p}=\Lambda_{q\leftarrow p}E_p,
 \]
 
-Lorentz preservation, orientation/time orientation, connectedness and coordinate/frame cocycles.
+plus Lorentz preservation, orientation/time orientation, connectedness and coordinate/frame cocycles.
 
 State:
 `CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_OPEN_INPUT`.
@@ -162,20 +182,20 @@ Exact head:
 
 Hosted full `RFC reference suite` run #401, id `33341138133`: `SUCCESS`.
 
-RF-E26 defines on each patch
+RF-E26 defines
 
 \[
 \mathcal R_p=G_p+\Lambda g_p-\kappa_ET_p
 \]
 
-and checks the covariant overlap law
+and checks
 
 \[
 X_p=J^TX_qJ,
 \qquad X\in\{g,G,T,\mathcal R\}.
 \]
 
-If RF-E25 is certified, the patches cover the target domain, one common `Lambda` and `kappa_E` are used, and every local residual vanishes, locality/tensor gluing gives
+With certified RF-E25 input, target-domain coverage, common `Lambda` and `kappa_E`, and vanishing local residuals, locality/tensor gluing gives
 
 \[
 \boxed{G+\Lambda g=\kappa_ET}
@@ -185,8 +205,6 @@ globally on the supplied covered domain.
 
 State:
 `CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_AND_DOMAIN_COVERAGE_OPEN_INPUT`.
-
-The RF-E26 static source receipt still contains a pre-hosted `PENDING` field; the GitHub hosted run above is the later exact-head validation witness and is recorded separately rather than rewriting source authority here.
 
 ### 4.4 GSC-6 / RF-L8 global hyperbolicity
 
@@ -198,13 +216,13 @@ Exact head:
 
 Hosted full `RFC reference suite` run #402, id `33341545793`: `SUCCESS`.
 
-RF-L8 uses the ADM carrier
+RF-L8 uses
 
 \[
 g=-N^2dt^2+h_{ij}(dx^i+b^idt)(dx^j+b^jdt)
 \]
 
-and the Wick metric
+and
 
 \[
 W=dt^2+h_{ij}(dx^i+b^idt)(dx^j+b^jdt).
@@ -223,12 +241,10 @@ The exact causal estimate gives
 dt(v)\ge\|v\|_H
 \]
 
-for every future-directed causal vector. With a production completeness witness for `W` (equivalently the required complete metric witness), the typed completely-uniform-temporal theorem promotes global hyperbolicity/Cauchy foliation.
+for every future-directed causal vector. A production completeness witness for `W` supplies the remaining theorem hypothesis for global hyperbolicity/Cauchy foliation.
 
 State:
 `CERTIFIER_PASS_WITH_PRODUCTION_GLOBAL_LAPSE_BOUND_AND_WICK_COMPLETENESS_OPEN_INPUT`.
-
-The RF-L8 static source receipt likewise retains a pre-hosted `PENDING` field; hosted run #402 is the later validation witness.
 
 ## 5. Closed theorem/certifier/interface surfaces
 
@@ -241,6 +257,7 @@ The RF-L8 static source receipt likewise retains a pre-hosted `PENDING` field; h
 | IDT 05J production event-complex input contract | `PASS` |
 | IDT 05I regular smooth clock-extension certifier | `PASS` |
 | IDT positive-lapse Frobenius theorem/certifier | `PASS` |
+| IDT exact-head integrated reference suite | `1106/1106 PASS` |
 | RFC local Einstein field-equation form | `PASS_ON_DECLARED_SELECTION_RULES` |
 | RFC RF-E25 shared-spacetime atlas certifier | `PASS` |
 | RFC RF-E26 global Einstein-carrier gluing certifier | `PASS` |
@@ -282,7 +299,7 @@ production GSC-5 + production GSC-6
  -> GLOBAL_GR_CAUCHY_CARRIER
 ```
 
-The theorem/certifier layer of the global-relativity closure is now typed through GSC-6. The remaining closure is production realization/proof-carrying input, not an undefined mathematical interface.
+The theorem/certifier layer is typed through GSC-6. The remaining closure is production realization/proof-carrying input, not an undefined mathematical interface.
 
 ## 8. FPDG authority firewall
 
