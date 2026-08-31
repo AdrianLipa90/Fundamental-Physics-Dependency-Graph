@@ -1,0 +1,15 @@
+schema: FPDG_CROSS_REPO_INTERFACE_OVERLAY_V0_1
+overlay_id: RC_NUCLEON_INTERFACES_V0_1
+interfaces:
+  - interface_id: IFACE.TIR_TO_RC.ENDOGENOUS_NUCLEON
+    upstream_repository: TIR
+    downstream_repository: RC
+    upstream_claim: TIR.STANDARD_MODEL
+    downstream_claim: RC.NUCLEON_BOUNDARY
+    contract:
+      status: CANDIDATE_ONLY
+      relation: fundamental Standard-Model surface -> endogenous proton/neutron packet
+      promotion_required: true
+      promotion_gate: ENDOGENOUS_NUCLEON_PACKET_DERIVATION_AND_VALIDATION
+      canon_authority: false
+      revalidation_propagates: false

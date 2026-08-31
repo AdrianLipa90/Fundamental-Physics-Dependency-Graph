@@ -1,0 +1,21 @@
+schema: FPDG_CANONICAL_FEDERATION_OVERLAY_V0_1
+overlay_id: RC_NUCLEON_FEDERATION_V0_1
+status: ACTIVE_FEDERATION_EXTENSION
+nodes:
+  - claim_id: RC.NUCLEON_BOUNDARY
+    repository: RC
+    status: SOURCE_BOUND_EFFECTIVE_INPUT_CONTRACT
+    source: THEORY/01_NUCLEON_BOUNDARY_V0_1.md
+  - claim_id: RC.ATOM_FORMALISM
+    repository: RC
+    status: CANDIDATE_FOUNDATION
+    source: THEORY/02_ATOM_FORMALISM.md
+edges:
+  - from: RC.NUCLEON_BOUNDARY
+    to: RC.ATOM_FORMALISM
+    authority: CANONICAL_FRONTIER
+  - from: TIR.STANDARD_MODEL
+    to: RC.NUCLEON_BOUNDARY
+    authority: CANDIDATE_ONLY
+    promotion_required: true
+    promotion_gate: ENDOGENOUS_NUCLEON_PACKET_DERIVATION_AND_VALIDATION

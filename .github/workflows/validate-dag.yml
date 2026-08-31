@@ -17,7 +17,7 @@ jobs:
           python-version: '3.12'
       - name: Install validator dependencies
         run: python -m pip install --disable-pip-version-check pyyaml pytest
-      - name: Validate canonical DAG
+      - name: Validate effective canonical DAG
         run: python tools/validate_dag.py
       - name: Validate dependency export schema JSON
         run: python -m json.tool schemas/dependency_export.schema.json > /dev/null
@@ -43,5 +43,5 @@ jobs:
         run: python -m pytest -q tests
       - name: Audit direct source nerve-ending coverage
         run: python tools/audit_validation_coverage.py
-      - name: Validate four-source dependency export roundtrip
+      - name: Validate registry-driven dependency export roundtrip
         run: python tools/export_roundtrip.py
