@@ -1,0 +1,102 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_5",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_VALIDATED_CANDIDATE_FEDERATION",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "supersedes_candidate": "interfaces/GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_4.json",
+  "surfaces": {
+    "gsc1_gsc2": "interfaces/GSC_INPUT_CONTRACTS_V0_1.md",
+    "gsc3": "interfaces/GSC3_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_V0_3.json",
+    "gsc4": "interfaces/GSC4_SOURCE_ASSEMBLED_ATLAS_CANDIDATE_V0_3.json"
+  },
+  "new_reduction": {
+    "source": "RFC GSC4C PR #107",
+    "statement": "on the admitted A5 vertex-star route, patch coverage and pair/triple overlap incidence are deterministic downward-closure outputs of the GSC1 tetrahedral facet list",
+    "independent_gsc4_overlap_coverage_input": false,
+    "retained_numeric_geometry_inputs": true
+  },
+  "global_routes": {
+    "spatial_topology_to_atlas_cover": {
+      "operator": "AND",
+      "requirements": ["GSC1_PRODUCTION_TETRAHEDRAL_FACET_LIST", "TIR.SPACE.GLOBAL_3MANIFOLD_A5"],
+      "target": "FPDG.GSC4.VERTEX_STAR_COVERAGE"
+    },
+    "gsc4_atlas": {
+      "operator": "OR",
+      "alternatives": [
+        "FPDG.GSC4.GENERAL_SOURCE_ASSEMBLED_RF_E25_PACKET",
+        "FPDG.GSC4.FLOW_ADAPTED_SOURCE_ASSEMBLED_RF_E25_PACKET"
+      ],
+      "target": "RFC.E25.SHARED_SPACETIME_ATLAS"
+    },
+    "physical_event_on_atlas": {
+      "operator": "AND",
+      "requirements": ["RFC.E25.SHARED_SPACETIME_ATLAS", "FPDG.GSC3.EVENT_PLACEMENT"],
+      "target": "FPDG.GSC3.PHYSICAL_EVENT_ON_SHARED_SPACETIME"
+    },
+    "global_einstein": {
+      "requirements": ["GSC5_PRODUCTION_GLOBAL_EINSTEIN_CARRIER", "GSC5_DOMAIN_COVERAGE"],
+      "target": "GSC5_GLOBAL_EINSTEIN_SYSTEM"
+    },
+    "global_cauchy": {
+      "requirements": ["GSC6_GLOBAL_FINITE_LAPSE_BOUND", "GSC6_COMPLETE_ADM_WICK_METRIC"],
+      "target": "GSC6_GLOBAL_CAUCHY_HYPERBOLICITY"
+    }
+  },
+  "open_frontier": {
+    "GSC1": ["PRODUCTION_GLOBAL_TETRAHEDRAL_FACET_LIST"],
+    "GSC2": ["PRODUCTION_EVENT_COMPLEX_WITH_EXACT_ELAPSED_EDGES"],
+    "GSC3": [
+      "FLOW_COVERAGE_OR_CLOCK_PROPERNESS_FOR_PRODUCT_ROUTE",
+      "PATCH_CLOCK_PROVENANCE",
+      "SHARED_MATCHING_ONE_FORM_W0_BINDING_WHEN_TIR_MATCHING_FIELD_IS_IMPORTED",
+      "PRODUCTION_OCCURRENCE_STATE_TABLE",
+      "STATE_TO_TIR_SPATIAL_ANCHOR_BINDING"
+    ],
+    "GSC4": [
+      "TIR_SPATIAL_COFRAME_VALUES",
+      "TIR_SPATIAL_OVERLAP_GEOMETRY_VALUES_A_R",
+      "IDT_SHARED_CLOCK_LAPSE_AND_CALIBRATION",
+      "GENERAL_ROUTE_RFC_SHIFT_DRIFT_OR_FLOW_ROUTE_PRODUCT_TRIVIALIZATION"
+    ],
+    "GSC5": ["PRODUCTION_GLOBAL_EINSTEIN_CARRIER", "DOMAIN_COVERAGE"],
+    "GSC6": ["GLOBAL_FINITE_LAPSE_BOUND", "COMPLETE_ADM_WICK_METRIC"]
+  },
+  "derived_or_eliminated_from_frontier": [
+    "LOCAL_SPACETIME_DIMENSION_4",
+    "PREMETRIC_TEMPORAL_SPATIAL_TRANSVERSALITY",
+    "FULL_4D_JACOBIAN_AS_INDEPENDENT_INPUT",
+    "LORENTZ_TRANSITION_AS_INDEPENDENT_INPUT",
+    "METRIC_PULLBACK_AS_INDEPENDENT_INPUT",
+    "GSC4_OVERLAP_COVERAGE_AS_INDEPENDENT_INPUT_ON_VERTEX_STAR_ROUTE",
+    "GSC4_PAIR_TRIPLE_OVERLAP_INCIDENCE_AS_INDEPENDENT_INPUT_ON_VERTEX_STAR_ROUTE",
+    "GSC4_MATCHING_SHIFT_DRIFT_AS_INDEPENDENT_INPUT_ON_FLOW_ADAPTED_ROUTE"
+  ],
+  "live_36d_audits": {
+    "two_route_gsc4": {
+      "source_event_id": "gremlin:whisper:sha256:87d5d286d582e254ff2ba3677b96ef1fe42910a380afd15427020608896a597b",
+      "terminal_receipt_sha256": "fe27785bf20259bda7021f8990b2702e2863542d3fe8f1ec090e724d8d81f33e",
+      "phasenav_trace_sha256": "3a8d29f0276263497e39e454e90584a0c9f57537c7ef2a32fb8a9220ed7037f8",
+      "shape": [13, 36]
+    },
+    "gsc4c_coverage": {
+      "source_event_id": "gremlin:whisper:sha256:a7f98770730f459dbff8ec132bb53a02e0fb05c1b2845da98e533f48c257e2a0",
+      "terminal_receipt_sha256": "b92e7a1451d2e5fd5eda8b88fff938734caba5f93cf3e840a167ba0f5f1028f1",
+      "phasenav_trace_sha256": "61e8148963c95b007287dddc75b2da5bf1b69b44f28f4b76bf7de71a2fea6452",
+      "shape": [14, 36]
+    },
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false
+  },
+  "firewalls": {
+    "gremlin_can_promote": false,
+    "terminal36d_can_promote": false,
+    "phasenav36d_can_promote": false,
+    "hosted_pass_closes_production_input": false,
+    "a5_facet_incidence_determines_numeric_coframe_geometry": false,
+    "event_clock_exactness_determines_lapse_ratio": false,
+    "candidate_edge_enters_canonical_graph": false
+  },
+  "canon_mutations": []
+}
