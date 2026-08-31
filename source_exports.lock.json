@@ -1,6 +1,6 @@
 {
   "schema": "FPDG_SOURCE_EXPORT_LOCK_V0_3",
-  "generated_at": "2026-08-31T20:21:00+01:00",
+  "generated_at": "2026-08-31T20:40:10+01:00",
   "sources": {
     "TIR": {
       "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
@@ -32,11 +32,11 @@
     },
     "RC": {
       "repository": "AdrianLipa90/Resonant-Chemistry",
-      "export_commit": "96f98d274355b04ea594fd5307665aa235998683",
-      "source_commit": "9e7960b2076498787354336bad0da05c20525a9b",
+      "export_commit": "71d7e75f2ae9c050b0e7d57fcafd715a0c11a719",
+      "source_commit": "48414e0e76777d82974dd12d581b5d9598f80c27",
       "repository_head": "6a9f21678ba4f07e5bdbb1a98a0cafe5c4838697",
       "path": "DEPENDENCY_EXPORT.json",
-      "integration_state": "SOURCE_PR_PENDING"
+      "integration_state": "SOURCE_PR_20_DRAFT"
     }
   },
   "authority": {

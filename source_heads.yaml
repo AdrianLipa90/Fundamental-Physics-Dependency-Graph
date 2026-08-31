@@ -1,5 +1,5 @@
 schema: FPDG_SOURCE_HEADS_V0_2
-captured_at: '2026-08-31T20:21:00+01:00'
+captured_at: '2026-08-31T20:40:10+01:00'
 sources:
   TIR:
     repository: AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations
@@ -19,5 +19,5 @@ sources:
     note: scientific source state represented by locked dependency export
   RC:
     repository: AdrianLipa90/Resonant-Chemistry
-    commit: 9e7960b2076498787354336bad0da05c20525a9b
-    note: source-owned nucleon-boundary scientific state on pending integration branch
+    commit: 48414e0e76777d82974dd12d581b5d9598f80c27
+    note: source-owned nucleon-boundary scientific state on draft PR 20
