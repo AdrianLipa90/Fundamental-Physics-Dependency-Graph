@@ -1,0 +1,99 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_14",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_VALIDATED_CANDIDATE_REFINEMENT",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "base_candidate": "interfaces/GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_13.json",
+  "source_validation": {
+    "repository": "AdrianLipa90/Relational-Field-Closure",
+    "rfc_pr": 118,
+    "stacked_parent_pr": 111,
+    "validated_theorem_head": "10f086327fb29452dfe54df2b900d35a3f11ee9e",
+    "receipt_head": "3a7e48caa09de4a5bf7df81b555402fef0bc5b4b",
+    "theorem_reference_suite_run": 483,
+    "theorem_reference_suite_run_id": 33357081500,
+    "theorem_pytest": "1362 passed in 15.54s",
+    "receipt_head_reference_suite_run": 484,
+    "receipt_head_reference_suite_run_id": 33357138294,
+    "conclusion": "success"
+  },
+  "refinement": {
+    "id": "FPDG.GSC5B.CANONICAL_ATLAS_DOMAIN_COVERAGE_REDUCTION",
+    "status": "HOSTED_PASS_CANDIDATE_REDUCTION",
+    "premises": [
+      "GSC1_PRODUCTION_FINITE_A5_SPATIAL_CARRIER",
+      "GSC4C_CANONICAL_VERTEX_STAR_COVER",
+      "GSC3_PRODUCTION_GLOBAL_PRODUCT_M_EQUALS_I_TIMES_SIGMA",
+      "RFC_E25_GSC4_PRODUCTION_ATLAS_PATCH_SET",
+      "W6_RF_E24_CERTIFIED_LOCAL_SOLUTION_RECEIPTS",
+      "PATCH_ID_SET_EQUALITY_P_SOL_EQUALS_P_ATLAS",
+      "TARGET_DOMAIN_ID_EQUALS_ATLAS_DOMAIN_ID"
+    ],
+    "exact_derivations": [
+      "SIGMA_EQUALS_UNION_OF_OPEN_VERTEX_STARS",
+      "M_EQUALS_UNION_OVER_V_OF_I_TIMES_OPEN_STAR_V",
+      "P_SOL_EQUALS_P_ATLAS_IMPLIES_ONE_CERTIFIED_RF_E24_SOLUTION_PER_ATLAS_PATCH",
+      "TARGET_EQUALS_ATLAS_DOMAIN_PLUS_CANONICAL_COVER_PLUS_PATCH_COMPLETENESS_IMPLIES_W7_TARGET_DOMAIN_COVERAGE"
+    ],
+    "derived_coordinate_removed_from_independent_frontier": "W7_TARGET_DOMAIN_COVERAGE_ON_CANONICAL_ATLAS_DOMAIN_ROUTE"
+  },
+  "gsc5_routes": {
+    "canonical_atlas_domain_route": {
+      "operator": "AND",
+      "requirements": [
+        "GSC4C_CANONICAL_ATLAS_COVERAGE_CERTIFIED",
+        "GSC3_PRODUCTION_GLOBAL_PRODUCT_REALIZATION",
+        "W6_RF_E24_LOCAL_SOLUTION_RECEIPTS_ON_EXACT_ATLAS_PATCH_SET",
+        "TARGET_DOMAIN_ID_EQUALS_ATLAS_DOMAIN_ID",
+        "RFC_GSC5A_NATURAL_EINSTEIN_GLOBALIZATION"
+      ],
+      "derived": [
+        "W7_TARGET_DOMAIN_COVERAGE",
+        "RF_E26_GSC5_PRODUCTION_GLOBAL_EINSTEIN_CARRIER_ON_DECLARED_ATLAS_DOMAIN"
+      ]
+    },
+    "broader_target_domain_route": {
+      "operator": "AND",
+      "requirements": [
+        "RFC_GSC5A_NATURAL_EINSTEIN_GLOBALIZATION",
+        "EXPLICIT_BROADER_TARGET_DOMAIN_COVERAGE_RECEIPT"
+      ],
+      "meaning": "W7 remains an independent extension coordinate when the requested target domain differs from or exceeds the production atlas domain."
+    }
+  },
+  "frontier_update": {
+    "independent_witness_groups_before": 7,
+    "independent_witness_groups_after_on_current_route": 6,
+    "removed_independent_group_on_current_route": "W7_TARGET_DOMAIN_COVERAGE",
+    "W6_patchwise_RF_E24_solution_receipts": "OPEN_PRODUCTION_PARENT",
+    "canonical_atlas_product_parents": "OPEN_PRODUCTION_PARENTS",
+    "broader_or_different_target_domain_coverage": "OPEN_SEPARATE_EXTENSION_INPUT"
+  },
+  "falsification_controls": [
+    "MISSING_ONE_ATLAS_PATCH_RF_E24_RECEIPT_KEEPS_W7_OPEN",
+    "FOREIGN_OR_EXTRA_SOLUTION_PATCH_ID_KEEPS_CANONICAL_LINEAGE_ROUTE_OPEN",
+    "TARGET_DOMAIN_ID_DIFFERENT_FROM_ATLAS_DOMAIN_ID_KEEPS_W7_OPEN",
+    "UNCERTIFIED_CANONICAL_ATLAS_COVERAGE_PARENT_KEEPS_W7_OPEN",
+    "REFERENCE_PATCH_SET_EQUALITY_CANNOT_PROMOTE_PRODUCTION_COVERAGE"
+  ],
+  "live_36d_audit": {
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "source_event_id": "gremlin:whisper:sha256:78e3570f66e8fc8126e868ec03be3061b97c338db68489af3c1bd4d2a01a6e51",
+    "fused_event_id": "gremlin:whisper:sha256:6201474817d0304fc2d11acda1e45f4caa1ed2740a2975f0a1950aa9a676a403",
+    "terminal_receipt_sha256": "94f699460c2e9097aba74f895ab56da17590c284f9a4e5f0f92da0129e16fe9a",
+    "phasenav_trace_sha256": "7b50dd0ba74583ee81926019d5e7f90e1579993f0923bb245139fc358be3610f",
+    "shape": [7, 36]
+  },
+  "firewalls": {
+    "gsc5b_closes_W6_production_receipts": false,
+    "gsc5b_closes_GSC1_GSC3_GSC4_production_parents": false,
+    "gsc5b_removes_W7_for_broader_target_domains": false,
+    "patch_count_equality_is_sufficient_without_patch_id_equality": false,
+    "runtime_audit_can_promote": false,
+    "candidate_edge_enters_canonical_graph": false
+  },
+  "canon_mutations": []
+}
