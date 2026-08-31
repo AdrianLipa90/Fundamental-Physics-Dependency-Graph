@@ -11,6 +11,7 @@ SCHEMA = "FPDG_GLOBAL_SPACETIME_PRODUCTION_WITNESS_V0_1"
 TARGET_GR = "GLOBAL_GR_CAUCHY_CARRIER"
 TARGET_EVENT = "PHYSICAL_EVENT_REALIZATION_ON_GLOBAL_GR_CAUCHY_CARRIER"
 FLOW_ROUTE = "FLOW_ADAPTED_COMPACT_FIBER"
+CANONICAL_ATLAS_ROUTE = "FLOW_ADAPTED_CANONICAL_ATLAS_DOMAIN"
 GENERAL_ROUTE = "GENERAL_MATCHING_COMPACT_FIBER"
 
 GR_GROUPS = (
@@ -22,6 +23,7 @@ GR_GROUPS = (
     "W6_RF_E24_PATCHWISE_LOCAL_SOLUTIONS",
     "W7_TARGET_DOMAIN_COVERAGE",
 )
+GR_GROUPS_CANONICAL_ATLAS = GR_GROUPS[:-1]
 EVENT_GROUPS = (
     "E1_GSC2_TEMPORAL_EVENT_COMPLEX",
     "E2_EVENT_SPATIAL_ANCHOR_BINDING",
@@ -31,10 +33,6 @@ GENERAL_ROUTE_GROUPS = ("M1_SHARED_MATCHING_ONE_FORM_W0",)
 PRODUCT_PROVENANCE_FLOW = "FLOW_COVERAGE"
 PRODUCT_PROVENANCE_INDEPENDENT = "INDEPENDENT_SOURCE_RECEIPT"
 PRODUCT_PROVENANCE_CLOCK = "CLOCK_PROPERNESS"
-PRODUCT_PROVENANCE_ALLOWED = {
-    PRODUCT_PROVENANCE_FLOW,
-    PRODUCT_PROVENANCE_INDEPENDENT,
-}
 
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
@@ -73,16 +71,6 @@ def _validate_receipt(group_id: str, witness: dict[str, Any], conflicts: list[st
 
 
 def _validate_product_provenance(witness: Any, conflicts: list[str]) -> None:
-    """Enforce the GSC6C product-lineage firewall on W2.
-
-    GSC3 admits both FLOW_COVERAGE and CLOCK_PROPERNESS as sufficient product
-    routes. The compact-fiber GSC6C route derives properness from the product, so
-    a W2 production witness used by this certifier must have ancestry independent
-    of proper-clock promotion. FLOW_COVERAGE is intrinsically admissible. An
-    INDEPENDENT_SOURCE_RECEIPT is admissible only with an explicit
-    no_proper_clock_ancestry=True lineage bit.
-    """
-
     group_id = "W2_GSC3A_GLOBAL_PRODUCT_CLOCK"
     if not _certified(witness):
         return
@@ -104,6 +92,73 @@ def _validate_product_provenance(witness: Any, conflicts: list[str]) -> None:
         return
 
     conflicts.append(f"{group_id}:UNSUPPORTED_PRODUCT_PROVENANCE:{tag}")
+
+
+def _id_set(value: Any, label: str, conflicts: list[str]) -> set[str] | None:
+    if not isinstance(value, list) or not value:
+        conflicts.append(f"{label}:MISSING_OR_INVALID_PATCH_ID_LIST")
+        return None
+    out: list[str] = []
+    for raw in value:
+        if not isinstance(raw, str) or not raw.strip():
+            conflicts.append(f"{label}:INVALID_PATCH_ID")
+            return None
+        out.append(raw.strip())
+    if len(set(out)) != len(out):
+        conflicts.append(f"{label}:DUPLICATE_PATCH_ID")
+        return None
+    return set(out)
+
+
+def _validate_canonical_atlas_domain_coverage(
+    witnesses: dict[str, Any], conflicts: list[str]
+) -> bool:
+    """Derive W7 from W2 canonical-atlas lineage and W6 patch completeness."""
+
+    w2 = witnesses.get("W2_GSC3A_GLOBAL_PRODUCT_CLOCK")
+    w6 = witnesses.get("W6_RF_E24_PATCHWISE_LOCAL_SOLUTIONS")
+    if not (_certified(w2) and _certified(w6)):
+        return False
+
+    if _lineage(w2, "canonical_atlas_coverage_certified") is not True:
+        conflicts.append("W2_GSC3A_GLOBAL_PRODUCT_CLOCK:CANONICAL_ATLAS_COVERAGE_NOT_CERTIFIED")
+        return False
+
+    atlas_ids = _id_set(
+        _lineage(w2, "atlas_patch_ids"),
+        "W2_GSC3A_GLOBAL_PRODUCT_CLOCK",
+        conflicts,
+    )
+    solution_ids = _id_set(
+        _lineage(w6, "solution_patch_ids"),
+        "W6_RF_E24_PATCHWISE_LOCAL_SOLUTIONS",
+        conflicts,
+    )
+    if atlas_ids is None or solution_ids is None:
+        return False
+
+    if atlas_ids != solution_ids:
+        missing = sorted(atlas_ids - solution_ids)
+        extra = sorted(solution_ids - atlas_ids)
+        conflicts.append(
+            "GSC5B_PATCH_COMPLETENESS_MISMATCH:"
+            f"missing={missing},extra={extra}"
+        )
+        return False
+
+    atlas_domain = _lineage(w2, "atlas_domain_id")
+    target_domain = _lineage(w6, "domain_id")
+    if not isinstance(atlas_domain, str) or not atlas_domain.strip():
+        conflicts.append("W2_GSC3A_GLOBAL_PRODUCT_CLOCK:MISSING_ATLAS_DOMAIN_ID")
+        return False
+    if target_domain != atlas_domain:
+        conflicts.append(
+            "GSC5B_TARGET_ATLAS_DOMAIN_CONFLICT:"
+            f"target={target_domain},atlas={atlas_domain}"
+        )
+        return False
+
+    return True
 
 
 def _require_equal(
@@ -134,6 +189,7 @@ def certify_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
     missing: list[str] = []
     conflicts: list[str] = []
     quarantined: list[str] = []
+    derived_witnesses: list[str] = []
 
     if manifest.get("schema") != SCHEMA:
         conflicts.append("INVALID_SCHEMA")
@@ -143,7 +199,7 @@ def certify_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
         conflicts.append("INVALID_TARGET")
 
     route = manifest.get("route")
-    if route not in {FLOW_ROUTE, GENERAL_ROUTE}:
+    if route not in {FLOW_ROUTE, CANONICAL_ATLAS_ROUTE, GENERAL_ROUTE}:
         conflicts.append("INVALID_ROUTE")
 
     witnesses = manifest.get("witnesses")
@@ -151,7 +207,9 @@ def certify_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
         witnesses = {}
         conflicts.append("WITNESSES_NOT_OBJECT")
 
-    required = list(GR_GROUPS)
+    required = list(
+        GR_GROUPS_CANONICAL_ATLAS if route == CANONICAL_ATLAS_ROUTE else GR_GROUPS
+    )
     if target == TARGET_EVENT:
         required.extend(EVENT_GROUPS)
     if route == GENERAL_ROUTE:
@@ -174,12 +232,12 @@ def certify_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
             continue
         _validate_receipt(group_id, witness, conflicts)
 
-    # W2 is the product witness consumed by the compact-fiber GSC6C route.
-    # Its ancestry must be independent of the proper-clock coordinate derived
-    # downstream, otherwise the manifest would contain a dependency cycle.
     _validate_product_provenance(witnesses.get("W2_GSC3A_GLOBAL_PRODUCT_CLOCK"), conflicts)
 
-    # Shared clock lineage across product clock, scale field and lapse.
+    if route == CANONICAL_ATLAS_ROUTE:
+        if _validate_canonical_atlas_domain_coverage(witnesses, conflicts):
+            derived_witnesses.append("W7_TARGET_DOMAIN_COVERAGE")
+
     _require_equal(
         witnesses,
         [
@@ -191,7 +249,6 @@ def certify_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
         conflicts,
     )
 
-    # Shared spatial carrier across topology, product, numeric geometry and scale field.
     _require_equal(
         witnesses,
         [
@@ -204,27 +261,24 @@ def certify_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
         conflicts,
     )
 
-    # Cover identity is shared between topology and numeric overlap geometry.
-    _require_equal(
-        witnesses,
-        [
-            ("W1_GSC1_SPATIAL_TOPOLOGY", "cover_id"),
-            ("W3_GSC4_NUMERIC_SPATIAL_GEOMETRY", "cover_id"),
-        ],
-        "COVER_ID_CONFLICT",
-        conflicts,
-    )
+    cover_refs = [
+        ("W1_GSC1_SPATIAL_TOPOLOGY", "cover_id"),
+        ("W3_GSC4_NUMERIC_SPATIAL_GEOMETRY", "cover_id"),
+    ]
+    if route == CANONICAL_ATLAS_ROUTE:
+        cover_refs.append(("W2_GSC3A_GLOBAL_PRODUCT_CLOCK", "cover_id"))
+    _require_equal(witnesses, cover_refs, "COVER_ID_CONFLICT", conflicts)
 
-    # Domain identity is shared by patchwise RF-E24 receipts and the coverage receipt.
-    _require_equal(
-        witnesses,
-        [
-            ("W6_RF_E24_PATCHWISE_LOCAL_SOLUTIONS", "domain_id"),
-            ("W7_TARGET_DOMAIN_COVERAGE", "domain_id"),
-        ],
-        "DOMAIN_ID_CONFLICT",
-        conflicts,
-    )
+    if route != CANONICAL_ATLAS_ROUTE:
+        _require_equal(
+            witnesses,
+            [
+                ("W6_RF_E24_PATCHWISE_LOCAL_SOLUTIONS", "domain_id"),
+                ("W7_TARGET_DOMAIN_COVERAGE", "domain_id"),
+            ],
+            "DOMAIN_ID_CONFLICT",
+            conflicts,
+        )
 
     if target == TARGET_EVENT:
         _require_equal(
@@ -292,6 +346,7 @@ def certify_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
         "target": target,
         "route": route,
         "required_groups": required,
+        "derived_witnesses": sorted(derived_witnesses),
         "missing_witnesses": sorted(set(missing)),
         "quarantined_witnesses": sorted(set(quarantined)),
         "lineage_conflicts": sorted(set(conflicts)),
