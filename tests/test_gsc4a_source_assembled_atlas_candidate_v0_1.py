@@ -24,9 +24,10 @@ def test_candidate_is_noncanonical_and_fail_closed():
 def test_source_theorem_has_hosted_success():
     data = load_candidate()
     source = data["source_validation"]
-    assert source["rfc_pr"] == 105
+    assert source["pull_request"] == 105
     assert source["reference_suite_run"] == 433
     assert source["conclusion"] == "success"
+    assert source["repository"] == "AdrianLipa90/Relational-Field-Closure"
 
 
 def test_full_rfe25_transition_fields_are_derived_on_source_assembled_class():
