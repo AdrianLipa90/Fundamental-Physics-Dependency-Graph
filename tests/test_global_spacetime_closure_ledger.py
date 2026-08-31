@@ -25,11 +25,11 @@ class GlobalSpacetimeClosureLedgerTests(unittest.TestCase):
     def test_exact_input_contract_heads(self):
         self.assertEqual(
             self.payload["sources"]["TIR"]["exact_head"],
-            "5aaf572e9e931525f16bb0fa105afbb0d34c59c9",
+            "5cc9f1e1a33972cf89369a3b97716e04901324ba",
         )
         self.assertEqual(
             self.payload["sources"]["IDT"]["exact_head"],
-            "44e2da0a7048df387f277f4e93e6970c445d4b67",
+            "5a2ddc1cba572011a517657aca0174667cf1da08",
         )
         self.assertEqual(
             self.payload["sources"]["RFC"]["research_stack_head"],
@@ -39,12 +39,15 @@ class GlobalSpacetimeClosureLedgerTests(unittest.TestCase):
     def test_hosted_certifier_workflows_are_success(self):
         tir = self.payload["sources"]["TIR"]["gates"]
         self.assertEqual(tir["A5"]["conclusion"], "SUCCESS")
+        self.assertEqual(tir["GSC-1_INPUT"]["workflow"]["run_id"], 33346010181)
         self.assertEqual(tir["GSC-1_INPUT"]["workflow"]["conclusion"], "SUCCESS")
 
         idt = self.payload["sources"]["IDT"]["gates"]
         self.assertEqual(idt["05G"]["conclusion"], "SUCCESS")
         self.assertEqual(idt["05H"]["conclusion"], "SUCCESS")
+        self.assertEqual(idt["05I"]["workflow"]["run_id"], 33349376506)
         self.assertEqual(idt["05I"]["workflow"]["conclusion"], "SUCCESS")
+        self.assertEqual(idt["05J"]["workflow"]["run_id"], 33349376515)
         self.assertEqual(idt["05J"]["workflow"]["conclusion"], "SUCCESS")
 
         rfc = self.payload["sources"]["RFC"]["gates"]
@@ -66,13 +69,20 @@ class GlobalSpacetimeClosureLedgerTests(unittest.TestCase):
             "PENDING_STALE_RELATIVE_TO_HOSTED_RUN",
         )
 
-    def test_idt_full_suite_blocker_is_kept_separate(self):
-        blocker = self.payload["sources"]["IDT"]["full_reference_suite_blocker"]
-        self.assertEqual(blocker["class"], "PRE_EXISTING_SEAM_COLLECTION_IMPORT")
-        self.assertEqual(blocker["symbol"], "onsager_dissipation")
-        self.assertEqual(blocker["affected_test_count"], 3)
-        self.assertTrue(blocker["independent_of_05J_gate"])
-        self.assertTrue(blocker["independent_of_05I_gate"])
+    def test_idt_current_integration_is_full_suite_green(self):
+        idt = self.payload["sources"]["IDT"]
+        self.assertFalse(idt["parallel_research_heads"])
+        base_suite = idt["integration_stack"]["base_reference_suite"]
+        self.assertEqual(base_suite["run_id"], 33349229812)
+        self.assertEqual(base_suite["passed"], 1083)
+        self.assertEqual(base_suite["failed"], 0)
+        self.assertEqual(base_suite["conclusion"], "SUCCESS")
+
+        final_suite = idt["integration_stack"]["exact_head_reference_suite"]
+        self.assertEqual(final_suite["run_id"], 33349376505)
+        self.assertEqual(final_suite["passed"], 1106)
+        self.assertEqual(final_suite["failed"], 0)
+        self.assertEqual(final_suite["conclusion"], "SUCCESS")
 
     def test_global_frontier_has_six_typed_certifier_coordinates(self):
         rows = self.payload["global_frontier"]
@@ -125,6 +135,7 @@ class GlobalSpacetimeClosureLedgerTests(unittest.TestCase):
             "CERTIFIER_PASS_WITH_PRODUCTION_SHARED_ATLAS_AND_DOMAIN_COVERAGE_OPEN_INPUT",
             "CERTIFIER_PASS_WITH_PRODUCTION_GLOBAL_LAPSE_BOUND_AND_WICK_COMPLETENESS_OPEN_INPUT",
             "GLOBAL_GR_CAUCHY_CARRIER",
+            "1106/1106",
         ):
             self.assertIn(token, self.ledger)
 
