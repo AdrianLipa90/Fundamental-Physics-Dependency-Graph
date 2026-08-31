@@ -1,0 +1,116 @@
+{
+  "schema": "FPDG_GLOBAL_GR_PRODUCTION_WITNESS_BUNDLE_V0_1",
+  "bundle_id": "REFERENCE_CONTROL_GLOBAL_GR_BUNDLE_V0_1",
+  "production": false,
+  "evidence_class": "REFERENCE_CONTROL",
+  "lineage_id": "reference-lineage-global-gr-v0.1",
+  "target_domain_id": "reference-domain-M0",
+  "gates": {
+    "GSC-1": {
+      "source_repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+      "source_commit": "1111111111111111111111111111111111111111",
+      "receipt_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "lineage_id": "reference-lineage-global-gr-v0.1",
+      "target_domain_id": "reference-domain-M0",
+      "production": false,
+      "evidence_class": "REFERENCE_CONTROL",
+      "required_verdict": "PASS_PRODUCTION_3_MANIFOLD",
+      "observed_verdict": "REFERENCE_CONTROL_PASS"
+    },
+    "GSC-2": {
+      "source_repository": "AdrianLipa90/Informational-Dynamics-of-Time",
+      "source_commit": "2222222222222222222222222222222222222222",
+      "receipt_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "lineage_id": "reference-lineage-global-gr-v0.1",
+      "target_domain_id": "reference-domain-M0",
+      "production": false,
+      "evidence_class": "REFERENCE_CONTROL",
+      "required_verdict": "PASS_PRODUCTION_EXACT_EVENT_CLOCK",
+      "observed_verdict": "REFERENCE_CONTROL_PASS"
+    },
+    "GSC-3": {
+      "source_repository": "AdrianLipa90/Informational-Dynamics-of-Time",
+      "source_commit": "3333333333333333333333333333333333333333",
+      "receipt_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "lineage_id": "reference-lineage-global-gr-v0.1",
+      "target_domain_id": "reference-domain-M0",
+      "production": false,
+      "evidence_class": "REFERENCE_CONTROL",
+      "required_verdict": "PASS_REGULAR_CLOCK_EXTENSION",
+      "observed_verdict": "REFERENCE_CONTROL_PASS"
+    },
+    "GSC-4": {
+      "source_repository": "AdrianLipa90/Relational-Field-Closure",
+      "source_commit": "4444444444444444444444444444444444444444",
+      "receipt_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "lineage_id": "reference-lineage-global-gr-v0.1",
+      "target_domain_id": "reference-domain-M0",
+      "production": false,
+      "evidence_class": "REFERENCE_CONTROL",
+      "required_verdict": "PASS_SHARED_SPACETIME_REALIZATION",
+      "observed_verdict": "REFERENCE_CONTROL_PASS"
+    },
+    "GSC-5": {
+      "source_repository": "AdrianLipa90/Relational-Field-Closure",
+      "source_commit": "5555555555555555555555555555555555555555",
+      "receipt_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+      "lineage_id": "reference-lineage-global-gr-v0.1",
+      "target_domain_id": "reference-domain-M0",
+      "production": false,
+      "evidence_class": "REFERENCE_CONTROL",
+      "required_verdict": "PASS_GLOBAL_EINSTEIN_REALIZATION",
+      "observed_verdict": "REFERENCE_CONTROL_PASS"
+    },
+    "GSC-6": {
+      "source_repository": "AdrianLipa90/Relational-Field-Closure",
+      "source_commit": "6666666666666666666666666666666666666666",
+      "receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+      "lineage_id": "reference-lineage-global-gr-v0.1",
+      "target_domain_id": "reference-domain-M0",
+      "production": false,
+      "evidence_class": "REFERENCE_CONTROL",
+      "required_verdict": "PASS_GLOBAL_CAUCHY_HYPERBOLICITY",
+      "observed_verdict": "REFERENCE_CONTROL_PASS"
+    }
+  },
+  "dependencies": {
+    "GSC-5": {
+      "GSC-1": "1111111111111111111111111111111111111111111111111111111111111111",
+      "GSC-2": "2222222222222222222222222222222222222222222222222222222222222222",
+      "GSC-3": "3333333333333333333333333333333333333333333333333333333333333333",
+      "GSC-4": "4444444444444444444444444444444444444444444444444444444444444444"
+    },
+    "GSC-6": {
+      "GSC-3": "3333333333333333333333333333333333333333333333333333333333333333",
+      "GSC-4": "4444444444444444444444444444444444444444444444444444444444444444",
+      "GSC-5": "5555555555555555555555555555555555555555555555555555555555555555"
+    }
+  },
+  "global_witnesses": {
+    "target_domain_coverage": {
+      "receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+      "lineage_id": "reference-lineage-global-gr-v0.1",
+      "target_domain_id": "reference-domain-M0",
+      "production": false,
+      "evidence_class": "REFERENCE_CONTROL",
+      "covers_target_domain": true
+    },
+    "global_lapse_upper_bound": {
+      "receipt_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+      "lineage_id": "reference-lineage-global-gr-v0.1",
+      "target_domain_id": "reference-domain-M0",
+      "production": false,
+      "evidence_class": "REFERENCE_CONTROL",
+      "n_max": 2.0,
+      "globally_certified": true
+    },
+    "adm_wick_completeness": {
+      "receipt_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+      "lineage_id": "reference-lineage-global-gr-v0.1",
+      "target_domain_id": "reference-domain-M0",
+      "production": false,
+      "evidence_class": "REFERENCE_CONTROL",
+      "complete": true
+    }
+  }
+}
