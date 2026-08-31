@@ -15,7 +15,7 @@
       "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
       "main_baseline": "62a13ba92f0db641d6d699a88059aedf33528300",
       "branch": "feat/tir-global-spatial-complex-input-contract-v0.1",
-      "exact_head": "5aaf572e9e931525f16bb0fa105afbb0d34c59c9",
+      "exact_head": "5cc9f1e1a33972cf89369a3b97716e04901324ba",
       "gates": {
         "A5": {
           "validated_research_head": "2568fb24e0bc91e8f1c75dcfdc5659a57ca382b9",
@@ -27,8 +27,8 @@
           "status": "PASS_TIR_GLOBAL_SPATIAL_COMPLEX_INPUT_CONTRACT_WITH_PRODUCTION_INPUT_OPEN",
           "workflow": {
             "name": "TIR global spatial-complex input contract",
-            "run_number": 1,
-            "run_id": 33343473631,
+            "run_number": 4,
+            "run_id": 33346010181,
             "conclusion": "SUCCESS"
           }
         }
@@ -37,9 +37,27 @@
     "IDT": {
       "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
       "main_baseline": "f186aab6024a592be406684785069edfe2f3d5bf",
-      "branch": "feat/idt-production-event-complex-input-contract-v0.1",
-      "exact_head": "44e2da0a7048df387f277f4e93e6970c445d4b67",
-      "parallel_research_heads": true,
+      "branch": "feat/idt-gsc2-gsc3-holonomy-clean-v0.1",
+      "exact_head": "5a2ddc1cba572011a517657aca0174667cf1da08",
+      "parallel_research_heads": false,
+      "integration_stack": {
+        "seam_api_compat_head": "855fbf75427d66519ebbdde8870547087ea0c379",
+        "dependency_graph_holonomy_join_head": "93a4e9d50241c396d7ef8842a7552cb8367c1634",
+        "base_reference_suite": {
+          "run_number": 947,
+          "run_id": 33349229812,
+          "passed": 1083,
+          "failed": 0,
+          "conclusion": "SUCCESS"
+        },
+        "exact_head_reference_suite": {
+          "run_number": 948,
+          "run_id": 33349376505,
+          "passed": 1106,
+          "failed": 0,
+          "conclusion": "SUCCESS"
+        }
+      },
       "gates": {
         "05G": {
           "substantive_head": "ef80f706c79bc4fbd15266c0608d2ec09674508b",
@@ -54,36 +72,25 @@
           "conclusion": "SUCCESS"
         },
         "05I": {
-          "parallel_branch": "feat/idt-temporal-foliation-v0.1",
-          "exact_head": "fc87c4176dfcc480529ba28bd67042d3ebf02c72",
+          "exact_head": "5a2ddc1cba572011a517657aca0174667cf1da08",
           "status": "PASS_REGULAR_SMOOTH_CLOCK_EXTENSION_CERTIFIER_WITH_PRODUCTION_INPUT_OPEN",
           "workflow": {
             "name": "IDT 05I regular smooth clock extension",
-            "run_number": 2,
-            "run_id": 33339841644,
+            "run_number": 4,
+            "run_id": 33349376506,
             "conclusion": "SUCCESS"
           }
         },
         "05J": {
-          "exact_head": "44e2da0a7048df387f277f4e93e6970c445d4b67",
+          "exact_head": "5a2ddc1cba572011a517657aca0174667cf1da08",
           "status": "PASS_IDT_PRODUCTION_EVENT_COMPLEX_INPUT_CONTRACT_WITH_PRODUCTION_INPUT_OPEN",
           "workflow": {
             "name": "IDT 05J production event-complex input",
-            "run_number": 1,
-            "run_id": 33343481792,
+            "run_number": 3,
+            "run_id": 33349376515,
             "conclusion": "SUCCESS"
           }
         }
-      },
-      "full_reference_suite_blocker": {
-        "exact_head_run_number": 935,
-        "exact_head_run_id": 33343481782,
-        "class": "PRE_EXISTING_SEAM_COLLECTION_IMPORT",
-        "symbol": "onsager_dissipation",
-        "affected_test_count": 3,
-        "conclusion": "FAILURE",
-        "independent_of_05J_gate": true,
-        "independent_of_05I_gate": true
       }
     },
     "RFC": {
