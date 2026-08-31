@@ -1,4 +1,4 @@
-import pytest
+import unittest
 
 from tools.certify_idt_tir_state_vertex_binding import (
     StateVertexBindingError,
@@ -17,54 +17,60 @@ KW = dict(
 )
 
 
-def test_total_function_allows_noninjective_spatial_anchor():
-    cert = certify_binding_dataset(reference_binding(), **KW)
-    assert cert.total_on_terminal_state_domain
-    assert cert.targets_in_tir_vertex_domain
-    assert cert.injective is False
-    assert cert.surjective_onto_tir_vertex_domain is False
-    assert cert.canon_allowed is False
+class IDTTIRStateVertexBindingTests(unittest.TestCase):
+    def test_total_function_allows_noninjective_spatial_anchor(self):
+        cert = certify_binding_dataset(reference_binding(), **KW)
+        self.assertTrue(cert.total_on_terminal_state_domain)
+        self.assertTrue(cert.targets_in_tir_vertex_domain)
+        self.assertFalse(cert.injective)
+        self.assertFalse(cert.surjective_onto_tir_vertex_domain)
+        self.assertFalse(cert.canon_allowed)
 
-
-def test_missing_state_binding_fails_closed():
-    data = reference_binding()
-    data["bindings"] = data["bindings"][:1]
-    data["binding_sha256"] = binding_sha256(
-        bindings=data["bindings"],
-        provenance=data["provenance"],
-    )
-    with pytest.raises(StateVertexBindingError, match="domain mismatch"):
-        certify_binding_dataset(data, **KW)
-
-
-def test_unknown_tir_vertex_fails_closed():
-    data = reference_binding()
-    data["bindings"][1]["spatial_vertex_id"] = "vx"
-    data["binding_sha256"] = binding_sha256(
-        bindings=data["bindings"],
-        provenance=data["provenance"],
-    )
-    with pytest.raises(StateVertexBindingError, match="outside supplied TIR vertex domain"):
-        certify_binding_dataset(data, **KW)
-
-
-def test_source_coordinate_drift_fails_closed():
-    data = reference_binding()
-    with pytest.raises(StateVertexBindingError, match="provenance mismatch"):
-        certify_binding_dataset(
-            data,
-            **{**KW, "expected_idt_occurrence_state_table_sha256": "other"},
+    def test_missing_state_binding_fails_closed(self):
+        data = reference_binding()
+        data["bindings"] = data["bindings"][:1]
+        data["binding_sha256"] = binding_sha256(
+            bindings=data["bindings"],
+            provenance=data["provenance"],
         )
+        with self.assertRaisesRegex(StateVertexBindingError, "domain mismatch"):
+            certify_binding_dataset(data, **KW)
+
+    def test_unknown_tir_vertex_fails_closed(self):
+        data = reference_binding()
+        data["bindings"][1]["spatial_vertex_id"] = "vx"
+        data["binding_sha256"] = binding_sha256(
+            bindings=data["bindings"],
+            provenance=data["provenance"],
+        )
+        with self.assertRaisesRegex(
+            StateVertexBindingError,
+            "outside supplied TIR vertex domain",
+        ):
+            certify_binding_dataset(data, **KW)
+
+    def test_source_coordinate_drift_fails_closed(self):
+        data = reference_binding()
+        with self.assertRaisesRegex(StateVertexBindingError, "provenance mismatch"):
+            certify_binding_dataset(
+                data,
+                **{
+                    **KW,
+                    "expected_idt_occurrence_state_table_sha256": "other",
+                },
+            )
+
+    def test_binding_tampering_fails_digest(self):
+        data = reference_binding()
+        data["bindings"][0]["binding_evidence_id"] = "tampered"
+        with self.assertRaisesRegex(StateVertexBindingError, "binding_sha256 mismatch"):
+            certify_binding_dataset(data, **KW)
+
+    def test_production_flag_gives_review_eligibility_only(self):
+        cert = certify_binding_dataset(reference_binding(production=True), **KW)
+        self.assertTrue(cert.promotion_review_eligible)
+        self.assertFalse(cert.canon_allowed)
 
 
-def test_binding_tampering_fails_digest():
-    data = reference_binding()
-    data["bindings"][0]["binding_evidence_id"] = "tampered"
-    with pytest.raises(StateVertexBindingError, match="binding_sha256 mismatch"):
-        certify_binding_dataset(data, **KW)
-
-
-def test_production_flag_gives_review_eligibility_only():
-    cert = certify_binding_dataset(reference_binding(production=True), **KW)
-    assert cert.promotion_review_eligible is True
-    assert cert.canon_allowed is False
+if __name__ == "__main__":
+    unittest.main()
