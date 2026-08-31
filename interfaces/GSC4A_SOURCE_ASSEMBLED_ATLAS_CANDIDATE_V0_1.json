@@ -1,0 +1,102 @@
+{
+  "schema": "FPDG_GSC4A_SOURCE_ASSEMBLED_ATLAS_CANDIDATE_V0_1",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_HOSTED_VALIDATED_CANDIDATE",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "source_validation": {
+    "repository": "AdrianLipa90/Relational-Field-Closure",
+    "pull_request": 105,
+    "theorem_head": "61549c4050894cdb9b850c52b88a96e4a4f8c59e",
+    "reference_suite_run": 433,
+    "run_id": 33349598142,
+    "conclusion": "success",
+    "receipt_commit": "2559609bbb7d0dbc2236b66021d5f86967aa9303"
+  },
+  "exact_assembly": {
+    "coordinate_jacobian": "J=[[1,0],[v,A]]",
+    "lorentz_transition": "Lambda=diag(1,R)",
+    "adm_coframe": "E=[[N,0],[e*b,e]]",
+    "source_relations": [
+      "N_q=N_p",
+      "e_q*A=R*e_p",
+      "R in SO(3)",
+      "det(A)>0",
+      "b_q=A*b_p-v"
+    ],
+    "rf_e25_overlap": "E_q*J=Lambda*E_p",
+    "metric_pullback": "J^T*g_q*J=g_p",
+    "triple_cocycles": "J_rp=J_rq*J_qp and Lambda_rp=Lambda_rq*Lambda_qp inherited from A,v,R source cocycles"
+  },
+  "derived_rf_e25_coordinates": [
+    "FULL_4D_COORDINATE_JACOBIAN_J",
+    "LORENTZ_TRANSITION_LAMBDA",
+    "ADM_COFRAME_E",
+    "LORENTZ_METRIC_G",
+    "METRIC_PULLBACK_WITNESS"
+  ],
+  "production_source_inputs": [
+    "TIR_SPATIAL_PATCH_COFRAME_PACKET",
+    "TIR_SPATIAL_OVERLAP_A_R_COCYCLES",
+    "IDT_SHARED_CLOCK_LAPSE_PACKET",
+    "GSC3_MATCHING_SHIFT_AND_DRIFT_PACKET",
+    "SOURCE_PATCH_CLOCK_IDENTIFIERS",
+    "PRODUCTION_OVERLAP_COVERAGE"
+  ],
+  "candidate_nodes": [
+    {"id": "FPDG.GSC4A.SOURCE_ASSEMBLY_THEOREM", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4A.TIR_SPATIAL_COFRAME_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4A.TIR_SPATIAL_OVERLAP_COCYCLE_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4A.IDT_SHARED_CLOCK_LAPSE_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4A.MATCHING_SHIFT_DRIFT_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4A.PATCH_CLOCK_IDENTITY", "status": "OPEN_PROVENANCE_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4A.OVERLAP_COVERAGE", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4A.SOURCE_ASSEMBLED_RF_E25_PACKET", "status": "EXACT_ON_SOURCE_INPUTS", "authority": "CANDIDATE_ONLY"}
+  ],
+  "assembly_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC4A.SOURCE_ASSEMBLY_THEOREM",
+      "FPDG.GSC3CD.PRODUCT_TRIVIALIZATION",
+      "FPDG.GSC4A.TIR_SPATIAL_COFRAME_PACKET",
+      "FPDG.GSC4A.TIR_SPATIAL_OVERLAP_COCYCLE_PACKET",
+      "FPDG.GSC4A.IDT_SHARED_CLOCK_LAPSE_PACKET",
+      "FPDG.GSC4A.MATCHING_SHIFT_DRIFT_PACKET",
+      "FPDG.GSC4A.PATCH_CLOCK_IDENTITY",
+      "FPDG.GSC4A.OVERLAP_COVERAGE"
+    ],
+    "target": "FPDG.GSC4A.SOURCE_ASSEMBLED_RF_E25_PACKET"
+  },
+  "rf_e25_handoff": {
+    "from": "FPDG.GSC4A.SOURCE_ASSEMBLED_RF_E25_PACKET",
+    "to": "RFC.E25.SHARED_SPACETIME_ATLAS",
+    "authority": "CANDIDATE_ONLY",
+    "meaning": "the constructed ADMPatch/AtlasOverlap packet is delegated to the existing RF-E25 certifier"
+  },
+  "input_reduction": {
+    "previous_coarse_gsc4_input": "FULL_PRODUCTION_RF_E25_ATLAS_PACKET",
+    "refined_input": "SOURCE_OWNED_TIR_IDT_MATCHING_PACKET_PLUS_COVERAGE",
+    "independent_full_j_required": false,
+    "independent_lorentz_transition_required": false,
+    "independent_metric_tensor_required": false,
+    "independent_metric_pullback_witness_required": false
+  },
+  "live_36d_audit": {
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "source_event_id": "gremlin:whisper:sha256:b2d11dec948b1a6c32f09c2ee3d088682476ef3fc1c55ce956fe693598907afc",
+    "terminal_receipt_sha256": "0446cdaf9c26c15597b4e2560ed79b60520ae820cac4a493d2d0649d5218dcf6",
+    "phasenav_trace_sha256": "69ddf4065b9c9fbdb5d9ae70641f7488ffe9f3be5583d172569501f13260ad71",
+    "shape": [7, 36]
+  },
+  "firewalls": {
+    "gremlin_can_promote": false,
+    "terminal36d_can_promote": false,
+    "phasenav36d_can_promote": false,
+    "hosted_reference_pass_closes_production_source_packet": false,
+    "candidate_edge_enters_canonical_graph": false,
+    "event_placement_is_required_for_rfe25_atlas_construction": false
+  },
+  "canon_mutations": []
+}
