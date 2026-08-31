@@ -1,0 +1,39 @@
+{
+  "schema": "FPDG_GSC3B_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_RECEIPT_V0_1",
+  "status": "PASS_NONCANONICAL_CANDIDATE_DECOMPOSITION",
+  "validated_head": "07141210453cc425cb7bca6dc50a1cdf3de7b956",
+  "hosted_validation": {
+    "dag": {"workflow": "Validate Fundamental Dependency DAG", "run_number": 349, "run_id": 33348861705, "conclusion": "success"},
+    "locked_exports": {"workflow": "Validate Locked Source Exports", "run_number": 288, "run_id": 33348861697, "conclusion": "success"},
+    "source_drift": {"workflow": "Watch Fundamental Source Drift", "run_number": 155, "run_id": 33348861712, "conclusion": "success"}
+  },
+  "source_gate_validation": {
+    "gsc3a_matching_flow": {"rfc_pr": 99, "reference_suite_run": 418, "conclusion": "success"},
+    "relational_event_placement": {"rfc_pr": 98, "dedicated_run": 2, "reference_suite_run": 407, "conclusion": "success"},
+    "matching_flow_rfe9_crosslink": {"rfc_pr": 100, "reference_suite_run": 419, "conclusion": "success"}
+  },
+  "live_36d_audit": {
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "source_event_id": "gremlin:whisper:sha256:06e92f7f684a915630a3a8744949988a83a5367fd4492d57dd26878be972a5e1",
+    "terminal_receipt_sha256": "7ef3c780357a683e5372a764d969ec12988b30abd2d90752bfbe0305e96aebf8",
+    "phasenav_trace_sha256": "0ea9c339294162d7870ea8df118ee142b9927a55a1569e66744e80a89f9488e4",
+    "shape": [13, 36]
+  },
+  "logic_verdict": {
+    "geometry": "MATCHING_FIELD_COCYCLE AND (FLOW_COVERAGE OR CLOCK_PROPERNESS) AND BETA_MATCH_SHIFT_SOURCE_BINDING",
+    "event": "PRODUCTION_EVENT_COMPLEX AND PRODUCTION_OCCURRENCE_STATE_TABLE AND STATE_TO_TIR_SPATIAL_ANCHOR_BINDING AND QUOTIENT_FIBRE_CONSTANCY",
+    "composition": "RF_E25_SHARED_SPACETIME_ATLAS AND EVENT_PLACEMENT -> PHYSICAL_EVENT_ON_SHARED_SPACETIME"
+  },
+  "open_inputs": [
+    "FLOW_COVERAGE_OR_GLOBAL_CLOCK_PROPERNESS",
+    "TIR_BETA_MATCH_TO_RFC_SHIFT_SOURCE_BINDING",
+    "PRODUCTION_EVENT_COMPLEX",
+    "PRODUCTION_OCCURRENCE_STATE_TABLE",
+    "IDT_TERMINAL_STATE_TO_TIR_SPATIAL_ANCHOR_BINDING",
+    "RF_E25_PRODUCTION_SHARED_ATLAS"
+  ],
+  "promotion_authority": false,
+  "canonical_graph_mutation": false
+}

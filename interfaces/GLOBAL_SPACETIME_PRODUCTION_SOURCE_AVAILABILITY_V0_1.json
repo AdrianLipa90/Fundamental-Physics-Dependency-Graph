@@ -1,0 +1,102 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_PRODUCTION_SOURCE_AVAILABILITY_V0_1",
+  "date": "2026-08-31",
+  "status": "AUDITED_NO_CERTIFIED_PRODUCTION_WITNESS_RESOLVED",
+  "scope": "GitHub source contracts + user Library semantic/data search + live NOEMA runtime surface",
+  "target_route": "FLOW_ADAPTED_COMPACT_FIBER",
+  "availability": {
+    "W1_GSC1_SPATIAL_TOPOLOGY": {
+      "status": "OPEN",
+      "contract": "TIR PR #117",
+      "search_result": "REFERENCE_AND_CANDIDATE_TETRAHEDRAL_ARTIFACTS_FOUND_ONLY",
+      "rejected_as_production": [
+        "PNV_TETRAHEDRAL_SIC_BASE_PETALS_CANDIDATE_V1",
+        "PNV_PHASE_CHAIN_GEOMETRY_DERIVATION_CONTRACT_V1_CANDIDATE"
+      ],
+      "reason": "local/structural candidate geometry is not a production global closed tetrahedral incidence witness"
+    },
+    "W2_GSC3A_GLOBAL_PRODUCT_CLOCK": {
+      "status": "OPEN",
+      "contract": "RFC PR #99",
+      "search_result": "THEOREM_AND_REFERENCE_CONTROLS_ONLY",
+      "required_next": "production interval-complete flow-coverage or independent acyclic product receipt"
+    },
+    "W3_GSC4_NUMERIC_SPATIAL_GEOMETRY": {
+      "status": "OPEN",
+      "contract": "RFC PR #112/#113",
+      "search_result": "NO_PRODUCTION_CONNECTED_NUMERIC_SE3_OVERLAP_COCYCLE_FOUND",
+      "required_next": "source-owned SE3 overlap measurements on the admitted cover"
+    },
+    "W4_GSC4_PHASE_MAGNITUDE_SCALE_FIELD": {
+      "status": "OPEN",
+      "contract": "RFC PR #109",
+      "search_result": "NO_PRODUCTION_OVERLAP_LOCAL_OMEGA_T_MAGNITUDE_SAMPLE_PACKET_FOUND",
+      "required_next": "source-owned phase-magnitude samples with physical sample and clock provenance"
+    },
+    "W5_IDT_GLOBAL_LAPSE": {
+      "status": "OPEN",
+      "contract": "IDT 05C relational lapse interface",
+      "search_result": "FORMAL_ACTIVITY_RATIO_AND_CALIBRATION_RULE_FOUND; NO_PRODUCTION_GLOBAL_LAPSE_FIELD_RECEIPT_FOUND",
+      "required_next": "calibrated smooth finite positive N_R field on the same production clock lineage"
+    },
+    "W6_RF_E24_PATCHWISE_LOCAL_SOLUTIONS": {
+      "status": "OPEN",
+      "contract": "RFC PR #111 / RF-E24",
+      "search_result": "NO_PRODUCTION_PATCHWISE_RF_E24_SOLUTION_RECEIPT_SET_FOUND",
+      "required_next": "local solution receipts on the production RF-E25 atlas with common Lambda/kappa/source lineage"
+    },
+    "W7_TARGET_DOMAIN_COVERAGE": {
+      "status": "OPEN",
+      "contract": "RFC PR #111 / RF-E26",
+      "search_result": "NO_PRODUCTION_TARGET_DOMAIN_COVERAGE_RECEIPT_FOUND",
+      "required_next": "explicit coverage of the declared production target domain"
+    },
+    "E1_GSC2_TEMPORAL_EVENT_COMPLEX": {
+      "status": "OPEN",
+      "contract": "IDT PR #83",
+      "search_result": "FORMAL_REALIZED_OCCURRENCE_AND_ELAPSED_MEASURE_ARCHITECTURE_FOUND; NO_PRODUCTION_EVENT_COMPLEX_DATASET_FOUND",
+      "runtime_note": "current /dev/shm surface exposes GREMLIN whisper events only; these are tooling events and are not substituted for IDT production events",
+      "required_next": "source-owned event incidence plus positive elapsed edges and 05H exactness receipt"
+    },
+    "E2_EVENT_SPATIAL_ANCHOR_BINDING": {
+      "status": "OPEN",
+      "contract": "RFC PR #98/#102",
+      "search_result": "NO_PRODUCTION_STATE_TO_TIR_SPATIAL_VERTEX_BINDING_FOUND",
+      "required_next": "shared identifier namespace or explicit source-owned state-to-vertex map plus quotient-fibre consistency"
+    }
+  },
+  "acquisition_priority": {
+    "for_global_GR_Cauchy_carrier": {
+      "first": "W1_GSC1_SPATIAL_TOPOLOGY",
+      "rationale": [
+        "finite discrete payload",
+        "existing fail-closed source contract",
+        "high downstream leverage: Sigma topology + GSC4C cover + GSC6C compactness"
+      ]
+    },
+    "for_event_realization_extension": {
+      "first": "E1_GSC2_TEMPORAL_EVENT_COMPLEX",
+      "rationale": [
+        "finite event/edge payload",
+        "existing fail-closed source contract",
+        "05H exactness is executable once real event incidence and elapsed edges are supplied"
+      ]
+    }
+  },
+  "live_36d_audit": {
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "source_event_id": "gremlin:whisper:sha256:2a755f6139dd38ddf549655be4bb61f313f8dba1a1d66af3abdc5f124f346e6d",
+    "fused_event_id": "gremlin:whisper:sha256:dcb91ceee77e8cb91f18b3bd9ef095d99c6ef7abb86af7c21bdc68e06e3538d3",
+    "terminal_receipt_sha256": "2307154c1a195bbcff406132bace00a17caedc4175a17ed041e77f303c4fcfb3",
+    "phasenav_trace_sha256": "ea182717d1e4dfdb6fc467fb95799786d82449cc1479aa7b5e828937702a7123",
+    "shape": [8, 36]
+  },
+  "firewalls": {
+    "candidate_or_reference_artifact_fills_production_slot": false,
+    "live_tooling_event_bus_is_IDT_production_event_complex": false,
+    "availability_audit_can_promote": false
+  },
+  "canon_mutations": []
+}

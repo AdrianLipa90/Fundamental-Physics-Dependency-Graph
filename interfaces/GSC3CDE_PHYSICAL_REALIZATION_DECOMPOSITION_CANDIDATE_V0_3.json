@@ -1,0 +1,102 @@
+{
+  "schema": "FPDG_GSC3CDE_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_V0_3",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_HOSTED_VALIDATED_CANDIDATE",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "supersedes_candidate": "interfaces/GSC3CD_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_V0_2.json",
+  "numbering": {
+    "GSC3C": "state-to-vertex relabeling obstruction (RFC PR #102)",
+    "GSC3D": "shared matching-one-form coefficient alias (RFC PR #104)",
+    "GSC3E": "realization-level beta_match/shift W=0 source-binding firewall (RFC PR #103)"
+  },
+  "source_validations": {
+    "gsc3a_matching_flow": {"rfc_pr": 99, "head": "19a53048dcae1783efaaae36e1db4b7fe6040282", "conclusion": "success"},
+    "gsc3b_rfe9_crosslink": {"rfc_pr": 100, "head": "8e38c4a66363ebc1859df43adf1e3ffb3e164cc6", "conclusion": "success"},
+    "gsc3c_relabeling_obstruction": {"rfc_pr": 102, "head": "29f175e88b1e5054355c813228736f8535538617", "conclusion": "success"},
+    "gsc3d_beta_shift_alias": {"rfc_pr": 104, "head": "ae1680592d676f437429e78ae1691d5b3334c32d", "reference_suite_run": 429, "conclusion": "success"},
+    "gsc3e_w0_source_binding_firewall": {"rfc_pr": 103, "head": "ab31c1fba78094efd7b01625adaebc1a44868845", "reference_suite_run": 438, "conclusion": "success", "pytest": "1361 passed in 15.43s"}
+  },
+  "candidate_nodes": [
+    {"id": "FPDG.GSC3CDE.MATCHING_FIELD_COCYCLE", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.FLOW_COVERAGE", "status": "OPEN_ANALYTIC_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.CLOCK_PROPERNESS", "status": "OPEN_ANALYTIC_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.PRODUCT_TRIVIALIZATION", "status": "EXACT_ON_SUFFICIENT_ROUTE", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.BETA_SHIFT_INTERFACE_ALIAS_THEOREM", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.SAME_PATCH_CLOCK_IDENTITY", "status": "OPEN_PROVENANCE_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.GSC3E_COVARIANT_FAMILY_FIREWALL", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.SHARED_MATCHING_ONE_FORM_W0", "status": "OPEN_SOURCE_BINDING", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.RFE9_EXTRINSIC_CURVATURE_CROSSLINK", "status": "HOSTED_PASS_ON_ALIAS_AND_SOURCE_BINDING", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.RFE25_PRODUCTION_SHARED_ATLAS", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.STATE_VERTEX_RELABELING_OBSTRUCTION", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.PRODUCTION_EVENT_COMPLEX", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.PRODUCTION_OCCURRENCE_STATE_TABLE", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.STATE_TO_TIR_SPATIAL_ANCHOR_BINDING", "status": "OPEN_SOURCE_BINDING", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.QUOTIENT_FIBRE_CONSTANCY", "status": "EXACT_EXECUTABLE_GATE", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.EVENT_PLACEMENT", "status": "HOSTED_PASS_CERTIFIER_WITH_PRODUCTION_INPUTS_OPEN", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC3CDE.PHYSICAL_EVENT_ON_SHARED_SPACETIME", "status": "OPEN_COMPOSITION", "authority": "CANDIDATE_ONLY"}
+  ],
+  "product_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3CDE.MATCHING_FIELD_COCYCLE",
+      {"operator": "OR", "alternatives": ["FPDG.GSC3CDE.FLOW_COVERAGE", "FPDG.GSC3CDE.CLOCK_PROPERNESS"]}
+    ],
+    "target": "FPDG.GSC3CDE.PRODUCT_TRIVIALIZATION"
+  },
+  "tir_rfc_kinematic_alias_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3CDE.BETA_SHIFT_INTERFACE_ALIAS_THEOREM",
+      "FPDG.GSC3CDE.SAME_PATCH_CLOCK_IDENTITY",
+      "FPDG.GSC3CDE.GSC3E_COVARIANT_FAMILY_FIREWALL",
+      "FPDG.GSC3CDE.SHARED_MATCHING_ONE_FORM_W0"
+    ],
+    "target": "FPDG.GSC3CDE.RFE9_EXTRINSIC_CURVATURE_CROSSLINK",
+    "exact_alias": "beta_Theta=alpha*b_0 after one shared matching-one-form identity; for Theta=t and x0=ct, beta_t=c*b_0",
+    "underdetermination_firewall": "patch/clock/cocycle compatibility alone permits W=beta_t-c*b_0 with W_q=A_qp W_p"
+  },
+  "shared_atlas_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3CDE.PRODUCT_TRIVIALIZATION",
+      "FPDG.GSC3CDE.RFE9_EXTRINSIC_CURVATURE_CROSSLINK",
+      "FPDG.GSC3CDE.RFE25_PRODUCTION_SHARED_ATLAS"
+    ],
+    "target": "RFC.E25.SHARED_SPACETIME_ATLAS"
+  },
+  "event_route": {
+    "theorem_parent": "FPDG.GSC3CDE.STATE_VERTEX_RELABELING_OBSTRUCTION",
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC3CDE.PRODUCTION_EVENT_COMPLEX",
+      "FPDG.GSC3CDE.PRODUCTION_OCCURRENCE_STATE_TABLE",
+      "FPDG.GSC3CDE.STATE_TO_TIR_SPATIAL_ANCHOR_BINDING",
+      "FPDG.GSC3CDE.QUOTIENT_FIBRE_CONSTANCY"
+    ],
+    "target": "FPDG.GSC3CDE.EVENT_PLACEMENT"
+  },
+  "physical_event_spacetime_composition": {
+    "operator": "AND",
+    "requirements": ["RFC.E25.SHARED_SPACETIME_ATLAS", "FPDG.GSC3CDE.EVENT_PLACEMENT"],
+    "target": "FPDG.GSC3CDE.PHYSICAL_EVENT_ON_SHARED_SPACETIME"
+  },
+  "refinements_from_v0_2": {
+    "numbering_collision_resolved": true,
+    "gsc3d_alias_theorem_separated_from_gsc3e_realization_binding": true,
+    "same_patch_clock_identity_is_not_sufficient_for_shift_binding": true,
+    "explicit_w0_source_binding_required_before_rfe9_crosslink": true,
+    "product_route_separated_from_event_route": true
+  },
+  "firewalls": {
+    "gremlin_can_promote": false,
+    "terminal36d_can_promote": false,
+    "phasenav36d_can_promote": false,
+    "hosted_reference_pass_closes_production_inputs": false,
+    "candidate_edge_enters_canonical_graph": false,
+    "same_patch_clock_identity_implies_shared_matching_one_form": false,
+    "same_affine_cocycle_implies_w_zero": false,
+    "event_placement_is_rfe25_atlas_premise": false
+  },
+  "canon_mutations": []
+}

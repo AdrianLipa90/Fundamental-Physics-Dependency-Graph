@@ -1,0 +1,55 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_10",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_VALIDATED_CANDIDATE_REFINEMENT",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "base_candidate": "interfaces/GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_9.json",
+  "source_validation": {
+    "rfc_pr": 113,
+    "theorem_head": "1b232919881db327920b48125effee75b7432e27",
+    "receipt_head": "35d970c0c5d84b77dfc16276c0c23d8baa8b23c7",
+    "reference_suite_run": 469,
+    "pytest": "1420 passed, 1 warning in 13.99s",
+    "conclusion": "success"
+  },
+  "refinement": {
+    "id": "FPDG.GSC4H.INCIDENCE_NUMERIC_GEOMETRY_SEPARATION",
+    "status": "HOSTED_PASS_CANDIDATE_FIREWALL",
+    "premises": [
+      "TIR_A5_GSC4C_DISCRETE_TOPOLOGY_AND_COVER",
+      "RFC_GSC4F_GLOBAL_SE3_QUOTIENT",
+      "RFC_GSC4G_RIGID_OVERLAP_COCYCLE_RECONSTRUCTION"
+    ],
+    "exact_result": "ONE_FIXED_INCIDENCE_SURFACE_ADMITS_MULTIPLE_INEQUIVALENT_NUMERIC_SE3_COCYCLES",
+    "constructive_witness": {
+      "incidence": "p->q",
+      "cocycle_a": "A=I3,t=(1,0,0)",
+      "cocycle_b": "A=I3,t=(2,0,0)",
+      "inequivalent_mod_global_se3": true
+    },
+    "continuous_family": "A_qp_FIXED_AND_t_qp_TO_lambda_t_qp_FOR_lambda_GT_0",
+    "typing_consequence": {
+      "TIR_A5_GSC4C": "DISCRETE_INDEXING_AND_COVER_CARRIER",
+      "RFC_GSC4G_NUMERIC_SE3_COCYCLE": "SEPARATELY_SOURCE_BOUND_NUMERIC_GEOMETRY",
+      "RFC_GSC4E_PHASE_MAGNITUDE": "SEPARATELY_SOURCE_BOUND_POINTWISE_SCALE_FIELD"
+    }
+  },
+  "frontier_update": {
+    "confirmed_open_source_input": "PRODUCTION_CONNECTED_NUMERIC_SE3_OVERLAP_COCYCLE_ON_GSC4C_COVER",
+    "search_boundary": "FURTHER_INCIDENCE_ONLY_DERIVATION_OF_NUMERIC_SE3_VALUES_IS_TYPE_BLOCKED_BY_GSC4H",
+    "allowed_future_reduction": [
+      "SOURCE_MEASUREMENT_OR_INDEPENDENT_DYNAMICAL_LAW_FOR_NUMERIC_SE3_COCYCLE",
+      "ADDITIONAL_PHYSICAL_STRUCTURE_WITH_OWN_PROVENANCE"
+    ]
+  },
+  "live_36d_audit": {
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "terminal_receipt_sha256": "4be4acbfb575cc7589205028c00f9e029ea692e1b98f0e5fd4db869a2f538447",
+    "phasenav_trace_sha256": "d15b5e9db2c4a11f01e509321a144f899c63e0a3f99cec210190b98ba27390f4",
+    "shape": [12, 36]
+  },
+  "canon_mutations": []
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_12",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_VALIDATED_CANDIDATE_REFINEMENT",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "base_candidate": "interfaces/GLOBAL_SPACETIME_CLOSURE_CANDIDATE_FEDERATION_V0_11.json",
+  "source_validation": {
+    "rfc_pr": 116,
+    "theorem_head": "f1e557fce5f541ec1de6bb496213ad76d0e9d306",
+    "receipt_head": "3a3c6aca7b717d6c9c2534996cb1ca168af4015f",
+    "reference_suite_run": 474,
+    "pytest": "1392 passed in 15.74s",
+    "conclusion": "success"
+  },
+  "refinement": {
+    "id": "FPDG.GSC6C.COMPACT_FIBER_PRODUCT_PROPERNESS",
+    "status": "HOSTED_PASS_CANDIDATE_REDUCTION",
+    "premises": [
+      "GSC1_PRODUCTION_FINITE_CLOSED_COMPACT_SPATIAL_CARRIER",
+      "GSC3A_PRODUCTION_GLOBAL_PRODUCT_TRIVIALIZATION_WITH_REGULAR_SHARED_CLOCK",
+      "RFC_E25_PRODUCTION_GLOBAL_LORENTZIAN_ADM_CARRIER",
+      "SMOOTH_FINITE_POSITIVE_LAPSE",
+      "RF_L8_TYPED_COMPLETELY_UNIFORM_TEMPORAL_THEOREM"
+    ],
+    "exact_derivations": [
+      "REGULAR_ONTO_PRODUCT_CLOCK_IMAGE_IS_OPEN_INTERVAL",
+      "ORIENTATION_PRESERVING_SMOOTH_DIFFEO_I_TO_R_EXISTS",
+      "TAU_EQUALS_PSI_COMPOSE_T_PRESERVES_TEMPORAL_ORIENTATION",
+      "COMPACT_FIBER_MAKES_TAU_PROPER",
+      "GSC6B_PROPER_CLOCK_INPUT_DERIVED",
+      "WICK_COMPLETENESS_AND_STEEP_REPARAMETRIZATION_DERIVED_BY_GSC6B"
+    ],
+    "derived_coordinates_removed_from_production_frontier_on_this_route": [
+      "SEPARATELY_SUPPLIED_PROPER_REAL_CLOCK",
+      "SEPARATELY_SUPPLIED_GLOBAL_FINITE_LAPSE_BOUND_NMAX",
+      "SEPARATELY_SUPPLIED_COMPLETE_UNSCALED_WICK_METRIC_W",
+      "SEPARATELY_SUPPLIED_COMPLETE_ADAPTIVE_WICK_METRIC_HN"
+    ]
+  },
+  "gsc6_routes": {
+    "operator": "OR",
+    "alternatives": [
+      {
+        "id": "RF_L8_CONSTANT_SCALE",
+        "requirements": ["GLOBAL_FINITE_NMAX", "COMPLETE_WICK_W"]
+      },
+      {
+        "id": "RFC_GSC6A_ADAPTIVE_WICK",
+        "requirements": ["COMPLETE_ADAPTIVE_WICK_HN"]
+      },
+      {
+        "id": "RFC_GSC6B_DIRECT_PROPER_CLOCK",
+        "requirements": ["PROPER_TEMPORAL_CLOCK_TO_R"]
+      },
+      {
+        "id": "RFC_GSC6C_COMPACT_FIBER_PRODUCT",
+        "requirements": [
+          "GSC1_PRODUCTION_COMPACT_SPATIAL_CARRIER",
+          "GSC3A_PRODUCTION_PRODUCT_TRIVIALIZATION_AND_REGULAR_CLOCK",
+          "RFC_E25_PRODUCTION_GLOBAL_LORENTZIAN_ADM_CARRIER"
+        ],
+        "derived": [
+          "PROPER_TEMPORAL_CLOCK_TO_R",
+          "COMPLETE_WICK_W",
+          "GLOBAL_HYPERBOLICITY_CAUCHY_FOLIATION"
+        ]
+      }
+    ],
+    "target": "GSC6_GLOBAL_HYPERBOLICITY_CAUCHY_FOLIATION"
+  },
+  "global_gr_cauchy_composition": {
+    "operator": "AND",
+    "requirements": [
+      "RFC_E26_GSC5_PRODUCTION_GLOBAL_EINSTEIN_CARRIER",
+      "GSC6_GLOBAL_HYPERBOLICITY_CAUCHY_FOLIATION"
+    ],
+    "target": "GLOBAL_GR_CAUCHY_CARRIER"
+  },
+  "frontier_update": {
+    "GSC6C_open_parents": [
+      "PRODUCTION_GSC1_COMPACT_SPATIAL_REALIZATION",
+      "PRODUCTION_GSC3A_INTERVAL_COMPLETE_PRODUCT_REALIZATION_AND_COMMON_CLOCK",
+      "PRODUCTION_RF_E25_GLOBAL_LORENTZIAN_ADM_CARRIER"
+    ],
+    "separate_properness_input": "REMOVED_ON_GSC6C_SUFFICIENT_ROUTE",
+    "separate_lapse_bound_and_wick_completeness_inputs": "REMOVED_ON_GSC6C_SUFFICIENT_ROUTE",
+    "GSC5_requirement_for_full_GR_Cauchy": "PRESERVED"
+  },
+  "live_36d_audit": {
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "source_event_id": "gremlin:whisper:sha256:28d14e4b42d0c9b860eeab8c7f5dd40b3d2377fd6fa3124fa8f7ff1060c754b7",
+    "fused_event_id": "gremlin:whisper:sha256:a00e284674c715c30ff40bef2e1c41df6e2a033cfc8247592aa836521bdd6962",
+    "terminal_receipt_sha256": "83b828f66599427b4968c14757d9f50a5e982aedf007c1668756a5f09285bc26",
+    "phasenav_trace_sha256": "bed9ad75952a708af37e3dcf2e1aa85e35b0bdec7479e73de6f565be7ee3267f",
+    "shape": [10, 36]
+  },
+  "firewalls": {
+    "gsc6c_closes_production_GSC1_parent": false,
+    "gsc6c_closes_production_GSC3A_parent": false,
+    "gsc6c_closes_production_RF_E25_parent": false,
+    "gsc6c_promotes_GSC5": false,
+    "finite_samples_certify_global_properness": false,
+    "runtime_audit_can_promote": false
+  },
+  "canon_mutations": []
+}

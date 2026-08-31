@@ -1,0 +1,204 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_PRODUCTION_WITNESS_BASIS_V0_1",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_CURRENT_ROUTE_MINIMAL_WITNESS_BASIS_CANDIDATE",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "scope": "MINIMAL_UNDER_CURRENT_HOSTED_VALIDATED_SUFFICIENT_ROUTES_AND_FIREWALLS",
+  "global_gr_cauchy_carrier_basis": {
+    "operator": "AND",
+    "witness_groups": [
+      {
+        "id": "W1_GSC1_SPATIAL_TOPOLOGY",
+        "owner": "TIR",
+        "required": [
+          "production finite closed tetrahedral facet list",
+          "facet-list provenance/digest",
+          "GSC1/A5 production certificate"
+        ],
+        "derived": [
+          "compact connected spatial 3-manifold carrier Sigma",
+          "vertex-star atlas cover and pair/triple incidence",
+          "spatial compactness used by GSC6C"
+        ]
+      },
+      {
+        "id": "W2_GSC3A_GLOBAL_PRODUCT_CLOCK",
+        "owner": "TIR_IDT_RFC_CROSS_REPO",
+        "required": [
+          "production regular shared scalar clock",
+          "production interval-complete GSC3A product-trivialization receipt",
+          "common clock/patch provenance"
+        ],
+        "derived": [
+          "M is globally trivialized as I x Sigma",
+          "clock image I is an open interval",
+          "flow-adapted atlas route is available",
+          "GSC6C proper R-clock after compact-fiber reparametrization"
+        ]
+      },
+      {
+        "id": "W3_GSC4_NUMERIC_SPATIAL_GEOMETRY",
+        "owner": "RFC_GSC4G_WITH_TIR_COVER_INDEXING",
+        "required": [
+          "production connected numeric SE(3) overlap cocycle on the GSC4C cover",
+          "spanning-tree numeric edge values",
+          "non-tree cycle/holonomy closure receipt when redundant edges are supplied"
+        ],
+        "derived": [
+          "relative rigid chart geometry modulo one global SE(3)",
+          "A_qp and translation overlap data",
+          "rigid-route R_qp=A_qp"
+        ],
+        "irreducibility_evidence": "GSC4H: A5 incidence admits inequivalent numeric SE(3) cocycles"
+      },
+      {
+        "id": "W4_GSC4_PHASE_MAGNITUDE_SCALE_FIELD",
+        "owner": "RFC_GSC4E_SOURCE_BINDING",
+        "required": [
+          "production overlap-local nu(x)=abs(omega_t(x)) samples",
+          "phase-magnitude field provenance id",
+          "physical sample identities",
+          "clock calibration id"
+        ],
+        "derived": [
+          "a(x)=c/(sqrt(6)*nu(x))",
+          "rigid-route spatial coframe scale e(x)=a(x) I3"
+        ]
+      },
+      {
+        "id": "W5_IDT_GLOBAL_LAPSE",
+        "owner": "IDT",
+        "required": [
+          "production smooth finite positive relational lapse N_R",
+          "lapse/clock calibration provenance"
+        ],
+        "derived": [
+          "RF-E25 temporal coframe N dt",
+          "smooth finite lapse premise for GSC6B/GSC6C"
+        ]
+      },
+      {
+        "id": "W6_RF_E24_PATCHWISE_LOCAL_SOLUTIONS",
+        "owner": "RFC",
+        "required": [
+          "production patchwise RF-E24 local Einstein solution receipts",
+          "one common finite Lambda",
+          "one common positive finite kappa_E",
+          "common physical source-field lineage id"
+        ],
+        "derived": [
+          "GSC5A stress-tensor overlap gluing",
+          "GSC5A Einstein-tensor overlap gluing",
+          "global zero Einstein residual after coverage"
+        ]
+      },
+      {
+        "id": "W7_TARGET_DOMAIN_COVERAGE",
+        "owner": "RFC_INTEGRATION",
+        "required": [
+          "production target-domain coverage receipt"
+        ],
+        "derived": [
+          "RF-E26/GSC5 global Einstein carrier on the declared covered domain"
+        ]
+      }
+    ],
+    "sufficient_route": [
+      "W1_GSC1_SPATIAL_TOPOLOGY",
+      "W2_GSC3A_GLOBAL_PRODUCT_CLOCK",
+      "W3_GSC4_NUMERIC_SPATIAL_GEOMETRY",
+      "W4_GSC4_PHASE_MAGNITUDE_SCALE_FIELD",
+      "W5_IDT_GLOBAL_LAPSE",
+      "W6_RF_E24_PATCHWISE_LOCAL_SOLUTIONS",
+      "W7_TARGET_DOMAIN_COVERAGE",
+      "-> GSC4 flow-adapted/source-assembled RF-E25 atlas",
+      "-> GSC5A/RF-E26 global Einstein carrier",
+      "-> GSC6C/RF-GSC6B global hyperbolicity",
+      "-> GLOBAL_GR_CAUCHY_CARRIER"
+    ]
+  },
+  "event_realization_extension_basis": {
+    "operator": "AND",
+    "inherits": "global_gr_cauchy_carrier_basis",
+    "additional_witness_groups": [
+      {
+        "id": "E1_GSC2_TEMPORAL_EVENT_COMPLEX",
+        "owner": "IDT",
+        "required": [
+          "production event complex",
+          "exact positive elapsed edge values",
+          "event-complex provenance/digest",
+          "05H exactness/path-independence production certificate"
+        ],
+        "derived": [
+          "global discrete event clock up to one additive offset"
+        ]
+      },
+      {
+        "id": "E2_EVENT_SPATIAL_ANCHOR_BINDING",
+        "owner": "IDT_TIR_CROSS_REPO",
+        "required": [
+          "production occurrence/state table",
+          "shared identifier namespace or explicit state_id -> TIR spatial_vertex_id map",
+          "quotient-fibre consistency receipt"
+        ],
+        "derived": [
+          "event-level spatial anchor descended through the occurrence-to-event quotient",
+          "physical event placement on the shared spacetime after clock anchoring"
+        ],
+        "irreducibility_evidence": "GSC3C relabeling obstruction"
+      }
+    ],
+    "target": "PHYSICAL_EVENT_REALIZATION_ON_GLOBAL_GR_CAUCHY_CARRIER"
+  },
+  "conditional_general_matching_route_extension": {
+    "applies_when": "TIR beta_match is imported as the RFC shift source rather than using the flow-adapted product atlas representation",
+    "additional_witness": {
+      "id": "M1_SHARED_MATCHING_ONE_FORM_W0",
+      "required": [
+        "common realization_id",
+        "common clock_id",
+        "shared matching-one-form carrier identity",
+        "TIR beta_t patch values",
+        "RFC b_0 patch values",
+        "max_patch_norm(beta_t-c*b_0)<=tolerance"
+      ],
+      "irreducibility_evidence": "GSC3E covariant W-family firewall"
+    }
+  },
+  "derived_coordinates_excluded_from_independent_basis": [
+    "vertex-star pair/triple overlap incidence beyond GSC1 facets",
+    "absolute rigid spatial origin and absolute frame orientation",
+    "per-patch anchors/frames as an independent representation once the numeric SE(3) cocycle is supplied",
+    "non-tree SE(3) edges as independent local degrees of freedom",
+    "independent G/T/Einstein-residual overlap matrices on the GSC5A route",
+    "separate proper R-clock witness on the GSC6C route",
+    "separate global finite lapse bound N_max on the GSC6C route",
+    "separate complete W witness on the GSC6C route",
+    "separate complete H_N witness on the GSC6C route"
+  ],
+  "minimality_boundary": {
+    "claim": "CURRENT_ROUTE_MINIMALITY_ONLY",
+    "meaning": "No listed independent group is removed by the currently hosted-validated sufficient routes and explicit nonidentifiability firewalls. Future physical laws with independent provenance may reduce this basis.",
+    "absolute_information_theoretic_minimality_claimed": false
+  },
+  "live_36d_audit": {
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "source_event_id": "gremlin:whisper:sha256:2513537ccd0e693fe508416c81df7ca286e17e1cda293bf8639a28c37a92f047",
+    "fused_event_id": "gremlin:whisper:sha256:5c366ca3dc9e1a41eb15a26e574cff2c4729d9fa488ec6d4a1137bb7ff951957",
+    "terminal_receipt_sha256": "3cad39146e5ada6c1d578f333b9f827dbb0a8ef36b13a8faea534d1e78ccca67",
+    "phasenav_trace_sha256": "1d371f5ca86576320c3eaa4632aae3d9d341a4638ec4e22886f8b669ab66dd4e",
+    "shape": [19, 36]
+  },
+  "firewalls": {
+    "candidate_basis_promotes_source_inputs": false,
+    "runtime_audit_can_promote": false,
+    "finite_reference_controls_substitute_production_witnesses": false,
+    "event_realization_is_required_for_pure_tensor_global_GR_Cauchy_carrier": false,
+    "general_matching_W0_witness_is_required_on_flow_adapted_route": false
+  },
+  "canon_mutations": []
+}

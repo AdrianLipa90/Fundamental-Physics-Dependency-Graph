@@ -1,0 +1,95 @@
+{
+  "schema": "FPDG_GSC3CDE_GSC4AB_SHARED_ATLAS_OR_ROUTE_CANDIDATE_V0_4",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_HOSTED_VALIDATION_TARGET",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "supersedes_candidate": "interfaces/GSC3CDE_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_V0_3.json",
+  "source_validations": {
+    "gsc3d_beta_shift_alias": {"rfc_pr": 104, "head": "ae1680592d676f437429e78ae1691d5b3334c32d", "reference_suite_run": 429, "conclusion": "success"},
+    "gsc3e_w0_source_binding_firewall": {"rfc_pr": 103, "head": "ab31c1fba78094efd7b01625adaebc1a44868845", "reference_suite_run": 438, "conclusion": "success"},
+    "gsc4a_provenance_aware_general_atlas": {"rfc_pr": 105, "head": "23abf185bd77572eb16b7b3d2a7bb95fdee6c5c3", "reference_suite_run": 447, "conclusion": "success"},
+    "gsc4b_flow_adapted_zero_shift_atlas": {"rfc_pr": 106, "theorem_head": "bb427244d28c62e624557cf1b8cf532b49e490cf", "reference_suite_run": 448, "conclusion": "success"}
+  },
+  "candidate_nodes": [
+    {"id": "FPDG.GSC4AB.PRODUCT_TRIVIALIZATION", "status": "EXACT_ON_SUFFICIENT_PARENT_ROUTE_WITH_PRODUCTION_PARENT_OPEN", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4AB.RFC_INDEPENDENT_SHIFT_SOURCE", "status": "OPEN_SOURCE_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4AB.GSC3D_SHARED_ONE_FORM_ALIAS", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4AB.GSC3E_W0_FIREWALL", "status": "HOSTED_PASS", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4AB.SHARED_MATCHING_ONE_FORM_W0_SOURCE_RECEIPT", "status": "OPEN_SOURCE_BINDING", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4AB.TIR_BETA_MATCH_BOUND_SHIFT", "status": "OPEN_SOURCE_INPUT_ON_GSC3D_GSC3E_ROUTE", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4AB.GSC4A_GENERAL_SOURCE_ASSEMBLY", "status": "HOSTED_PASS_CERTIFIER_WITH_PRODUCTION_INPUTS_OPEN", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4AB.GSC4B_FLOW_ADAPTED_ZERO_SHIFT", "status": "HOSTED_PASS_CERTIFIER_WITH_PRODUCT_AND_SOURCE_INPUTS_OPEN", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4AB.PRODUCTION_LAPSE_COFRAME_SPATIAL_OVERLAP_PACKET", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4AB.PRODUCTION_OVERLAP_COVERAGE", "status": "OPEN_PRODUCTION_INPUT", "authority": "CANDIDATE_ONLY"},
+    {"id": "FPDG.GSC4AB.RFE25_SHARED_ATLAS", "status": "OPEN_PRODUCTION_COMPOSITION", "authority": "CANDIDATE_ONLY"}
+  ],
+  "general_shift_source_route": {
+    "operator": "OR",
+    "alternatives": [
+      {
+        "route": "RFC_INDEPENDENT_SHIFT",
+        "requirements": ["FPDG.GSC4AB.RFC_INDEPENDENT_SHIFT_SOURCE"]
+      },
+      {
+        "route": "TIR_BETA_MATCH_BOUND",
+        "operator": "AND",
+        "requirements": [
+          "FPDG.GSC4AB.GSC3D_SHARED_ONE_FORM_ALIAS",
+          "FPDG.GSC4AB.GSC3E_W0_FIREWALL",
+          "FPDG.GSC4AB.SHARED_MATCHING_ONE_FORM_W0_SOURCE_RECEIPT",
+          "FPDG.GSC4AB.TIR_BETA_MATCH_BOUND_SHIFT"
+        ]
+      }
+    ]
+  },
+  "general_gsc4a_route": {
+    "operator": "AND",
+    "requirements": [
+      "GENERAL_SHIFT_SOURCE_ROUTE",
+      "FPDG.GSC4AB.PRODUCTION_LAPSE_COFRAME_SPATIAL_OVERLAP_PACKET",
+      "FPDG.GSC4AB.PRODUCTION_OVERLAP_COVERAGE"
+    ],
+    "certifier": "FPDG.GSC4AB.GSC4A_GENERAL_SOURCE_ASSEMBLY",
+    "target": "RFC.E25.SHARED_SPACETIME_ATLAS"
+  },
+  "flow_adapted_gsc4b_route": {
+    "operator": "AND",
+    "requirements": [
+      "FPDG.GSC4AB.PRODUCT_TRIVIALIZATION",
+      "FPDG.GSC4AB.PRODUCTION_LAPSE_COFRAME_SPATIAL_OVERLAP_PACKET",
+      "FPDG.GSC4AB.PRODUCTION_OVERLAP_COVERAGE"
+    ],
+    "constructed_fields": {"shift_b": "0", "temporal_spatial_drift_v": "0"},
+    "certifier": "FPDG.GSC4AB.GSC4B_FLOW_ADAPTED_ZERO_SHIFT",
+    "target": "RFC.E25.SHARED_SPACETIME_ATLAS"
+  },
+  "rfe25_or_route": {
+    "operator": "OR",
+    "alternatives": ["GENERAL_GSC4A_ROUTE", "FLOW_ADAPTED_GSC4B_ROUTE"],
+    "target": "FPDG.GSC4AB.RFE25_SHARED_ATLAS"
+  },
+  "route_specific_firewalls": {
+    "gsc3e_w0_required_on_rfc_independent_shift_route": false,
+    "gsc3e_w0_required_on_tir_beta_match_bound_route": true,
+    "gsc3e_w0_required_on_flow_adapted_zero_shift_route": false,
+    "flow_adapted_b_zero_implies_k_zero": false,
+    "flow_adapted_route_consumes_independent_shift_source": false,
+    "general_gsc4a_route_consumes_shift_source": true
+  },
+  "open_inputs": [
+    "PRODUCTION_PRODUCT_TRIVIALIZATION_PARENT_FOR_GSC4B",
+    "PRODUCTION_LAPSE_COFRAME_SPATIAL_OVERLAP_PACKET",
+    "PRODUCTION_OVERLAP_COVERAGE",
+    "RFC_INDEPENDENT_SHIFT_SOURCE_OR_TIR_BOUND_SHIFT_SOURCE",
+    "GSC3E_W0_SOURCE_RECEIPT_ONLY_IF_TIR_DERIVED_ROUTE_IS_USED"
+  ],
+  "authority": {
+    "gremlin_can_promote": false,
+    "terminal36d_can_promote": false,
+    "phasenav36d_can_promote": false,
+    "hosted_pass_closes_production_inputs": false,
+    "candidate_edge_enters_canonical_graph": false
+  },
+  "canon_mutations": []
+}

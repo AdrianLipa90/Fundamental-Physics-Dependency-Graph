@@ -1,0 +1,43 @@
+{
+  "schema": "FPDG_GSC_INPUT_CONTRACTS_V0_1",
+  "authority": "NONCANONICAL_CROSS_REPO_AUDIT",
+  "promotion_authority": false,
+  "gsc_1": {
+    "source_repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+    "source_pr": 117,
+    "head": "5aaf572e9e931525f16bb0fa105afbb0d34c59c9",
+    "workflow": "TIR global spatial-complex input contract",
+    "workflow_run_id": 33343473631,
+    "conclusion": "SUCCESS",
+    "input_contract_status": "PASS",
+    "production_witness_status": "OPEN_INPUT",
+    "production_witness": "GLOBAL_TETRAHEDRAL_INCIDENCE_WITH_PROVENANCE"
+  },
+  "gsc_2": {
+    "source_repository": "AdrianLipa90/Informational-Dynamics-of-Time",
+    "source_pr": 82,
+    "head": "44e2da0a7048df387f277f4e93e6970c445d4b67",
+    "workflow": "IDT 05J production event-complex input",
+    "workflow_run_id": 33343481792,
+    "conclusion": "SUCCESS",
+    "input_contract_status": "PASS",
+    "production_witness_status": "OPEN_INPUT",
+    "production_witness": "GLOBAL_EVENT_INCIDENCE_QUOTIENT_WITH_POSITIVE_ELAPSED_EDGES_AND_PROVENANCE"
+  },
+  "idt_05i": {
+    "source_pr": 81,
+    "head": "c5f256c1435c4174c4ac531e40be2902aa32651b",
+    "reference_suite_run_number": 939,
+    "reference_suite_run_id": 33343691489,
+    "conclusion": "SUCCESS",
+    "certifier_status": "PASS",
+    "production_regular_continuum_witness": "OPEN_INPUT"
+  },
+  "firewall": {
+    "reference_controls_are_production_witnesses": false,
+    "phase36_distance_promotes_dependencies": false,
+    "gremlin_promotion_authority": false,
+    "production_witnesses_remain_source_owned": true
+  },
+  "verdict": "PASS_INPUT_CONTRACT_LAYER_WITH_GSC1_GSC2_PRODUCTION_WITNESSES_OPEN"
+}

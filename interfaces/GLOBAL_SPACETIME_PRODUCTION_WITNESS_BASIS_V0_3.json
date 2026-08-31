@@ -1,0 +1,80 @@
+{
+  "schema": "FPDG_GLOBAL_SPACETIME_PRODUCTION_WITNESS_BASIS_V0_3",
+  "date": "2026-08-31",
+  "status": "NONCANONICAL_CURRENT_ROUTE_MINIMAL_WITNESS_BASIS_CANDIDATE",
+  "promotion_authority": false,
+  "canonical_graph_mutation": false,
+  "base_basis": "interfaces/GLOBAL_SPACETIME_PRODUCTION_WITNESS_BASIS_V0_2.json",
+  "route": "FLOW_ADAPTED_COMPACT_FIBER_WITH_CANONICAL_ATLAS_DOMAIN",
+  "independent_witness_group_count": 6,
+  "independent_groups": [
+    "W1_GSC1_SPATIAL_TOPOLOGY",
+    "W2_GSC3A_GLOBAL_PRODUCT_CLOCK",
+    "W3_GSC4_NUMERIC_SPATIAL_GEOMETRY",
+    "W4_GSC4_PHASE_MAGNITUDE_SCALE_FIELD",
+    "W5_IDT_GLOBAL_LAPSE",
+    "W6_RF_E24_PATCHWISE_LOCAL_SOLUTIONS"
+  ],
+  "derived_group": {
+    "id": "W7_TARGET_DOMAIN_COVERAGE",
+    "status": "DERIVED_ON_CANONICAL_ATLAS_DOMAIN_ROUTE",
+    "source_theorem": "RFC PR #118 RF-GSC5B",
+    "requirements": [
+      "GSC4C canonical vertex-star atlas coverage",
+      "GSC3 production global product M=I x Sigma",
+      "exact equality of W6 local-solution patch ids and production atlas patch ids",
+      "target_domain_id=atlas_domain_id"
+    ],
+    "broader_target_domain_status": "OPEN_SEPARATE_EXTENSION_INPUT"
+  },
+  "event_extensions": [
+    "E1_GSC2_TEMPORAL_EVENT_COMPLEX",
+    "E2_EVENT_SPATIAL_ANCHOR_BINDING"
+  ],
+  "conditional_general_matching_extension": "M1_SHARED_MATCHING_ONE_FORM_W0",
+  "group_boundaries": {
+    "W1": "lossless production tetrahedral facet incidence / A5 spatial carrier",
+    "W2": "production regular global product clock with acyclic product provenance",
+    "W3": "production numeric relative spatial geometry, minimally a connected SE(3) spanning-tree cocycle plus holonomy checks",
+    "W4": "production overlap-local positive phase-magnitude field nu=|omega_t| and source/sample provenance",
+    "W5": "production global positive IDT/RFC lapse field on the admitted shared clock",
+    "W6": "production RF-E24 local-solution receipts on every canonical atlas patch, with common Lambda/kappa_E/source lineage"
+  },
+  "nonreductions_preserved": {
+    "W1_plus_W4_implies_W3": false,
+    "reason_W3": "A5 facet incidence is PL/topological and canonicalizes tetrahedron vertex order; it does not supply the production numeric SE(3) overlap moduli.",
+    "W2_implies_W5": false,
+    "reason_W5": "global product-clock existence does not by itself fix the physical lapse calibration field.",
+    "W6_count_equality_implies_W7": false,
+    "reason_W7": "GSC5B requires exact patch-id set equality and target-domain identity, not counts alone."
+  },
+  "minimality_boundary": {
+    "claim": "CURRENT_ROUTE_MINIMALITY_ONLY",
+    "absolute_information_theoretic_minimality_claimed": false,
+    "meaning": "Six independent production witness groups remain on the declared canonical atlas-domain sufficient route after the hosted GSC5B reduction. Broader target domains retain explicit W7 coverage."
+  },
+  "source_validation": {
+    "gsc5b_rfc_pr": 118,
+    "validated_theorem_head": "10f086327fb29452dfe54df2b900d35a3f11ee9e",
+    "receipt_head": "3a7e48caa09de4a5bf7df81b555402fef0bc5b4b",
+    "reference_suite_run": 483,
+    "receipt_head_reference_suite_run": 484,
+    "conclusion": "success"
+  },
+  "live_36d_audit": {
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "source_event_id": "gremlin:whisper:sha256:78e3570f66e8fc8126e868ec03be3061b97c338db68489af3c1bd4d2a01a6e51",
+    "terminal_receipt_sha256": "94f699460c2e9097aba74f895ab56da17590c284f9a4e5f0f92da0129e16fe9a",
+    "phasenav_trace_sha256": "7b50dd0ba74583ee81926019d5e7f90e1579993f0923bb245139fc358be3610f",
+    "shape": [7, 36]
+  },
+  "firewalls": {
+    "candidate_basis_promotes_source_inputs": false,
+    "reference_fixture_is_production_witness": false,
+    "broader_target_domain_coverage_removed": false,
+    "runtime_audit_can_promote": false,
+    "canonical_graph_mutated": false
+  },
+  "canon_mutations": []
+}

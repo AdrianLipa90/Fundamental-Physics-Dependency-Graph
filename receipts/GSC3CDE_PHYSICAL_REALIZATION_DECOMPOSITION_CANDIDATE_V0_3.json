@@ -1,0 +1,57 @@
+{
+  "schema": "FPDG_GSC3CDE_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_RECEIPT_V0_3",
+  "date": "2026-08-31",
+  "status": "PASS_NONCANONICAL_GSC3CDE_CANDIDATE_FEDERATION_WITH_OPEN_PRODUCTION_BINDINGS",
+  "candidate_file": "interfaces/GSC3CDE_PHYSICAL_REALIZATION_DECOMPOSITION_CANDIDATE_V0_3.json",
+  "validated_head": "02fa50231adfca62e7145c24e5447ef6613fa2b4",
+  "hosted_validation": {
+    "dag": {"run_id": 33350776579, "run_number": 386, "conclusion": "success"},
+    "locked_source_exports": {"run_id": 33350776587, "run_number": 325, "conclusion": "success"},
+    "source_drift_watch": {"run_id": 33350776590, "run_number": 163, "conclusion": "success"}
+  },
+  "source_validation": {
+    "gsc3d_alias_pr": 104,
+    "gsc3d_alias_head": "ae1680592d676f437429e78ae1691d5b3334c32d",
+    "gsc3d_alias_reference_suite": 429,
+    "gsc3e_firewall_pr": 103,
+    "gsc3e_firewall_head": "ab31c1fba78094efd7b01625adaebc1a44868845",
+    "gsc3e_firewall_reference_suite": 438,
+    "gsc3e_pytest": "1361 passed in 15.43s"
+  },
+  "live_triad_audit": {
+    "runtime_surface": "/dev/shm/ciel_noema",
+    "authority": "CANDIDATE_ONLY",
+    "promotion_evidence": false,
+    "source_event_id": "gremlin:whisper:sha256:c18dbe5719cece3003b972c7289504957466d18d6438204ce857eb06fefee154",
+    "fused_event_id": "gremlin:whisper:sha256:5d80f108e228a7e1872d76795f8c8f500754ac16d8ac92c0e496ed16c06b5fa7",
+    "shape": [6, 36],
+    "terminal_receipt_sha256": "5a178c3ba7900f466317c48563b06f7f6f990816775bb646ab65092e3e232954",
+    "phasenav_trace_sha256": "12b0888a125709d5def7440df3b4b92f01ccf4f832bb25dc67a1671bfe6104a0"
+  },
+  "refinement": {
+    "gsc3c": "state-to-vertex relabeling obstruction",
+    "gsc3d": "shared matching-one-form coefficient alias theorem",
+    "gsc3e": "W=0 realization-level source-binding firewall",
+    "required_before_rfe9": [
+      "BETA_SHIFT_INTERFACE_ALIAS_THEOREM",
+      "SAME_PATCH_CLOCK_IDENTITY",
+      "GSC3E_COVARIANT_FAMILY_FIREWALL",
+      "SHARED_MATCHING_ONE_FORM_W0"
+    ]
+  },
+  "open_inputs": [
+    "FLOW_COVERAGE_OR_CLOCK_PROPERNESS",
+    "SHARED_MATCHING_ONE_FORM_W0_SOURCE_BINDING",
+    "RFE25_PRODUCTION_SHARED_ATLAS",
+    "PRODUCTION_EVENT_COMPLEX",
+    "PRODUCTION_OCCURRENCE_STATE_TABLE",
+    "STATE_TO_TIR_SPATIAL_ANCHOR_BINDING"
+  ],
+  "authority": {
+    "canonical_graph_mutated": false,
+    "gremlin_can_promote": false,
+    "terminal36d_can_promote": false,
+    "phasenav36d_can_promote": false,
+    "hosted_pass_closes_production_bindings": false
+  }
+}
