@@ -90,7 +90,7 @@ RF-E20 keeps its physical SI edge scale and dimensionless tetrahedral selector e
 - `dependency_graph.yaml` — machine-readable canonical DAG
 - `claims.jsonl` — claim registry with source/evidence provenance
 - `interfaces/cross_repo_interfaces.yaml` — typed cross-repository contracts
-- `source_exports.lock.json` — exact immutable source-export snapshot lock
+- `source_exports.lock.json` — exact immutable source-export snapshot lock plus repository-head freshness state
 - `gates/PROMOTION_POLICY.md` — promotion, GREMLIN and invalidation rules
 - `tools/validate_dag.py` — fail-closed structural validator
 - `tools/impact.py` — downstream revalidation impact calculator
@@ -137,17 +137,19 @@ RFC  PR #67   post-E13 RF-E14–RF-E20 sync
 SOH  PR #69
 ```
 
-`source_exports.lock.json` pins the exact export commit and the exact source commit represented by that export. FPDG CI then performs three independent gates:
+`source_exports.lock.json` deliberately separates three coordinates for each source: `repository_head` is the repository-level freshness coordinate, `export_commit` is the immutable commit from which `DEPENDENCY_EXPORT.json` is fetched, and `source_commit` is the scientific source state represented by that export. FPDG CI therefore performs independent freshness and scientific-surface gates:
 
 ```text
-source main head == locked source_commit
+source main head == locked repository_head
           ↓
 fetch exact DEPENDENCY_EXPORT.json at export_commit
+          ↓
+verify the export's represented scientific source_commit
           ↓
 reconcile source claims + local edges against canonical FPDG local surface
 ```
 
-A source-main advance therefore fails the freshness gate until its export, FPDG lock and affected downstream dependency surface are reconciled. This is the fail-closed cross-repository holonomy rule.
+A source-main advance always fails the freshness gate first. After semantic export-diff review, a repository-only advance with an identical represented dependency surface is repaired by refreshing `repository_head` and revalidating the locked export. If the scientific dependency surface changed, the source export, represented `source_commit`, FPDG lock and affected downstream dependency surface must instead be reconciled together. This is the fail-closed cross-repository holonomy rule.
 
 ## Source drift watch
 
