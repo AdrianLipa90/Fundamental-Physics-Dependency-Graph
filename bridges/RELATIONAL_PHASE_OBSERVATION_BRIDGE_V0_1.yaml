@@ -117,8 +117,16 @@ repositories:
   PHASENAV_MAS:
     repository: AdrianLipa90/PhaseNav-MAS-Upgrade
     role: downstream_orchestration_consumer
-    branch: release/mas-v0.1.0-stage5-pass
-    promotion_state: BLOCKED_INCOMPLETE_STAGE6_MATERIALISATION
+    orchestration_branch: main
+    orchestration_commit: e1be4bad3334bb4916b99eff65a3f49820d86145
+    orchestration_source:
+      - candidate_contracts/mas_relational_evidence_orchestration_v01.json
+      - provenance/PHASENAV_MAS_RELATIONAL_EVIDENCE_ORCHESTRATION_V0_1.json
+      - .github/workflows/candidate-relational-evidence-orchestration-v01.yml
+    orchestration_status: CANDIDATE_ACTIVE_SOURCE_NEUTRAL
+    orchestration_validation: DETERMINISTIC_CONTRACT_PASS_HOSTED_PUSH_RECEIPT_NOT_YET_RECORDED
+    runtime_branch: release/mas-v0.1.0-stage5-pass
+    runtime_status: BLOCKED_INCOMPLETE_STAGE6_MATERIALISATION
     blocker_evidence:
       main_status_file: provenance/STAGE6_IMPORT_STATUS.md
       main_status: FULL_SOURCE_IMPORT_BLOCKED
@@ -132,6 +140,7 @@ repositories:
         - tests/test_kernel.py
         - latex/main.tex
         - PhaseNav_MAS_Instruction_Manual.pdf
+    promotion_state: CANDIDATE_ORCHESTRATION_ACTIVE_RUNTIME_EXECUTION_BLOCKED_STAGE6
     promotion_gate: COMPLETE_STAGE6_SOURCE_MATERIALISATION_PLUS_LOCAL_TESTS_RECEIPTS_AND_PDF
   CONSCIOUSNESS_DICTIONARY:
     repository: AdrianLipa90/The-Consciousness-Dictionary
