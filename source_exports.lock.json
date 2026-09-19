@@ -1,12 +1,12 @@
 {
   "schema": "FPDG_SOURCE_EXPORT_LOCK_V0_2",
-  "generated_at": "2026-09-19T21:59:30+01:00",
+  "generated_at": "2026-09-19T22:05:00+01:00",
   "sources": {
     "TIR": {
       "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
-      "export_commit": "ccdb17b341379e00a94d57ba322b78180665b1ca",
+      "export_commit": "d5dcd42211dc4d872971ca4afab97a4335b3ac1c",
       "source_commit": "e4eba64a1cc60e7f67e7d9c8229b05ae6185aa6e",
-      "repository_head": "e4eba64a1cc60e7f67e7d9c8229b05ae6185aa6e",
+      "repository_head": "d5dcd42211dc4d872971ca4afab97a4335b3ac1c",
       "path": "DEPENDENCY_EXPORT.json"
     },
     "IDT": {
@@ -20,7 +20,7 @@
       "repository": "AdrianLipa90/Relational-Field-Closure",
       "export_commit": "9e7c35dbeec6c0e51ff85ed9a4dcbb298a88b30d",
       "source_commit": "ce4af9ddd480ea40dfb5a3ee26ed396a58cb0e54",
-      "repository_head": "6fdd64307c96e02588b0898468a7693378ad752f",
+      "repository_head": "b076c6aa13cf752fbe9edd476903a6f7ef98f4e0",
       "path": "DEPENDENCY_EXPORT.json"
     },
     "SOH": {
