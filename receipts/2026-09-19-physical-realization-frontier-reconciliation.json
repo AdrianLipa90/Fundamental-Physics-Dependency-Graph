@@ -5,8 +5,9 @@
   "source": {
     "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
     "repository_head": "1b7bad9c04e0046a130a2bf041e43f1d189d97ec",
-    "dependency_export_commit": "972f52d4b4d841adaaa3f7d65aee38da5ed315d3",
-    "executable_bundle": "TIR/foundations/validation/tir_production_realization_binding_v0_2.py"
+    "dependency_export_commit": "a25b1ee40f464c378c61085070a92c3513d31c9c",
+    "executable_bundle": "TIR/foundations/validation/tir_production_realization_binding_v0_2.py",
+    "contract": "TIR/foundations/TIR_PHYSICAL_REALIZATION_SOURCE_BUNDLE_V0_2.md"
   },
   "finding": {
     "assembler_status": "CLOSED_EXECUTABLE_SOURCE_CONTRACT",
