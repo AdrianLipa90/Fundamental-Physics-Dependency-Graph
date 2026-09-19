@@ -16,6 +16,9 @@ core_object:
     - hessian
     - observable_response
     - inverse_identifiability
+    - cross_modal_evidence
+    - typed_orchestration_route
+    - strict_t36_runtime_sidecar
 
 repositories:
   IDT:
@@ -35,6 +38,8 @@ repositories:
     source:
       - spec/GREMLIN_RADIAL_MEDIUM_IDENTIFIABILITY_V0_1.md
       - tools/gremlin_radial_medium_identifiability_v01.py
+      - spec/GREMLIN_CROSS_MODAL_RELATIONAL_EVIDENCE_PACKET_V0_1.md
+      - tools/gremlin_cross_modal_relational_evidence_v01.py
   RFC:
     repository: AdrianLipa90/Relational-Field-Closure
     role: conditional_information_scalar_potential_parent
@@ -95,7 +100,9 @@ repositories:
     source:
       - spec/PNCS_RELATIONAL_OBSERVATION_PACKET_V0_1.md
       - src/phasenav_natural_code/relational_observation_v01.py
-    promotion_state: TYPED_PACKET_NO_T36_FLATTENING
+      - spec/PNCS_RELATIONAL_EVIDENCE_PACKET_V0_1.md
+      - src/phasenav_natural_code/relational_evidence_v01.py
+    promotion_state: TYPED_OBSERVATION_AND_EVIDENCE_PACKETS_NO_T36_FLATTENING
   PHASENAV_CORE:
     repository: AdrianLipa90/noema-phasenav-core
     role: typed_36d_phase_runtime_consumer
@@ -104,7 +111,9 @@ repositories:
     source:
       - docs/RELATIONAL_OBSERVATION_SIDECAR_V0_1.md
       - src/ciel_geometry/phasenav/relational_observation.py
-    promotion_state: RUNTIME_SIDECAR_STRICT_T36_PRESERVED
+      - docs/RELATIONAL_EVIDENCE_SIDECAR_V0_1.md
+      - src/ciel_geometry/phasenav/relational_evidence.py
+    promotion_state: OBSERVATION_AND_EVIDENCE_SIDECARS_STRICT_T36_PRESERVED
   PHASENAV_MAS:
     repository: AdrianLipa90/PhaseNav-MAS-Upgrade
     role: downstream_orchestration_consumer
@@ -156,6 +165,13 @@ theorems:
     status: EXACT_WITHIN_SPHERICAL_SHARED_SCALAR_MODEL
     equation: "d2Phi/db2=(b^2/r^2)kappa^2+(1-4b^2/r^2)Omega^2"
     owner: QHTRI_OPTICS
+  CROSS_MODAL_EVIDENCE_ROUTING:
+    status: SOFTWARE_DIAGNOSTIC_CONTRACT_SOURCE_NEUTRAL
+    equation: "residual channels + covariance + phase rank -> CONSISTENT | INCONSISTENT | UNDERDETERMINED"
+    owner: GREMLIN
+    consumers:
+      - PNCS
+      - PHASENAV_CORE
 
 candidate_edges:
   - from: RFC
@@ -183,6 +199,16 @@ candidate_edges:
     relation: scalar_phase_curvature_to_spacetime_metric
     status: OPEN_NOT_PROMOTED
     promotion_gate: H_G_METRIC_BRIDGE
+  - from: GREMLIN
+    to: PNCS
+    relation: cross_modal_evidence_to_conservative_candidate_routing
+    status: SOFTWARE_DIAGNOSTIC_INTERFACE
+    promotion_gate: NO_PHYSICAL_SOURCE_SELECTION
+  - from: PNCS
+    to: PHASENAV_CORE
+    relation: typed_evidence_packet_to_read_only_runtime_sidecar
+    status: SOFTWARE_RUNTIME_INTERFACE
+    promotion_gate: STRICT_T36_NO_FLATTENING
 
 validation:
   IDT:
@@ -191,10 +217,10 @@ validation:
     run_id: 35474369607
     result: PASS_1227
   GREMLIN:
-    head: f10fab7f099bb50839d8b0c156621056e2f288fc
+    head: d5cbc53cdaa8f6a948dbe07202c3c05d9f4afc2e
     workflow: GREMLIN Repository Fail-Loud Audit v0.1
-    run_id: 35474426783
-    result: PASS_1428_SKIP_1
+    run_id: 35476625573
+    result: PENDING
   RC:
     head: 3347a25c454ae4ff93f2ef9abd593322822c147b
     targeted_workflow: Relational holonomy spectroscopy reference
@@ -223,9 +249,19 @@ validation:
     workflow: RFC reference suite
     run_id: 35475094788
     result: SUCCESS
+  PNCS:
+    head: 9c49db5260b827de43366e1ca01a94eb4df684a5
+    targeted_workflow: Relational observation/evidence packet reference
+    targeted_run_id: 35476701634
+    targeted_result: PENDING
+  PHASENAV_CORE:
+    head: c314ee6604cdbab589021cbe7a3c9e0276969adb
+    targeted_workflow: Relational observation/evidence sidecar reference
+    targeted_run_id: 35476781551
+    targeted_result: PENDING
   TIR:
     head: 3aecc18ee159e81c7f44a078f4ca907cbab748de
-    status: MULTIPLE_EXISTING_WORKFLOWS_PASS_ONE_LONG_INTEGRATED_KAPPA_RUN_IN_PROGRESS
+    status: ALL_OBSERVED_WORKFLOWS_SUCCESS_INCLUDING_INTEGRATED_KAPPA_RUN_740
   FPDG:
     reconciled_head: 0cf4786a51799b0ec3fecd5522ef14f8926421ac
     staging_run_id: 35476014148
@@ -242,6 +278,9 @@ firewalls:
   - molecular_bond_graph_is_not_automatically_the_effective_state_graph
   - acoustic_or_phase_optics_geometry_is_not_spacetime_geometry
   - GREMLIN_residual_routing_is_not_source_attribution
+  - cross_modal_consistency_is_not_physical_source_selection
+  - PNCS_candidate_route_is_not_scientific_promotion
+  - runtime_evidence_sidecar_does_not_modify_T36
   - BEC_calibration_is_conditional_and_does_not_promote_IDT_spatial_lift
   - RFC_alpha_I_physical_calibration_remains_open
   - source_repository_claim_authority_remains_local
