@@ -1,0 +1,31 @@
+{
+  "schema": "FPDG_PHYSICAL_REALIZATION_FRONTIER_RECONCILIATION_V0_1",
+  "date": "2026-09-19",
+  "generated_at": "2026-09-19T21:40:00+01:00",
+  "source": {
+    "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+    "repository_head": "1b7bad9c04e0046a130a2bf041e43f1d189d97ec",
+    "dependency_export_commit": "972f52d4b4d841adaaa3f7d65aee38da5ed315d3",
+    "executable_bundle": "TIR/foundations/validation/tir_production_realization_binding_v0_2.py"
+  },
+  "finding": {
+    "assembler_status": "CLOSED_EXECUTABLE_SOURCE_CONTRACT",
+    "production_bundle_present": false,
+    "required_open_inputs": [
+      "PRODUCTION_GLOBAL_SPATIAL_CAPTURE",
+      "PRODUCTION_INTERLEAF_MATCHING_CAPTURE",
+      "SAME_PHYSICAL_REALIZATION_ID",
+      "SAME_PHYSICAL_REALIZATION_RECEIPT"
+    ],
+    "pncs_phase36_realization_id_allowed_as_physical_id": false
+  },
+  "graph_change": {
+    "added_claim": "TIR.SPACETIME.PHYSICAL_REALIZATION_BUNDLE_V02",
+    "local_parent_claims": [
+      "TIR.SPACE.GLOBAL_COMPLEX_INPUT_CONTRACT",
+      "TIR.SPACETIME.INTERLEAF_MATCHING_INPUT_CONTRACT"
+    ],
+    "production_cross_repo_target": "RFC.GSC3A.CLOCK_TRANSVERSE_MATCHING_FLOW"
+  },
+  "canon_promotion": false
+}
