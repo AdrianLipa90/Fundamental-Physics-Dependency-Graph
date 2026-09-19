@@ -1,33 +1,33 @@
 {
   "schema": "FPDG_SOURCE_EXPORT_LOCK_V0_2",
-  "generated_at": "2026-09-05T09:05:04+01:00",
+  "generated_at": "2026-09-19T20:09:00+01:00",
   "sources": {
     "TIR": {
       "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
-      "export_commit": "71e2965962905ffcad426bf5e26e511784c08822",
-      "source_commit": "b515b4eb5876b64fc4f4d748a4a504267e0a3680",
-      "repository_head": "11692996630f1aed0dd11589ed8d0be8fcb2a071",
+      "export_commit": "f67f0733aa471ac0ecae57c66a480730b0de937d",
+      "source_commit": "bc22bf7dc9e02b912656e2f229a8efee39c2bbc9",
+      "repository_head": "bc22bf7dc9e02b912656e2f229a8efee39c2bbc9",
       "path": "DEPENDENCY_EXPORT.json"
     },
     "IDT": {
       "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
-      "export_commit": "a7da5527b83ddabbbd142dceabde4da4b21b0c7c",
-      "source_commit": "afed815f190ee5b162d1406878305a4259536af0",
-      "repository_head": "f670e60112b578756a90a7b29a4f574c37a8c03f",
+      "export_commit": "01d8148d5cf980c6226955f516698bc78869b9e3",
+      "source_commit": "58f453a4725bf0304417a5d07730f2dc1765dea5",
+      "repository_head": "58f453a4725bf0304417a5d07730f2dc1765dea5",
       "path": "DEPENDENCY_EXPORT.json"
     },
     "RFC": {
       "repository": "AdrianLipa90/Relational-Field-Closure",
-      "export_commit": "012d4aa790bca7d631caf5c8002bebaa3a07710a",
-      "source_commit": "5bb01438a44a68b0d747a3d1f9114aa648bd7395",
+      "export_commit": "847d6aa82bf7338a231f01221a0ccaa4524bd1e7",
+      "source_commit": "ce4af9ddd480ea40dfb5a3ee26ed396a58cb0e54",
       "repository_head": "ce4af9ddd480ea40dfb5a3ee26ed396a58cb0e54",
       "path": "DEPENDENCY_EXPORT.json"
     },
     "SOH": {
       "repository": "AdrianLipa90/secret-of-a-half",
-      "export_commit": "0d0ffa1765381cc644aadb03c453d9ac6dbe7ea3",
-      "source_commit": "19b9820165cb46f441d006e0ff6e94f8c08f37b8",
-      "repository_head": "b82c33132f6fd9d578f9fc34fc877d3f716a066f",
+      "export_commit": "d5ee1b2c8422b407982391d0aeda0a2d49a61359",
+      "source_commit": "d99545aa447ef86bc253d8241a3fee9adb8a42c1",
+      "repository_head": "d99545aa447ef86bc253d8241a3fee9adb8a42c1",
       "path": "DEPENDENCY_EXPORT.json"
     }
   },
