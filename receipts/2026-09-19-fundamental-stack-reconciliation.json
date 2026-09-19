@@ -1,0 +1,54 @@
+{
+  "schema": "FPDG_FUNDAMENTAL_STACK_RECONCILIATION_V0_1",
+  "date": "2026-09-19",
+  "generated_at": "2026-09-19T20:09:00+01:00",
+  "branch": "sync/fundamental-stack-20260919",
+  "main_mutated": false,
+  "source_exports": {
+    "TIR": {
+      "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+      "source_commit": "bc22bf7dc9e02b912656e2f229a8efee39c2bbc9",
+      "export_commit": "1b7bad9c04e0046a130a2bf041e43f1d189d97ec",
+      "repository_head": "1b7bad9c04e0046a130a2bf041e43f1d189d97ec"
+    },
+    "IDT": {
+      "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
+      "source_commit": "58f453a4725bf0304417a5d07730f2dc1765dea5",
+      "export_commit": "7d3899780da5cec5356b9ba0a61844732955c758",
+      "repository_head": "7d3899780da5cec5356b9ba0a61844732955c758"
+    },
+    "RFC": {
+      "repository": "AdrianLipa90/Relational-Field-Closure",
+      "source_commit": "ce4af9ddd480ea40dfb5a3ee26ed396a58cb0e54",
+      "export_commit": "9e7c35dbeec6c0e51ff85ed9a4dcbb298a88b30d",
+      "repository_head": "9e7c35dbeec6c0e51ff85ed9a4dcbb298a88b30d"
+    },
+    "SOH": {
+      "repository": "AdrianLipa90/secret-of-a-half",
+      "source_commit": "d99545aa447ef86bc253d8241a3fee9adb8a42c1",
+      "export_commit": "e84eff6988f333154995caf20de3e824029d377d",
+      "repository_head": "e84eff6988f333154995caf20de3e824029d377d"
+    }
+  },
+  "graph": {
+    "nodes": 159,
+    "local_edges": 187,
+    "cross_repo_edges": 30,
+    "total_edges": 217,
+    "candidate_edges": 10,
+    "promoted_cycle_check": "PASS"
+  },
+  "added_cross_repo_interfaces": [
+    "TIR A5 + IDT 05H -> RFC GSC3 product clock",
+    "TIR inter-leaf matching -> RFC GSC3A",
+    "IDT 05I + 05G -> RFC L8",
+    "TIR/IDT Collatz-FS phase -> RFC E27"
+  ],
+  "open_frontier": [
+    "TIR physical flavour binding",
+    "IDT production event-complex/global-clock inputs and general global injectivity",
+    "RFC production global atlas/domain coverage, Wick completeness, physical scale/coupling",
+    "SOH full Stieltjes/Weil/Li positivity and RH"
+  ],
+  "provenance_rule": "source repositories own local claims and local edges; FPDG owns cross-repository edges; no candidate edge is canonized by this reconciliation"
+}

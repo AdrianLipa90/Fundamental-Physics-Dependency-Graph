@@ -1,4 +1,4 @@
-schema: FPDG_CROSS_REPO_INTERFACES_V0_2
+schema: FPDG_CROSS_REPO_INTERFACES_V0_3
 interfaces:
   - interface_id: IFACE.TIR_TO_IDT.TIME_JOIN
     upstream_repository: TIR
@@ -98,3 +98,79 @@ interfaces:
       promotion_required: true
       promotion_gate: DOMAIN_INVERSE_SINGULAR_BOUNDARY_AUDIT_REQUIRED
       canon_authority: false
+
+  - interface_id: IFACE.TIR_TO_RFC.GSC3_SPATIAL_LEAF
+    upstream_repository: TIR
+    downstream_repository: RFC
+    upstream_claim: TIR.SPACE.GLOBAL_3MANIFOLD_A5
+    downstream_claim: RFC.GSC3.PRODUCT_CLOCK_ATLAS
+    contract:
+      status: CANONICAL_CROSS_REPO
+      relation: smooth oriented spatial leaf -> product clock carrier
+      revalidation_propagates: true
+
+  - interface_id: IFACE.IDT_TO_RFC.GSC3_EVENT_CLOCK
+    upstream_repository: IDT
+    downstream_repository: RFC
+    upstream_claim: IDT.CLOCK.EVENT_EXACTNESS_05H
+    downstream_claim: RFC.GSC3.PRODUCT_CLOCK_ATLAS
+    contract:
+      status: CANONICAL_CROSS_REPO
+      relation: exact shared event clock -> product clock carrier
+      revalidation_propagates: true
+
+  - interface_id: IFACE.TIR_TO_RFC.GSC3A_MATCHING_FLOW
+    upstream_repository: TIR
+    downstream_repository: RFC
+    upstream_claim: TIR.SPACETIME.INTERLEAF_MATCHING_INPUT_CONTRACT
+    downstream_claim: RFC.GSC3A.CLOCK_TRANSVERSE_MATCHING_FLOW
+    contract:
+      status: CANONICAL_CROSS_REPO
+      relation: inter-leaf matching field -> clock-transverse matching-flow soldering
+      revalidation_propagates: true
+
+  - interface_id: IFACE.IDT_TO_RFC.L8_SMOOTH_CLOCK
+    upstream_repository: IDT
+    downstream_repository: RFC
+    upstream_claim: IDT.CLOCK.REGULAR_SMOOTH_EXTENSION_05I
+    downstream_claim: RFC.L8.GLOBAL_HYPERBOLICITY_UNIFORM_TEMPORAL
+    contract:
+      status: CANONICAL_CROSS_REPO
+      relation: regular smooth clock-extension witness -> RF-L8 global-hyperbolicity route
+      production_wick_completeness: OPEN_INPUT
+      revalidation_propagates: true
+
+  - interface_id: IFACE.IDT_TO_RFC.L8_FOLIATION
+    upstream_repository: IDT
+    downstream_repository: RFC
+    upstream_claim: IDT.CLOCK.FOLIATION_05G
+    downstream_claim: RFC.L8.GLOBAL_HYPERBOLICITY_UNIFORM_TEMPORAL
+    contract:
+      status: CANONICAL_CROSS_REPO
+      relation: positive-lapse temporal foliation -> RF-L8 global-hyperbolicity route
+      production_wick_completeness: OPEN_INPUT
+      revalidation_propagates: true
+
+  - interface_id: IFACE.TIR_TO_RFC.E27_PHASE_FIBRE
+    upstream_repository: TIR
+    downstream_repository: RFC
+    upstream_claim: TIR.COLLATZ_FS.RELATIONAL_PHASE_INTERFACE
+    downstream_claim: RFC.E27.COLLATZ_FS_PHASE_FIBRE
+    contract:
+      status: CANONICAL_CROSS_REPO
+      relation: relational Collatz-FS phase -> additive spacetime phase fibre
+      metric_coupling: OPEN
+      einstein_field_closure_changed: false
+      revalidation_propagates: true
+
+  - interface_id: IFACE.IDT_TO_RFC.E27_PHASE_FIBRE
+    upstream_repository: IDT
+    downstream_repository: RFC
+    upstream_claim: IDT.COLLATZ_FS.TEMPORAL_PHASE_INTERFACE
+    downstream_claim: RFC.E27.COLLATZ_FS_PHASE_FIBRE
+    contract:
+      status: CANONICAL_CROSS_REPO
+      relation: temporal Collatz-FS phase -> additive spacetime phase fibre
+      metric_coupling: OPEN
+      einstein_field_closure_changed: false
+      revalidation_propagates: true
