@@ -22,7 +22,20 @@ from federation_surface import (  # noqa: E402
 
 GRAPH_PATH = BASE_GRAPH_PATH
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
-ALLOWED_LOCAL_AUTHORITIES = {"CANONICAL", "CANONICAL_FRONTIER", "CANDIDATE_ONLY"}
+SOURCE_AUTHORITY_NORMALIZATION = {
+    "CANONICAL_STRUCTURAL_PARENT": "CANONICAL",
+}
+ALLOWED_LOCAL_AUTHORITIES = {
+    "CANONICAL",
+    "CANONICAL_FRONTIER",
+    "CANDIDATE_ONLY",
+    *SOURCE_AUTHORITY_NORMALIZATION,
+}
+
+
+def normalize_local_authority(authority: str) -> str:
+    """Normalize source-repository local authority aliases into FPDG authority classes."""
+    return SOURCE_AUTHORITY_NORMALIZATION.get(authority, authority)
 
 
 class ExportError(RuntimeError):
@@ -102,9 +115,13 @@ def validate_export(export: dict[str, Any], path: Path, registry: dict[str, dict
             raise ExportError(f"{path}: local edge {idx} has invalid authority")
         if src == dst:
             raise ExportError(f"{path}: local edge {idx} is a self-edge")
-        key = (src, dst, authority)
+        normalized_authority = normalize_local_authority(authority)
+        key = (src, dst, normalized_authority)
         if key in seen_edges:
-            raise ExportError(f"{path}: duplicate local edge")
+            raise ExportError(
+                f"{path}: duplicate local edge after authority normalization "
+                f"{src} -> {dst} [{normalized_authority}]"
+            )
         seen_edges.add(key)
         if authority == "CANDIDATE_ONLY":
             if edge.get("promotion_required") is not True or not edge.get("promotion_gate"):
@@ -129,7 +146,11 @@ def canonical_local_surface(graph, repo_id):
 def export_surface(export):
     claims = {claim["claim_id"]: claim for claim in export["claims"]}
     edges = {
-        (edge["from"], edge["to"], edge["authority"])
+        (
+            edge["from"],
+            edge["to"],
+            normalize_local_authority(edge["authority"]),
+        )
         for edge in export.get("local_edges", [])
     }
     return claims, edges
