@@ -90,13 +90,21 @@ repositories:
   PNCS:
     repository: AdrianLipa90/PhaseNav-Natural-Coding-System
     role: typed_semantic_execution_consumer
-    branch: main
-    promotion_state: POST_V1_RESEARCH_REGISTRY_ONLY_UNLESS_EXPLICITLY_ADMITTED
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/PhaseNav-Natural-Coding-System/pull/70
+    source:
+      - spec/PNCS_RELATIONAL_OBSERVATION_PACKET_V0_1.md
+      - src/phasenav_natural_code/relational_observation_v01.py
+    promotion_state: TYPED_PACKET_NO_T36_FLATTENING
   PHASENAV_CORE:
     repository: AdrianLipa90/noema-phasenav-core
     role: typed_36d_phase_runtime_consumer
-    branch: master
-    promotion_state: SCIENTIFIC_BINDING_SEPARATE_FROM_RUNTIME_INTEGRITY
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/noema-phasenav-core/pull/35
+    source:
+      - docs/RELATIONAL_OBSERVATION_SIDECAR_V0_1.md
+      - src/ciel_geometry/phasenav/relational_observation.py
+    promotion_state: RUNTIME_SIDECAR_STRICT_T36_PRESERVED
   PHASENAV_MAS:
     repository: AdrianLipa90/PhaseNav-MAS-Upgrade
     role: downstream_orchestration_consumer
@@ -219,12 +227,15 @@ validation:
     head: 3aecc18ee159e81c7f44a078f4ca907cbab748de
     status: MULTIPLE_EXISTING_WORKFLOWS_PASS_ONE_LONG_INTEGRATED_KAPPA_RUN_IN_PROGRESS
   FPDG:
-    staging_run_id: 35474860385
-    staging_result: PASS_5
-    dag_run_id: 35474860366
+    reconciled_head: 0cf4786a51799b0ec3fecd5522ef14f8926421ac
+    staging_run_id: 35476014148
+    staging_result: SUCCESS
+    dag_run_id: 35476014192
     dag_result: SUCCESS
-    ambient_source_export_run_id: 35474860362
-    ambient_source_export_status: FAIL_UPSTREAM_MAIN_ADVANCED_RECONCILIATION_REQUIRED
+    locked_source_export_run_id: 35476014136
+    locked_source_export_result: SUCCESS
+    source_drift_run_id: 35476014123
+    source_drift_result: SUCCESS
 
 firewalls:
   - W_chem_is_not_identified_with_W_sem
