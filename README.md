@@ -13,12 +13,12 @@ Each source repository remains authoritative for its own equations, proofs, vali
 
 ## Current baseline
 
-`v0.3` is a claim-level executable federated dependency kernel:
+The 2026-09-19 reconciliation branch is a claim-level executable federated dependency kernel:
 
 ```text
-82 claims / 91 dependency edges
-11 cross-repository edges
-4 CANDIDATE_ONLY edges
+159 claims / 217 dependency edges
+30 cross-repository edges
+10 CANDIDATE_ONLY edges
 ```
 
 The promoted graph is acyclic and validated fail-closed by `tools/validate_dag.py`.
@@ -150,6 +150,19 @@ reconcile source claims + local edges against canonical FPDG local surface
 ```
 
 A source-main advance always fails the freshness gate first. After semantic export-diff review, a repository-only advance with an identical represented dependency surface is repaired by refreshing `repository_head` and revalidating the locked export. If the scientific dependency surface changed, the source export, represented `source_commit`, FPDG lock and affected downstream dependency surface must instead be reconciled together. This is the fail-closed cross-repository holonomy rule.
+
+## 2026-09-19 reconciliation snapshot
+
+The current reconciliation branch locks exact source-owned dependency exports representing these source-main scientific states:
+
+```text
+TIR  source bc22bf7dc9e02b912656e2f229a8efee39c2bbc9  export f67f0733aa471ac0ecae57c66a480730b0de937d
+IDT  source 58f453a4725bf0304417a5d07730f2dc1765dea5  export 01d8148d5cf980c6226955f516698bc78869b9e3
+RFC  source ce4af9ddd480ea40dfb5a3ee26ed396a58cb0e54  export 847d6aa82bf7338a231f01221a0ccaa4524bd1e7
+SOH  source d99545aa447ef86bc253d8241a3fee9adb8a42c1  export d5ee1b2c8422b407982391d0aeda0a2d49a61359
+```
+
+The graph now includes the TIR representation/flavour frontier, IDT 05I/GSC2/05K clock-globalization surfaces, RFC E26/E27 and GSC3--GSC6 globalization routes, and the SOH G024/G025 research frontier. Physical flavour binding, production global spacetime inputs, physical scale/coupling, and RH-level positivity remain explicitly open.
 
 ## Source drift watch
 
