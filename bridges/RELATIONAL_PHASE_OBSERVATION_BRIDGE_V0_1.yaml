@@ -235,7 +235,8 @@ candidate_edges:
   - from: PNCS
     to: PHASENAV_MAS
     relation: candidate_evidence_route_to_multi_agent_orchestration
-    status: BLOCKED_STAGE6_SOURCE_TREE_INCOMPLETE
+    status: SOFTWARE_ORCHESTRATION_INTERFACE_ACTIVE
+    execution_status: BLOCKED_UNTIL_COMPLETE_STAGE6_MATERIALISATION
     promotion_gate: COMPLETE_STAGE6_MATERIALISATION_AND_MAS_LOCAL_VALIDATION
 
 validation:
