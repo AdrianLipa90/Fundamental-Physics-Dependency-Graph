@@ -156,7 +156,7 @@ A source-main advance always fails the freshness gate first. After semantic expo
 The current reconciliation branch locks exact source-owned dependency exports representing these source-main scientific states:
 
 ```text
-TIR  source bc22bf7dc9e02b912656e2f229a8efee39c2bbc9  export f67f0733aa471ac0ecae57c66a480730b0de937d
+TIR  source bc22bf7dc9e02b912656e2f229a8efee39c2bbc9  export da9fd236410b44399483464b757dffa800fc581b
 IDT  source 58f453a4725bf0304417a5d07730f2dc1765dea5  export 01d8148d5cf980c6226955f516698bc78869b9e3
 RFC  source ce4af9ddd480ea40dfb5a3ee26ed396a58cb0e54  export 847d6aa82bf7338a231f01221a0ccaa4524bd1e7
 SOH  source d99545aa447ef86bc253d8241a3fee9adb8a42c1  export d5ee1b2c8422b407982391d0aeda0a2d49a61359
