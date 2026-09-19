@@ -38,18 +38,22 @@ repositories:
   RFC:
     repository: AdrianLipa90/Relational-Field-Closure
     role: conditional_information_scalar_potential_parent
-    branch: main
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/Relational-Field-Closure/pull/142
     source:
       - closure/lambda0/RF_L3_INFORMATION_SCALAR_POTENTIAL_RECONSTRUCTION.md
+      - closure/lambda0/RF_L3_DOWNSTREAM_RELATIONAL_PHASE_OBSERVATION_INTERFACE_V0_1.md
     binding:
       relation: U_I=(alpha_I/kappa_E) Xi_I
       physical_alpha_I_calibration: OPEN
   TIR:
     repository: AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations
     role: relational_geometry_holonomy_and_information_parent
-    branch: main
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations/pull/174
     source:
       - TIR/CURRENT_STATUS.md
+      - TIR/integration/TIR_RELATIONAL_PHASE_OBSERVATION_DOWNSTREAM_INTERFACE_V0_1.md
   RC:
     repository: AdrianLipa90/Resonant-Chemistry
     role: molecular_graph_u1_holonomy_and_phase_dressed_hamiltonian
@@ -77,8 +81,12 @@ repositories:
   PHASENAV_TELESCOPE:
     repository: AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation
     role: downstream_phase_resolved_spectral_inverse_consumer
-    branch: main
-    promotion_state: LINK_AND_ADAPTER_REVIEW_REQUIRED
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation/pull/24
+    source:
+      - docs/RELATIONAL_PHASE_OBSERVATION_ADAPTER_V0_1.md
+      - phasenav_telescope_v5/analysis/relational_phase_observation.py
+    promotion_state: TARGETED_ADAPTER_PASS_FULL_LEGACY_REGRESSION_HAS_UNRELATED_FAILURES
   PNCS:
     repository: AdrianLipa90/PhaseNav-Natural-Coding-System
     role: typed_semantic_execution_consumer
@@ -167,6 +175,56 @@ candidate_edges:
     relation: scalar_phase_curvature_to_spacetime_metric
     status: OPEN_NOT_PROMOTED
     promotion_gate: H_G_METRIC_BRIDGE
+
+validation:
+  IDT:
+    head: 6763870e2a59fa06a45421b5a5b48e007049d061
+    workflow: Reference suite
+    run_id: 35474369607
+    result: PASS_1227
+  GREMLIN:
+    head: f10fab7f099bb50839d8b0c156621056e2f288fc
+    workflow: GREMLIN Repository Fail-Loud Audit v0.1
+    run_id: 35474426783
+    result: PASS_1428_SKIP_1
+  RC:
+    head: 3347a25c454ae4ff93f2ef9abd593322822c147b
+    targeted_workflow: Relational holonomy spectroscopy reference
+    targeted_run_id: 35474885674
+    targeted_result: PASS_7
+    ambient_full_suite_run_id: 35474885602
+    ambient_status: FAIL_2_ALUMINIUM_3P_TESTS_OUTSIDE_ROLLOUT_FILES
+  OES:
+    head: 642cad97a02d3dace4c87a119ccdacfe4a60fe14
+    workflow: OES reference suite
+    run_id: 35474798319
+    result: PASS_82
+  QHTRI_OPTICS:
+    head: 7ac4320a61c78a0edf5ce97a2193635d6dae132a
+    workflow: Relational phase observation reference
+    run_id: 35474852458
+    result: PASS_58
+  PHASENAV_TELESCOPE:
+    head: fcd295270cedf4137cf55f287cf51ce8d0338bb3
+    targeted_workflow: Relational phase observation reference
+    targeted_run_id: 35475132026
+    targeted_result: PASS_11
+    ambient_full_suite_status: FAIL_2_SOURCE_ORTHOGONAL_THRESHOLD_TESTS_OUTSIDE_ROLLOUT_FILES
+  RFC:
+    head: 466f2cea5be9d51f18adb73a6e3bd22bec1d967c
+    workflow: RFC reference suite
+    run_id: 35475094788
+    result: SUCCESS
+  TIR:
+    head: 3aecc18ee159e81c7f44a078f4ca907cbab748de
+    status: MULTIPLE_EXISTING_WORKFLOWS_PASS_ONE_LONG_INTEGRATED_KAPPA_RUN_IN_PROGRESS
+  FPDG:
+    staging_run_id: 35474860385
+    staging_result: PASS_5
+    dag_run_id: 35474860366
+    dag_result: SUCCESS
+    ambient_source_export_run_id: 35474860362
+    ambient_source_export_status: FAIL_UPSTREAM_MAIN_ADVANCED_RECONCILIATION_REQUIRED
 
 firewalls:
   - W_chem_is_not_identified_with_W_sem
