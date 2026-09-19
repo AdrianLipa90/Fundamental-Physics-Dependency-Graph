@@ -12,15 +12,15 @@ This inventory exists so the relational phase/potential/observable bridge cannot
 |---|---|---|
 | Fundamental-Physics-Dependency-Graph | STAGING_MANIFEST + VALIDATOR | https://github.com/AdrianLipa90/Fundamental-Physics-Dependency-Graph/pull/22 |
 | Informational-Dynamics-of-Time | 02JP + 02JQ + executable radial identities | https://github.com/AdrianLipa90/Informational-Dynamics-of-Time/pull/101 |
-| GREMLIN | radial identifiability / residual routing | https://github.com/AdrianLipa90/GREMLIN/pull/88 |
+| GREMLIN | radial identifiability / cross-modal evidence / source-neutral routing | https://github.com/AdrianLipa90/GREMLIN/pull/88 |
 | Resonant-Chemistry | graph (U(1)) holonomy / phase-dressed Hamiltonian | https://github.com/AdrianLipa90/Resonant-Chemistry/pull/27 |
 | Orbital-Eclipse-Spectroscopy | spectral response / Jacobian / Fisher | https://github.com/AdrianLipa90/Orbital-Eclipse-Spectroscopy/pull/14 |
 | QHTRI-Induced-Holonomic-Potentials-for-Neutrino-Flavour-Transport-and-Phase-Optics | orbit/epicycle -> phase curvature | https://github.com/AdrianLipa90/QHTRI-Induced-Holonomic-Potentials-for-Neutrino-Flavour-Transport-and-Phase-Optics/pull/1 |
 | Relational-Field-Closure | UPSTREAM_PARENT + RECIPROCAL DOWNSTREAM INTERFACE | https://github.com/AdrianLipa90/Relational-Field-Closure/pull/142 |
 | The-Fundamental-Theory-of-Informational-Relations | UPSTREAM_PARENT + RECIPROCAL DOWNSTREAM INTERFACE | https://github.com/AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations/pull/174 |
 | PhaseNav-Telescope-Spectral-Modulation | TYPED OBSERVATION ADAPTER + TARGETED TESTS | https://github.com/AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation/pull/24 |
-| PhaseNav-Natural-Coding-System | TYPED RELATIONAL OBSERVATION PACKET | https://github.com/AdrianLipa90/PhaseNav-Natural-Coding-System/pull/70 |
-| noema-phasenav-core | STRICT-T36 RELATIONAL OBSERVATION SIDECAR | https://github.com/AdrianLipa90/noema-phasenav-core/pull/35 |
+| PhaseNav-Natural-Coding-System | TYPED RELATIONAL OBSERVATION + EVIDENCE PACKETS | https://github.com/AdrianLipa90/PhaseNav-Natural-Coding-System/pull/70 |
+| noema-phasenav-core | STRICT-T36 OBSERVATION + EVIDENCE SIDECARS | https://github.com/AdrianLipa90/noema-phasenav-core/pull/35 |
 | PhaseNav-MAS-Upgrade | DOWNSTREAM_ORCHESTRATION_REVIEW | https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade |
 | The-Consciousness-Dictionary | DOWNSTREAM_VOCABULARY/OBSERVABLE_REVIEW | https://github.com/AdrianLipa90/The-Consciousness-Dictionary |
 | Origins-DNA | CHEMISTRY/ORBITAL_IMPACT_REVIEW | https://github.com/AdrianLipa90/Origins-DNA |
