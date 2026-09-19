@@ -1,6 +1,6 @@
 {
   "schema": "FPDG_SOURCE_EXPORT_LOCK_V0_2",
-  "generated_at": "2026-09-19T21:47:00+01:00",
+  "generated_at": "2026-09-19T21:52:00+01:00",
   "sources": {
     "TIR": {
       "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
@@ -20,7 +20,7 @@
       "repository": "AdrianLipa90/Relational-Field-Closure",
       "export_commit": "9e7c35dbeec6c0e51ff85ed9a4dcbb298a88b30d",
       "source_commit": "ce4af9ddd480ea40dfb5a3ee26ed396a58cb0e54",
-      "repository_head": "9e7c35dbeec6c0e51ff85ed9a4dcbb298a88b30d",
+      "repository_head": "6fdd64307c96e02588b0898468a7693378ad752f",
       "path": "DEPENDENCY_EXPORT.json"
     },
     "SOH": {
