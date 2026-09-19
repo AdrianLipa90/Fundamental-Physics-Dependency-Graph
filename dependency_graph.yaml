@@ -65,6 +65,9 @@ nodes:
 - {claim_id: "IDT.CLOCK.TEMPORAL_TRACE_UNIQUENESS_V06", repository: IDT, status: "CANDIDATE / EXACT INVARIANT-EXTENSIVE FUNCTIONAL THEOREM", source: "docs/candidates/spacetime_dimension/IDT_TEMPORAL_TRACE_UNIQUENESS_V0_6.md"}
 - {claim_id: "IDT.COLLATZ_FS.PHASE_MAP", repository: IDT, status: "EXACT_DISCRETE_PHASE_MAP / CONDITIONAL_ROOT_OF_UNITY_QUANTIZATION_PASS", source: "docs/IDT_COLLATZ_FS_TEMPORAL_PHASE_V0_1.md"}
 - {claim_id: "IDT.COLLATZ_FS.TEMPORAL_PHASE_INTERFACE", repository: IDT, status: "COMPOSITE_TEMPORAL_STATE_CANDIDATE / PHYSICAL_TIME_COUPLING_OPEN / EINSTEIN_BINDING_OPEN", source: "CURRENT_THEORY_STATE_PHASE_SUPPLEMENT_V0_1.md"}
+- {claim_id: "TIR.IDT.MOD6PI.C3_PAULI_CROSSWALK", repository: TIR, status: "REPRESENTATION_CROSSWALK_CLOSED / TEMPORAL_SPATIAL_PHYSICAL_BINDING_OPEN / TEMPORAL_FLAVOUR_PHYSICAL_BINDING_OPEN", source: "TIR/integration/TIR_IDT_MOD6PI_C3_PAULI_CROSSWALK_V0_1.md"}
+- {claim_id: "IDT.MOD6PI.C3_PERIODIC_QUOTIENT_02JN", repository: IDT, status: "EXACT_PERIODIC_ENDPOINT_QUOTIENT_TO_C3 / F3_CHARACTER_BASIS_EXACT / PAULI_EQUIVARIANT_REPRESENTATION_EXACT / PHYSICAL_SECTOR_BINDING_OPEN", source: "formalism/02JN_modular_cyclic_c3_pauli_bridge.md"}
+- {claim_id: "IDT.HALF_FRAME.GLUING_02J", repository: IDT, status: "HALF_SUPPORT_SPLIT_AND_NEIGHBOR_GLUE_ALGEBRAIC_GATE / EXACT_NORM_DECOMPOSITION", source: "formalism/02J_half_frame_temporal_gluing.md"}
 - {claim_id: "RFC.SOURCE.CONSERVED_CARRIER", repository: RFC, status: "ADMITTED_SOURCE_INTERFACE", source: "formalism/DEPENDENCY_GRAPH.md"}
 - {claim_id: "RFC.N1B2K.CURRENT_MEASURE", repository: RFC, status: "ACTIVE_PHYSICAL_REALIZATION", source: "formalism/DEPENDENCY_GRAPH.md"}
 - {claim_id: "RFC.N1B2O.MATTER_SOURCE_FACTORIZATION", repository: RFC, status: "CANONICAL", source: "formalism/DEPENDENCY_GRAPH.md"}
@@ -198,6 +201,11 @@ edges:
 - {<<: *CD, from: "IDT.TEMPORAL.PRIMITIVE", to: "IDT.CLOCK.TEMPORAL_TRACE_LIFT_V02", promotion_gate: "IDT_ELAPSED_SCALE_AS_HERMITIAN_TRACE_COORDINATE"}
 - {<<: *CD, from: "IDT.CLOCK.TEMPORAL_TRACE_LIFT_V02", to: "IDT.CLOCK.TEMPORAL_TRACE_UNIQUENESS_V06", promotion_gate: "IDT_ELAPSED_SCALE_AS_HERMITIAN_TRACE_COORDINATE"}
 - {<<: *CAN, from: "IDT.COLLATZ_FS.PHASE_MAP", to: "IDT.COLLATZ_FS.TEMPORAL_PHASE_INTERFACE"}
+- {<<: *CD, from: "TIR.IDT.MOD6PI.C3_PAULI_CROSSWALK", to: "TIR.STANDARD_MODEL", promotion_gate: "TEMPORAL_FLAVOUR_PHYSICAL_BINDING_THEOREM_REQUIRED"}
+- {<<: *CR, from: "TIR.SPACE.LOCAL_R3", to: "TIR.IDT.MOD6PI.C3_PAULI_CROSSWALK", note: "TIR supplies the existing Herm_0(2) ~= R3 / Pauli carrier used by the equivariant crosswalk."}
+- {<<: *CR, from: "IDT.MOD6PI.C3_PERIODIC_QUOTIENT_02JN", to: "TIR.IDT.MOD6PI.C3_PAULI_CROSSWALK", note: "Cross-repository exact representation crosswalk; physical sector identity remains open."}
+- {<<: *CAN, from: "IDT.HALF_FRAME.GLUING_02J", to: "IDT.MOD6PI.C3_PERIODIC_QUOTIENT_02JN", note: "N=3 open-cut P4 closes to C3 only under the explicit periodic endpoint identification."}
+- {<<: *CAN, from: "IDT.TEMPORAL.WAVE", to: "IDT.HALF_FRAME.GLUING_02J", note: "Existing IDT temporal-wave carrier feeds the half-frame quotient surface."}
 - {<<: *CAN, from: "RFC.SOURCE.CONSERVED_CARRIER", to: "RFC.N1B2K.CURRENT_MEASURE"}
 - {<<: *CAN, from: "RFC.N1B2K.CURRENT_MEASURE", to: "RFC.N1B2O.MATTER_SOURCE_FACTORIZATION"}
 - {<<: *CAN, from: "RFC.N1B2O.MATTER_SOURCE_FACTORIZATION", to: "RFC.N1B2P.MAXWELL_INTERTWINER"}
