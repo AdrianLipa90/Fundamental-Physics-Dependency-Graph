@@ -1,0 +1,178 @@
+schema: FPDG_RELATIONAL_PHASE_OBSERVATION_STAGING_V0_1
+status: CANDIDATE_STAGING_NO_FEDERATION_PROMOTION
+authority:
+  active_federated_dag_modified: false
+  source_repository_claim_authority_preserved: true
+  candidate_edges_propagate_canonical_invalidation: false
+  reason: source-owned dependency exports must be extended before federation promotion
+
+core_object:
+  name: relational_phase_potential_observation_chain
+  chain:
+    - state_or_density
+    - connection_or_phase
+    - gauge_invariant_holonomy_or_effective_scalar
+    - gradient
+    - hessian
+    - observable_response
+    - inverse_identifiability
+
+repositories:
+  IDT:
+    repository: AdrianLipa90/Informational-Dynamics-of-Time
+    role: continuum_madelung_bec_radial_inverse_and_epicycle
+    branch: candidate/idt-eb-bec-orbital-acoustic-v0.1
+    pull_request: https://github.com/AdrianLipa90/Informational-Dynamics-of-Time/pull/101
+    source:
+      - formalism/02JP_eb_bec_orbital_bogoliubov_acoustic_bridge.md
+      - formalism/02JQ_radial_condensate_profile_classification.md
+      - src/idt/radial_condensate_profiles.py
+  GREMLIN:
+    repository: AdrianLipa90/GREMLIN
+    role: source_neutral_radial_identifiability_and_residual_routing
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/GREMLIN/pull/88
+    source:
+      - spec/GREMLIN_RADIAL_MEDIUM_IDENTIFIABILITY_V0_1.md
+      - tools/gremlin_radial_medium_identifiability_v01.py
+  RFC:
+    repository: AdrianLipa90/Relational-Field-Closure
+    role: conditional_information_scalar_potential_parent
+    branch: main
+    source:
+      - closure/lambda0/RF_L3_INFORMATION_SCALAR_POTENTIAL_RECONSTRUCTION.md
+    binding:
+      relation: U_I=(alpha_I/kappa_E) Xi_I
+      physical_alpha_I_calibration: OPEN
+  TIR:
+    repository: AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations
+    role: relational_geometry_holonomy_and_information_parent
+    branch: main
+    source:
+      - TIR/CURRENT_STATUS.md
+  RC:
+    repository: AdrianLipa90/Resonant-Chemistry
+    role: molecular_graph_u1_holonomy_and_phase_dressed_hamiltonian
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/Resonant-Chemistry/pull/27
+    source:
+      - THEORY/15_RELATIONAL_HOLONOMY_SPECTROSCOPY_BRIDGE_V0_1.md
+      - reschem/relational_holonomy_spectroscopy.py
+  OES:
+    repository: AdrianLipa90/Orbital-Eclipse-Spectroscopy
+    role: spectral_response_jacobian_and_fisher_identifiability
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/Orbital-Eclipse-Spectroscopy/pull/14
+    source:
+      - formalism/OES_H1_HOLONOMY_RESPONSE_IDENTIFIABILITY_V0_1.md
+      - oes/holonomy_response.py
+  QHTRI_OPTICS:
+    repository: AdrianLipa90/QHTRI-Induced-Holonomic-Potentials-for-Neutrino-Flavour-Transport-and-Phase-Optics
+    role: orbit_epicycle_to_transverse_phase_curvature
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/QHTRI-Induced-Holonomic-Potentials-for-Neutrino-Flavour-Transport-and-Phase-Optics/pull/1
+    source:
+      - docs/ORBIT_EPICYCLE_PHASE_CURVATURE_BRIDGE_V0_1.md
+      - src/qhtri_phase_optics/orbit_curvature.py
+  PHASENAV_TELESCOPE:
+    repository: AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation
+    role: downstream_phase_resolved_spectral_inverse_consumer
+    branch: main
+    promotion_state: LINK_AND_ADAPTER_REVIEW_REQUIRED
+  PNCS:
+    repository: AdrianLipa90/PhaseNav-Natural-Coding-System
+    role: typed_semantic_execution_consumer
+    branch: main
+    promotion_state: POST_V1_RESEARCH_REGISTRY_ONLY_UNLESS_EXPLICITLY_ADMITTED
+  PHASENAV_CORE:
+    repository: AdrianLipa90/noema-phasenav-core
+    role: typed_36d_phase_runtime_consumer
+    branch: master
+    promotion_state: SCIENTIFIC_BINDING_SEPARATE_FROM_RUNTIME_INTEGRITY
+  PHASENAV_MAS:
+    repository: AdrianLipa90/PhaseNav-MAS-Upgrade
+    role: downstream_orchestration_consumer
+    branch: main
+    promotion_state: LINK_AND_ADAPTER_REVIEW_REQUIRED
+  CONSCIOUSNESS_DICTIONARY:
+    repository: AdrianLipa90/The-Consciousness-Dictionary
+    role: downstream_relational_observable_vocabulary_consumer
+    branch: main
+    promotion_state: LINK_REVIEW_REQUIRED
+
+theorems:
+  CENTRAL_ORBITAL_INVERSE:
+    status: EXACT_WITHIN_STATIONARY_CENTRAL_SCALAR_MODEL
+    equation: "Phi(r)=C+integral^r s Omega(s)^2 ds"
+    owner: IDT
+  EPICYCLIC_CONSISTENCY:
+    status: EXACT_WITHIN_STATIONARY_CENTRAL_SCALAR_MODEL
+    equation: "kappa_epi^2=4 Omega^2+r d(Omega^2)/dr"
+    owner: IDT
+  KOBS_IDENTITY:
+    status: EXACT_WITHIN_STATIONARY_CENTRAL_SCALAR_MODEL
+    equation: "d(r^3 Omega^2)/dr=r^2(kappa_epi^2-Omega^2)"
+    owner: IDT
+  KEPLER_CAMOUFLAGE:
+    status: EXACT_SOURCE_NON_IDENTIFIABILITY_CLASS
+    equation: "delta Phi=C0+C1/r"
+    owner: IDT
+    consumer: GREMLIN
+  HOLONOMY_SHELL_SUSCEPTIBILITY:
+    status: EXACT_AFTER_DECLARED_CIRCULATION_SHELL_BINDING
+    equation: "dr/dtau=-Lambda^2 nu/(pi r^3 kappa_epi^2)"
+    owner: IDT
+    consumer: GREMLIN
+  GRAPH_U1_GAUGE_QUOTIENT:
+    status: EXACT_FINITE_GRAPH_MATHEMATICS
+    equation: "[theta] in H^1(G,U(1)); beta1=E-V+C"
+    owner: RC
+  SPECTRAL_LINE_PHASE_SLOPE:
+    status: EXACT_AFTER_DECLARED_PHASE_DEPENDENT_HAMILTONIAN
+    equation: "d omega_mn/d Phi_a=-(J_m,a-J_n,a)/hbar"
+    owner: RC
+    consumer: OES
+  SPECTRAL_IDENTIFIABILITY:
+    status: EXACT_LOCAL_LINEAR_ALGEBRA_CONDITION
+    equation: "rank(J_observable_phase)=beta1"
+    owner: OES
+  ORBIT_TO_TRANSVERSE_PHASE_CURVATURE:
+    status: EXACT_WITHIN_SPHERICAL_SHARED_SCALAR_MODEL
+    equation: "d2Phi/db2=(b^2/r^2)kappa^2+(1-4b^2/r^2)Omega^2"
+    owner: QHTRI_OPTICS
+
+candidate_edges:
+  - from: RFC
+    to: IDT
+    relation: Xi_I_to_U_I_to_condensate_force
+    status: CANDIDATE_ONLY
+    promotion_gate: PHYSICAL_CI_CALIBRATION_AND_CARRIER_BINDING
+  - from: GREMLIN
+    to: IDT
+    relation: tau_to_effective_winding_to_shell_radius
+    status: CANDIDATE_ONLY
+    promotion_gate: PHYSICAL_TAU_TO_CONDENSATE_CONNECTION_BINDING
+  - from: RC
+    to: OES
+    relation: graph_loop_phase_to_spectral_response
+    status: MATHEMATICAL_INTERFACE
+    promotion_gate: EXPERIMENTAL_OR_CONTROLLED_MODEL_BINDING
+  - from: IDT
+    to: QHTRI_OPTICS
+    relation: orbital_epicyclic_observables_to_scalar_phase_curvature
+    status: MATHEMATICAL_INTERFACE
+    promotion_gate: SHARED_SCALAR_CARRIER_DECLARATION
+  - from: QHTRI_OPTICS
+    to: RFC
+    relation: scalar_phase_curvature_to_spacetime_metric
+    status: OPEN_NOT_PROMOTED
+    promotion_gate: H_G_METRIC_BRIDGE
+
+firewalls:
+  - W_chem_is_not_identified_with_W_sem
+  - molecular_bond_graph_is_not_automatically_the_effective_state_graph
+  - acoustic_or_phase_optics_geometry_is_not_spacetime_geometry
+  - GREMLIN_residual_routing_is_not_source_attribution
+  - BEC_calibration_is_conditional_and_does_not_promote_IDT_spatial_lift
+  - RFC_alpha_I_physical_calibration_remains_open
+  - source_repository_claim_authority_remains_local
