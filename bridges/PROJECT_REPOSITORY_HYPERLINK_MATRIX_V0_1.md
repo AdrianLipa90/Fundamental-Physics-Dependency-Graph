@@ -21,7 +21,7 @@ This inventory exists so the relational phase/potential/observable bridge cannot
 | PhaseNav-Telescope-Spectral-Modulation | TYPED OBSERVATION ADAPTER + TARGETED TESTS | https://github.com/AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation/pull/24 |
 | PhaseNav-Natural-Coding-System | TYPED RELATIONAL OBSERVATION + EVIDENCE PACKETS | https://github.com/AdrianLipa90/PhaseNav-Natural-Coding-System/pull/70 |
 | noema-phasenav-core | STRICT-T36 OBSERVATION + EVIDENCE SIDECARS | https://github.com/AdrianLipa90/noema-phasenav-core/pull/35 |
-| PhaseNav-MAS-Upgrade | DOWNSTREAM_ORCHESTRATION_REVIEW | https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade |
+| PhaseNav-MAS-Upgrade | BLOCKED: INCOMPLETE STAGE-6 MATERIALISATION; NO EXECUTABLE ADAPTER CLAIM | https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade |
 | The-Consciousness-Dictionary | DOWNSTREAM_VOCABULARY/OBSERVABLE_REVIEW | https://github.com/AdrianLipa90/The-Consciousness-Dictionary |
 | Origins-DNA | CHEMISTRY/ORBITAL_IMPACT_REVIEW | https://github.com/AdrianLipa90/Origins-DNA |
 | Origins-Of-Life | CHEMISTRY/DYNAMICS_IMPACT_REVIEW | https://github.com/AdrianLipa90/Origins-Of-Life |
@@ -89,7 +89,7 @@ All repositories below are inventoried. Unless already listed in the active roll
 56. https://github.com/AdrianLipa90/secret-of-a-half — FOUNDATIONAL_MATH_IMPACT_REVIEW
 57. https://github.com/AdrianLipa90/CIEL-NOEMA-HTRI-CIELingo-Phasenav — ACTIVE_REVIEW_TABLE
 58. https://github.com/AdrianLipa90/CIELfeatOAIDev — INTEGRATION/DEVELOPMENT_REVIEW
-59. https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade — ACTIVE_REVIEW_TABLE
+59. https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade — BLOCKED_STAGE6_MATERIALISATION
 60. https://github.com/AdrianLipa90/NOEMA-Orbital-RepoSorter — REPOSITORY_ORCHESTRATION_REVIEW
 61. https://github.com/AdrianLipa90/Resonant-Chemistry — ACTIVE_ROLLOUT
 62. https://github.com/AdrianLipa90/Zero-Point-Energy — PHYSICS_IMPACT_REVIEW
