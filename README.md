@@ -223,3 +223,10 @@ For every promoted dependency edge `A -> B`, a material change to `A` places `B`
 The canonical validator checks repository membership, node/claim parity, edge authority typing, candidate promotion gates, cross-repository edge typing, duplicate/self edges, evidence fields and acyclicity of the promoted graph.
 
 The federated gate additionally checks current upstream main heads, fetches immutable source exports, verifies repository/source identity and reconciles all registered source-local surfaces exactly against the effective FPDG graph.
+
+
+## Resonant Chemistry federation
+
+The effective federation includes `RC.NUCLEON_BOUNDARY` and `RC.ATOM_FORMALISM` through first-class federation overlays. The source-bound nucleon boundary is the canonical RC entry surface. The future `TIR.STANDARD_MODEL -> RC.NUCLEON_BOUNDARY` handoff remains `CANDIDATE_ONLY` behind `ENDOGENOUS_NUCLEON_PACKET_DERIVATION_AND_VALIDATION`.
+
+The RC dependency export represents scientific source commit `48414e0e76777d82974dd12d581b5d9598f80c27`; repository freshness is tracked independently against current RC `main`.
