@@ -16,7 +16,7 @@ Each source repository remains authoritative for its own equations, proofs, vali
 The 2026-09-19 reconciliation branch is a claim-level executable federated dependency kernel:
 
 ```text
-159 claims / 217 dependency edges
+160 claims / 219 dependency edges
 30 cross-repository edges
 10 CANDIDATE_ONLY edges
 ```
@@ -163,6 +163,12 @@ SOH  source d99545aa447ef86bc253d8241a3fee9adb8a42c1  export e84eff6988f33315499
 ```
 
 The graph now includes the TIR representation/flavour frontier, IDT 05I/GSC2/05K clock-globalization surfaces, RFC E26/E27 and GSC3--GSC6 globalization routes, and the SOH G024/G025 research frontier. Physical flavour binding, production global spacetime inputs, physical scale/coupling, and RH-level positivity remain explicitly open.
+
+## Physical-realization source-bundle frontier — 2026-09-19
+
+TIR already contains an executable v0.2 source-bundle certifier that composes the global spatial capture and inter-leaf matching capture only when both identify the same source-declared physical realization and receipt. FPDG now routes the production GSC3A handoff through this bundle gate rather than treating the abstract matching-input contract alone as sufficient.
+
+The assembler is closed. The remaining source evidence is open: a production spatial capture and a production matching capture for one physical realization are not present in the source repository.
 
 ## Source drift watch
 
