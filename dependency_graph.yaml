@@ -202,7 +202,7 @@ edges:
 - {<<: *CD, from: "IDT.CLOCK.TEMPORAL_TRACE_LIFT_V02", to: "IDT.CLOCK.TEMPORAL_TRACE_UNIQUENESS_V06", promotion_gate: "IDT_ELAPSED_SCALE_AS_HERMITIAN_TRACE_COORDINATE"}
 - {<<: *CAN, from: "IDT.COLLATZ_FS.PHASE_MAP", to: "IDT.COLLATZ_FS.TEMPORAL_PHASE_INTERFACE"}
 - {<<: *CD, from: "TIR.IDT.MOD6PI.C3_PAULI_CROSSWALK", to: "TIR.STANDARD_MODEL", promotion_gate: "TEMPORAL_FLAVOUR_PHYSICAL_BINDING_THEOREM_REQUIRED"}
-- {<<: *CR, from: "TIR.SPACE.LOCAL_R3", to: "TIR.IDT.MOD6PI.C3_PAULI_CROSSWALK", note: "TIR supplies the existing Herm_0(2) ~= R3 / Pauli carrier used by the equivariant crosswalk."}
+- {<<: *CAN, from: "TIR.SPACE.LOCAL_R3", to: "TIR.IDT.MOD6PI.C3_PAULI_CROSSWALK", note: "TIR supplies the existing Herm_0(2) ~= R3 / Pauli carrier used by the equivariant crosswalk."}
 - {<<: *CR, from: "IDT.MOD6PI.C3_PERIODIC_QUOTIENT_02JN", to: "TIR.IDT.MOD6PI.C3_PAULI_CROSSWALK", note: "Cross-repository exact representation crosswalk; physical sector identity remains open."}
 - {<<: *CAN, from: "IDT.HALF_FRAME.GLUING_02J", to: "IDT.MOD6PI.C3_PERIODIC_QUOTIENT_02JN", note: "N=3 open-cut P4 closes to C3 only under the explicit periodic endpoint identification."}
 - {<<: *CAN, from: "IDT.TEMPORAL.WAVE", to: "IDT.HALF_FRAME.GLUING_02J", note: "Existing IDT temporal-wave carrier feeds the half-frame quotient surface."}
