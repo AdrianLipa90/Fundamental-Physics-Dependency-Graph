@@ -16,9 +16,9 @@ This inventory exists so the relational phase/potential/observable bridge cannot
 | Resonant-Chemistry | graph (U(1)) holonomy / phase-dressed Hamiltonian | https://github.com/AdrianLipa90/Resonant-Chemistry/pull/27 |
 | Orbital-Eclipse-Spectroscopy | spectral response / Jacobian / Fisher | https://github.com/AdrianLipa90/Orbital-Eclipse-Spectroscopy/pull/14 |
 | QHTRI-Induced-Holonomic-Potentials-for-Neutrino-Flavour-Transport-and-Phase-Optics | orbit/epicycle -> phase curvature | https://github.com/AdrianLipa90/QHTRI-Induced-Holonomic-Potentials-for-Neutrino-Flavour-Transport-and-Phase-Optics/pull/1 |
-| Relational-Field-Closure | UPSTREAM_PARENT / RF-L3 (U_I=c_IXi_I) | https://github.com/AdrianLipa90/Relational-Field-Closure |
-| The-Fundamental-Theory-of-Informational-Relations | UPSTREAM_PARENT / relational geometry + holonomy | https://github.com/AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations |
-| PhaseNav-Telescope-Spectral-Modulation | DOWNSTREAM_ADAPTER_REVIEW | https://github.com/AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation |
+| Relational-Field-Closure | UPSTREAM_PARENT + RECIPROCAL DOWNSTREAM INTERFACE | https://github.com/AdrianLipa90/Relational-Field-Closure/pull/142 |
+| The-Fundamental-Theory-of-Informational-Relations | UPSTREAM_PARENT + RECIPROCAL DOWNSTREAM INTERFACE | https://github.com/AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations/pull/174 |
+| PhaseNav-Telescope-Spectral-Modulation | TYPED OBSERVATION ADAPTER + TARGETED TESTS | https://github.com/AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation/pull/24 |
 | PhaseNav-Natural-Coding-System | DOWNSTREAM_TYPED_EXECUTION_REVIEW | https://github.com/AdrianLipa90/PhaseNav-Natural-Coding-System |
 | noema-phasenav-core | DOWNSTREAM_36D_RUNTIME_REVIEW | https://github.com/AdrianLipa90/noema-phasenav-core |
 | PhaseNav-MAS-Upgrade | DOWNSTREAM_ORCHESTRATION_REVIEW | https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade |
@@ -43,7 +43,7 @@ All repositories below are inventoried. Unless already listed in the active roll
 10. https://github.com/AdrianLipa90/ciel-old — LEGACY_REVIEW
 11. https://github.com/AdrianLipa90/Origins-Of-Life — ACTIVE_REVIEW_TABLE
 12. https://github.com/AdrianLipa90/Informational-Dynamics-of-Metatime — IMPACT_REVIEW_PENDING
-13. https://github.com/AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations — ACTIVE_REVIEW_TABLE
+13. https://github.com/AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations — ACTIVE_ROLLOUT_LINKED
 14. https://github.com/AdrianLipa90/CIEL-Omega-ApokalypOS — IMPACT_REVIEW_PENDING
 15. https://github.com/AdrianLipa90/Research-various-data — DATA/PROVENANCE_REVIEW
 16. https://github.com/AdrianLipa90/CIEL-The-Living-Core — IMPACT_REVIEW_PENDING
@@ -93,7 +93,7 @@ All repositories below are inventoried. Unless already listed in the active roll
 60. https://github.com/AdrianLipa90/NOEMA-Orbital-RepoSorter — REPOSITORY_ORCHESTRATION_REVIEW
 61. https://github.com/AdrianLipa90/Resonant-Chemistry — ACTIVE_ROLLOUT
 62. https://github.com/AdrianLipa90/Zero-Point-Energy — PHYSICS_IMPACT_REVIEW
-63. https://github.com/AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation — ACTIVE_REVIEW_TABLE
+63. https://github.com/AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation — ACTIVE_ROLLOUT
 64. https://github.com/AdrianLipa90/The-Consciousness-Dictionary — ACTIVE_REVIEW_TABLE
 65. https://github.com/AdrianLipa90/PhaseNav-Natural-Coding-System — ACTIVE_REVIEW_TABLE
 66. https://github.com/AdrianLipa90/DNCrypt — CRYPTO/PHASE_INTERFACE_REVIEW
@@ -101,7 +101,7 @@ All repositories below are inventoried. Unless already listed in the active roll
 68. https://github.com/AdrianLipa90/GREMLIN — ACTIVE_ROLLOUT
 69. https://github.com/AdrianLipa90/Informational-Dynamics-of-Time — ACTIVE_ROLLOUT
 70. https://github.com/AdrianLipa90/PNCore-BioOS — BIOOS/PHASENAV_REVIEW
-71. https://github.com/AdrianLipa90/Relational-Field-Closure — ACTIVE_REVIEW_TABLE
+71. https://github.com/AdrianLipa90/Relational-Field-Closure — ACTIVE_ROLLOUT_LINKED
 72. https://github.com/AdrianLipa90/concord-mcp — MCP_INFRA_REVIEW
 73. https://github.com/AdrianLipa90/Fundamental-Physics-Dependency-Graph — ACTIVE_ROLLOUT
 74. https://github.com/AdrianLipa90/Ciel-GREMLIN-Benchmark — BENCHMARK_REVIEW
