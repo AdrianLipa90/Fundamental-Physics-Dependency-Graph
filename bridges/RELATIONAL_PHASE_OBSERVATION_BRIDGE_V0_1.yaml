@@ -117,8 +117,22 @@ repositories:
   PHASENAV_MAS:
     repository: AdrianLipa90/PhaseNav-MAS-Upgrade
     role: downstream_orchestration_consumer
-    branch: main
-    promotion_state: LINK_AND_ADAPTER_REVIEW_REQUIRED
+    branch: release/mas-v0.1.0-stage5-pass
+    promotion_state: BLOCKED_INCOMPLETE_STAGE6_MATERIALISATION
+    blocker_evidence:
+      main_status_file: provenance/STAGE6_IMPORT_STATUS.md
+      main_status: FULL_SOURCE_IMPORT_BLOCKED
+      release_present:
+        - src/phasenav_mas/__init__.py
+        - src/phasenav_mas/_digest.py
+      release_missing_required_surfaces:
+        - pyproject.toml
+        - src/phasenav_mas/canonical.py
+        - src/phasenav_mas/kernel.py
+        - tests/test_kernel.py
+        - latex/main.tex
+        - PhaseNav_MAS_Instruction_Manual.pdf
+    promotion_gate: COMPLETE_STAGE6_SOURCE_MATERIALISATION_PLUS_LOCAL_TESTS_RECEIPTS_AND_PDF
   CONSCIOUSNESS_DICTIONARY:
     repository: AdrianLipa90/The-Consciousness-Dictionary
     role: downstream_relational_observable_vocabulary_consumer
@@ -209,6 +223,11 @@ candidate_edges:
     relation: typed_evidence_packet_to_read_only_runtime_sidecar
     status: SOFTWARE_RUNTIME_INTERFACE
     promotion_gate: STRICT_T36_NO_FLATTENING
+  - from: PNCS
+    to: PHASENAV_MAS
+    relation: candidate_evidence_route_to_multi_agent_orchestration
+    status: BLOCKED_STAGE6_SOURCE_TREE_INCOMPLETE
+    promotion_gate: COMPLETE_STAGE6_MATERIALISATION_AND_MAS_LOCAL_VALIDATION
 
 validation:
   IDT:
@@ -281,6 +300,7 @@ firewalls:
   - cross_modal_consistency_is_not_physical_source_selection
   - PNCS_candidate_route_is_not_scientific_promotion
   - runtime_evidence_sidecar_does_not_modify_T36
+  - MAS_stage6_materialisation_incomplete_blocks_executable_orchestration_claim
   - BEC_calibration_is_conditional_and_does_not_promote_IDT_spatial_lift
   - RFC_alpha_I_physical_calibration_remains_open
   - source_repository_claim_authority_remains_local
