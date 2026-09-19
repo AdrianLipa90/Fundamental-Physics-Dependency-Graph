@@ -1,19 +1,19 @@
 {
   "schema": "FPDG_SOURCE_EXPORT_LOCK_V0_2",
-  "generated_at": "2026-09-05T09:05:04+01:00",
+  "generated_at": "2026-09-19T04:32:20Z",
   "sources": {
     "TIR": {
       "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
-      "export_commit": "71e2965962905ffcad426bf5e26e511784c08822",
-      "source_commit": "b515b4eb5876b64fc4f4d748a4a504267e0a3680",
-      "repository_head": "11692996630f1aed0dd11589ed8d0be8fcb2a071",
+      "export_commit": "9a074043842fdba3eb2017a71d2c88fc2943b5a8",
+      "source_commit": "0f63c823961a58770de22d14b5f53e2bfa38a9b3",
+      "repository_head": "45b54c0c8aa60ec92607e6132b69aca9ab766d75",
       "path": "DEPENDENCY_EXPORT.json"
     },
     "IDT": {
       "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
       "export_commit": "a7da5527b83ddabbbd142dceabde4da4b21b0c7c",
       "source_commit": "afed815f190ee5b162d1406878305a4259536af0",
-      "repository_head": "f670e60112b578756a90a7b29a4f574c37a8c03f",
+      "repository_head": "58f453a4725bf0304417a5d07730f2dc1765dea5",
       "path": "DEPENDENCY_EXPORT.json"
     },
     "RFC": {
@@ -27,7 +27,7 @@
       "repository": "AdrianLipa90/secret-of-a-half",
       "export_commit": "0d0ffa1765381cc644aadb03c453d9ac6dbe7ea3",
       "source_commit": "19b9820165cb46f441d006e0ff6e94f8c08f37b8",
-      "repository_head": "b82c33132f6fd9d578f9fc34fc877d3f716a066f",
+      "repository_head": "d99545aa447ef86bc253d8241a3fee9adb8a42c1",
       "path": "DEPENDENCY_EXPORT.json"
     }
   },
