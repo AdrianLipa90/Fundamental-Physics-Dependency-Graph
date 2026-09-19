@@ -17,16 +17,11 @@ jobs:
           python-version: '3.12'
       - name: Install dependency
         run: python -m pip install --disable-pip-version-check pyyaml
-      - name: Check upstream source freshness
+      - name: Check all registered upstream source heads
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python tools/check_upstream_heads.py
       - name: Fetch exact locked exports
         run: python tools/fetch_locked_exports.py --out .source_exports
-      - name: Reconcile all source-local surfaces
-        run: >-
-          python tools/import_exports.py --require-all --summary-json
-          .source_exports/TIR.json
-          .source_exports/IDT.json
-          .source_exports/RFC.json
-          .source_exports/SOH.json
+      - name: Reconcile all registered source-local surfaces
+        run: python tools/import_exports.py --require-all --summary-json .source_exports/*.json

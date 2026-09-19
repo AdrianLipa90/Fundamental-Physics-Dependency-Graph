@@ -2,26 +2,30 @@
 
 Canonical cross-repository dependency surface for the fundamental physics stack.
 
-This repository tracks dependency holonomy across four source repositories:
+The active federation is registry-driven through `repos.yaml` and currently spans five source repositories:
 
 - `TIR` — `AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations`
 - `IDT` — `AdrianLipa90/Informational-Dynamics-of-Time`
 - `RFC` — `AdrianLipa90/Relational-Field-Closure`
 - `SOH` — `AdrianLipa90/secret-of-a-half`
+- `RC` — `AdrianLipa90/Resonant-Chemistry`
 
 Each source repository remains authoritative for its own equations, proofs, validators, observables, claim status and local dependency edges. This repository is authoritative for cross-repository dependency edges, interface contracts, promotion state and downstream revalidation propagation.
 
 ## Current baseline
 
-The 2026-09-19 reconciliation branch is a claim-level executable federated dependency kernel:
+The current baseline is the canonical graph plus deterministic effective federation overlays:
 
 ```text
-160 claims / 219 dependency edges
-30 cross-repository edges
-10 CANDIDATE_ONLY edges
+dependency_graph.yaml
++ federation_overlays/*.graph.yaml
++ claims.jsonl
++ federation_overlays/*.claims.jsonl
++ interfaces/cross_repo_interfaces.yaml
++ federation_overlays/*.interfaces.yaml
 ```
 
-The promoted graph is acyclic and validated fail-closed by `tools/validate_dag.py`.
+`tools/federation_surface.py` is the common loader for this effective surface. `tools/validate_dag.py` validates the assembled graph fail-closed; CI reports live topology counts rather than relying on hard-coded README counts.
 
 ## Top-level dependency structure
 
@@ -78,6 +82,12 @@ YM/BCJ -> 4pt DC -> 5pt KLT -> RFG29 -> ... -> RFG34
 SOH candidate surfaces
 XFI.03 / XFI.28.02 / XFI.28.03 --CANDIDATE_ONLY--> IDT half/NOW interfaces
 TIR negative-inverse bridge --CANDIDATE_ONLY--> SOH Li/Weil native closure
+
+Resonant Chemistry nuclear entry
+RC.NUCLEON_BOUNDARY --CANONICAL_FRONTIER--> RC.ATOM_FORMALISM
+TIR.STANDARD_MODEL --CANDIDATE_ONLY--> RC.NUCLEON_BOUNDARY
+                                      promotion gate:
+                                      ENDOGENOUS_NUCLEON_PACKET_DERIVATION_AND_VALIDATION
 ```
 
 The relativistic IDT↔RFC bridge is anchored to the hardened `IDT-01AC -> IDT-01AG -> RF-M1 -> RF-E0 -> EINSTEIN_CLOSURE` chain. It remains distinct from the RFC ADM `E8 -> ... -> E13` action-level spine and from the later E14–E20 information/clock branch.
@@ -90,6 +100,9 @@ RF-E20 keeps its physical SI edge scale and dimensionless tetrahedral selector e
 - `dependency_graph.yaml` — machine-readable canonical DAG
 - `claims.jsonl` — claim registry with source/evidence provenance
 - `interfaces/cross_repo_interfaces.yaml` — typed cross-repository contracts
+- `federation_overlays/` — deterministic first-class federation extensions
+- `tools/federation_surface.py` — effective graph/claim/interface loader
+- `source_heads.yaml` — scientific source state represented by each export
 - `source_exports.lock.json` — exact immutable source-export snapshot lock plus repository-head freshness state
 - `gates/PROMOTION_POLICY.md` — promotion, GREMLIN and invalidation rules
 - `tools/validate_dag.py` — fail-closed structural validator
@@ -99,6 +112,9 @@ RF-E20 keeps its physical SI edge scale and dimensionless tetrahedral selector e
 - `tools/fetch_locked_exports.py` — exact commit-addressed export fetcher
 - `tools/check_upstream_heads.py` — upstream source freshness gate
 - `tools/watch_source_drift.py` — source-main drift and promoted blast-radius projector
+- `tools/audit_validation_coverage_effective.py` — effective source-validator nerve-ending audit
+- `tools/diagnose_source_drift_effective.py` — effective inconsistency localization entrypoint
+- `tools/finalize_inconsistency_localization_effective.py` — effective bottleneck/probe finalizer
 - `schemas/dependency_export.schema.json` — source-repository export contract
 - `tests/test_impact.py` — executable propagation invariants
 - `tests/test_source_drift.py` — fail-closed source-drift mapping tests
@@ -126,16 +142,7 @@ This makes `REVALIDATION_REQUIRED` propagation executable instead of merely docu
 
 ## Federated source exports
 
-`schemas/dependency_export.schema.json` defines `DEPENDENCY_EXPORT.json` for TIR, IDT, RFC and SOH. Each export identifies its repository, exact source commit, claim statuses, evidence classes and local dependency edges.
-
-The source-owned export PRs currently used by the lock are:
-
-```text
-TIR  PR #107
-IDT  PR #69
-RFC  PR #67   post-E13 RF-E14–RF-E20 sync
-SOH  PR #69
-```
+`schemas/dependency_export.schema.json` defines the source-owned `DEPENDENCY_EXPORT.json` contract for every repository registered in `repos.yaml`. The active federation covers TIR, IDT, RFC, SOH and RC. Each export identifies its repository, exact source commit, claim statuses, evidence classes and local dependency edges.
 
 `source_exports.lock.json` deliberately separates three coordinates for each source: `repository_head` is the repository-level freshness coordinate, `export_commit` is the immutable commit from which `DEPENDENCY_EXPORT.json` is fetched, and `source_commit` is the scientific source state represented by that export. FPDG CI therefore performs independent freshness and scientific-surface gates:
 
@@ -160,6 +167,7 @@ TIR  source bc22bf7dc9e02b912656e2f229a8efee39c2bbc9  export 1b7bad9c04e0046a130
 IDT  source 58f453a4725bf0304417a5d07730f2dc1765dea5  export 7d3899780da5cec5356b9ba0a61844732955c758
 RFC  source ce4af9ddd480ea40dfb5a3ee26ed396a58cb0e54  export 9e7c35dbeec6c0e51ff85ed9a4dcbb298a88b30d
 SOH  source d99545aa447ef86bc253d8241a3fee9adb8a42c1  export e84eff6988f333154995caf20de3e824029d377d
+RC   source 48414e0e76777d82974dd12d581b5d9598f80c27  export 71d7e75f2ae9c050b0e7d57fcafd715a0c11a719
 ```
 
 The graph now includes the TIR representation/flavour frontier, IDT 05I/GSC2/05K clock-globalization surfaces, RFC E26/E27 and GSC3--GSC6 globalization routes, and the SOH G024/G025 research frontier. Physical flavour binding, production global spacetime inputs, physical scale/coupling, and RH-level positivity remain explicitly open.
@@ -172,11 +180,37 @@ The assembler is closed. The remaining source evidence is open: a production spa
 
 ## Source drift watch
 
-The scheduled watcher checks the four source `main` heads every 30 minutes and can also be run manually. When a source has advanced, changed source paths are mapped to owned claims and the promoted downstream blast radius is calculated.
+The scheduled watcher resolves every repository from `repos.yaml`, checks all registered source `main` heads every 30 minutes and can also be run manually. When a source has advanced, changed source paths are mapped to owned claims and the promoted downstream blast radius is calculated.
 
 If changed paths cannot be mapped to known claims, the watcher falls back conservatively to every claim owned by the changed repository. `CANDIDATE_ONLY` edges remain excluded from canonical invalidation.
 
 Every watch produces JSON and Markdown receipts. A drifted source fails the watch until the source export, lock and dependency surface are reconciled.
+
+## Nuclear boundary state
+
+The active RC federation extension introduces:
+
+```text
+RC.NUCLEON_BOUNDARY
+  status: SOURCE_BOUND_EFFECTIVE_INPUT_CONTRACT
+  source: THEORY/01_NUCLEON_BOUNDARY_V0_1.md
+
+RC.ATOM_FORMALISM
+  status: CANDIDATE_FOUNDATION
+```
+
+The direct validation-nerve registry binds the RC structural/provenance producer to `RC.NUCLEON_BOUNDARY`. `RC.ATOM_FORMALISM` remains visible as the next direct source-binding target.
+
+The first nuclear validation frontier after federation admission is the controlled deuteron path:
+
+```text
+freeze proton/neutron provenance packet
+-> select one declared NN interaction provider
+-> solve p+n -> 2H
+-> validate binding energy first
+-> validate radius / magnetic / quadrupole observables
+-> open A=3 after the deuteron gate
+```
 
 ## Dependency invariant
 
@@ -188,4 +222,4 @@ For every promoted dependency edge `A -> B`, a material change to `A` places `B`
 
 The canonical validator checks repository membership, node/claim parity, edge authority typing, candidate promotion gates, cross-repository edge typing, duplicate/self edges, evidence fields and acyclicity of the promoted graph.
 
-The federated gate additionally checks current upstream main heads, fetches immutable source exports, verifies repository/source identity and reconciles all four source-local surfaces exactly against the FPDG graph.
+The federated gate additionally checks current upstream main heads, fetches immutable source exports, verifies repository/source identity and reconciles all registered source-local surfaces exactly against the effective FPDG graph.
