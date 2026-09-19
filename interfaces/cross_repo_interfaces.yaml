@@ -1,4 +1,4 @@
-schema: FPDG_CROSS_REPO_INTERFACES_V0_3
+schema: FPDG_CROSS_REPO_INTERFACES_V0_4
 interfaces:
   - interface_id: IFACE.TIR_TO_IDT.TIME_JOIN
     upstream_repository: TIR
@@ -122,11 +122,13 @@ interfaces:
   - interface_id: IFACE.TIR_TO_RFC.GSC3A_MATCHING_FLOW
     upstream_repository: TIR
     downstream_repository: RFC
-    upstream_claim: TIR.SPACETIME.INTERLEAF_MATCHING_INPUT_CONTRACT
+    upstream_claim: TIR.SPACETIME.PHYSICAL_REALIZATION_BUNDLE_V02
     downstream_claim: RFC.GSC3A.CLOCK_TRANSVERSE_MATCHING_FLOW
     contract:
       status: CANONICAL_CROSS_REPO
-      relation: inter-leaf matching field -> clock-transverse matching-flow soldering
+      relation: same-realization spatial + matching source bundle -> clock-transverse matching-flow soldering
+      source_bundle_gate: SAME_PHYSICAL_REALIZATION_ID_AND_RECEIPT
+      source_capture_status: OPEN_INPUT
       revalidation_propagates: true
 
   - interface_id: IFACE.IDT_TO_RFC.L8_SMOOTH_CLOCK
