@@ -1,0 +1,30 @@
+{
+  "schema": "FPDG_SOURCE_HEAD_REFRESH_V0_1",
+  "date": "2026-09-19",
+  "repository": "AdrianLipa90/Relational-Field-Closure",
+  "previous_repository_head": "9e7c35dbeec6c0e51ff85ed9a4dcbb298a88b30d",
+  "current_repository_head": "6fdd64307c96e02588b0898468a7693378ad752f",
+  "locked_export_commit": "9e7c35dbeec6c0e51ff85ed9a4dcbb298a88b30d",
+  "represented_source_commit": "ce4af9ddd480ea40dfb5a3ee26ed396a58cb0e54",
+  "dependency_export_blob_sha": "cb1a48243afd8c6ca92e3fda5f56cd88f8ac39d3",
+  "semantic_export_change": false,
+  "repository_advance": {
+    "commits": 101,
+    "notable_surface": "QHTRI ToE Solver Candidate v0.12 and production-ingest/source-wiring candidate stack",
+    "candidate_authority": "CANDIDATE_ONLY",
+    "candidate_canon_allowed": false,
+    "candidate_physical_production_claim": false,
+    "repository_implementation_complete": true,
+    "external_full_physical_3plus1_production_evidence": "OPEN_SEPARATE_EVIDENCE_GATE",
+    "fpdg_scope_effect": "NO_CHANGE_TO_CURRENT_CANONICAL_EXPORTED_DEPENDENCY_SURFACE"
+  },
+  "audited_receipts": [
+    "validation/toe_solver_candidate_v0_1/FINAL_CANDIDATE_ACCEPTANCE_V0_12.json",
+    "experiments/toe_solver_candidate_v0_1/TIR_INTERLEAF_SOURCE_REALIZATION_BRIDGE_V0_10_RECEIPT.json",
+    "validation/toe_solver_candidate_v0_1/production_source_bundle_receipt_v0_5.json",
+    "validation/toe_solver_candidate_v0_1/production_contract_bridge_receipt_v0_6.json",
+    "validation/toe_solver_candidate_v0_1/production_ingest_receipt_v0_7.json"
+  ],
+  "rule_applied": "REPOSITORY_HEAD_ADVANCED_WITH_IDENTICAL_DEPENDENCY_SURFACE -> UPDATE_REPOSITORY_HEAD_ONLY",
+  "canon_promotion": false
+}
