@@ -19,8 +19,8 @@ This inventory exists so the relational phase/potential/observable bridge cannot
 | Relational-Field-Closure | UPSTREAM_PARENT + RECIPROCAL DOWNSTREAM INTERFACE | https://github.com/AdrianLipa90/Relational-Field-Closure/pull/142 |
 | The-Fundamental-Theory-of-Informational-Relations | UPSTREAM_PARENT + RECIPROCAL DOWNSTREAM INTERFACE | https://github.com/AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations/pull/174 |
 | PhaseNav-Telescope-Spectral-Modulation | TYPED OBSERVATION ADAPTER + TARGETED TESTS | https://github.com/AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation/pull/24 |
-| PhaseNav-Natural-Coding-System | DOWNSTREAM_TYPED_EXECUTION_REVIEW | https://github.com/AdrianLipa90/PhaseNav-Natural-Coding-System |
-| noema-phasenav-core | DOWNSTREAM_36D_RUNTIME_REVIEW | https://github.com/AdrianLipa90/noema-phasenav-core |
+| PhaseNav-Natural-Coding-System | TYPED RELATIONAL OBSERVATION PACKET | https://github.com/AdrianLipa90/PhaseNav-Natural-Coding-System/pull/70 |
+| noema-phasenav-core | STRICT-T36 RELATIONAL OBSERVATION SIDECAR | https://github.com/AdrianLipa90/noema-phasenav-core/pull/35 |
 | PhaseNav-MAS-Upgrade | DOWNSTREAM_ORCHESTRATION_REVIEW | https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade |
 | The-Consciousness-Dictionary | DOWNSTREAM_VOCABULARY/OBSERVABLE_REVIEW | https://github.com/AdrianLipa90/The-Consciousness-Dictionary |
 | Origins-DNA | CHEMISTRY/ORBITAL_IMPACT_REVIEW | https://github.com/AdrianLipa90/Origins-DNA |
@@ -70,7 +70,7 @@ All repositories below are inventoried. Unless already listed in the active roll
 37. https://github.com/AdrianLipa90/noema-system-index — INDEX/DEPENDENCY_REVIEW
 38. https://github.com/AdrianLipa90/noema-identity-chain — IDENTITY_INFRA_REVIEW
 39. https://github.com/AdrianLipa90/noema-surface — RUNTIME_SURFACE_REVIEW
-40. https://github.com/AdrianLipa90/noema-phasenav-core — ACTIVE_REVIEW_TABLE
+40. https://github.com/AdrianLipa90/noema-phasenav-core — ACTIVE_ROLLOUT
 41. https://github.com/AdrianLipa90/noema-orbital-memory — ORBITAL/MEMORY_REVIEW
 42. https://github.com/AdrianLipa90/noema-memory-lanes — MEMORY_INFRA_REVIEW
 43. https://github.com/AdrianLipa90/noema-tripod-runtime — RUNTIME_REVIEW
@@ -95,7 +95,7 @@ All repositories below are inventoried. Unless already listed in the active roll
 62. https://github.com/AdrianLipa90/Zero-Point-Energy — PHYSICS_IMPACT_REVIEW
 63. https://github.com/AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation — ACTIVE_ROLLOUT
 64. https://github.com/AdrianLipa90/The-Consciousness-Dictionary — ACTIVE_REVIEW_TABLE
-65. https://github.com/AdrianLipa90/PhaseNav-Natural-Coding-System — ACTIVE_REVIEW_TABLE
+65. https://github.com/AdrianLipa90/PhaseNav-Natural-Coding-System — ACTIVE_ROLLOUT
 66. https://github.com/AdrianLipa90/DNCrypt — CRYPTO/PHASE_INTERFACE_REVIEW
 67. https://github.com/AdrianLipa90/PNV-State-Memory — PHASENAV/STATE_REVIEW
 68. https://github.com/AdrianLipa90/GREMLIN — ACTIVE_ROLLOUT
