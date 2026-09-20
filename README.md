@@ -230,3 +230,8 @@ The federated gate additionally checks current upstream main heads, fetches immu
 The effective federation includes `RC.NUCLEON_BOUNDARY` and `RC.ATOM_FORMALISM` through first-class federation overlays. The source-bound nucleon boundary is the canonical RC entry surface. The future `TIR.STANDARD_MODEL -> RC.NUCLEON_BOUNDARY` handoff remains `CANDIDATE_ONLY` behind `ENDOGENOUS_NUCLEON_PACKET_DERIVATION_AND_VALIDATION`.
 
 The RC dependency export represents scientific source commit `48414e0e76777d82974dd12d581b5d9598f80c27`; repository freshness is tracked independently against current RC `main`.
+
+
+## Non-federated phase/orbital candidate overlay
+
+The current informational phase -> EB orbital -> chemistry/spectroscopy dependency graph is recorded in `CANDIDATE_CROSS_REPO_PHASE_ORBITAL_GRAPH_V0_1.md`. It is documentation-only until GREMLIN, QHTRI Phase Optics and PhaseNav Telescope are explicitly added to the locked federation.
