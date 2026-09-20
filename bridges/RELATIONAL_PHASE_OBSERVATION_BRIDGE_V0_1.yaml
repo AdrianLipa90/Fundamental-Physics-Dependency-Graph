@@ -325,21 +325,23 @@ validation:
     main_head: e1be4bad3334bb4916b99eff65a3f49820d86145
     source_family_head: f1a7d9ec78c24ef3da56979fbb0a260e9bd9ffd2
     source_family_pr: https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade/pull/12
-    source_family_contract_validation: DETERMINISTIC_PASS
-    hosted_pr_workflow: NOT_YET_OBSERVED
+    source_family_contract_validation: HOSTED_PASS
+    hosted_pr_workflow: Candidate source-family signature identifiability v0.1
+    hosted_pr_run_id: 35486688636
+    hosted_pr_result: SUCCESS
     runtime_execution: BLOCKED_INCOMPLETE_STAGE6_MATERIALISATION
   TIR:
     head: 3aecc18ee159e81c7f44a078f4ca907cbab748de
     status: ALL_OBSERVED_WORKFLOWS_SUCCESS_INCLUDING_INTEGRATED_KAPPA_RUN_740
   FPDG:
-    reconciled_head: 0cf4786a51799b0ec3fecd5522ef14f8926421ac
-    staging_run_id: 35476014148
+    reconciled_head: 29bce0d4220e6fe004af7ecf9c9902a25d1cbba7
+    staging_run_id: 35486849662
     staging_result: SUCCESS
-    dag_run_id: 35476014192
+    dag_run_id: 35486849626
     dag_result: SUCCESS
-    locked_source_export_run_id: 35476014136
+    locked_source_export_run_id: 35486849629
     locked_source_export_result: SUCCESS
-    source_drift_run_id: 35476014123
+    source_drift_run_id: 35486849640
     source_drift_result: SUCCESS
 
 firewalls:
