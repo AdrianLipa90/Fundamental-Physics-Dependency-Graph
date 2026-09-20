@@ -121,6 +121,7 @@ repositories:
   PHASENAV_MAS:
     repository: AdrianLipa90/PhaseNav-MAS-Upgrade
     role: downstream_orchestration_consumer
+    branch: main
     orchestration_branch: main
     orchestration_commit: e1be4bad3334bb4916b99eff65a3f49820d86145
     orchestration_source:
