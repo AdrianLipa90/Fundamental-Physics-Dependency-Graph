@@ -130,14 +130,19 @@ repositories:
       - .github/workflows/candidate-relational-evidence-orchestration-v01.yml
     orchestration_status: CANDIDATE_ACTIVE_SOURCE_NEUTRAL
     orchestration_validation: DETERMINISTIC_CONTRACT_PASS_HOSTED_PUSH_RECEIPT_NOT_YET_RECORDED
-    source_family_branch: integrate/source-family-signature-identifiability-v0.1
+    source_family_branch: main
     source_family_pull_request: https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade/pull/12
-    source_family_head: f1a7d9ec78c24ef3da56979fbb0a260e9bd9ffd2
+    source_family_pr_head: f1a7d9ec78c24ef3da56979fbb0a260e9bd9ffd2
+    source_family_merge_commit: b4d07bcd4e63740fdc966575bfae710ae68acd03
     source_family_source:
       - candidate_contracts/mas_source_family_signature_identifiability_v01.json
       - provenance/PHASENAV_MAS_SOURCE_FAMILY_SIGNATURE_IDENTIFIABILITY_V0_1.json
       - .github/workflows/candidate-source-family-signature-identifiability-v01.yml
-    source_family_status: CANDIDATE_ROUTING_STAGED_NO_MAIN_MERGE
+    source_family_status: CANDIDATE_ROUTING_MERGED_TO_MAIN
+    source_family_validation:
+      pr_workflow: Candidate source-family signature identifiability v0.1
+      pr_run_id: 35486688636
+      pr_result: SUCCESS
     runtime_branch: release/mas-v0.1.0-stage5-pass
     runtime_status: BLOCKED_INCOMPLETE_STAGE6_MATERIALISATION
     blocker_evidence:
@@ -322,8 +327,9 @@ validation:
     targeted_run_id: 35476781551
     targeted_result: PENDING
   PHASENAV_MAS:
-    main_head: e1be4bad3334bb4916b99eff65a3f49820d86145
-    source_family_head: f1a7d9ec78c24ef3da56979fbb0a260e9bd9ffd2
+    main_head: b4d07bcd4e63740fdc966575bfae710ae68acd03
+    source_family_pr_head: f1a7d9ec78c24ef3da56979fbb0a260e9bd9ffd2
+    source_family_merge_commit: b4d07bcd4e63740fdc966575bfae710ae68acd03
     source_family_pr: https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade/pull/12
     source_family_contract_validation: HOSTED_PASS
     hosted_pr_workflow: Candidate source-family signature identifiability v0.1
