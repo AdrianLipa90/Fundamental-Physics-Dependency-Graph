@@ -20,7 +20,7 @@
       "repository": "AdrianLipa90/Relational-Field-Closure",
       "export_commit": "847d6aa82bf7338a231f01221a0ccaa4524bd1e7",
       "source_commit": "ce4af9ddd480ea40dfb5a3ee26ed396a58cb0e54",
-      "repository_head": "b4efa842ca9bd1d3ffd3dc805276a52057e23607",
+      "repository_head": "786d1e1a9f9c91a4c3174719ed76966aa73edcef",
       "path": "DEPENDENCY_EXPORT.json"
     },
     "SOH": {
@@ -34,7 +34,7 @@
       "repository": "AdrianLipa90/Resonant-Chemistry",
       "export_commit": "71d7e75f2ae9c050b0e7d57fcafd715a0c11a719",
       "source_commit": "48414e0e76777d82974dd12d581b5d9598f80c27",
-      "repository_head": "c82337b5ff4d3e9718358922d316147571775ffd",
+      "repository_head": "0774e762af047e05198da40777b7f78d34da54d2",
       "path": "DEPENDENCY_EXPORT.json",
       "integration_state": "SOURCE_MAIN_BOUND"
     }
