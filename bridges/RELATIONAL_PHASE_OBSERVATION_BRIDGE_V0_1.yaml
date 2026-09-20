@@ -17,6 +17,8 @@ core_object:
     - observable_response
     - inverse_identifiability
     - cross_modal_evidence
+    - source_family_signature_geometry
+    - heldout_source_family_validation
     - typed_orchestration_route
     - strict_t36_runtime_sidecar
 
@@ -40,6 +42,8 @@ repositories:
       - tools/gremlin_radial_medium_identifiability_v01.py
       - spec/GREMLIN_CROSS_MODAL_RELATIONAL_EVIDENCE_PACKET_V0_1.md
       - tools/gremlin_cross_modal_relational_evidence_v01.py
+      - spec/GREMLIN_SOURCE_FAMILY_SIGNATURE_IDENTIFIABILITY_V0_1.md
+      - tools/gremlin_source_family_signature_identifiability_v01.py
   RFC:
     repository: AdrianLipa90/Relational-Field-Closure
     role: conditional_information_scalar_potential_parent
@@ -125,6 +129,14 @@ repositories:
       - .github/workflows/candidate-relational-evidence-orchestration-v01.yml
     orchestration_status: CANDIDATE_ACTIVE_SOURCE_NEUTRAL
     orchestration_validation: DETERMINISTIC_CONTRACT_PASS_HOSTED_PUSH_RECEIPT_NOT_YET_RECORDED
+    source_family_branch: integrate/source-family-signature-identifiability-v0.1
+    source_family_pull_request: https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade/pull/12
+    source_family_head: f1a7d9ec78c24ef3da56979fbb0a260e9bd9ffd2
+    source_family_source:
+      - candidate_contracts/mas_source_family_signature_identifiability_v01.json
+      - provenance/PHASENAV_MAS_SOURCE_FAMILY_SIGNATURE_IDENTIFIABILITY_V0_1.json
+      - .github/workflows/candidate-source-family-signature-identifiability-v01.yml
+    source_family_status: CANDIDATE_ROUTING_STAGED_NO_MAIN_MERGE
     runtime_branch: release/mas-v0.1.0-stage5-pass
     runtime_status: BLOCKED_INCOMPLETE_STAGE6_MATERIALISATION
     blocker_evidence:
@@ -195,6 +207,16 @@ theorems:
     consumers:
       - PNCS
       - PHASENAV_CORE
+  SOURCE_FAMILY_SIGNATURE_IDENTIFIABILITY:
+    status: EXACT_WEIGHTED_LINEAR_ALGEBRA_WITH_NUMERICAL_CONDITION_GATE
+    equation: "G=S^T Sigma^-1 S; rank(G)=rank(S); nullity=p-rank(G)"
+    owner: GREMLIN
+    consumer: PHASENAV_MAS
+  SOURCE_FAMILY_HELDOUT_VALIDATION:
+    status: EXACT_STATISTIC_AFTER_DECLARED_INDEPENDENT_HOLDOUT
+    equation: "DeltaChi2_h=r_h^T Sigma_h^-1 r_h-(r_h-S_h a_hat)^T Sigma_h^-1(r_h-S_h a_hat)"
+    owner: GREMLIN
+    consumer: PHASENAV_MAS
 
 candidate_edges:
   - from: RFC
@@ -238,6 +260,12 @@ candidate_edges:
     status: SOFTWARE_ORCHESTRATION_INTERFACE_ACTIVE
     execution_status: BLOCKED_UNTIL_COMPLETE_STAGE6_MATERIALISATION
     promotion_gate: COMPLETE_STAGE6_MATERIALISATION_AND_MAS_LOCAL_VALIDATION
+  - from: GREMLIN
+    to: PHASENAV_MAS
+    relation: source_family_signature_geometry_to_candidate_orchestration
+    status: SOFTWARE_DIAGNOSTIC_INTERFACE_STAGED
+    execution_owner: PhaseNav-Natural-Coding-System
+    promotion_gate: FULL_RANK_CONDITION_GATE_INDEPENDENT_HOLDOUT_AND_NO_SOURCE_SELECTION
 
 validation:
   IDT:
@@ -246,10 +274,10 @@ validation:
     run_id: 35474369607
     result: PASS_1227
   GREMLIN:
-    head: d5cbc53cdaa8f6a948dbe07202c3c05d9f4afc2e
+    head: 875132098ac74ab209c0e90cc9f9152a43792ec6
     workflow: GREMLIN Repository Fail-Loud Audit v0.1
-    run_id: 35476625573
-    result: PENDING
+    run_id: 35486534962
+    result: PASS_1460_SKIP_1_WHEEL_BUILD_AND_OUT_OF_TREE_SMOKE_PASS
   RC:
     head: 3347a25c454ae4ff93f2ef9abd593322822c147b
     targeted_workflow: Relational holonomy spectroscopy reference
@@ -288,6 +316,13 @@ validation:
     targeted_workflow: Relational observation/evidence sidecar reference
     targeted_run_id: 35476781551
     targeted_result: PENDING
+  PHASENAV_MAS:
+    main_head: e1be4bad3334bb4916b99eff65a3f49820d86145
+    source_family_head: f1a7d9ec78c24ef3da56979fbb0a260e9bd9ffd2
+    source_family_pr: https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade/pull/12
+    source_family_contract_validation: DETERMINISTIC_PASS
+    hosted_pr_workflow: NOT_YET_OBSERVED
+    runtime_execution: BLOCKED_INCOMPLETE_STAGE6_MATERIALISATION
   TIR:
     head: 3aecc18ee159e81c7f44a078f4ca907cbab748de
     status: ALL_OBSERVED_WORKFLOWS_SUCCESS_INCLUDING_INTEGRATED_KAPPA_RUN_740
@@ -311,6 +346,10 @@ firewalls:
   - PNCS_candidate_route_is_not_scientific_promotion
   - runtime_evidence_sidecar_does_not_modify_T36
   - MAS_stage6_materialisation_incomplete_blocks_executable_orchestration_claim
+  - source_family_full_rank_is_not_physical_source_truth
+  - condition_threshold_is_numerical_policy_not_physical_constant
+  - training_fit_is_not_heldout_validation
+  - positive_heldout_improvement_is_not_physical_source_proof
   - BEC_calibration_is_conditional_and_does_not_promote_IDT_spatial_lift
   - RFC_alpha_I_physical_calibration_remains_open
   - source_repository_claim_authority_remains_local
