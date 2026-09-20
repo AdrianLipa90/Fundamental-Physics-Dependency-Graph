@@ -19,6 +19,7 @@ core_object:
     - cross_modal_evidence
     - source_family_signature_geometry
     - heldout_source_family_validation
+    - identifiability_measurement_design
     - typed_orchestration_route
     - strict_t36_runtime_sidecar
 
@@ -44,6 +45,8 @@ repositories:
       - tools/gremlin_cross_modal_relational_evidence_v01.py
       - spec/GREMLIN_SOURCE_FAMILY_SIGNATURE_IDENTIFIABILITY_V0_1.md
       - tools/gremlin_source_family_signature_identifiability_v01.py
+      - spec/GREMLIN_IDENTIFIABILITY_MEASUREMENT_DESIGN_V0_1.md
+      - tools/gremlin_identifiability_measurement_design_v01.py
   RFC:
     repository: AdrianLipa90/Relational-Field-Closure
     role: conditional_information_scalar_potential_parent
@@ -143,6 +146,19 @@ repositories:
       pr_workflow: Candidate source-family signature identifiability v0.1
       pr_run_id: 35486688636
       pr_result: SUCCESS
+    measurement_design_branch: main
+    measurement_design_pull_request: https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade/pull/13
+    measurement_design_pr_head: fcb968de7d183da04c53beb05f86c6c33036214d
+    measurement_design_merge_commit: 95d0b6a1970a49353642f88f691a7030cceb974b
+    measurement_design_source:
+      - candidate_contracts/mas_identifiability_measurement_design_v01.json
+      - provenance/PHASENAV_MAS_IDENTIFIABILITY_MEASUREMENT_DESIGN_V0_1.json
+      - .github/workflows/candidate-identifiability-measurement-design-v01.yml
+    measurement_design_status: CANDIDATE_MEASUREMENT_PLANNING_MERGED_TO_MAIN
+    measurement_design_validation:
+      pr_workflow: Candidate identifiability measurement design v0.1
+      pr_run_id: 35487574273
+      pr_result: SUCCESS
     runtime_branch: release/mas-v0.1.0-stage5-pass
     runtime_status: BLOCKED_INCOMPLETE_STAGE6_MATERIALISATION
     blocker_evidence:
@@ -223,6 +239,16 @@ theorems:
     equation: "DeltaChi2_h=r_h^T Sigma_h^-1 r_h-(r_h-S_h a_hat)^T Sigma_h^-1(r_h-S_h a_hat)"
     owner: GREMLIN
     consumer: PHASENAV_MAS
+  IDENTIFIABILITY_MEASUREMENT_DESIGN:
+    status: EXACT_INFORMATION_GEOMETRY_AFTER_DECLARED_SIGNATURE_AND_COVARIANCE_MODEL
+    equation: "G'=G+q^T q/v; nullspace_power=||N^T q^T/sqrt(v)||^2"
+    owner: GREMLIN
+    consumer: PHASENAV_MAS
+  CORRELATED_MEASUREMENT_INNOVATION:
+    status: EXACT_SCHUR_COMPLEMENT_INFORMATION_UPDATE
+    equation: "Omega_c=Omega-C^T Sigma^-1 C; Q_c=Q-C^T Sigma^-1 S; DeltaG=Q_c^T Omega_c^-1 Q_c"
+    owner: GREMLIN
+    consumer: PHASENAV_MAS
 
 candidate_edges:
   - from: RFC
@@ -276,6 +302,13 @@ candidate_edges:
     interface_class: SOFTWARE_DIAGNOSTIC_INTERFACE_STAGED
     execution_owner: PhaseNav-Natural-Coding-System
     promotion_gate: FULL_RANK_CONDITION_GATE_INDEPENDENT_HOLDOUT_AND_NO_SOURCE_SELECTION
+  - from: GREMLIN
+    to: PHASENAV_MAS
+    relation: identifiability_measurement_design_to_candidate_planning
+    status: CANDIDATE_ONLY
+    interface_class: SOFTWARE_EXPERIMENT_DESIGN_INTERFACE
+    execution_owner: PhaseNav-Natural-Coding-System
+    promotion_gate: DECLARED_INFORMATION_POLICY_COVARIANCE_ACCOUNTING_AND_DOMAIN_FEASIBILITY_REVIEW
 
 validation:
   IDT:
@@ -284,10 +317,10 @@ validation:
     run_id: 35474369607
     result: PASS_1227
   GREMLIN:
-    head: 875132098ac74ab209c0e90cc9f9152a43792ec6
+    head: 91a0cc01388b38e6e624f2b1278fd736f08b1c05
     workflow: GREMLIN Repository Fail-Loud Audit v0.1
-    run_id: 35486534962
-    result: PASS_1460_SKIP_1_WHEEL_BUILD_AND_OUT_OF_TREE_SMOKE_PASS
+    run_id: 35487473520
+    result: PASS_1485_SKIP_1_WHEEL_BUILD_AND_OUT_OF_TREE_SMOKE_PASS
   RC:
     head: 3347a25c454ae4ff93f2ef9abd593322822c147b
     targeted_workflow: Relational holonomy spectroscopy reference
@@ -327,14 +360,19 @@ validation:
     targeted_run_id: 35476781551
     targeted_result: PENDING
   PHASENAV_MAS:
-    main_head: b4d07bcd4e63740fdc966575bfae710ae68acd03
+    main_head: 95d0b6a1970a49353642f88f691a7030cceb974b
     source_family_pr_head: f1a7d9ec78c24ef3da56979fbb0a260e9bd9ffd2
     source_family_merge_commit: b4d07bcd4e63740fdc966575bfae710ae68acd03
     source_family_pr: https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade/pull/12
     source_family_contract_validation: HOSTED_PASS
-    hosted_pr_workflow: Candidate source-family signature identifiability v0.1
-    hosted_pr_run_id: 35486688636
-    hosted_pr_result: SUCCESS
+    source_family_pr_run_id: 35486688636
+    source_family_pr_result: SUCCESS
+    measurement_design_pr_head: fcb968de7d183da04c53beb05f86c6c33036214d
+    measurement_design_merge_commit: 95d0b6a1970a49353642f88f691a7030cceb974b
+    measurement_design_pr: https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade/pull/13
+    measurement_design_contract_validation: HOSTED_PASS
+    measurement_design_pr_run_id: 35487574273
+    measurement_design_pr_result: SUCCESS
     runtime_execution: BLOCKED_INCOMPLETE_STAGE6_MATERIALISATION
   TIR:
     head: 3aecc18ee159e81c7f44a078f4ca907cbab748de
@@ -363,6 +401,9 @@ firewalls:
   - condition_threshold_is_numerical_policy_not_physical_constant
   - training_fit_is_not_heldout_validation
   - positive_heldout_improvement_is_not_physical_source_proof
+  - information_gain_is_not_universal_real_world_experiment_utility
+  - correlated_measurement_information_must_not_be_double_counted
+  - selected_measurement_candidate_is_not_a_physical_source_verdict
   - BEC_calibration_is_conditional_and_does_not_promote_IDT_spatial_lift
   - RFC_alpha_I_physical_calibration_remains_open
   - source_repository_claim_authority_remains_local
