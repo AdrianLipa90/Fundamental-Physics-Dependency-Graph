@@ -248,23 +248,27 @@ candidate_edges:
   - from: GREMLIN
     to: PNCS
     relation: cross_modal_evidence_to_conservative_candidate_routing
-    status: SOFTWARE_DIAGNOSTIC_INTERFACE
+    status: CANDIDATE_ONLY
+    interface_class: SOFTWARE_DIAGNOSTIC_INTERFACE
     promotion_gate: NO_PHYSICAL_SOURCE_SELECTION
   - from: PNCS
     to: PHASENAV_CORE
     relation: typed_evidence_packet_to_read_only_runtime_sidecar
-    status: SOFTWARE_RUNTIME_INTERFACE
+    status: CANDIDATE_ONLY
+    interface_class: SOFTWARE_RUNTIME_INTERFACE
     promotion_gate: STRICT_T36_NO_FLATTENING
   - from: PNCS
     to: PHASENAV_MAS
     relation: candidate_evidence_route_to_multi_agent_orchestration
-    status: SOFTWARE_ORCHESTRATION_INTERFACE_ACTIVE
+    status: CANDIDATE_ONLY
+    interface_class: SOFTWARE_ORCHESTRATION_INTERFACE_ACTIVE
     execution_status: BLOCKED_UNTIL_COMPLETE_STAGE6_MATERIALISATION
     promotion_gate: COMPLETE_STAGE6_MATERIALISATION_AND_MAS_LOCAL_VALIDATION
   - from: GREMLIN
     to: PHASENAV_MAS
     relation: source_family_signature_geometry_to_candidate_orchestration
-    status: SOFTWARE_DIAGNOSTIC_INTERFACE_STAGED
+    status: CANDIDATE_ONLY
+    interface_class: SOFTWARE_DIAGNOSTIC_INTERFACE_STAGED
     execution_owner: PhaseNav-Natural-Coding-System
     promotion_gate: FULL_RANK_CONDITION_GATE_INDEPENDENT_HOLDOUT_AND_NO_SOURCE_SELECTION
 
