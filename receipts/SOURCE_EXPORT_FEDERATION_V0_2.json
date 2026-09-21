@@ -1,0 +1,107 @@
+{
+  "schema": "FPDG_SOURCE_EXPORT_FEDERATION_V0_2",
+  "date": "2026-09-21",
+  "authority": "CANDIDATE_BRANCH_AUDIT",
+  "canon_allowed": false,
+  "branch": "audit/dependency-export-refresh-20260921",
+  "source_exports": {
+    "TIR": {
+      "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+      "source_commit": "f7b754347502f5051d423867f8a8d60627b1f8d7",
+      "export_commit": "f5426d627450748808f2b0d5bdd5073cd921b891",
+      "draft_pr": 176,
+      "claims": 37,
+      "local_edges": 43,
+      "added_claims": [
+        "TIR.SPACETIME.SP3_3PLUS1_BUNDLE_COMPATIBILITY_V01",
+        "TIR.SPACETIME.SP3_DELTA_HERM2_HALF_LIFT_V01"
+      ]
+    },
+    "IDT": {
+      "repository": "AdrianLipa90/Informational-Dynamics-of-Time",
+      "source_commit": "2960a936e3f74b07a4bf30ebc5cb78b6c1811b4c",
+      "export_commit": "16b0679da15f961133f453fc458d30537f1a5eaf",
+      "draft_pr": 104,
+      "claims": 30,
+      "local_edges": 29,
+      "added_claims": [
+        "IDT.CLOCK.PRODUCTION_EVENT_COMPLEX_INPUT_05J",
+        "IDT.REPRESENTATION.MOD6PI_C3_PAULI_02JN"
+      ]
+    },
+    "RFC": {
+      "repository": "AdrianLipa90/Relational-Field-Closure",
+      "source_commit": "786d1e1a9f9c91a4c3174719ed76966aa73edcef",
+      "export_commit": "d944f7cef04369106b92bbeb5a20c351c1928bf4",
+      "draft_pr": 169,
+      "claims": 93,
+      "local_edges": 125,
+      "added_claims": [
+        "RFC.GSC4F.GLOBAL_SE3_GAUGE_QUOTIENT",
+        "RFC.GSC4G.RIGID_OVERLAP_COCYCLE",
+        "RFC.GSC3H.3PLUS1_TWO_EPOCH_CONSTRUCTOR_V013"
+      ]
+    },
+    "SOH": {
+      "repository": "AdrianLipa90/secret-of-a-half",
+      "source_commit": "41772776dadf837c7a2f8b095b752e586d85c5dc",
+      "export_commit": "feb431a2570c87d5ef1803915734b5d8c13464ac",
+      "draft_pr": 81,
+      "claims": 7,
+      "local_edges": 0,
+      "added_claims": [],
+      "scientific_surface_change": false
+    },
+    "RC": {
+      "repository": "AdrianLipa90/Resonant-Chemistry",
+      "repository_head": "49f8f3123d3bfff58e7bfbc9032efb8c2cd7e13e",
+      "represented_source_commit": "48414e0e76777d82974dd12d581b5d9598f80c27",
+      "export_commit": "71d7e75f2ae9c050b0e7d57fcafd715a0c11a719",
+      "note": "registered foundational RC export scope intentionally unchanged; repository-head freshness updated separately"
+    }
+  },
+  "base_graph": {
+    "node_count": 167,
+    "edge_count": 231,
+    "repository_node_counts": {
+      "TIR": 37,
+      "IDT": 30,
+      "RFC": 93,
+      "SOH": 7
+    },
+    "nontrivial_scc_count": 0
+  },
+  "reconciliation": {
+    "TIR": "EXACT_EXPORT_GRAPH_MATCH",
+    "IDT": "EXACT_EXPORT_GRAPH_MATCH",
+    "RFC": "EXACT_EXPORT_GRAPH_MATCH",
+    "SOH": "EXACT_EXPORT_GRAPH_MATCH",
+    "duplicate_claims": false,
+    "unknown_local_edge_endpoints": false,
+    "source_status_drift": false
+  },
+  "cross_repo_edges_added": [
+    {
+      "from": "IDT.REPRESENTATION.MOD6PI_C3_PAULI_02JN",
+      "to": "TIR.REPRESENTATION.C3_F3_CHARACTER_FRAME",
+      "authority": "CANONICAL_CROSS_REPO",
+      "scope": "representation-level only"
+    },
+    {
+      "from": "RFC.GSC3H.3PLUS1_TWO_EPOCH_CONSTRUCTOR_V013",
+      "to": "TIR.SPACETIME.SP3_3PLUS1_BUNDLE_COMPATIBILITY_V01",
+      "authority": "CANDIDATE_ONLY"
+    },
+    {
+      "from": "RFC.GSC3H.3PLUS1_TWO_EPOCH_CONSTRUCTOR_V013",
+      "to": "TIR.SPACETIME.SP3_DELTA_HERM2_HALF_LIFT_V01",
+      "authority": "CANDIDATE_ONLY"
+    },
+    {
+      "from": "TIR.SPACETIME.SP3_DELTA_HERM2_HALF_LIFT_V01",
+      "to": "RFC.ADM.E8",
+      "authority": "CANDIDATE_ONLY"
+    }
+  ],
+  "verdict": "SOURCE_EXPORT_REFRESH_RECONCILED_NO_PROOF_CYCLE"
+}

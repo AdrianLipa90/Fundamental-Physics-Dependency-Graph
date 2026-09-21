@@ -153,3 +153,57 @@ The first two require theorem/validator/receipt promotion. XFI.28.03 requires a 
 ## 7. Revalidation propagation
 
 A material upstream change propagates `REVALIDATION_REQUIRED` through every reachable promoted descendant. Candidate-only edges remain excluded until promotion.
+
+
+## 8. 2026-09-21 source-export refresh candidate
+
+A fresh source-export federation candidate is staged without promoting any
+source branch to `main`.
+
+The refreshed source snapshots add seven claim-level surfaces:
+
+```text
+TIR +2:
+  SP3 same-parent 3+1 bundle compatibility
+  SP3 delta-Herm(2) half-lift
+
+IDT +2:
+  05J production event-complex input contract
+  02JN periodic 6pi / C3 / F3 / Pauli representation bridge
+
+RFC +3:
+  GSC4F global SE(3) gauge quotient
+  GSC4G rigid overlap cocycle reconstruction
+  GSC3H two-epoch 3+1 constructor
+```
+
+SOH changes provenance only; its scientific exported claim set remains seven
+claims.
+
+The refreshed base graph has
+
+```text
+167 nodes
+231 edges
+0 nontrivial strongly connected components
+```
+
+and exactly reconciles the refreshed TIR/IDT/RFC/SOH source-local claim and
+edge surfaces.
+
+The new cross-repository relation
+
+```text
+IDT.REPRESENTATION.MOD6PI_C3_PAULI_02JN
+  -> TIR.REPRESENTATION.C3_F3_CHARACTER_FRAME
+```
+
+is admitted only at representation level. It does not identify the temporal
+and flavour physical sectors.
+
+The SP3 3+1 and Herm(2) links remain candidate edges behind explicit physical
+production/soldering gates. They therefore do not propagate canonical
+invalidation.
+
+Machine receipt:
+`receipts/SOURCE_EXPORT_FEDERATION_V0_2.json`.
