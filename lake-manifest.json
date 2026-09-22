@@ -1,5 +1,5 @@
 {
-  "name": "fpdg-formal",
+  "name": "FPDGFormal",
   "version": "1.2.0",
   "lakeDir": ".lake",
   "packagesDir": ".lake/packages",
