@@ -1,8 +1,8 @@
 {
-  "version": "1.2.0",
-  "packagesDir": ".lake/packages",
-  "packages": [],
   "name": "fpdg-formal",
+  "version": "1.2.0",
   "lakeDir": ".lake",
-  "fixedToolchain": false
+  "packagesDir": ".lake/packages",
+  "fixedToolchain": false,
+  "packages": []
 }
