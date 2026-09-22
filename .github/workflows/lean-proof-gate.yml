@@ -6,6 +6,7 @@ on:
     paths:
       - "Formal.lean"
       - "lakefile.toml"
+      - "lake-manifest.json"
       - "lean-toolchain"
       - ".github/workflows/lean-proof-gate.yml"
   workflow_dispatch:
