@@ -1,5 +1,5 @@
 # CI consolidation refresh 2026-09-22
-name = "FPDGFormal"
+name = "Formal"
 version = "0.1.0"
 defaultTargets = ["Formal"]
 
