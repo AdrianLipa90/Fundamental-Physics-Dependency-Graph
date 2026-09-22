@@ -1,9 +1,9 @@
 schema: FPDG_SOURCE_EXPORT_HEADS_V0_1
-captured_at: '2026-09-22T23:05:00+01:00'
+captured_at: '2026-09-22T23:10:00+01:00'
 exports:
   TIR:
     repository: AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations
-    export_commit: 6bb61fdc8b3f77deba406fe2cb8b154723269e0e
+    export_commit: 178dd0e92bc924e057afd5e44e6c9220440de49e
     path: DEPENDENCY_EXPORT.json
     source_commit: 8c781742b656871529a4783ce977c8c1b8d51de2
     promotion: SOURCE_MAIN_LOCKED
