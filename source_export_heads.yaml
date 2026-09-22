@@ -1,5 +1,5 @@
 schema: FPDG_SOURCE_EXPORT_HEADS_V0_1
-captured_at: '2026-09-22T23:10:00+01:00'
+captured_at: '2026-09-22T23:06:00+01:00'
 exports:
   TIR:
     repository: AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations
@@ -21,7 +21,7 @@ exports:
     promotion: SOURCE_MAIN_LOCKED
   SOH:
     repository: AdrianLipa90/secret-of-a-half
-    export_commit: feb431a2570c87d5ef1803915734b5d8c13464ac
+    export_commit: eeb93832f0e72c2fa86ec427900c708dfe86fd10
     path: DEPENDENCY_EXPORT.json
-    source_commit: 41772776dadf837c7a2f8b095b752e586d85c5dc
-    promotion: SOURCE_MAIN_LOCKED_METADATA_HEAD_ADVANCED
+    source_commit: d99545aa447ef86bc253d8241a3fee9adb8a42c1
+    promotion: SOURCE_MAIN_LOCKED
