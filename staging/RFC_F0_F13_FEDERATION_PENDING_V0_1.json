@@ -1,0 +1,71 @@
+{
+  "schema": "FPDG_PENDING_SOURCE_FEDERATION_V0_1",
+  "status": "PENDING_SOURCE_MAIN_PROMOTION",
+  "repository_id": "RFC",
+  "repository": "AdrianLipa90/Relational-Field-Closure",
+  "source_main_at_preparation": "58655c7fe9d25d09c13545965e951f171316e6b2",
+  "source_pull_request": 68,
+  "source_branch": "feat/rff13-variational-integrability-common-action-v0.1",
+  "source_f13_validated_head": "45659a5fbbcd0faa06ab2a7d8a81d1eb7215d4c0",
+  "source_dependency_export_commit": "a14da535354f30ad8b0b672713863a9734970328",
+  "source_validation": {
+    "rf_f13_reference_suite": 321,
+    "rf_f13_conclusion": "SUCCESS",
+    "dependency_export_claim_count": 55,
+    "dependency_export_local_edge_count": 68
+  },
+  "pending_claims": [
+    "RFC.F0.PRIMITIVE_STATE",
+    "RFC.F1.GAUGE_RELATIONAL_PHASE",
+    "RFC.F2.EULER_BERRY_CLOSURE",
+    "RFC.F3.PHASE_RATE_CELL",
+    "RFC.F4.OCCUPATION_CURRENT",
+    "RFC.F5.PHASE_ENERGY_ONE_FORM",
+    "RFC.F6.COVARIANT_SOURCE",
+    "RFC.F7.STRESS_ENERGY_BIANCHI",
+    "RFC.F8.EOS_PHASE_CONTINUITY",
+    "RFC.F9.NOETHER_HAMILTONIAN_EINSTEIN",
+    "RFC.F10.PHASE_ENERGY_CURVATURE",
+    "RFC.F11.PHASE_ENERGY_TRANSPORT",
+    "RFC.F12.FLRW_PHASE_SCALING",
+    "RFC.F13.VARIATIONAL_COMMON_ACTION"
+  ],
+  "pending_local_edges": [
+    ["RFC.F0.PRIMITIVE_STATE", "RFC.F1.GAUGE_RELATIONAL_PHASE", "CANONICAL"],
+    ["RFC.F1.GAUGE_RELATIONAL_PHASE", "RFC.F2.EULER_BERRY_CLOSURE", "CANONICAL"],
+    ["RFC.F2.EULER_BERRY_CLOSURE", "RFC.F3.PHASE_RATE_CELL", "CANONICAL"],
+    ["RFC.F3.PHASE_RATE_CELL", "RFC.F4.OCCUPATION_CURRENT", "CANONICAL"],
+    ["RFC.F4.OCCUPATION_CURRENT", "RFC.F5.PHASE_ENERGY_ONE_FORM", "CANONICAL"],
+    ["RFC.F5.PHASE_ENERGY_ONE_FORM", "RFC.F6.COVARIANT_SOURCE", "CANONICAL"],
+    ["RFC.F6.COVARIANT_SOURCE", "RFC.F7.STRESS_ENERGY_BIANCHI", "CANONICAL"],
+    ["RFC.F7.STRESS_ENERGY_BIANCHI", "RFC.F8.EOS_PHASE_CONTINUITY", "CANONICAL"],
+    ["RFC.F8.EOS_PHASE_CONTINUITY", "RFC.F9.NOETHER_HAMILTONIAN_EINSTEIN", "CANONICAL"],
+    ["RFC.F9.NOETHER_HAMILTONIAN_EINSTEIN", "RFC.F10.PHASE_ENERGY_CURVATURE", "CANONICAL"],
+    ["RFC.F10.PHASE_ENERGY_CURVATURE", "RFC.F11.PHASE_ENERGY_TRANSPORT", "CANONICAL"],
+    ["RFC.F11.PHASE_ENERGY_TRANSPORT", "RFC.F12.FLRW_PHASE_SCALING", "CANONICAL"],
+    ["RFC.F12.FLRW_PHASE_SCALING", "RFC.F13.VARIATIONAL_COMMON_ACTION", "CANONICAL"],
+    ["RFC.SOURCE.CONSERVED_CARRIER", "RFC.F0.PRIMITIVE_STATE", "CANONICAL"],
+    ["RFC.N1B2K.CURRENT_MEASURE", "RFC.F4.OCCUPATION_CURRENT", "CANONICAL_FRONTIER"],
+    ["RFC.L2.LAMBDA_ACTION_STABILITY", "RFC.F7.STRESS_ENERGY_BIANCHI", "CANONICAL"],
+    ["RFC.ADM.E13", "RFC.F9.NOETHER_HAMILTONIAN_EINSTEIN", "CANONICAL"],
+    ["RFC.N1B2K.CURRENT_MEASURE", "RFC.F13.VARIATIONAL_COMMON_ACTION", "CANONICAL_FRONTIER"],
+    ["RFC.L2.LAMBDA_ACTION_STABILITY", "RFC.F13.VARIATIONAL_COMMON_ACTION", "CANONICAL"],
+    ["RFC.ADM.E13", "RFC.F13.VARIATIONAL_COMMON_ACTION", "CANONICAL"],
+    ["RFC.F13.VARIATIONAL_COMMON_ACTION", "RFC.PHYSICAL_SCALE_COUPLING", "CANONICAL_FRONTIER"]
+  ],
+  "promotion_firewall": {
+    "rule": "FPDG check_upstream_heads requires the locked RFC source_commit to equal the current RFC main SHA.",
+    "current_result": "BLOCKED_BY_UNMERGED_SOURCE_PR",
+    "canonical_graph_mutation": false,
+    "source_export_lock_mutation": false
+  },
+  "promotion_sequence": [
+    "Merge RFC PR #68 only after explicit source-repository merge authorization.",
+    "Read the resulting RFC main merge SHA M.",
+    "Regenerate RFC DEPENDENCY_EXPORT.json with source_commit=M and commit it as export commit E.",
+    "Update FPDG claims.jsonl and dependency_graph.yaml with the pending RF-F0 through RF-F13 surface.",
+    "Update FPDG source_exports.lock.json RFC entry to source_commit=M and export_commit=E.",
+    "Run validate_dag.py, export_roundtrip.py, check_upstream_heads.py and import_exports.py --require-all.",
+    "Promote only if all validators return PASS and the graph remains acyclic."
+  ]
+}

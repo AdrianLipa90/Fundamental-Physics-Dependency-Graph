@@ -1,0 +1,409 @@
+schema: FPDG_RELATIONAL_PHASE_OBSERVATION_STAGING_V0_1
+status: CANDIDATE_STAGING_NO_FEDERATION_PROMOTION
+authority:
+  active_federated_dag_modified: false
+  source_repository_claim_authority_preserved: true
+  candidate_edges_propagate_canonical_invalidation: false
+  reason: source-owned dependency exports must be extended before federation promotion
+
+core_object:
+  name: relational_phase_potential_observation_chain
+  chain:
+    - state_or_density
+    - connection_or_phase
+    - gauge_invariant_holonomy_or_effective_scalar
+    - gradient
+    - hessian
+    - observable_response
+    - inverse_identifiability
+    - cross_modal_evidence
+    - source_family_signature_geometry
+    - heldout_source_family_validation
+    - identifiability_measurement_design
+    - typed_orchestration_route
+    - strict_t36_runtime_sidecar
+
+repositories:
+  IDT:
+    repository: AdrianLipa90/Informational-Dynamics-of-Time
+    role: continuum_madelung_bec_radial_inverse_and_epicycle
+    branch: candidate/idt-eb-bec-orbital-acoustic-v0.1
+    pull_request: https://github.com/AdrianLipa90/Informational-Dynamics-of-Time/pull/101
+    source:
+      - formalism/02JP_eb_bec_orbital_bogoliubov_acoustic_bridge.md
+      - formalism/02JQ_radial_condensate_profile_classification.md
+      - src/idt/radial_condensate_profiles.py
+  GREMLIN:
+    repository: AdrianLipa90/GREMLIN
+    role: source_neutral_radial_identifiability_and_residual_routing
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/GREMLIN/pull/88
+    source:
+      - spec/GREMLIN_RADIAL_MEDIUM_IDENTIFIABILITY_V0_1.md
+      - tools/gremlin_radial_medium_identifiability_v01.py
+      - spec/GREMLIN_CROSS_MODAL_RELATIONAL_EVIDENCE_PACKET_V0_1.md
+      - tools/gremlin_cross_modal_relational_evidence_v01.py
+      - spec/GREMLIN_SOURCE_FAMILY_SIGNATURE_IDENTIFIABILITY_V0_1.md
+      - tools/gremlin_source_family_signature_identifiability_v01.py
+      - spec/GREMLIN_IDENTIFIABILITY_MEASUREMENT_DESIGN_V0_1.md
+      - tools/gremlin_identifiability_measurement_design_v01.py
+  RFC:
+    repository: AdrianLipa90/Relational-Field-Closure
+    role: conditional_information_scalar_potential_parent
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/Relational-Field-Closure/pull/142
+    source:
+      - closure/lambda0/RF_L3_INFORMATION_SCALAR_POTENTIAL_RECONSTRUCTION.md
+      - closure/lambda0/RF_L3_DOWNSTREAM_RELATIONAL_PHASE_OBSERVATION_INTERFACE_V0_1.md
+    binding:
+      relation: U_I=(alpha_I/kappa_E) Xi_I
+      physical_alpha_I_calibration: OPEN
+  TIR:
+    repository: AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations
+    role: relational_geometry_holonomy_and_information_parent
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations/pull/174
+    source:
+      - TIR/CURRENT_STATUS.md
+      - TIR/integration/TIR_RELATIONAL_PHASE_OBSERVATION_DOWNSTREAM_INTERFACE_V0_1.md
+  RC:
+    repository: AdrianLipa90/Resonant-Chemistry
+    role: molecular_graph_u1_holonomy_and_phase_dressed_hamiltonian
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/Resonant-Chemistry/pull/27
+    source:
+      - THEORY/15_RELATIONAL_HOLONOMY_SPECTROSCOPY_BRIDGE_V0_1.md
+      - reschem/relational_holonomy_spectroscopy.py
+  OES:
+    repository: AdrianLipa90/Orbital-Eclipse-Spectroscopy
+    role: spectral_response_jacobian_and_fisher_identifiability
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/Orbital-Eclipse-Spectroscopy/pull/14
+    source:
+      - formalism/OES_H1_HOLONOMY_RESPONSE_IDENTIFIABILITY_V0_1.md
+      - oes/holonomy_response.py
+  QHTRI_OPTICS:
+    repository: AdrianLipa90/QHTRI-Induced-Holonomic-Potentials-for-Neutrino-Flavour-Transport-and-Phase-Optics
+    role: orbit_epicycle_to_transverse_phase_curvature
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/QHTRI-Induced-Holonomic-Potentials-for-Neutrino-Flavour-Transport-and-Phase-Optics/pull/1
+    source:
+      - docs/ORBIT_EPICYCLE_PHASE_CURVATURE_BRIDGE_V0_1.md
+      - src/qhtri_phase_optics/orbit_curvature.py
+  PHASENAV_TELESCOPE:
+    repository: AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation
+    role: downstream_phase_resolved_spectral_inverse_consumer
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/PhaseNav-Telescope-Spectral-Modulation/pull/24
+    source:
+      - docs/RELATIONAL_PHASE_OBSERVATION_ADAPTER_V0_1.md
+      - phasenav_telescope_v5/analysis/relational_phase_observation.py
+    promotion_state: TARGETED_ADAPTER_PASS_FULL_LEGACY_REGRESSION_HAS_UNRELATED_FAILURES
+  PNCS:
+    repository: AdrianLipa90/PhaseNav-Natural-Coding-System
+    role: typed_semantic_execution_consumer
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/PhaseNav-Natural-Coding-System/pull/70
+    source:
+      - spec/PNCS_RELATIONAL_OBSERVATION_PACKET_V0_1.md
+      - src/phasenav_natural_code/relational_observation_v01.py
+      - spec/PNCS_RELATIONAL_EVIDENCE_PACKET_V0_1.md
+      - src/phasenav_natural_code/relational_evidence_v01.py
+    promotion_state: TYPED_OBSERVATION_AND_EVIDENCE_PACKETS_NO_T36_FLATTENING
+  PHASENAV_CORE:
+    repository: AdrianLipa90/noema-phasenav-core
+    role: typed_36d_phase_runtime_consumer
+    branch: integrate/relational-phase-observation-v0.1
+    pull_request: https://github.com/AdrianLipa90/noema-phasenav-core/pull/35
+    source:
+      - docs/RELATIONAL_OBSERVATION_SIDECAR_V0_1.md
+      - src/ciel_geometry/phasenav/relational_observation.py
+      - docs/RELATIONAL_EVIDENCE_SIDECAR_V0_1.md
+      - src/ciel_geometry/phasenav/relational_evidence.py
+    promotion_state: OBSERVATION_AND_EVIDENCE_SIDECARS_STRICT_T36_PRESERVED
+  PHASENAV_MAS:
+    repository: AdrianLipa90/PhaseNav-MAS-Upgrade
+    role: downstream_orchestration_consumer
+    branch: main
+    orchestration_branch: main
+    orchestration_commit: e1be4bad3334bb4916b99eff65a3f49820d86145
+    orchestration_source:
+      - candidate_contracts/mas_relational_evidence_orchestration_v01.json
+      - provenance/PHASENAV_MAS_RELATIONAL_EVIDENCE_ORCHESTRATION_V0_1.json
+      - .github/workflows/candidate-relational-evidence-orchestration-v01.yml
+    orchestration_status: CANDIDATE_ACTIVE_SOURCE_NEUTRAL
+    orchestration_validation: DETERMINISTIC_CONTRACT_PASS_HOSTED_PUSH_RECEIPT_NOT_YET_RECORDED
+    source_family_branch: main
+    source_family_pull_request: https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade/pull/12
+    source_family_pr_head: f1a7d9ec78c24ef3da56979fbb0a260e9bd9ffd2
+    source_family_merge_commit: b4d07bcd4e63740fdc966575bfae710ae68acd03
+    source_family_source:
+      - candidate_contracts/mas_source_family_signature_identifiability_v01.json
+      - provenance/PHASENAV_MAS_SOURCE_FAMILY_SIGNATURE_IDENTIFIABILITY_V0_1.json
+      - .github/workflows/candidate-source-family-signature-identifiability-v01.yml
+    source_family_status: CANDIDATE_ROUTING_MERGED_TO_MAIN
+    source_family_validation:
+      pr_workflow: Candidate source-family signature identifiability v0.1
+      pr_run_id: 35486688636
+      pr_result: SUCCESS
+    measurement_design_branch: main
+    measurement_design_pull_request: https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade/pull/13
+    measurement_design_pr_head: fcb968de7d183da04c53beb05f86c6c33036214d
+    measurement_design_merge_commit: 95d0b6a1970a49353642f88f691a7030cceb974b
+    measurement_design_source:
+      - candidate_contracts/mas_identifiability_measurement_design_v01.json
+      - provenance/PHASENAV_MAS_IDENTIFIABILITY_MEASUREMENT_DESIGN_V0_1.json
+      - .github/workflows/candidate-identifiability-measurement-design-v01.yml
+    measurement_design_status: CANDIDATE_MEASUREMENT_PLANNING_MERGED_TO_MAIN
+    measurement_design_validation:
+      pr_workflow: Candidate identifiability measurement design v0.1
+      pr_run_id: 35487574273
+      pr_result: SUCCESS
+    runtime_branch: release/mas-v0.1.0-stage5-pass
+    runtime_status: BLOCKED_INCOMPLETE_STAGE6_MATERIALISATION
+    blocker_evidence:
+      main_status_file: provenance/STAGE6_IMPORT_STATUS.md
+      main_status: FULL_SOURCE_IMPORT_BLOCKED
+      release_present:
+        - src/phasenav_mas/__init__.py
+        - src/phasenav_mas/_digest.py
+      release_missing_required_surfaces:
+        - pyproject.toml
+        - src/phasenav_mas/canonical.py
+        - src/phasenav_mas/kernel.py
+        - tests/test_kernel.py
+        - latex/main.tex
+        - PhaseNav_MAS_Instruction_Manual.pdf
+    promotion_state: CANDIDATE_ORCHESTRATION_ACTIVE_RUNTIME_EXECUTION_BLOCKED_STAGE6
+    promotion_gate: COMPLETE_STAGE6_SOURCE_MATERIALISATION_PLUS_LOCAL_TESTS_RECEIPTS_AND_PDF
+  CONSCIOUSNESS_DICTIONARY:
+    repository: AdrianLipa90/The-Consciousness-Dictionary
+    role: downstream_relational_observable_vocabulary_consumer
+    branch: main
+    promotion_state: LINK_REVIEW_REQUIRED
+
+theorems:
+  CENTRAL_ORBITAL_INVERSE:
+    status: EXACT_WITHIN_STATIONARY_CENTRAL_SCALAR_MODEL
+    equation: "Phi(r)=C+integral^r s Omega(s)^2 ds"
+    owner: IDT
+  EPICYCLIC_CONSISTENCY:
+    status: EXACT_WITHIN_STATIONARY_CENTRAL_SCALAR_MODEL
+    equation: "kappa_epi^2=4 Omega^2+r d(Omega^2)/dr"
+    owner: IDT
+  KOBS_IDENTITY:
+    status: EXACT_WITHIN_STATIONARY_CENTRAL_SCALAR_MODEL
+    equation: "d(r^3 Omega^2)/dr=r^2(kappa_epi^2-Omega^2)"
+    owner: IDT
+  KEPLER_CAMOUFLAGE:
+    status: EXACT_SOURCE_NON_IDENTIFIABILITY_CLASS
+    equation: "delta Phi=C0+C1/r"
+    owner: IDT
+    consumer: GREMLIN
+  HOLONOMY_SHELL_SUSCEPTIBILITY:
+    status: EXACT_AFTER_DECLARED_CIRCULATION_SHELL_BINDING
+    equation: "dr/dtau=-Lambda^2 nu/(pi r^3 kappa_epi^2)"
+    owner: IDT
+    consumer: GREMLIN
+  GRAPH_U1_GAUGE_QUOTIENT:
+    status: EXACT_FINITE_GRAPH_MATHEMATICS
+    equation: "[theta] in H^1(G,U(1)); beta1=E-V+C"
+    owner: RC
+  SPECTRAL_LINE_PHASE_SLOPE:
+    status: EXACT_AFTER_DECLARED_PHASE_DEPENDENT_HAMILTONIAN
+    equation: "d omega_mn/d Phi_a=-(J_m,a-J_n,a)/hbar"
+    owner: RC
+    consumer: OES
+  SPECTRAL_IDENTIFIABILITY:
+    status: EXACT_LOCAL_LINEAR_ALGEBRA_CONDITION
+    equation: "rank(J_observable_phase)=beta1"
+    owner: OES
+  ORBIT_TO_TRANSVERSE_PHASE_CURVATURE:
+    status: EXACT_WITHIN_SPHERICAL_SHARED_SCALAR_MODEL
+    equation: "d2Phi/db2=(b^2/r^2)kappa^2+(1-4b^2/r^2)Omega^2"
+    owner: QHTRI_OPTICS
+  CROSS_MODAL_EVIDENCE_ROUTING:
+    status: SOFTWARE_DIAGNOSTIC_CONTRACT_SOURCE_NEUTRAL
+    equation: "residual channels + covariance + phase rank -> CONSISTENT | INCONSISTENT | UNDERDETERMINED"
+    owner: GREMLIN
+    consumers:
+      - PNCS
+      - PHASENAV_CORE
+  SOURCE_FAMILY_SIGNATURE_IDENTIFIABILITY:
+    status: EXACT_WEIGHTED_LINEAR_ALGEBRA_WITH_NUMERICAL_CONDITION_GATE
+    equation: "G=S^T Sigma^-1 S; rank(G)=rank(S); nullity=p-rank(G)"
+    owner: GREMLIN
+    consumer: PHASENAV_MAS
+  SOURCE_FAMILY_HELDOUT_VALIDATION:
+    status: EXACT_STATISTIC_AFTER_DECLARED_INDEPENDENT_HOLDOUT
+    equation: "DeltaChi2_h=r_h^T Sigma_h^-1 r_h-(r_h-S_h a_hat)^T Sigma_h^-1(r_h-S_h a_hat)"
+    owner: GREMLIN
+    consumer: PHASENAV_MAS
+  IDENTIFIABILITY_MEASUREMENT_DESIGN:
+    status: EXACT_INFORMATION_GEOMETRY_AFTER_DECLARED_SIGNATURE_AND_COVARIANCE_MODEL
+    equation: "G'=G+q^T q/v; nullspace_power=||N^T q^T/sqrt(v)||^2"
+    owner: GREMLIN
+    consumer: PHASENAV_MAS
+  CORRELATED_MEASUREMENT_INNOVATION:
+    status: EXACT_SCHUR_COMPLEMENT_INFORMATION_UPDATE
+    equation: "Omega_c=Omega-C^T Sigma^-1 C; Q_c=Q-C^T Sigma^-1 S; DeltaG=Q_c^T Omega_c^-1 Q_c"
+    owner: GREMLIN
+    consumer: PHASENAV_MAS
+
+candidate_edges:
+  - from: RFC
+    to: IDT
+    relation: Xi_I_to_U_I_to_condensate_force
+    status: CANDIDATE_ONLY
+    promotion_gate: PHYSICAL_CI_CALIBRATION_AND_CARRIER_BINDING
+  - from: GREMLIN
+    to: IDT
+    relation: tau_to_effective_winding_to_shell_radius
+    status: CANDIDATE_ONLY
+    promotion_gate: PHYSICAL_TAU_TO_CONDENSATE_CONNECTION_BINDING
+  - from: RC
+    to: OES
+    relation: graph_loop_phase_to_spectral_response
+    status: MATHEMATICAL_INTERFACE
+    promotion_gate: EXPERIMENTAL_OR_CONTROLLED_MODEL_BINDING
+  - from: IDT
+    to: QHTRI_OPTICS
+    relation: orbital_epicyclic_observables_to_scalar_phase_curvature
+    status: MATHEMATICAL_INTERFACE
+    promotion_gate: SHARED_SCALAR_CARRIER_DECLARATION
+  - from: QHTRI_OPTICS
+    to: RFC
+    relation: scalar_phase_curvature_to_spacetime_metric
+    status: OPEN_NOT_PROMOTED
+    promotion_gate: H_G_METRIC_BRIDGE
+  - from: GREMLIN
+    to: PNCS
+    relation: cross_modal_evidence_to_conservative_candidate_routing
+    status: CANDIDATE_ONLY
+    interface_class: SOFTWARE_DIAGNOSTIC_INTERFACE
+    promotion_gate: NO_PHYSICAL_SOURCE_SELECTION
+  - from: PNCS
+    to: PHASENAV_CORE
+    relation: typed_evidence_packet_to_read_only_runtime_sidecar
+    status: CANDIDATE_ONLY
+    interface_class: SOFTWARE_RUNTIME_INTERFACE
+    promotion_gate: STRICT_T36_NO_FLATTENING
+  - from: PNCS
+    to: PHASENAV_MAS
+    relation: candidate_evidence_route_to_multi_agent_orchestration
+    status: CANDIDATE_ONLY
+    interface_class: SOFTWARE_ORCHESTRATION_INTERFACE_ACTIVE
+    execution_status: BLOCKED_UNTIL_COMPLETE_STAGE6_MATERIALISATION
+    promotion_gate: COMPLETE_STAGE6_MATERIALISATION_AND_MAS_LOCAL_VALIDATION
+  - from: GREMLIN
+    to: PHASENAV_MAS
+    relation: source_family_signature_geometry_to_candidate_orchestration
+    status: CANDIDATE_ONLY
+    interface_class: SOFTWARE_DIAGNOSTIC_INTERFACE_STAGED
+    execution_owner: PhaseNav-Natural-Coding-System
+    promotion_gate: FULL_RANK_CONDITION_GATE_INDEPENDENT_HOLDOUT_AND_NO_SOURCE_SELECTION
+  - from: GREMLIN
+    to: PHASENAV_MAS
+    relation: identifiability_measurement_design_to_candidate_planning
+    status: CANDIDATE_ONLY
+    interface_class: SOFTWARE_EXPERIMENT_DESIGN_INTERFACE
+    execution_owner: PhaseNav-Natural-Coding-System
+    promotion_gate: DECLARED_INFORMATION_POLICY_COVARIANCE_ACCOUNTING_AND_DOMAIN_FEASIBILITY_REVIEW
+
+validation:
+  IDT:
+    head: 6763870e2a59fa06a45421b5a5b48e007049d061
+    workflow: Reference suite
+    run_id: 35474369607
+    result: PASS_1227
+  GREMLIN:
+    head: 91a0cc01388b38e6e624f2b1278fd736f08b1c05
+    workflow: GREMLIN Repository Fail-Loud Audit v0.1
+    run_id: 35487473520
+    result: PASS_1485_SKIP_1_WHEEL_BUILD_AND_OUT_OF_TREE_SMOKE_PASS
+  RC:
+    head: 3347a25c454ae4ff93f2ef9abd593322822c147b
+    targeted_workflow: Relational holonomy spectroscopy reference
+    targeted_run_id: 35474885674
+    targeted_result: PASS_7
+    ambient_full_suite_run_id: 35474885602
+    ambient_status: FAIL_2_ALUMINIUM_3P_TESTS_OUTSIDE_ROLLOUT_FILES
+  OES:
+    head: 642cad97a02d3dace4c87a119ccdacfe4a60fe14
+    workflow: OES reference suite
+    run_id: 35474798319
+    result: PASS_82
+  QHTRI_OPTICS:
+    head: 7ac4320a61c78a0edf5ce97a2193635d6dae132a
+    workflow: Relational phase observation reference
+    run_id: 35474852458
+    result: PASS_58
+  PHASENAV_TELESCOPE:
+    head: fcd295270cedf4137cf55f287cf51ce8d0338bb3
+    targeted_workflow: Relational phase observation reference
+    targeted_run_id: 35475132026
+    targeted_result: PASS_11
+    ambient_full_suite_status: FAIL_2_SOURCE_ORTHOGONAL_THRESHOLD_TESTS_OUTSIDE_ROLLOUT_FILES
+  RFC:
+    head: 466f2cea5be9d51f18adb73a6e3bd22bec1d967c
+    workflow: RFC reference suite
+    run_id: 35475094788
+    result: SUCCESS
+  PNCS:
+    head: 9c49db5260b827de43366e1ca01a94eb4df684a5
+    targeted_workflow: Relational observation/evidence packet reference
+    targeted_run_id: 35476701634
+    targeted_result: PENDING
+  PHASENAV_CORE:
+    head: c314ee6604cdbab589021cbe7a3c9e0276969adb
+    targeted_workflow: Relational observation/evidence sidecar reference
+    targeted_run_id: 35476781551
+    targeted_result: PENDING
+  PHASENAV_MAS:
+    main_head: 95d0b6a1970a49353642f88f691a7030cceb974b
+    source_family_pr_head: f1a7d9ec78c24ef3da56979fbb0a260e9bd9ffd2
+    source_family_merge_commit: b4d07bcd4e63740fdc966575bfae710ae68acd03
+    source_family_pr: https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade/pull/12
+    source_family_contract_validation: HOSTED_PASS
+    source_family_pr_run_id: 35486688636
+    source_family_pr_result: SUCCESS
+    measurement_design_pr_head: fcb968de7d183da04c53beb05f86c6c33036214d
+    measurement_design_merge_commit: 95d0b6a1970a49353642f88f691a7030cceb974b
+    measurement_design_pr: https://github.com/AdrianLipa90/PhaseNav-MAS-Upgrade/pull/13
+    measurement_design_contract_validation: HOSTED_PASS
+    measurement_design_pr_run_id: 35487574273
+    measurement_design_pr_result: SUCCESS
+    runtime_execution: BLOCKED_INCOMPLETE_STAGE6_MATERIALISATION
+  TIR:
+    head: 3aecc18ee159e81c7f44a078f4ca907cbab748de
+    status: ALL_OBSERVED_WORKFLOWS_SUCCESS_INCLUDING_INTEGRATED_KAPPA_RUN_740
+  FPDG:
+    reconciled_head: 29bce0d4220e6fe004af7ecf9c9902a25d1cbba7
+    staging_run_id: 35486849662
+    staging_result: SUCCESS
+    dag_run_id: 35486849626
+    dag_result: SUCCESS
+    locked_source_export_run_id: 35486849629
+    locked_source_export_result: SUCCESS
+    source_drift_run_id: 35486849640
+    source_drift_result: SUCCESS
+
+firewalls:
+  - W_chem_is_not_identified_with_W_sem
+  - molecular_bond_graph_is_not_automatically_the_effective_state_graph
+  - acoustic_or_phase_optics_geometry_is_not_spacetime_geometry
+  - GREMLIN_residual_routing_is_not_source_attribution
+  - cross_modal_consistency_is_not_physical_source_selection
+  - PNCS_candidate_route_is_not_scientific_promotion
+  - runtime_evidence_sidecar_does_not_modify_T36
+  - MAS_stage6_materialisation_incomplete_blocks_executable_orchestration_claim
+  - source_family_full_rank_is_not_physical_source_truth
+  - condition_threshold_is_numerical_policy_not_physical_constant
+  - training_fit_is_not_heldout_validation
+  - positive_heldout_improvement_is_not_physical_source_proof
+  - information_gain_is_not_universal_real_world_experiment_utility
+  - correlated_measurement_information_must_not_be_double_counted
+  - selected_measurement_candidate_is_not_a_physical_source_verdict
+  - BEC_calibration_is_conditional_and_does_not_promote_IDT_spatial_lift
+  - RFC_alpha_I_physical_calibration_remains_open
+  - source_repository_claim_authority_remains_local
