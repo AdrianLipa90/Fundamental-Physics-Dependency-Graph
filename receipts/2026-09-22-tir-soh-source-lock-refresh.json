@@ -19,5 +19,7 @@
     "source_repository_authoritative": true,
     "candidate_edges_propagate_invalidation": false,
     "physical_promotion_by_export": false
-  }
+  },
+  "validation_refresh": "2026-09-22T23:08:00+01:00",
+  "note": "CI refresh only; no dependency semantics changed."
 }
