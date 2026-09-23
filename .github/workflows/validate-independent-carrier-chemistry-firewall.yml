@@ -1,0 +1,20 @@
+name: Validate Independent Carrier Chemistry Firewall
+
+on:
+  pull_request:
+    paths:
+      - 'diagnostics/INDEPENDENT_CARRIER_CHEMISTRY_ADMISSION_FIREWALL_V0_1.*'
+      - 'tools/validate_independent_carrier_chemistry_firewall_v0_1.py'
+      - '.github/workflows/validate-independent-carrier-chemistry-firewall.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate fail-closed admission state
+        run: python tools/validate_independent_carrier_chemistry_firewall_v0_1.py
