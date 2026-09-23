@@ -67,8 +67,8 @@
     "repository": "AdrianLipa90/Relational-Field-Closure",
     "pr": 172,
     "source_commit": "30ca034fea121a678ef84342e1400d4ebfc1d3fa",
-    "export_commit": "4367e4b016eed274424a77980588d428025b668c",
-    "status": "DRAFT_DEDICATED_GATE_GREEN_AND_FULL_REFERENCE_SUITE_GREEN_UNMERGED",
+    "export_commit": "c7216d0019ae9e0510571ee24619cd8510078c18",
+    "status": "DRAFT_NO_GO_AND_STATUS_REPAIR_GREEN_FULL_REFERENCE_SUITE_GREEN_UNMERGED",
     "claim_id": "RFC.CHEMISTRY.CARRIER_SCALE_IDENTIFIABILITY_NOGO",
     "theorem": "At fixed omega and phase, (B,N,V_R)->(aB,bN,abV_R) leaves rho_E invariant for arbitrary a,b>0",
     "log_jacobian": [
@@ -91,5 +91,14 @@
       ],
       "redundancy": "rho + epsilon + n has rank 2 because J_rho = J_epsilon + J_n"
     }
+  },
+  "rfc_n1b2k_status_drift": {
+    "stale_export_status": "ACTIVE_PHYSICAL_REALIZATION",
+    "source_authoritative_status": "REFERENCE_SUITE_PASS / EXECUTABLE_INDEPENDENT_INPUT_RECEIPT / PHYSICAL_REALIZATION_INPUT_OPEN",
+    "source_path": "formalism/RF_F24_CURRENT_MEASURE_REALIZATION_RECEIPT.md",
+    "validation_receipt": "validation/RF_F24_CURRENT_MEASURE_REALIZATION_RECEIPT_V0_1.json",
+    "source_candidate_pr": 172,
+    "source_candidate_head": "c7216d0019ae9e0510571ee24619cd8510078c18",
+    "handling": "DO_NOT_PROMOTE_CURRENT_MEASURE_AS_REALIZED_PHYSICS_BEFORE_SOURCE_MERGE_AND_RECONCILIATION"
   }
 }
