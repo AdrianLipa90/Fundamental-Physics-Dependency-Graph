@@ -66,8 +66,8 @@
   "identifiability_nogo_candidate": {
     "repository": "AdrianLipa90/Relational-Field-Closure",
     "pr": 172,
-    "source_commit": "f36e627ad9990f6ad5bc44d34e2e9aa40c3a6ca5",
-    "export_commit": "2fb08aa8d618b161f5efadbfadb1263ca70f4f35",
+    "source_commit": "30ca034fea121a678ef84342e1400d4ebfc1d3fa",
+    "export_commit": "4367e4b016eed274424a77980588d428025b668c",
     "status": "DRAFT_DEDICATED_GATE_GREEN_AND_FULL_REFERENCE_SUITE_GREEN_UNMERGED",
     "claim_id": "RFC.CHEMISTRY.CARRIER_SCALE_IDENTIFIABILITY_NOGO",
     "theorem": "At fixed omega and phase, (B,N,V_R)->(aB,bN,abV_R) leaves rho_E invariant for arbitrary a,b>0",
@@ -77,6 +77,19 @@
       -1
     ],
     "nullspace_dimension": 2,
-    "consequence": "source density alone cannot identify B, occupation and cell volume separately"
+    "consequence": "source density alone cannot identify B, occupation and cell volume separately",
+    "minimal_observable_ladder": {
+      "B_only": [
+        "independent carrier energy epsilon",
+        "or source density rho plus occupation density n"
+      ],
+      "full_B_N_V": [
+        "rho + epsilon + absolute N",
+        "rho + epsilon + absolute V",
+        "rho + n + absolute N",
+        "rho + n + absolute V"
+      ],
+      "redundancy": "rho + epsilon + n has rank 2 because J_rho = J_epsilon + J_n"
+    }
   }
 }
