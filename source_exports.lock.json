@@ -1,6 +1,6 @@
 {
   "schema": "FPDG_SOURCE_EXPORT_LOCK_V0_3",
-  "generated_at": "2026-09-23T06:26:00+01:00",
+  "generated_at": "2026-09-23T06:31:00+01:00",
   "sources": {
     "TIR": {
       "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
@@ -28,8 +28,9 @@
       "repository": "AdrianLipa90/secret-of-a-half",
       "export_commit": "feb431a2570c87d5ef1803915734b5d8c13464ac",
       "source_commit": "41772776dadf837c7a2f8b095b752e586d85c5dc",
-      "repository_head": "41772776dadf837c7a2f8b095b752e586d85c5dc",
-      "path": "DEPENDENCY_EXPORT.json"
+      "repository_head": "eeb93832f0e72c2fa86ec427900c708dfe86fd10",
+      "path": "DEPENDENCY_EXPORT.json",
+      "integration_state": "SOURCE_HEAD_FRESH / LOCKED_DEPENDENCY_SURFACE_SEMANTICALLY_IDENTICAL_AFTER_DIFF"
     },
     "RC": {
       "repository": "AdrianLipa90/Resonant-Chemistry",
