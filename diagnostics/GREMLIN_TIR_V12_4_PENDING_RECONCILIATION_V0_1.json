@@ -1,0 +1,38 @@
+{
+  "schema": "FPDG_TIR_V12_4_RECONCILIATION_V0_2",
+  "date": "2026-09-23",
+  "status": "SOURCE_PROMOTED_RECONCILIATION_APPLIED_TO_PR_BRANCH",
+  "canon_allowed": false,
+  "source": {
+    "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+    "repository_head": "6bb61fdc8b3f77deba406fe2cb8b154723269e0e",
+    "dependency_export_source_commit": "8c781742b656871529a4783ce977c8c1b8d51de2",
+    "dependency_export_generated_at": "2026-09-22T23:05:00+01:00"
+  },
+  "reconciled_surface": {
+    "claims": 67,
+    "local_edges": 94,
+    "white_thread_claims_present": [
+      "TIR.WHITE_THREAD.SPIN_LIFT",
+      "TIR.WHITE_THREAD.LYAPUNOV"
+    ],
+    "candidate_edges": 15
+  },
+  "semantic_repairs": {
+    "corrected_authority_edge": {
+      "from": "TIR.FOUNDATION.HALF",
+      "to": "TIR.SPACETIME.SP3_DELTA_HERM2_HALF_LIFT_V01",
+      "old_fpdg_authority": "CANONICAL",
+      "source_authority": "CANDIDATE_ONLY",
+      "promotion_gate": "GLOBAL_PHYSICAL_SPATIAL_CARRIER_BINDING_REQUIRED"
+    },
+    "dependency_export_schema_registry_sync": "RC_ADDED_TO_ENUM"
+  },
+  "validation_intent": [
+    "validate promoted DAG",
+    "reconcile exact source export",
+    "check upstream source heads",
+    "project source drift and impact"
+  ],
+  "merge_policy": "NO_MAIN_MERGE_WITHOUT_EXPLICIT_USER_ORDER"
+}
