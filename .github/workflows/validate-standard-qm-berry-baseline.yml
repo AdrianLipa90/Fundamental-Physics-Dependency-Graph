@@ -1,0 +1,20 @@
+name: Validate Standard-QM Berry Baseline
+
+on:
+  pull_request:
+    paths:
+      - 'diagnostics/STANDARD_QM_BERRY_BASELINE_V0_1.*'
+      - 'tools/validate_standard_qm_berry_baseline_v0_1.py'
+      - '.github/workflows/validate-standard-qm-berry-baseline.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate no-double-counting bookkeeping
+        run: python tools/validate_standard_qm_berry_baseline_v0_1.py
