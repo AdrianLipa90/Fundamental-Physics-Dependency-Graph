@@ -1,13 +1,14 @@
 {
   "schema": "FPDG_SOURCE_EXPORT_LOCK_V0_3",
-  "generated_at": "2026-09-21T13:37:00+01:00",
+  "generated_at": "2026-09-23T06:26:00+01:00",
   "sources": {
     "TIR": {
       "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
-      "export_commit": "f5426d627450748808f2b0d5bdd5073cd921b891",
-      "source_commit": "f7b754347502f5051d423867f8a8d60627b1f8d7",
-      "repository_head": "f7b754347502f5051d423867f8a8d60627b1f8d7",
-      "path": "DEPENDENCY_EXPORT.json"
+      "export_commit": "6bb61fdc8b3f77deba406fe2cb8b154723269e0e",
+      "source_commit": "8c781742b656871529a4783ce977c8c1b8d51de2",
+      "repository_head": "6bb61fdc8b3f77deba406fe2cb8b154723269e0e",
+      "path": "DEPENDENCY_EXPORT.json",
+      "integration_state": "SOURCE_HEAD_FRESH / TIR_V12_4_67_CLAIMS_94_LOCAL_EDGES_RECONCILED"
     },
     "IDT": {
       "repository": "AdrianLipa90/Informational-Dynamics-of-Time",

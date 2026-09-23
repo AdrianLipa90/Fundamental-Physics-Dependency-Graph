@@ -1,68 +1,38 @@
 {
-  "schema": "FPDG_TIR_V12_4_PENDING_RECONCILIATION_V0_1",
-  "date": "2026-09-22",
-  "status": "STAGED_PENDING_SOURCE_PROMOTION",
+  "schema": "FPDG_TIR_V12_4_RECONCILIATION_V0_2",
+  "date": "2026-09-23",
+  "status": "SOURCE_PROMOTED_RECONCILIATION_APPLIED_TO_PR_BRANCH",
   "canon_allowed": false,
   "source": {
     "repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
-    "baseline_main": "f7b754347502f5051d423867f8a8d60627b1f8d7",
-    "reconciliation_branch": "reconcile/global-dependency-surface-v12.4",
-    "reconciliation_head": "f858ce861d9a8551291954bd4654d7ea5531c7be",
-    "reconciliation_pr": 178,
-    "white_thread_pr": 177,
-    "white_thread_head": "d69a2ece81aee316e47f4a4f8054adad5242ffd2"
+    "repository_head": "6bb61fdc8b3f77deba406fe2cb8b154723269e0e",
+    "dependency_export_source_commit": "8c781742b656871529a4783ce977c8c1b8d51de2",
+    "dependency_export_generated_at": "2026-09-22T23:05:00+01:00"
   },
-  "current_fpdg": {
-    "main": "df7e7380af88088cdf4347a683224d2997ab4a53",
-    "tir_lock_path": "DEPENDENCY_EXPORT.json",
-    "canonical_graph_mutated": false,
-    "source_lock_mutated": false
-  },
-  "staged_delta": {
-    "source_claims_before": 35,
-    "source_claims_after": 58,
-    "local_edges_before": 40,
-    "local_edges_after": 81,
-    "promoted_dag_acyclic": true,
-    "newly_first_class": [
-      "TIR.HALF_SEAM.PHASE_FIBER",
-      "TIR.HOLONOMY.SEMANTIC_U1",
-      "TIR.INFORMATION_AREA_CURVATURE.PHASE_CLOCK",
-      "TIR.PLATONIC.RAMANUJAN_SPECTRAL_CARRIER",
-      "TIR.PLATONIC.MCKAY_E8_600CELL",
-      "TIR.COEFFICIENT.ROLE_ORIENTATION",
-      "TIR.COEFFICIENT.SELECTOR_COMPOSITION_NOGO",
-      "TIR.SM.COEFFICIENT_TRANSITION_SELECTOR",
-      "TIR.CKM.JARLSKOG_CLOSURE",
-      "TIR.HYPERCHARGE.RELATIVE_UNIQUENESS",
-      "TIR.NEUTRINO.ABSOLUTE_ACTION_REPAIR",
-      "TIR.SM.CONTINUUM_GAUGE_NORMALIZATION",
-      "TIR.SM.ELECTROWEAK_SCHEME_SCALE",
-      "TIR.SM.HIGGS_SCALAR_ACTION_BINDING",
-      "TIR.SM.QUARK_MASS_MAP",
-      "TIR.SM.MESON_ABSOLUTE_ACTION_BASELINE",
-      "TIR.SM.STRONG_CP_HOLONOMIC_SOURCE",
-      "TIR.SM.COSMOLOGY_SCALE_RHOCRIT",
-      "TIR.CP1.DYADIC_FRACTAL_GATE",
-      "TIR.SPACE.HEXAHEDRAL_BLOCH_DUAL_FRAME",
-      "TIR.SPACE.TETRA_FS_CROSSWALK",
-      "TIR.QUANTUM.QUBIT_TETRAHEDRAL_IC",
-      "TIR.SPACE.DIMENSION_GATE"
+  "reconciled_surface": {
+    "claims": 67,
+    "local_edges": 94,
+    "white_thread_claims_present": [
+      "TIR.WHITE_THREAD.SPIN_LIFT",
+      "TIR.WHITE_THREAD.LYAPUNOV"
     ],
-    "explicitly_not_promoted": [
-      "TIR.PLATONIC.MCKAY_E8_600CELL physical binding",
-      "TIR White-Thread spin-lift/Lyapunov from PR #177 until merged",
-      "astrophysical black-hole/White-Thread interpretation",
-      "physical nonlocal signalling"
-    ]
+    "candidate_edges": 15
   },
-  "required_promotion_order": [
-    "Prefer merge TIR PR #177 first, then refresh TIR PR #178 so the source export includes White-Thread spin-lift/Lyapunov in one final source snapshot.",
-    "Merge refreshed TIR PR #178.",
-    "Capture exact new TIR main head and export commit.",
-    "Update FPDG TIR source lock and import the complete source-owned local surface.",
-    "Add/refresh cross-repository edges only after source-local reconciliation passes.",
-    "Run validate_dag, source export reconciliation, source drift and impact analysis."
+  "semantic_repairs": {
+    "corrected_authority_edge": {
+      "from": "TIR.FOUNDATION.HALF",
+      "to": "TIR.SPACETIME.SP3_DELTA_HERM2_HALF_LIFT_V01",
+      "old_fpdg_authority": "CANONICAL",
+      "source_authority": "CANDIDATE_ONLY",
+      "promotion_gate": "GLOBAL_PHYSICAL_SPATIAL_CARRIER_BINDING_REQUIRED"
+    },
+    "dependency_export_schema_registry_sync": "RC_ADDED_TO_ENUM"
+  },
+  "validation_intent": [
+    "validate promoted DAG",
+    "reconcile exact source export",
+    "check upstream source heads",
+    "project source drift and impact"
   ],
-  "reason_for_no_canonical_fpdg_edit": "Source repository remains authoritative for its local claims and edges. Updating canonical FPDG before TIR source promotion would intentionally fail the source-export reconciliation gate."
+  "merge_policy": "NO_MAIN_MERGE_WITHOUT_EXPLICIT_USER_ORDER"
 }

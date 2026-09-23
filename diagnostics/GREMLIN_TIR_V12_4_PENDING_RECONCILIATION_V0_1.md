@@ -1,62 +1,29 @@
-# GREMLIN / FPDG — TIR v12.4 Pending Reconciliation
+# GREMLIN / FPDG — TIR v12.4 Reconciliation
 
-Status: `STAGED_PENDING_SOURCE_PROMOTION / CANON_ALLOWED_FALSE`
+Status: `SOURCE_PROMOTED_RECONCILIATION_APPLIED_TO_PR_BRANCH / CANON_ALLOWED_FALSE`
 
-This staging record exists to prevent the global graph from being updated ahead of its source authority.
+TIR PR #177 and #178 are merged. This branch now consumes the authoritative TIR `DEPENDENCY_EXPORT.json` from current source main rather than staging a hypothetical delta.
 
-## What GREMLIN found
+## Reconciled source surface
 
-The TIR source surface on current `main` contains materially more theorem/validator structure than the locked/global dependency representation exposes. TIR PR #178 packages the reconciliation from 35 to 58 source-owned claims and from 40 to 81 local edges.
+- TIR repository head: `6bb61fdc8b3f77deba406fe2cb8b154723269e0e`
+- represented scientific source commit: `8c781742b656871529a4783ce977c8c1b8d51de2`
+- source-owned claims: **67**
+- source-owned local edges: **94**
+- White-Thread spin-lift and Lyapunov claims are present in the export.
 
-The important semantic repairs are:
+## Authority repair
 
-- hypercharge relative uniqueness: derivationally closed on the declared field content and TIR normalization anchor;
-- neutrino absolute-action source repair: derivationally closed, physical absolute mass still open;
-- coefficient selector no-go: closed diagnostic, transition-sensitive selector still open;
-- local RFC ADM/Einstein derivation: closed, global production realization remains open;
-- legacy empirical FAIL receipts: retained for their frozen formulas, not exported as automatic verdicts on replacement constructions;
-- 600-cell/McKay-E8: exact representation mathematics where stated, still CANDIDATE_ONLY physically.
+The old FPDG base classified
 
-## Why the canonical FPDG is not changed yet
+`TIR.FOUNDATION.HALF -> TIR.SPACETIME.SP3_DELTA_HERM2_HALF_LIFT_V01`
 
-FPDG policy makes the source repository authoritative for its own claims and local edges. TIR PR #178 is not on source `main` yet. Changing `dependency_graph.yaml`, `claims.jsonl` or the TIR source lock now would correctly trigger source-export drift/failure.
+as `CANONICAL`. The authoritative TIR export classifies it as `CANDIDATE_ONLY` behind `GLOBAL_PHYSICAL_SPATIAL_CARRIER_BINDING_REQUIRED`. This branch now follows the source authority.
 
-So this branch intentionally changes only diagnostic/staging material.
+## Schema repair
 
-## White-Thread ordering
+`RC` is already the fifth registered federation source and is accepted dynamically by `tools/import_exports.py`. The static JSON export schema was stale and is synchronized to include `RC`.
 
-TIR PR #177 is independently green and adds the new White-Thread spin-lift/Lyapunov layer. The lowest-churn promotion order is:
+## Promotion discipline
 
-```text
-PR #177
-  -> refresh PR #178 against the new TIR main
-  -> include White-Thread claims/edges in final TIR export
-  -> merge PR #178
-  -> refresh FPDG lock + global graph
-  -> run global GREMLIN impact analysis
-```
-
-If #178 is merged before #177, nothing is invalid, but another TIR export refresh is required after #177.
-
-## Global target shape after source promotion
-
-At minimum the global graph should be able to distinguish:
-
-```text
-TIR formal closure
-  != TIR physical binding
-  != frozen empirical verdict
-
-HYPERCHARGE relative theorem       CLOSED
-NEUTRINO source repair             CLOSED_DERIVATION
-COEFFICIENT selector no-go         CLOSED_DIAGNOSTIC
-COEFFICIENT transition selector    OPEN
-GAUGE continuum normalization      OPEN
-ELECTROWEAK R_EW                   OPEN
-HIGGS action binding               OPEN
-MESON absolute action              OPEN
-STRONG_CP holonomic source         OPEN
-COSMOLOGY scale/rho_crit           OPEN
-```
-
-Candidate-only Platonic/600-cell/semantic bridges remain excluded from canonical invalidation propagation until their explicit promotion gates pass.
+This PR branch remains unmerged. Validation must pass for DAG structure, locked source export reconciliation, upstream-head freshness and source-drift impact before any merge decision.
