@@ -1,0 +1,64 @@
+{
+  "schema": "FPDG_RFC_CARRIER_CANDIDATE_REGISTRY_V0_1",
+  "date": "2026-09-23",
+  "status": "NON_CANONICAL_DIAGNOSTIC / CONSERVATION_PRESENT / PHYSICAL_CARRIER_SELECTION_OPEN",
+  "canon_allowed": false,
+  "source_repository": "AdrianLipa90/Relational-Field-Closure",
+  "source_main_head": "786d1e1a9f9c91a4c3174719ed76966aa73edcef",
+  "source_claim": "RFC.SOURCE.CONSERVED_CARRIER",
+  "source_claim_status": "ADMITTED_SOURCE_INTERFACE",
+  "candidates": [
+    {
+      "id": "RFC.CARRIER.TEMPORAL_CURRENT",
+      "object": "J_tau^mu = rho_tau u^mu",
+      "source": "formalism/RFN1B2_CONSERVED_SOURCE_CARRIER_FACTORIZATION.md",
+      "conservation": "nabla_mu J_tau^mu = 0",
+      "mathematical_status": "CONTINUOUS_CONSERVED_CARRIER_PRESENT",
+      "physical_identity": "OPEN",
+      "ordinary_matter_density_binding": "OPEN"
+    },
+    {
+      "id": "RFC.CARRIER.ENB_U1_CURRENT",
+      "object": "J_phi^mu = i(psi d^mu psi* - psi* d^mu psi) = 2 A^2 d^mu theta",
+      "source": "formalism/RFN1B2_CONSERVED_SOURCE_CARRIER_FACTORIZATION.md",
+      "conservation": "global U(1) Noether current conserved",
+      "mathematical_status": "CONTINUOUS_CONSERVED_CURRENT_PRESENT",
+      "physical_identity": "OPEN",
+      "cross_binding_to_temporal_current": "OPEN"
+    },
+    {
+      "id": "RFC.CARRIER.CYCLIC_PHASE_CHARGE",
+      "object": "J = I_phi D_t chi + J_0",
+      "source": "formalism/RFN1B2_CONSERVED_SOURCE_CARRIER_FACTORIZATION.md",
+      "conservation": "dot J = 0 when chi is cyclic",
+      "mathematical_status": "FINITE_CONSERVED_PHASE_CHARGE_PRESENT",
+      "local_current_realization": "OPEN",
+      "physical_identity": "OPEN"
+    },
+    {
+      "id": "RFC.CARRIER.IDT_NORMALIZED_PROFILE",
+      "object": "p_a",
+      "source": "formalism/RFN1B2_CONSERVED_SOURCE_CARRIER_FACTORIZATION.md",
+      "mathematical_status": "NORMALIZED_DISTRIBUTIONAL_SHAPE_ONLY",
+      "extensive_scale": "ERASED_BY_NORMALIZATION",
+      "carrier_identity": "OPEN / NOT_A_TOTAL_SOURCE_BY_ITSELF"
+    }
+  ],
+  "cross_bindings": {
+    "J_phi <-> J_tau": "OPEN",
+    "J <-> integral(J_phi^0 dV)": "OPEN",
+    "p_IDT <-> normalized carrier density": "OPEN",
+    "q0 <-> fundamental carrier quantum": "OPEN",
+    "epsilon_Q <-> energy per carrier charge": "OPEN",
+    "carrier density <-> ordinary matter density": "OPEN"
+  },
+  "selected_physical_carrier": null,
+  "selection_rule": "conservation, normalized shape, or reference-fixture equality alone cannot select the physical carrier",
+  "chemistry_admission_requirement": [
+    "one source-owned physical carrier selection",
+    "realized-system local current/measure receipt",
+    "independent energy/action normalization",
+    "explicit chemistry coupling operator",
+    "no double counting against standard Berry/QGT/electronic Hamiltonian"
+  ]
+}
