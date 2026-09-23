@@ -32,7 +32,7 @@
     "pr": 170,
     "source_commit": "5997313a67e10a9ee6abba44cb67de256b916c46",
     "export_commit": "06f3b91bb11efaa942e9fd973b7d5f23a02657d2",
-    "status": "VALIDATING_DRAFT_UNMERGED"
+    "status": "DRAFT_REFERENCE_SUITE_GREEN_UNMERGED"
   },
   "rc_candidate_pr": {
     "pr": 35,
@@ -40,5 +40,9 @@
     "export_commit": "5b0c1ddaa55dd029755e094a37840900658a5498",
     "status": "DRAFT_5_OF_5_CI_GREEN_UNMERGED"
   },
-  "exact_null": "beta1=0 => no cycle to bind => no loop-holonomy spectral channel"
+  "exact_null": "beta1=0 => no cycle to bind => no loop-holonomy spectral channel",
+  "crosswalk_validator": {
+    "path": "tools/validate_rfc_rc_edge_path_crosswalk_v0_1.py",
+    "status": "PENDING_CI"
+  }
 }
