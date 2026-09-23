@@ -69,3 +69,38 @@ V_I^{new}= \text{NOT ADMITTED}
 is the correct scientific status.
 
 This is not a failure of the Berry bridge. It is the point at which geometry ends and an independently normalized physical source must begin.
+
+
+## Identifiability theorem
+
+RFC draft PR #172 now formalizes and validates an exact source-density non-identifiability result. At fixed phase rate and phase coordinate,
+
+[
+ho_E
+=
+rac{B,omega,mathcal N}{V_R}(phi+kappa)
+]
+
+is invariant under
+
+[
+oxed{
+B	o aB,qquad
+mathcal N	o bmathcal N,qquad
+V_R	o ab,V_R
+}
+]
+
+for arbitrary (a,b>0).
+
+In logarithmic coordinates the source-density sensitivity is
+
+[
+J_ho=(1,1,-1),
+]
+
+so the nullspace has dimension two.
+
+Therefore an independent scale/carrier receipt is not merely a procedural preference: it is mathematically required to break a continuous identifiability degeneracy.
+
+RFC PR #172 is GREEN on both its dedicated identifiability gate and the full RFC reference suite, but remains unmerged. FPDG therefore records this as source-candidate evidence without importing it into the canonical graph.

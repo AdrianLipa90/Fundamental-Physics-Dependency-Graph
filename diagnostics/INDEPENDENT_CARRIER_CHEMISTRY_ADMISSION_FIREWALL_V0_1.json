@@ -55,11 +55,28 @@
     "no observable prediction before source-owned observable selection"
   ],
   "release_condition": [
+    "RFC source repository provides independent scale/carrier information that breaks the source-density rescaling orbit",
     "RFC source repository closes a physical carrier identity",
     "RFC source repository closes B/action or equivalent absolute normalization",
     "RFC source repository closes required current/cell/observable bindings",
     "chemistry coupling operator is source-derived and Hermitian",
     "zero-coupling limit exactly recovers standard-QM controls",
     "held-out observable and decision rule are preregistered"
-  ]
+  ],
+  "identifiability_nogo_candidate": {
+    "repository": "AdrianLipa90/Relational-Field-Closure",
+    "pr": 172,
+    "source_commit": "f36e627ad9990f6ad5bc44d34e2e9aa40c3a6ca5",
+    "export_commit": "2fb08aa8d618b161f5efadbfadb1263ca70f4f35",
+    "status": "DRAFT_DEDICATED_GATE_GREEN_AND_FULL_REFERENCE_SUITE_GREEN_UNMERGED",
+    "claim_id": "RFC.CHEMISTRY.CARRIER_SCALE_IDENTIFIABILITY_NOGO",
+    "theorem": "At fixed omega and phase, (B,N,V_R)->(aB,bN,abV_R) leaves rho_E invariant for arbitrary a,b>0",
+    "log_jacobian": [
+      1,
+      1,
+      -1
+    ],
+    "nullspace_dimension": 2,
+    "consequence": "source density alone cannot identify B, occupation and cell volume separately"
+  }
 }
