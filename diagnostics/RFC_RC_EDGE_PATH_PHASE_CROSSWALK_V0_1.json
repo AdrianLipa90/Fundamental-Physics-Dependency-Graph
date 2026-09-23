@@ -43,6 +43,16 @@
   "exact_null": "beta1=0 => no cycle to bind => no loop-holonomy spectral channel",
   "crosswalk_validator": {
     "path": "tools/validate_rfc_rc_edge_path_crosswalk_v0_1.py",
-    "status": "PENDING_CI"
+    "status": "PASS",
+    "validated_commit": "fb42ea91cb841809c10d4485a0ec33bfc7f49ba1",
+    "workflow_run_id": 35824556465,
+    "checks": [
+      "RFC/RC edge gauge transformation sign compatibility",
+      "Phi_RC = -Gamma_RFC cycle relation",
+      "deltaPhi_RC = -deltaGamma_RFC displacement relation",
+      "reverse-path conjugacy",
+      "beta1 triangle positive-control",
+      "beta1 H2plus null-control"
+    ]
   }
 }
