@@ -1,0 +1,20 @@
+name: Validate RFC-RC Edge Path Crosswalk
+
+on:
+  pull_request:
+    paths:
+      - 'diagnostics/RFC_RC_EDGE_PATH_PHASE_CROSSWALK_V0_1.*'
+      - 'tools/validate_rfc_rc_edge_path_crosswalk_v0_1.py'
+      - '.github/workflows/validate-rfc-rc-edge-path-crosswalk.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate crosswalk algebra
+        run: python tools/validate_rfc_rc_edge_path_crosswalk_v0_1.py

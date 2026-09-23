@@ -1,0 +1,104 @@
+{
+  "schema": "FPDG_INDEPENDENT_CARRIER_CHEMISTRY_ADMISSION_FIREWALL_V0_1",
+  "status": "PASS_FIREWALL / NEW_PHYSICS_CHEMISTRY_ADMISSION_BLOCKED",
+  "date": "2026-09-23",
+  "canon_allowed": false,
+  "source": {
+    "repository": "AdrianLipa90/Relational-Field-Closure",
+    "main_head": "786d1e1a9f9c91a4c3174719ed76966aa73edcef",
+    "files": [
+      "validation/RF_S13_RELATIONAL_GENERATOR_SOURCE_DENSITY_V0_1.json",
+      "validation/RF_E20_TETRA_CLOCK_MASS_SCALE_CLOSURE_V0_1.json",
+      "validation/RFE19_NOETHER_CURRENT_MATERIAL_CONGRUENCE_V0_1.json"
+    ]
+  },
+  "standard_qm_baseline": {
+    "H2plus": "NEGATIVE_HOLONOMY_CONTROL_CLOSED",
+    "synthetic_CI": "POSITIVE_BERRY_CONTROL_CLOSED",
+    "H3plus": "PREREGISTERED_MOLECULAR_BERRY_CONTROL_PASS",
+    "same_state_RFC_binding": "STANDARD_QM_BERRY_IDENTITY_CLOSED"
+  },
+  "source_owned_open_inputs": {
+    "RF_S13": [
+      "physical B-action realization",
+      "physical occupation/current receipt",
+      "physical AR cell-volume receipt",
+      "RF-E5 physical carrier-observable selection",
+      "absolute project-side kappa_E/G promotion"
+    ],
+    "RF_E20": [
+      "TETRA_SIC_TO_SPATIAL_CELL_PHYSICAL_SCALE",
+      "CLOCK_KL_TO_XI_PHYSICAL_ATTRIBUTION",
+      "ALPHA_RATIO",
+      "SPATIAL_PHASE_SCALE",
+      "PHASE_MASS_RATIO",
+      "TARGET_MASS_BINDING",
+      "NOETHER_FLOW_TIMELIKE_DOMAIN",
+      "OBSERVABLE_SELECTION"
+    ],
+    "RF_E19": [
+      "translational_energy_observable_binding = OPEN",
+      "E_star_physical_scale = OPEN",
+      "PHYSICAL_TIMELIKE_DOMAIN_AUDIT_FOR_RFC_MATTER_SECTORS",
+      "RF_E17_TRANSLATIONAL_KINETIC_OBSERVABLE_BINDING",
+      "E_STAR_COUPLING_CELL_GEOMETRY_PROMOTION",
+      "RELATIVISTIC_DISPERSION_COMPARISON"
+    ]
+  },
+  "remaining_gate": "INDEPENDENT_RFC_CARRIER_TO_CHEMISTRY_COUPLING",
+  "admission_state": "BLOCKED_BY_SOURCE_OWNED_OPEN_INPUTS",
+  "forbidden_promotions": [
+    "no nonzero chemistry V_I from RFC before independent carrier and normalization",
+    "no fitted B action from target spectroscopy",
+    "no reuse of standard Berry connection as extra interaction",
+    "no physical scale claim from dimensionless RF-E20 closure alone",
+    "no observable prediction before source-owned observable selection"
+  ],
+  "release_condition": [
+    "RFC source repository provides independent scale/carrier information that breaks the source-density rescaling orbit",
+    "RFC source repository closes a physical carrier identity",
+    "RFC source repository closes B/action or equivalent absolute normalization",
+    "RFC source repository closes required current/cell/observable bindings",
+    "chemistry coupling operator is source-derived and Hermitian",
+    "zero-coupling limit exactly recovers standard-QM controls",
+    "held-out observable and decision rule are preregistered"
+  ],
+  "identifiability_nogo_candidate": {
+    "repository": "AdrianLipa90/Relational-Field-Closure",
+    "pr": 172,
+    "source_commit": "30ca034fea121a678ef84342e1400d4ebfc1d3fa",
+    "export_commit": "c7216d0019ae9e0510571ee24619cd8510078c18",
+    "status": "DRAFT_NO_GO_AND_STATUS_REPAIR_GREEN_FULL_REFERENCE_SUITE_GREEN_UNMERGED",
+    "claim_id": "RFC.CHEMISTRY.CARRIER_SCALE_IDENTIFIABILITY_NOGO",
+    "theorem": "At fixed omega and phase, (B,N,V_R)->(aB,bN,abV_R) leaves rho_E invariant for arbitrary a,b>0",
+    "log_jacobian": [
+      1,
+      1,
+      -1
+    ],
+    "nullspace_dimension": 2,
+    "consequence": "source density alone cannot identify B, occupation and cell volume separately",
+    "minimal_observable_ladder": {
+      "B_only": [
+        "independent carrier energy epsilon",
+        "or source density rho plus occupation density n"
+      ],
+      "full_B_N_V": [
+        "rho + epsilon + absolute N",
+        "rho + epsilon + absolute V",
+        "rho + n + absolute N",
+        "rho + n + absolute V"
+      ],
+      "redundancy": "rho + epsilon + n has rank 2 because J_rho = J_epsilon + J_n"
+    }
+  },
+  "rfc_n1b2k_status_drift": {
+    "stale_export_status": "ACTIVE_PHYSICAL_REALIZATION",
+    "source_authoritative_status": "REFERENCE_SUITE_PASS / EXECUTABLE_INDEPENDENT_INPUT_RECEIPT / PHYSICAL_REALIZATION_INPUT_OPEN",
+    "source_path": "formalism/RF_F24_CURRENT_MEASURE_REALIZATION_RECEIPT.md",
+    "validation_receipt": "validation/RF_F24_CURRENT_MEASURE_REALIZATION_RECEIPT_V0_1.json",
+    "source_candidate_pr": 172,
+    "source_candidate_head": "c7216d0019ae9e0510571ee24619cd8510078c18",
+    "handling": "DO_NOT_PROMOTE_CURRENT_MEASURE_AS_REALIZED_PHYSICS_BEFORE_SOURCE_MERGE_AND_RECONCILIATION"
+  }
+}

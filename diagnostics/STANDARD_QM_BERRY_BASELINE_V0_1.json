@@ -1,0 +1,56 @@
+{
+  "schema": "FPDG_STANDARD_QM_BERRY_BASELINE_V0_1",
+  "status": "NON_CANONICAL_DIAGNOSTIC / STANDARD_QM_MOLECULAR_BERRY_BINDING_CLOSED / NEW_CARRIER_OPEN",
+  "same_state_identity": {
+    "condition": "u_RFC(lambda) = Psi_chem_n(lambda)",
+    "rfc_connection": "A_minus_RFC = +i<Psi|dPsi>",
+    "chemistry_connection": "A_Berry_chem = +i<Psi|dPsi>",
+    "result": "IDENTICAL_STANDARD_QM_CONNECTION"
+  },
+  "no_double_counting": {
+    "residual_connection": "A_residual = A_candidate - A_Berry_chem",
+    "same_state_branch": "A_residual = 0",
+    "residual_wilson": "W_residual = 1",
+    "prohibition": "same Berry connection may not be reintroduced as an independent V_I"
+  },
+  "control_ladder": {
+    "H2plus": {
+      "role": "negative loop-holonomy control",
+      "beta1": 0
+    },
+    "H3plus": {
+      "role": "positive molecular standard-QM Berry control",
+      "encircling_wilson": {
+        "real": -1,
+        "imag": 0
+      },
+      "encircling_phase_rad": 3.141592653589793,
+      "min_encircling_gap_hartree": 0.007835550301640293,
+      "nonencircling_wilson": {
+        "real": 1,
+        "imag": 0
+      },
+      "nonencircling_phase_rad": 0,
+      "min_nonencircling_gap_hartree": 0.021359799604451668,
+      "tracked_root": "1 at all 24 samples"
+    }
+  },
+  "source_prs": {
+    "RFC_170": "REFERENCE_SUITE_GREEN_UNMERGED",
+    "RC_35": "GREEN_UNMERGED",
+    "RC_36": "GREEN_UNMERGED",
+    "RC_37": "GREEN_UNMERGED"
+  },
+  "remaining_gate": "INDEPENDENT_RFC_CARRIER_TO_CHEMISTRY_COUPLING",
+  "required_evidence": [
+    "independent physical carrier identity",
+    "normalization and units",
+    "gauge/transformation law",
+    "coupling operator into chemical Hilbert space",
+    "no-double-counting proof against standard Hamiltonian/Berry/QGT",
+    "zero-coupling recovery",
+    "preregistered observable and decision rule",
+    "held-out validation without target fitting"
+  ],
+  "canon_allowed": false
+}

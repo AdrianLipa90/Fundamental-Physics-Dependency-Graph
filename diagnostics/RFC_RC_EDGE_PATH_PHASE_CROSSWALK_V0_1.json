@@ -1,0 +1,58 @@
+{
+  "schema": "FPDG_RFC_RC_EDGE_PATH_PHASE_CROSSWALK_V0_1",
+  "status": "NON_CANONICAL_CANDIDATE_CROSS_REPO_INTERFACE / CANON_ALLOWED_FALSE",
+  "exact_convention_crosswalk": {
+    "rc_gauge_law": "theta_ij -> theta_ij + chi_j - chi_i",
+    "rfc_gauge_law": "A_minus -> A_minus - d lambda",
+    "edge_phase_candidate": "theta_e_RC = - integral_gamma_e A_minus_RFC",
+    "gauge_parameter_identification": "chi = lambda",
+    "cycle_relation": "Phi_a_RC = - Gamma_a_RFC",
+    "displacement_relation": "deltaPhi_a_RC = - deltaGamma_a_RFC"
+  },
+  "required_realization_map": {
+    "symbol": "iota",
+    "vertices": "RC effective-state vertices -> RFC physical endpoints",
+    "edges": "oriented RC edges -> RFC physical paths",
+    "boundary_preservation": "partial iota_#(e_ij) = iota(j)-iota(i)",
+    "cycle_preservation": "RC graph cycle -> closed RFC path"
+  },
+  "remaining_gate": "COMMON_PHYSICAL_EDGE_PATH_REALIZATION",
+  "required_evidence": [
+    "common carrier identity",
+    "vertex-endpoint identity",
+    "edge-path identity",
+    "stable cycle identity across compared states",
+    "baseline hopping phase convention",
+    "orientation/sign convention",
+    "no target-data fit",
+    "source-side validation receipt"
+  ],
+  "direct_tir_semantic_source_status": "EXCLUDED_AT_CURRENT_STATUS / PHYSICAL_GAUGE_BINDING_OPEN",
+  "rfc_candidate_pr": {
+    "pr": 170,
+    "source_commit": "5997313a67e10a9ee6abba44cb67de256b916c46",
+    "export_commit": "06f3b91bb11efaa942e9fd973b7d5f23a02657d2",
+    "status": "DRAFT_REFERENCE_SUITE_GREEN_UNMERGED"
+  },
+  "rc_candidate_pr": {
+    "pr": 35,
+    "source_commit": "5f6a29a894ea1b27365b5be0248970470df24edb",
+    "export_commit": "5b0c1ddaa55dd029755e094a37840900658a5498",
+    "status": "DRAFT_5_OF_5_CI_GREEN_UNMERGED"
+  },
+  "exact_null": "beta1=0 => no cycle to bind => no loop-holonomy spectral channel",
+  "crosswalk_validator": {
+    "path": "tools/validate_rfc_rc_edge_path_crosswalk_v0_1.py",
+    "status": "PASS",
+    "validated_commit": "fb42ea91cb841809c10d4485a0ec33bfc7f49ba1",
+    "workflow_run_id": 35824556465,
+    "checks": [
+      "RFC/RC edge gauge transformation sign compatibility",
+      "Phi_RC = -Gamma_RFC cycle relation",
+      "deltaPhi_RC = -deltaGamma_RFC displacement relation",
+      "reverse-path conjugacy",
+      "beta1 triangle positive-control",
+      "beta1 H2plus null-control"
+    ]
+  }
+}

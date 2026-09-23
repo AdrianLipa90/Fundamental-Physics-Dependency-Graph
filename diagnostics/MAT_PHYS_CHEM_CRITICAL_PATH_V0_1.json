@@ -1,0 +1,116 @@
+{
+  "schema": "FPDG_MAT_PHYS_CHEM_CRITICAL_PATH_V0_1",
+  "date": "2026-09-23",
+  "status": "NON_CANONICAL_CANDIDATE_OVERLAY / SOURCE_FIRST / CANON_ALLOWED_FALSE",
+  "base_fpdg": {
+    "branch": "reconcile/tir-v12.4-pending-source-promotion",
+    "head": "016d8777acc875666d67a0a8cff59faf0bb4b872",
+    "tir_reconciliation_pr": 24,
+    "tir_surface": "67 claims / 94 local edges / CI GREEN"
+  },
+  "rc_candidate_source": {
+    "repository": "AdrianLipa90/Resonant-Chemistry",
+    "pr": 35,
+    "branch": "research/quantum-matter-bridge-h2plus-v0.1-20260923",
+    "represented_source_commit": "2ecc154a9519607c978dacd2fe90c199cdca7b6b",
+    "export_commit": "04a5957c6146ed5878e496bca36cf230cf8c67e3",
+    "qmb_reference_gate": "GREEN",
+    "source_claims": [
+      "RC.MATTER.PHYSICAL_STATE_BINDING",
+      "RC.MATTER.INFORMATIONAL_PERTURBATION_VI",
+      "RC.MOLECULAR.H2PLUS_CONTROL",
+      "RC.SPECTROSCOPY.NO_REFIT_GATE"
+    ],
+    "canonical_import_allowed": false
+  },
+  "minimal_critical_path": [
+    {
+      "id": "MATH_PHASE_GEOMETRY",
+      "status": "AVAILABLE_STRUCTURAL",
+      "parents": [
+        "TIR.HOLONOMY.WIJ",
+        "RFC.F1.GAUGE_RELATIONAL_PHASE"
+      ]
+    },
+    {
+      "id": "DELTA_PHI_SOURCE_BINDING",
+      "status": "OPEN_CRITICAL",
+      "note": "derive real gauge-invariant cycle displacement from one independently admitted physical source; no source selected by FPDG"
+    },
+    {
+      "id": "RC_PHYSICAL_STATE_BINDING",
+      "status": "OPEN_CANDIDATE",
+      "source_claim": "RC.MATTER.PHYSICAL_STATE_BINDING"
+    },
+    {
+      "id": "RC_HOLONOMY_LINEARIZED_OPERATOR",
+      "status": "MATHEMATICAL_CLASS_DERIVED_PHYSICAL_SOURCE_OPEN",
+      "equation": "V_I^(1)=sum_a deltaPhi_a dH/dPhi_a",
+      "source_claim": "RC.MATTER.INFORMATIONAL_PERTURBATION_VI"
+    },
+    {
+      "id": "H2PLUS_TWO_CENTRE_CONTROL",
+      "status": "PREREGISTERED_NEGATIVE_HOLONOMY_CONTROL",
+      "source_claim": "RC.MOLECULAR.H2PLUS_CONTROL",
+      "invariant": "beta1=0 => graph phase gauge-removable"
+    },
+    {
+      "id": "CYCLIC_POSITIVE_CONTROL",
+      "status": "OPEN",
+      "gate": "INDEPENDENTLY_JUSTIFIED_EFFECTIVE_STATE_GRAPH_WITH_BETA1_GE_1"
+    },
+    {
+      "id": "NO_REFIT_SPECTROSCOPY",
+      "status": "PREREGISTERED_BLOCKED_ON_PHYSICAL_SOURCE",
+      "source_claim": "RC.SPECTROSCOPY.NO_REFIT_GATE"
+    }
+  ],
+  "candidate_upstream_source_set": [
+    {
+      "claim": "TIR.HOLONOMY.WIJ",
+      "role": "holonomy carrier candidate",
+      "selection_status": "NOT_SELECTED"
+    },
+    {
+      "claim": "RFC.F1.GAUGE_RELATIONAL_PHASE",
+      "role": "gauge phase parent candidate",
+      "selection_status": "NOT_SELECTED"
+    },
+    {
+      "claim": "RFC.F5.PHASE_ENERGY_ONE_FORM",
+      "role": "phase-energy parent candidate",
+      "selection_status": "NOT_SELECTED"
+    }
+  ],
+  "source_selector_firewall": {
+    "rule": "FPDG does not choose or derive the physical deltaPhi source",
+    "required_before_cross_repo_edge": [
+      "source-owned derivation",
+      "units and normalization",
+      "gauge transformation law",
+      "state-space carrier map",
+      "no target-data fit",
+      "validation receipt"
+    ]
+  },
+  "exact_nulls": [
+    "V_I=u0 I => Delta omega_mn=0",
+    "beta1=0 => graph edge phases globally gauge-removable => no loop-holonomy spectral channel"
+  ],
+  "excluded_from_chem_critical_path": [
+    "Riemann hypothesis",
+    "strong-CP closure",
+    "cosmological scale/rho_crit",
+    "full electroweak/Higgs closure unless deriving all low-energy constants endogenously"
+  ],
+  "promotion_order": [
+    "merge FPDG PR #24 only under explicit user order",
+    "complete and review RC PR #35; source claims remain noncanonical until merged",
+    "after RC source merge, refresh RC source export lock in FPDG",
+    "import source-owned RC claims/local edges",
+    "select physical deltaPhi source only through source-owned derivation",
+    "add cross-repository candidate edge/interface after source-local reconciliation",
+    "run DAG, source-export, drift and impact validators",
+    "open withheld observation only after freeze"
+  ]
+}
