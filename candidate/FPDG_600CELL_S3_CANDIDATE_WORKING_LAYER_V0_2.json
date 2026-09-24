@@ -1,0 +1,46 @@
+{
+  "schema": "FPDG_CANDIDATE_WORKING_LAYER_V0_2",
+  "candidate_id": "600CELL_S3_WORKING_LAYER_V0_2",
+  "status": "CANDIDATE",
+  "active_working": true,
+  "canonical_graph_unchanged": true,
+  "nodes": [
+    {"id":"TIR_600CELL_S3_CANDIDATE_WORKING_LAYER_V0_1","repo":"The-Fundamental-Theory-of-Informational-Relations","status":"CANDIDATE"},
+    {"id":"TIR_600CELL_S3_RANK_CLOSURE_CANDIDATE_V0_2","repo":"The-Fundamental-Theory-of-Informational-Relations","status":"CANDIDATE"},
+    {"id":"PNCS_600CELL_S3_CANDIDATE_V0_1","repo":"PhaseNav-Natural-Coding-System","status":"CANDIDATE"},
+    {"id":"PNCS_600CELL_S3_RANK_CLOSURE_CANDIDATE_V0_2","repo":"PhaseNav-Natural-Coding-System","status":"CANDIDATE"},
+    {"id":"PNCS_SUPPORT_MASK_PARENT_G_V0_2","repo":"PhaseNav-Natural-Coding-System","status":"CANDIDATE"},
+    {"id":"PNCS_GREMLIN_ROUND28_RELATION_BINDING_V0_2","repo":"PhaseNav-Natural-Coding-System","status":"CANDIDATE"},
+    {"id":"NOEMA_WORKING_IMPLEMENTATION_REGISTRY_V0_1","repo":"noema-phasenav-core","status":"CANDIDATE"},
+    {"id":"IDT_600CELL_S3_CANDIDATE_DEPENDENCY_V0_1","repo":"Informational-Dynamics-of-Time","status":"CANDIDATE"},
+    {"id":"RFC_600CELL_S3_WORKING_DEPENDENCY_V0_1","repo":"Relational-Field-Closure","status":"CANDIDATE"},
+    {"id":"SOH_600CELL_BINARY_ICOSAHEDRAL_CANDIDATE_V0_1","repo":"secret-of-a-half","status":"CANDIDATE"}
+  ],
+  "edges": [
+    {"from":"TIR_600CELL_S3_CANDIDATE_WORKING_LAYER_V0_1","relation":"implementation","to":"PNCS_600CELL_S3_CANDIDATE_V0_1"},
+    {"from":"TIR_600CELL_S3_RANK_CLOSURE_CANDIDATE_V0_2","relation":"implementation_evidence","to":"PNCS_600CELL_S3_RANK_CLOSURE_CANDIDATE_V0_2"},
+    {"from":"NOEMA_WORKING_IMPLEMENTATION_REGISTRY_V0_1","relation":"candidate_execution_policy","to":"PNCS_600CELL_S3_CANDIDATE_V0_1"},
+    {"from":"NOEMA_WORKING_IMPLEMENTATION_REGISTRY_V0_1","relation":"candidate_execution_policy","to":"PNCS_SUPPORT_MASK_PARENT_G_V0_2"},
+    {"from":"PNCS_600CELL_S3_CANDIDATE_V0_1","relation":"candidate_structural_support","to":"PNCS_SUPPORT_MASK_PARENT_G_V0_2"},
+    {"from":"TIR_600CELL_S3_RANK_CLOSURE_CANDIDATE_V0_2","relation":"candidate_dependency","to":"IDT_600CELL_S3_CANDIDATE_DEPENDENCY_V0_1"},
+    {"from":"TIR_600CELL_S3_RANK_CLOSURE_CANDIDATE_V0_2","relation":"candidate_dependency","to":"RFC_600CELL_S3_WORKING_DEPENDENCY_V0_1"},
+    {"from":"TIR_600CELL_S3_RANK_CLOSURE_CANDIDATE_V0_2","relation":"candidate_dependency","to":"SOH_600CELL_BINARY_ICOSAHEDRAL_CANDIDATE_V0_1"},
+    {"from":"SOH_600CELL_BINARY_ICOSAHEDRAL_CANDIDATE_V0_1","relation":"double_cover_semantics","to":"PNCS_GREMLIN_ROUND28_RELATION_BINDING_V0_2"}
+  ],
+  "validated_candidate_results": {
+    "s3_full_sector_sampling": "ell=0..5",
+    "ell6_first_rank_collapse": "49->25",
+    "ell7_cumulative_finite_closure": "116->120 with 4 new directions",
+    "pncs_targeted_candidate_ci": "PASS",
+    "tir_candidate_ci": "PASS"
+  },
+  "rules": {
+    "candidate_can_feed_candidate": true,
+    "candidate_can_satisfy_canonical_gate_without_promotion": false,
+    "candidate_is_executable": true,
+    "candidate_is_not_failed": true,
+    "candidate_must_preserve_status": true,
+    "failed_or_quarantined_requires_diagnostics": true,
+    "candidate_physical_binding_is_not_implied": true
+  }
+}

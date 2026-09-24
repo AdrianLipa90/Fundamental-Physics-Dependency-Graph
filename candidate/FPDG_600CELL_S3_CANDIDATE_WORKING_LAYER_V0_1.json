@@ -1,0 +1,79 @@
+{
+  "active_working": true,
+  "candidate_id": "600CELL_S3_WORKING_LAYER_V0_1",
+  "canonical_graph_unchanged": true,
+  "edges": [
+    {
+      "from": "TIR_600CELL_S3_CANDIDATE_WORKING_LAYER_V0_1",
+      "relation": "implementation",
+      "to": "PNCS_600CELL_S3_CANDIDATE_V0_1"
+    },
+    {
+      "from": "NOEMA_WORKING_IMPLEMENTATION_REGISTRY_V0_1",
+      "relation": "candidate_execution_policy",
+      "to": "PNCS_600CELL_S3_CANDIDATE_V0_1"
+    },
+    {
+      "from": "TIR_600CELL_S3_CANDIDATE_WORKING_LAYER_V0_1",
+      "relation": "candidate_dependency",
+      "to": "IDT_600CELL_S3_CANDIDATE_DEPENDENCY_V0_1"
+    },
+    {
+      "from": "TIR_600CELL_S3_CANDIDATE_WORKING_LAYER_V0_1",
+      "relation": "candidate_dependency",
+      "to": "RFC_600CELL_S3_WORKING_DEPENDENCY_V0_1"
+    },
+    {
+      "from": "IDT_600CELL_S3_CANDIDATE_DEPENDENCY_V0_1",
+      "relation": "candidate_dependency",
+      "to": "RFC_600CELL_S3_WORKING_DEPENDENCY_V0_1"
+    },
+    {
+      "from": "TIR_600CELL_S3_CANDIDATE_WORKING_LAYER_V0_1",
+      "relation": "candidate_dependency",
+      "to": "SOH_600CELL_BINARY_ICOSAHEDRAL_CANDIDATE_V0_1"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "TIR_600CELL_S3_CANDIDATE_WORKING_LAYER_V0_1",
+      "repo": "The-Fundamental-Theory-of-Informational-Relations",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "PNCS_600CELL_S3_CANDIDATE_V0_1",
+      "repo": "PhaseNav-Natural-Coding-System",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "NOEMA_WORKING_IMPLEMENTATION_REGISTRY_V0_1",
+      "repo": "noema-phasenav-core",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "IDT_600CELL_S3_CANDIDATE_DEPENDENCY_V0_1",
+      "repo": "Informational-Dynamics-of-Time",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "RFC_600CELL_S3_WORKING_DEPENDENCY_V0_1",
+      "repo": "Relational-Field-Closure",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "SOH_600CELL_BINARY_ICOSAHEDRAL_CANDIDATE_V0_1",
+      "repo": "secret-of-a-half",
+      "status": "CANDIDATE"
+    }
+  ],
+  "rules": {
+    "candidate_can_feed_candidate": true,
+    "candidate_can_satisfy_canonical_gate_without_promotion": false,
+    "candidate_is_executable": true,
+    "candidate_is_not_failed": true,
+    "candidate_must_preserve_status": true,
+    "failed_or_quarantined_requires_diagnostics": true
+  },
+  "schema": "FPDG_CANDIDATE_WORKING_LAYER_V0_1",
+  "status": "CANDIDATE"
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "FPDG_POST_FRONTIER_SOURCE_HEAD_REFRESH_V0_1",
+  "date": "2026-09-19",
+  "base_fpdg_main": "6c45736b30ade6eafcb6df07d8c5510e390c4128",
+  "refreshed": {
+    "TIR": {
+      "repository_head": "d5dcd42211dc4d872971ca4afab97a4335b3ac1c",
+      "export_commit": "d5dcd42211dc4d872971ca4afab97a4335b3ac1c",
+      "represented_source_commit": "e4eba64a1cc60e7f67e7d9c8229b05ae6185aa6e",
+      "export_blob_sha": "6b4e6d2ef08b77de1b98c7417c2342f93d5d9047",
+      "semantic_export_surface": "UNCHANGED_35_CLAIMS_40_EDGES"
+    },
+    "RFC": {
+      "repository_head": "b076c6aa13cf752fbe9edd476903a6f7ef98f4e0",
+      "export_commit": "9e7c35dbeec6c0e51ff85ed9a4dcbb298a88b30d",
+      "represented_source_commit": "ce4af9ddd480ea40dfb5a3ee26ed396a58cb0e54",
+      "export_blob_sha": "cb1a48243afd8c6ca92e3fda5f56cd88f8ac39d3",
+      "semantic_export_surface": "UNCHANGED_90_CLAIMS_122_EDGES",
+      "candidate_only_advance": true,
+      "physical_production_claim": false
+    }
+  },
+  "policy": "repository head refresh only after semantic export inspection",
+  "graph_mutated": false
+}
